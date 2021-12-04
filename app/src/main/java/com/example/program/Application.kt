@@ -1,10 +1,7 @@
 package com.example.program
 
 import android.app.Application
-import com.example.program.di.networkModule
-import com.example.program.di.preferencesModule
-import com.example.program.di.repositoryModule
-import com.example.program.di.viewModelModule
+import com.example.program.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -25,9 +22,6 @@ open class Application: Application() {
 
     }
 
-
-
-
     private fun contextInitialize() {
         instance = this
     }
@@ -37,7 +31,7 @@ open class Application: Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@Application)
-            modules(listOf(preferencesModule, networkModule ,repositoryModule ,viewModelModule))
+            modules(listOf(preferencesModule, networkModule ,repositoryModule ,viewModelModule, roomModule))
         }
 
     }
