@@ -4,11 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/border_main.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/ic_youtube.xml" value="0.34074074074074073" />
+        <entry key="app/src/main/res/layout/activity_excercise_type_registration.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_excercise_type_registration_detail.xml" value="0.26042133572389065" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17046605876393112" />
         <entry key="app/src/main/res/layout/activity_split_selection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_no_noti.xml" value="0.3020833333333333" />
+        <entry key="app/src/main/res/layout/item_program.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/item_split_selection.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/layout_adding_program.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/layout_excercise_type.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_reg_excercise_type.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/layout_repitition.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/layout_rest_time.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/layout_set_number.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/layout_weight.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3880208333333333" />
       </map>
     </option>
   </component>

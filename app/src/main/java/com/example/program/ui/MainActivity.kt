@@ -34,7 +34,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
     private fun setUpBottomNavigationBar() {
 
-        val navGraphIds = listOf(R.navigation.program, R.navigation.youtube, R.navigation.mall)
+        val navGraphIds = listOf(R.navigation.log_record, R.navigation.log_look_up)
         val controller = dataBinding.navView.setupWithNavController(
             navGraphIds = navGraphIds,
             fragmentManager = supportFragmentManager,
