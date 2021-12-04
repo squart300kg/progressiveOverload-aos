@@ -14,7 +14,7 @@ class SplitSelectionActivity: BaseActivity<ActivitySplitSelectionBinding>(R.layo
             rvSplitSelection.apply {
                 setHasFixedSize(true)
                 adapter = SplitSelectionAdapter { split ->
-                    Intent(this@SplitSelectionActivity, RegExcersizeTypeActivity::class.java).apply {
+                    Intent(this@SplitSelectionActivity, RegExerciseTypeActivity::class.java).apply {
                         putExtra("split", split)
                         startActivity(this)
                     }

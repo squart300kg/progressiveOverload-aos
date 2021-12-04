@@ -20,10 +20,10 @@
             android:name=".ui.home.sub.SplitSelectionActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.RegExcersizeTypeActivity"
+            android:name=".ui.home.sub.RegExerciseTypeActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.RegExcersizeTypeDetailActivity"
+            android:name=".ui.home.sub.RegExerciseTypeDetailActivity"
             android:exported="true" />
         <activity
             android:name=".ui.MainActivity"
