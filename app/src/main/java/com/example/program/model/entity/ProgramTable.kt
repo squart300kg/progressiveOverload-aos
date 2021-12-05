@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class ProgramTable(
-    @PrimaryKey
-    val no: Int,
+    @PrimaryKey(autoGenerate = true)
+    val no: Long = 0,
     @ColumnInfo
     val name: String?,
     @ColumnInfo

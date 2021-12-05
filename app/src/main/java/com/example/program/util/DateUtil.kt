@@ -1,45 +1,29 @@
 package com.example.program.util
 
-import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
 
 object DateUtil {
-    private const val outputPattern = "yyyy-MM-dd'T'HH:mm:ss"
-    private const val outputPattern2 = "yyyy년 MM월 dd일 HH시 mm분"
-    private const val outputForPay = "yyyyMMddHHmm"
-    fun getCurrentTimeMillisForPay(): Long {
+    private const val outputPattern = "yyyy년 MM월 dd일 HH시 mm분 ss초"
 
-        val currentDateFormat = SimpleDateFormat(outputForPay, Locale.getDefault())
-        val currentDate = System.currentTimeMillis()
-//        val currentDatestring = currentDateFormat.format(currentDate)
 
-        return currentDate
-    }
+    fun getCurrentDateForProgramName(): String? {
+        val formmat = SimpleDateFormat(outputPattern, Locale.getDefault())
+        val date = Date(System.currentTimeMillis())
+        val result = formmat.format(date)
 
-    fun getCurrentDateForPayComplete(): String {
-
-        val currentDateFormat = SimpleDateFormat(outputPattern2, Locale.getDefault())
-        val currentDate = Date(System.currentTimeMillis())
-        val currentDatestring = currentDateFormat.format(currentDate)
-
-        return currentDatestring
+        return result
     }
 
     fun getDateFromTimeMillis(timeMillis : Long?) : String {
-        val currentDateFormat = SimpleDateFormat(outputPattern2, Locale.getDefault())
+        val currentDateFormat = SimpleDateFormat(outputPattern, Locale.getDefault())
 
         Calendar.getInstance().apply {
             if (timeMillis != null) {
                 timeInMillis = timeMillis
             }
-            Log.i("getDateFromTimeMillis", "timeMillis : $timeMillis, result : ${currentDateFormat.format(this.time)}")
             return currentDateFormat.format(this.time)
         }
 
-//        val currentDate = timeMillis?.let { Date(it) }
-//        val currentDatestring = currentDateFormat.format(currentDate)
-//
-//        return currentDatestring
     }
 }

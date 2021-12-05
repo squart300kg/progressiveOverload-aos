@@ -17,8 +17,14 @@ class RegExerciseTypeDetailActivity: BaseActivity<ActivityExcerciseTypeRegistrat
 
     private val regExerciseTypeViewModel : RegExerciseTypeViewModel by viewModel()
 
+    private var selectedSplitIndex : Int? = null
+    private var programNo : Long? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        selectedSplitIndex = intent.getIntExtra("selectedSplitIndex", 0)
+        programNo = intent.getLongExtra("programNo", 0L)
 
         binding {
             tvRegister.setOnClickListener {
@@ -30,9 +36,10 @@ class RegExerciseTypeDetailActivity: BaseActivity<ActivityExcerciseTypeRegistrat
                             name = layoutExerciseType.etExerciseType.text.toString(),
                             weight = layoutWeight.etWeight.text.toString().toInt(),
                             repitition = layoutRepitition.etRepitition.text.toString().toInt(),
+                            setNum = layoutSetNumber.etSetNumber.text.toString().toInt(),
                             restTime = layoutRestTime.etRestTime.text.toString().toInt(),
-                            programNo = 123123123,
-                            splitTypeIndex = 123
+                            programNo = programNo,
+                            splitTypeIndex = selectedSplitIndex
                         )
                     )
                     Toast.makeText(this@RegExerciseTypeDetailActivity, "운동 등록을 완료하였습니다!", Toast.LENGTH_LONG).show()
@@ -60,8 +67,6 @@ class RegExerciseTypeDetailActivity: BaseActivity<ActivityExcerciseTypeRegistrat
                 checkIfInputIsFull()
             }
         }
-
-
     }
 
     private fun isInputNotFull(): Boolean {

@@ -14,15 +14,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val homeViewModel: HomeViewModel by viewModels()
 
-    private lateinit var dialog : RegisterDialog
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding {
             layoutAddProgram.layoutAddProgram.setOnClickListener {
-                dialog = RegisterDialog.newInstance()
-                dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+                Intent(requireActivity(), SplitSelectionActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
         }
     }

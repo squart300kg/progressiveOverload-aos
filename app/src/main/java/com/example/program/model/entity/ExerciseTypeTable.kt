@@ -1,13 +1,20 @@
 package com.example.program.model.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity
+@Entity(
+    foreignKeys = [
+        ForeignKey(
+            entity = ProgramTable::class,
+            parentColumns = arrayOf("no"),
+            childColumns = arrayOf("programNo"),
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
 data class ExerciseTypeTable(
     @PrimaryKey(autoGenerate = true)
-    val no: Int = 0,
+    val no: Long = 0,
     @ColumnInfo
     val name: String?,
     @ColumnInfo
@@ -15,10 +22,21 @@ data class ExerciseTypeTable(
     @ColumnInfo
     val repitition: Int?,
     @ColumnInfo
+    val setNum: Int?,
+    @ColumnInfo
     val restTime: Int?,
     @ColumnInfo
-    val programNo: Int?,
+    val programNo: Long?,
     @ColumnInfo
     val splitTypeIndex: Int?,
+)
 
+data class ProgramAndExercise(
+    @Embedded val programTable: ProgramTable,
+
+    @Relation(
+        parentColumn = "no",
+        entityColumn = "programNo"
+    )
+    val exerciseTypes: List<ExerciseTypeTable>
 )

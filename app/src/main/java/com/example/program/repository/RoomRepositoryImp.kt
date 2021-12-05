@@ -2,7 +2,6 @@ package com.example.program.repository
 
 import androidx.annotation.WorkerThread
 import com.example.program.api.ProgramDAO
-import com.example.program.api.YoutubeApi
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import kotlinx.coroutines.flow.Flow
@@ -26,14 +25,43 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun insertProgram(program: ProgramTable) {
-        programDAO.insertProgram(program)
+    override fun insertProgram(program: ProgramTable) : Flow<Long> {
+        return flow {
+            val data = programDAO.insertProgram(program)
+            emit(data)
+        }
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun insertExerciseType(exerciseTypeTable: ExerciseTypeTable) {
-        programDAO.insertExerciseType(exerciseTypeTable)
+    override fun insertExerciseType(exerciseTypeTable: ExerciseTypeTable) : Flow<Long> {
+        return flow {
+            val data = programDAO.insertExerciseType(exerciseTypeTable)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun getTargetedProgram(targetName : String): Flow<ProgramTable> {
+        return flow {
+            val data = programDAO.getTargetedProgram(targetName)
+            emit(data)
+        }
+    }
+
+    override fun deleteProgram(programNo: Long?): Flow<Int> {
+        return flow {
+            val data = programDAO.deleteProgram(programNo)
+            emit(data)
+        }
+    }
+
+    override fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeTable>> {
+        return flow {
+            val data = programDAO.getExercises(programNo, splitIndex)
+            emit(data)
+        }
     }
 
 }

@@ -13,7 +13,7 @@ import com.example.program.databinding.ItemSplitSelectionBinding
  * Created by sangyoon on 2021/07/27
  */
 class SplitSelectionAdapter(
-    val startRegistration : (Int) -> Unit
+    val startRegistration : (Split) -> Unit
 ): RecyclerView.Adapter<SplitSelectionAdapter.SplitViewHolder>() {
 
     private val items: MutableList<Split> = mutableListOf(
@@ -40,7 +40,7 @@ class SplitSelectionAdapter(
         holder.bindItem(items[position])
 
         holder.itemView.setOnClickListener {
-            startRegistration(items[position].count)
+            startRegistration(items[position])
         }
     }
 

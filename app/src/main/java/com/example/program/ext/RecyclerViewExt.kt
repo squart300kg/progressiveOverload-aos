@@ -2,27 +2,16 @@ package com.example.program.ext
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.program.model.entity.ExerciseTypeTable
+import com.example.program.ui.home.sub.RegExerciseTypeAdapter
 
-@BindingAdapter("setItems")
+@BindingAdapter("overload:setItems")
 fun <T> RecyclerView.setItems(items: List<T>?) {
     items?.let {
-//        when(adapter) {
-//            is GamerListAdapter -> {
-//                (adapter as GamerListAdapter).loadGamerList(items as List<GamerItem>)
-//            }
-//            is BannerAdapter -> {
-//                (adapter as BannerAdapter).loadBannerList(items as List<BannerItem>)
-//            }
-//            is ReviewAdapter -> {
-//                (adapter as ReviewAdapter).loadReviewList(items as List<ReviewItem>)
-//            }
-//            is FreeLecturesAdapter -> {
-//                (adapter as FreeLecturesAdapter).loadLectureList(items as List<FreeLecturesResponse.Item>)
-//            }
-////            is ChattingAdapter -> {
-////                (adapter as ChattingAdapter).loadAllBallon(items as List<ChattingItem>)
-////            }
-//
-//        }
+        when(adapter) {
+            is RegExerciseTypeAdapter -> {
+                (adapter as RegExerciseTypeAdapter).loadExercises(items as List<ExerciseTypeTable>)
+            }
+        }
     }
 }
