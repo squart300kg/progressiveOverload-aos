@@ -15,9 +15,13 @@ interface RoomRepository {
 
     fun insertExerciseType(exerciseTypeTable : ExerciseTypeTable) : Flow<Long>
 
+    fun getAllProgram() : Flow<List<ProgramTable>>
+
     fun getTargetedProgram(targetName : String) : Flow<ProgramTable>
+
+    fun getExercises(programNo: Long?, splitIndex: Int?) : Flow<List<ExerciseTypeTable>>
 
     fun deleteProgram(programNo: Long?) : Flow<Int>
 
-    fun getExercises(programNo: Long?, splitIndex: Int?) : Flow<List<ExerciseTypeTable>>
+    fun updateProgramName(name: String) : Flow<Int>
 }

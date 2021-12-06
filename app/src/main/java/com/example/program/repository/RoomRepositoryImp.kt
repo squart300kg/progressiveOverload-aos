@@ -41,6 +41,13 @@ class RoomRepositoryImp(
         }
     }
 
+    override fun getAllProgram() : Flow<List<ProgramTable>> {
+        return flow {
+            val data = programDAO.getAllProgram()
+            emit(data)
+        }
+    }
+
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     override fun getTargetedProgram(targetName : String): Flow<ProgramTable> {
@@ -50,6 +57,8 @@ class RoomRepositoryImp(
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     override fun deleteProgram(programNo: Long?): Flow<Int> {
         return flow {
             val data = programDAO.deleteProgram(programNo)
@@ -57,9 +66,20 @@ class RoomRepositoryImp(
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     override fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeTable>> {
         return flow {
             val data = programDAO.getExercises(programNo, splitIndex)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun updateProgramName(name: String) : Flow<Int> {
+        return flow {
+            val data = programDAO.updateProgramName(name)
             emit(data)
         }
     }

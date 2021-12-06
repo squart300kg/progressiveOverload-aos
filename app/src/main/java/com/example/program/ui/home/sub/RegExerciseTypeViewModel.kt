@@ -68,4 +68,20 @@ class RegExerciseTypeViewModel(
                 }
         }
     }
+
+    fun updateProgramName(
+        name : String,
+        success: () -> Unit) {
+        viewModelScope.launch {
+            roomRepository.updateProgramName(name)
+                .flowOn(Dispatchers.IO)
+                .catch { e ->
+                    e.printStackTrace()
+                }
+                .collect {
+                    Log.i("updateProgramName", it.toString())
+                    success()
+                }
+        }
+    }
 }

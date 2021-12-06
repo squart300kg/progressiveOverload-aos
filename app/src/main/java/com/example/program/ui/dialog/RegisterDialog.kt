@@ -13,9 +13,13 @@ import com.example.program.R
 import com.example.program.base.BaseCenterDialog
 import com.example.program.databinding.FragmentRegisterDialogBinding
 import com.example.program.ui.MainActivity
+import com.example.program.ui.home.sub.RegExerciseTypeViewModel
 import com.example.program.ui.home.sub.SplitSelectionActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterDialog : BaseCenterDialog<FragmentRegisterDialogBinding>(R.layout.fragment_register_dialog) {
+
+    private val viewModel : RegExerciseTypeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,12 +42,13 @@ class RegisterDialog : BaseCenterDialog<FragmentRegisterDialogBinding>(R.layout.
                 if (etInput.text.isNullOrEmpty()) {
                     Toast.makeText(requireActivity(), "프로그램 이름을 입력해 주세요!", Toast.LENGTH_LONG).show()
                 } else {
-                    val intent = Intent(requireActivity(), MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    Toast.makeText(requireActivity(), "프로그램 등록을 완료하였습니다!", Toast.LENGTH_LONG).show()
-
+                    viewModel.updateProgramName(dataBinding.etInput.text.toString()) {
+                        val intent = Intent(requireActivity(), MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                        Toast.makeText(requireActivity(), "프로그램 등록을 완료하였습니다!", Toast.LENGTH_LONG).show()
+                    }
                 }
 
             }

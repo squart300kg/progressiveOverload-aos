@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-<!--        <variable-->
-<!--            name="splitItem"-->
-<!--            type="com.example.program.constant.Split" />-->
+        <variable
+            name="programItem"
+            type="com.example.program.model.entity.ProgramTable" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -39,7 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    tools:text="프로그램A"
+                    tools:text="송상윤의 프로그램"
+                    android:text="@{programItem.name}"
                     android:textSize="16dp"
                     android:gravity="center" />
             </LinearLayout>

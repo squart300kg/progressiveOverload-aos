@@ -40,4 +40,7 @@ interface ProgramDAO {
 
     @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
     fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
+
+    @Query("UPDATE programtable SET name = :name WHERE name == :name")
+    fun updateProgramName(name: String) : Int
 }
