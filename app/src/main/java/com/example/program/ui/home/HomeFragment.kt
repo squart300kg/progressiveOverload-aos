@@ -9,6 +9,7 @@ import com.example.program.R
 import com.example.program.base.BaseFragment
 import com.example.program.databinding.FragmentHomeBinding
 import com.example.program.ui.dialog.RegisterDialog
+import com.example.program.ui.home.sub.RegExerciseTypeActivity
 import com.example.program.ui.home.sub.SplitSelectionActivity
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -20,6 +21,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         binding {
             homeVm = homeViewModel
+
             layoutAddProgram.layoutAddProgram.setOnClickListener {
                 Intent(requireActivity(), SplitSelectionActivity::class.java).apply {
                     startActivity(this)
@@ -28,8 +30,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
             rvPrograms.apply {
                 setHasFixedSize(true)
-                adapter = MainProgramsAdapter() {
+                adapter = MainProgramsAdapter {
                     Log.i("mainProgramAdpater", it.toString())
+                    Intent(requireActivity(), RegExerciseTypeActivity::class.java).apply {
+                        putExtra("isIntentToExercise", true)
+                        putExtra("splitCount", it.splitCount)
+                        putExtra("programNo", it.no)
+                        startActivity(this)
+                    }
                 }
 
             }

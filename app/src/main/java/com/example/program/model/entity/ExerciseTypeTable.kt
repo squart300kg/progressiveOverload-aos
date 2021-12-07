@@ -1,6 +1,8 @@
 package com.example.program.model.entity
 
+import android.os.Parcelable
 import androidx.room.*
+import java.io.Serializable
 
 @Entity(
     foreignKeys = [
@@ -29,7 +31,7 @@ data class ExerciseTypeTable(
     val programNo: Long?,
     @ColumnInfo
     val splitTypeIndex: Int?,
-)
+) : Serializable
 
 data class ProgramAndExercise(
     @Embedded val programTable: ProgramTable,

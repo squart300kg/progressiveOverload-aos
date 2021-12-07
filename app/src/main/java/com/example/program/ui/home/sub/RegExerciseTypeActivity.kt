@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeRegistrationBinding
@@ -34,6 +35,10 @@ class RegExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeRegistrationBin
         splitCount = intent.getIntExtra("splitCount", -1)
         splitText = intent.getStringExtra("splitText")
         programNo = intent.getLongExtra("programNo", 0L)
+        if (intent.getBooleanExtra("isIntentToExercise", false)) {
+            dataBinding.layoutAddExerciseType.isVisible = false
+            dataBinding.tvExerciseStart.isVisible = true
+        }
 
         binding {
             regVm = regExerciseTypeViewModel
@@ -70,13 +75,20 @@ class RegExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeRegistrationBin
                 setHasFixedSize(true)
                 adapter = RegExerciseTypeAdapter {
                     Log.i("onClickExercise", it.toString())
+                    Intent(this@RegExerciseTypeActivity, RegExerciseTypeDetailActivity::class.java).apply {
+                        putExtra("isUpdate", true)
+                        putExtra("selectedSplitIndex", selectedSplitIndex)
+                        putExtra("exTypeTable", it)
+                        putExtra("programNo", programNo)
+                        startActivity(this)
+                    }
                 }
             }
 
             tvRegSuccess.setOnClickListener {
                 when (exercisesSize > 0) {
                     true -> {
-                        registerDialog = RegisterDialog.newInstance()
+                        registerDialog = RegisterDialog.newInstance(programNo)
                         registerDialog.show(
                             supportFragmentManager,
                             registerDialog.tag
@@ -84,6 +96,10 @@ class RegExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeRegistrationBin
                     }
                     false -> Toast.makeText(this@RegExerciseTypeActivity, "운동 종류를 등록해 주세요!", Toast.LENGTH_LONG).show()
                 }
+            }
+
+            tvExerciseStart.setOnClickListener {
+                Toast.makeText(this@RegExerciseTypeActivity, "오늘 운동 시작!", Toast.LENGTH_LONG).show()
             }
         }
     }

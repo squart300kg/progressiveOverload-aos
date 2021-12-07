@@ -23,6 +23,10 @@ class RegExerciseTypeViewModel(
     val exercises: LiveData<MutableList<ExerciseTypeTable>>
         get() = _exercises
 
+    private val _exercise = MutableLiveData<ExerciseTypeTable>()
+    val exercise : LiveData<ExerciseTypeTable>
+        get() = _exercise
+
     fun insertExerciseType(
         excerciseType: ExerciseTypeTable) {
         viewModelScope.launch {
@@ -41,6 +45,22 @@ class RegExerciseTypeViewModel(
     ) {
         viewModelScope.launch {
             roomRepository.deleteProgram(programNo)
+                .flowOn(Dispatchers.IO)
+                .catch { e ->
+                    e.printStackTrace()
+                }
+                .collect {
+                    success()
+                }
+        }
+    }
+
+    fun deleteExercise(
+        exerciseTypeTable: ExerciseTypeTable?,
+        success: () -> Unit
+    ) {
+        viewModelScope.launch {
+            roomRepository.deleteExercise(exerciseTypeTable)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
                     e.printStackTrace()
@@ -71,9 +91,10 @@ class RegExerciseTypeViewModel(
 
     fun updateProgramName(
         name : String,
+        programNo: Long?,
         success: () -> Unit) {
         viewModelScope.launch {
-            roomRepository.updateProgramName(name)
+            roomRepository.updateProgramName(name, programNo)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
                     e.printStackTrace()
@@ -83,5 +104,24 @@ class RegExerciseTypeViewModel(
                     success()
                 }
         }
+    }
+
+    fun updateExercise(
+        exerciseTypeTable: ExerciseTypeTable?,
+        success: () -> Unit) {
+        viewModelScope.launch {
+            roomRepository.updateExercise(exerciseTypeTable)
+                .flowOn(Dispatchers.IO)
+                .catch { e ->
+                    e.printStackTrace()
+                }
+                .collect {
+                    success()
+                }
+        }
+    }
+
+    fun setExerciseInfo(exerciseTypeTable: ExerciseTypeTable) {
+        _exercise.value = exerciseTypeTable
     }
 }

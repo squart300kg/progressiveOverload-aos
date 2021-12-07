@@ -23,5 +23,9 @@ interface RoomRepository {
 
     fun deleteProgram(programNo: Long?) : Flow<Int>
 
-    fun updateProgramName(name: String) : Flow<Int>
+    fun deleteExercise(exerciseTypeTable: ExerciseTypeTable?) : Flow<Int>
+
+    fun updateProgramName(name: String, programNo: Long?) : Flow<Int>
+
+    fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int>
 }

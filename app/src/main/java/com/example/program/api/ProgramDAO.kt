@@ -1,8 +1,6 @@
 package com.example.program.api
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 
@@ -23,7 +21,7 @@ interface ProgramDAO {
     //    @Delete
 //    fun deleteExerciseType(exerciseTypeTable: ExerciseTypeTable)
 
-    @Query("SELECT * FROM programtable")
+    @Query("SELECT * FROM programtable ORDER BY `no` DESC")
     fun getAllProgram(): List<ProgramTable>
 
     @Query("SELECT * FROM programtable WHERE name == :targetName")
@@ -38,9 +36,16 @@ interface ProgramDAO {
     @Query("DELETE FROM programtable WHERE `no` == :programNo")
     fun deleteProgram(programNo: Long?) : Int
 
+    @Delete
+    fun deleteExercise(vararg exerciseTypeTable: ExerciseTypeTable?) : Int
+
     @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
     fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
 
-    @Query("UPDATE programtable SET name = :name WHERE name == :name")
-    fun updateProgramName(name: String) : Int
+    @Query("UPDATE programtable SET name = :name WHERE `no` == :programNo")
+    fun updateProgramName(name : String, programNo : Long?) : Int
+
+    @Update
+    fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
+
 }

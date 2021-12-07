@@ -68,6 +68,15 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
+    override fun deleteExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int> {
+        return flow {
+            val data = programDAO.deleteExercise(exerciseTypeTable)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     override fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeTable>> {
         return flow {
             val data = programDAO.getExercises(programNo, splitIndex)
@@ -77,9 +86,18 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun updateProgramName(name: String) : Flow<Int> {
+    override fun updateProgramName(name: String, programNo: Long?) : Flow<Int> {
         return flow {
-            val data = programDAO.updateProgramName(name)
+            val data = programDAO.updateProgramName(name, programNo)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int> {
+        return flow {
+            val data = programDAO.updateExercise(exerciseTypeTable)
             emit(data)
         }
     }
