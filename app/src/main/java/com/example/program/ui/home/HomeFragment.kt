@@ -8,8 +8,7 @@ import androidx.fragment.app.viewModels
 import com.example.program.R
 import com.example.program.base.BaseFragment
 import com.example.program.databinding.FragmentHomeBinding
-import com.example.program.ui.dialog.RegisterDialog
-import com.example.program.ui.home.sub.RegExerciseTypeActivity
+import com.example.program.ui.home.sub.ExerciseTypeActivity
 import com.example.program.ui.home.sub.SplitSelectionActivity
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -32,7 +31,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 setHasFixedSize(true)
                 adapter = MainProgramsAdapter {
                     Log.i("mainProgramAdpater", it.toString())
-                    Intent(requireActivity(), RegExerciseTypeActivity::class.java).apply {
+                    Intent(requireActivity(), ExerciseTypeActivity::class.java).apply {
                         putExtra("isIntentToExercise", true)
                         putExtra("splitCount", it.splitCount)
                         putExtra("programNo", it.no)

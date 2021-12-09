@@ -15,17 +15,17 @@ open class Application: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        koinInitialize()
+        koinInit()
 
-        contextInitialize()
+        contextInit()
 
     }
 
-    private fun contextInitialize() {
+    private fun contextInit() {
         instance = this
     }
 
-    private fun koinInitialize() {
+    private fun koinInit() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@Application)

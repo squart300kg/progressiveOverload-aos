@@ -2,7 +2,6 @@ package com.example.program.ui.home.sub
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivitySplitSelectionBinding
@@ -28,7 +27,7 @@ class SplitSelectionActivity: BaseActivity<ActivitySplitSelectionBinding>(R.layo
                             splitCount = split.count
                         )
                     ) { programNo ->
-                        Intent(this@SplitSelectionActivity, RegExerciseTypeActivity::class.java).apply {
+                        Intent(this@SplitSelectionActivity, ExerciseTypeActivity::class.java).apply {
                             putExtra("splitCount", split.count)
                             putExtra("splitText", split.text)
                             putExtra("programNo", programNo)
