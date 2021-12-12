@@ -144,6 +144,8 @@ class ExerciseTypeActivity :
             // 운동 기록을 끝마치고 돌아올 때,
             if (isIntentToExercise) {
                 for (index in exercises.indices) {
+                    Log.i("statuses", "programNo : ${exercises[index].programNo}")
+                    Log.i("statuses", "exerciseNo : ${exercises[index].no}")
 
                     regExerciseTypeViewModel.getExperformedStatuses(
                         programNo = exercises[index].programNo,
