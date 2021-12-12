@@ -15,5 +15,5 @@ val viewModelModule = module {
     viewModel { MyPageViewModel() }
     viewModel { RegExerciseTypeViewModel(get()) }
     viewModel { SplitSelectionViewModel(get()) }
-    viewModel { RecordExerciseViewModel() }
+    viewModel { RecordExerciseViewModel(get()) }
 }

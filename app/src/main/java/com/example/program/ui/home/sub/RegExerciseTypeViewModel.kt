@@ -74,7 +74,7 @@ class RegExerciseTypeViewModel(
     fun getExercises(
         programNo: Long?,
         splitIndex: Int?,
-        success: (size : Int) -> Unit = { }) {
+        success: (exercises : List<ExerciseTypeTable>) -> Unit = { }) {
         viewModelScope.launch {
             roomRepository.getExercises(programNo, splitIndex)
                 .flowOn(Dispatchers.IO)
@@ -82,9 +82,25 @@ class RegExerciseTypeViewModel(
                     e.printStackTrace()
                 }
                 .collect { exercises ->
-                    Log.i("getExercises", exercises.toString())
                     _exercises.value = exercises.toMutableList()
-                    success(exercises.size)
+                    success(exercises)
+                }
+        }
+    }
+
+    fun getExperformedStatuses(
+        programNo: Long?,
+        exerciseNo : Long?,
+        success: (statuses : Int) -> Unit
+    ) {
+        viewModelScope.launch {
+            roomRepository.getExperformedStatuses(programNo, exerciseNo)
+                .flowOn(Dispatchers.IO)
+                .catch { e ->
+                    e.printStackTrace()
+                }
+                .collect { statuses ->
+                    success(statuses)
                 }
         }
     }

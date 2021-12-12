@@ -21,7 +21,7 @@ fun <T> RecyclerView.setItems(items: List<T>?) {
                 (adapter as MainProgramsAdapter).loadPrograms(items as List<ProgramTable>)
             }
             is RecordExerciseAdapter -> {
-                (adapter as RecordExerciseAdapter).loadRecord(items as List<RecordExerciseModel>)
+                (adapter as RecordExerciseAdapter).loadRecord(items as List<ExerciseTypeTable>)
             }
         }
     }

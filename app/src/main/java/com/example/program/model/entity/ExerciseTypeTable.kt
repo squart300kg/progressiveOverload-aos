@@ -32,13 +32,3 @@ data class ExerciseTypeTable(
     @ColumnInfo
     val splitTypeIndex: Int?,
 ) : Serializable
-
-data class ProgramAndExercise(
-    @Embedded val programTable: ProgramTable,
-
-    @Relation(
-        parentColumn = "no",
-        entityColumn = "programNo"
-    )
-    val exerciseTypes: List<ExerciseTypeTable>
-)

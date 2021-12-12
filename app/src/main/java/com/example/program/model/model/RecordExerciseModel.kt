@@ -5,5 +5,6 @@ data class RecordExerciseModel(
     val weight : Int?,
     val repitition : Int?,
     val setNum : Int?,
-    val rpe : Int?
+    val rpe : Int?,
+    val restTime : Int?
 )

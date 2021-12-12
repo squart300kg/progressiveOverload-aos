@@ -3,6 +3,7 @@ package com.example.program.api
 import androidx.room.*
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
+import com.example.program.model.entity.RecordTable
 
 /**
  * Created by sangyoon on 2021/07/27
@@ -25,27 +26,34 @@ interface ProgramDAO {
     fun getAllProgram(): List<ProgramTable>
 
     @Query("SELECT * FROM programtable WHERE name == :targetName")
-    fun getTargetedProgram(targetName : String) : ProgramTable
+    fun getTargetedProgram(targetName: String): ProgramTable
+
+    @Query("SELECT COUNT(*) FROM recordtable WHERE programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
+    fun getExperformedStatuses(programNo: Long?, exerciseNo: Long?): Int
 
     @Insert
-    fun insertProgram(programs: ProgramTable) : Long
+    fun insertProgram(programs: ProgramTable): Long
 
     @Insert
-    fun insertExerciseType(exerciseType: ExerciseTypeTable) : Long
+    fun insertExerciseType(exerciseType: ExerciseTypeTable): Long
+
+    @Insert
+    fun insertRecord(recordTable: RecordTable): Long
 
     @Query("DELETE FROM programtable WHERE `no` == :programNo")
-    fun deleteProgram(programNo: Long?) : Int
+    fun deleteProgram(programNo: Long?): Int
 
     @Delete
-    fun deleteExercise(vararg exerciseTypeTable: ExerciseTypeTable?) : Int
+    fun deleteExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
 
     @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
     fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
 
     @Query("UPDATE programtable SET name = :name WHERE `no` == :programNo")
-    fun updateProgramName(name : String, programNo : Long?) : Int
+    fun updateProgramName(name: String, programNo: Long?): Int
 
     @Update
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
+
 
 }

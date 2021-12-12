@@ -14,23 +14,24 @@ import com.example.program.ui.dialog.RegisterDialog
 import com.google.android.material.tabs.TabLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeBinding>(R.layout.activity_excercise_type) {
+class ExerciseTypeActivity :
+    BaseActivity<ActivityExcerciseTypeBinding>(R.layout.activity_excercise_type) {
 
-    private val regExerciseTypeViewModel : RegExerciseTypeViewModel by viewModel()
+    private val regExerciseTypeViewModel: RegExerciseTypeViewModel by viewModel()
 
-    private var selectedSplitIndex : Int? = 0
+    private var selectedSplitIndex: Int? = 0
 
     private var exercisesSize = 0
 
-    private var splitCount : Int? = null
-    private var splitText : String? = null
-    private var programNo : Long? = null
+    private var splitCount: Int? = null
+    private var splitText: String? = null
+    private var programNo: Long? = null
     private var isIntentToExercise = false
 
-    private lateinit var cancelDialog : CancelDialog
-    private lateinit var registerDialog : RegisterDialog
+    private lateinit var cancelDialog: CancelDialog
+    private lateinit var registerDialog: RegisterDialog
 
-    private lateinit var exerciseTypeAdapter : ExerciseTypeAdapter
+    private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,7 @@ class ExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeBinding>(R.layout.
         isIntentToExercise = intent.getBooleanExtra("isIntentToExercise", false)
         if (intent.getBooleanExtra("isIntentToExercise", false)) {
             dataBinding.layoutAddExerciseType.isVisible = false
+            dataBinding.tvRegSuccess.isVisible = false
             dataBinding.tvExerciseStart.isVisible = true
         }
 
@@ -53,8 +55,8 @@ class ExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeBinding>(R.layout.
                 }
 
                 addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                    override fun onTabUnselected(tab: TabLayout.Tab?) { }
-                    override fun onTabReselected(tab: TabLayout.Tab?) { }
+                    override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                    override fun onTabReselected(tab: TabLayout.Tab?) {}
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         selectedSplitIndex = tab?.position
 
@@ -80,7 +82,8 @@ class ExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeBinding>(R.layout.
                 exerciseTypeAdapter = ExerciseTypeAdapter(
                     {
                         // 운동 종목 수정
-                        Intent(this@ExerciseTypeActivity, RegExerciseTypeDetailActivity::class.java).apply {
+                        Intent(this@ExerciseTypeActivity,
+                            RegExerciseTypeDetailActivity::class.java).apply {
                             putExtra("isUpdate", true)
                             putExtra("selectedSplitIndex", selectedSplitIndex)
                             putExtra("exTypeTable", it)
@@ -90,7 +93,8 @@ class ExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeBinding>(R.layout.
                     },
                     {
                         // 운동 기록 시작
-                        Intent(this@ExerciseTypeActivity, RecordExerciseActivity::class.java).apply {
+                        Intent(this@ExerciseTypeActivity,
+                            RecordExerciseActivity::class.java).apply {
                             putExtra("exerciseTable", it)
                             startActivity(this)
                         }
@@ -108,32 +112,56 @@ class ExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeBinding>(R.layout.
                             registerDialog.tag
                         )
                     }
-                    false -> Toast.makeText(this@ExerciseTypeActivity, "운동 종류를 등록해 주세요!", Toast.LENGTH_LONG).show()
+                    false -> Toast.makeText(this@ExerciseTypeActivity,
+                        "운동 종류를 등록해 주세요!",
+                        Toast.LENGTH_LONG).show()
                 }
             }
 
             tvExerciseStart.setOnClickListener {
-                exerciseTypeAdapter.startExercise()
-                Toast.makeText(this@ExerciseTypeActivity, "오늘 운동 시작!", Toast.LENGTH_LONG).show()
+                exerciseTypeAdapter.startExercise {
+                    tvExerciseStart.isVisible = false
+                    Toast.makeText(this@ExerciseTypeActivity, "오늘 운동 시작!", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
 
     override fun onStart() {
         super.onStart()
-
+        Log.i("onStart", "onStart")
         regExerciseTypeViewModel.getExercises(
             programNo = programNo,
             splitIndex = selectedSplitIndex
-        ) { size ->
-            exercisesSize = size
+        ) { exercises ->
+
+            // 운동 등록할 때,
+            exercisesSize = exercises.size
             if (exercisesSize > 0)
-                dataBinding.tvRegSuccess.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
+                dataBinding.tvRegSuccess.setBackgroundColor(ContextCompat.getColor(this,
+                    R.color.black))
+
+            // 운동 기록을 끝마치고 돌아올 때,
+            if (isIntentToExercise) {
+                for (index in exercises.indices) {
+
+                    regExerciseTypeViewModel.getExperformedStatuses(
+                        programNo = exercises[index].programNo,
+                        exerciseNo = exercises[index].no
+                    ) { statuses ->
+                        if (exercises[index].setNum!! <= statuses) {
+                            exerciseTypeAdapter.successExercise(index)
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 
     override fun onBackPressed() {
-        if (isIntentToExercise) {
+        if (!isIntentToExercise) {
             cancelDialog = CancelDialog.newInstance(
                 {
                     regExerciseTypeViewModel.deleteProgram(
@@ -150,8 +178,9 @@ class ExerciseTypeActivity: BaseActivity<ActivityExcerciseTypeBinding>(R.layout.
                 supportFragmentManager,
                 cancelDialog.tag
             )
+        } else {
+            super.onBackPressed()
         }
-        super.onBackPressed()
     }
 
 }

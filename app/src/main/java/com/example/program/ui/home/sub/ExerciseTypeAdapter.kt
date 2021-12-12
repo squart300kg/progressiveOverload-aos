@@ -20,6 +20,7 @@ class ExerciseTypeAdapter(
 
     private val items: MutableList<ExerciseTypeTable> = mutableListOf()
 
+    private var isExerciseSuccess = false
     private var isExerciseStarted = false
 
     override fun onCreateViewHolder(
@@ -51,9 +52,17 @@ class ExerciseTypeAdapter(
         notifyDataSetChanged()
     }
 
-    fun startExercise() {
+    fun successExercise(position: Int) {
+        isExerciseSuccess = true
+        notifyItemChanged(position)
+    }
+
+    fun startExercise(
+        startExercise : () -> Unit
+    ) {
         isExerciseStarted = true
         notifyDataSetChanged()
+        startExercise()
     }
 
     inner class ExercisesViewHolder(
@@ -62,7 +71,15 @@ class ExerciseTypeAdapter(
         layoutRes: Int
     ): BaseViewHolder<ExerciseTypeTable, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
         fun initExerciseStatedStatus() {
+
+            // '오늘 운동 수행' 클릭
             itemBinding.layoutExerciseStart.isVisible = isExerciseStarted
+
+            // 수행 완료했을 경우
+            if (isExerciseSuccess) {
+                itemView.isSelected = true
+                isExerciseSuccess = false
+            }
         }
 
         fun initOnClick() {

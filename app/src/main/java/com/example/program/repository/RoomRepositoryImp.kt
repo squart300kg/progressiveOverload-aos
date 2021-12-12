@@ -4,6 +4,9 @@ import androidx.annotation.WorkerThread
 import com.example.program.api.ProgramDAO
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
+import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.RecordExerciseModel
+import com.example.program.util.DateUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -86,6 +89,15 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
+    override fun getExperformedStatuses(programNo: Long?, exerciseNo: Long?): Flow<Int> {
+        return flow {
+            val data = programDAO.getExperformedStatuses(programNo, exerciseNo)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     override fun updateProgramName(name: String, programNo: Long?) : Flow<Int> {
         return flow {
             val data = programDAO.updateProgramName(name, programNo)
@@ -98,6 +110,15 @@ class RoomRepositoryImp(
     override fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int> {
         return flow {
             val data = programDAO.updateExercise(exerciseTypeTable)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun insertRecord(model: RecordTable): Flow<Long> {
+        return flow {
+            val data = programDAO.insertRecord(model)
             emit(data)
         }
     }
