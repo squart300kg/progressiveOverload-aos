@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.program.model.entity.ExerciseTypeTable
+import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.repository.RoomRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -19,12 +20,12 @@ class RegExerciseTypeViewModel(
 
     private val TAG = "HomeViewModelLog"
 
-    private val _exercises = MutableLiveData<MutableList<ExerciseTypeTable>>()
-    val exercises: LiveData<MutableList<ExerciseTypeTable>>
+    private val _exercises = MutableLiveData<MutableList<ExerciseTypeModel>>()
+    val exercises: LiveData<MutableList<ExerciseTypeModel>>
         get() = _exercises
 
-    private val _exercise = MutableLiveData<ExerciseTypeTable>()
-    val exercise : LiveData<ExerciseTypeTable>
+    private val _exercise = MutableLiveData<ExerciseTypeModel>()
+    val exercise : LiveData<ExerciseTypeModel>
         get() = _exercise
 
     fun insertExerciseType(
@@ -56,11 +57,11 @@ class RegExerciseTypeViewModel(
     }
 
     fun deleteExercise(
-        exerciseTypeTable: ExerciseTypeTable?,
+        exerciseTypeModel: ExerciseTypeModel?,
         success: () -> Unit
     ) {
         viewModelScope.launch {
-            roomRepository.deleteExercise(exerciseTypeTable)
+            roomRepository.deleteExercise(exerciseTypeModel)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
                     e.printStackTrace()
@@ -74,7 +75,7 @@ class RegExerciseTypeViewModel(
     fun getExercises(
         programNo: Long?,
         splitIndex: Int?,
-        success: (exercises : List<ExerciseTypeTable>) -> Unit = { }) {
+        success: (exercises : List<ExerciseTypeModel>) -> Unit = { }) {
         viewModelScope.launch {
             roomRepository.getExercises(programNo, splitIndex)
                 .flowOn(Dispatchers.IO)
@@ -82,7 +83,9 @@ class RegExerciseTypeViewModel(
                     e.printStackTrace()
                 }
                 .collect { exercises ->
+
                     _exercises.value = exercises.toMutableList()
+
                     success(exercises)
                 }
         }
@@ -137,7 +140,7 @@ class RegExerciseTypeViewModel(
         }
     }
 
-    fun setExerciseInfo(exerciseTypeTable: ExerciseTypeTable) {
+    fun setExerciseInfo(exerciseTypeTable: ExerciseTypeModel) {
         _exercise.value = exerciseTypeTable
     }
 }

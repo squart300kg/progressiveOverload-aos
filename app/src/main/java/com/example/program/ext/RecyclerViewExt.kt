@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.model.model.RecordExerciseModel
 import com.example.program.ui.home.MainProgramsAdapter
 import com.example.program.ui.home.sub.ExerciseTypeAdapter
@@ -16,7 +17,7 @@ fun <T> RecyclerView.setItems(items: List<T>?) {
     items?.let {
         when (adapter) {
             is ExerciseTypeAdapter -> {
-                (adapter as ExerciseTypeAdapter).loadExercises(items as List<ExerciseTypeTable>)
+                (adapter as ExerciseTypeAdapter).loadExercises(items as List<ExerciseTypeModel>)
             }
             is MainProgramsAdapter -> {
                 (adapter as MainProgramsAdapter).loadPrograms(items as List<ProgramTable>)

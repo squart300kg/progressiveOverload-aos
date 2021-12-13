@@ -21,7 +21,7 @@ import com.example.program.util.InputFilterMinMax
  */
 class RecordExerciseAdapter(
     private val context: Context,
-    private val exerciseName : String?,
+    private val exerciseName: String?,
     private val onClick: (recordItem: RecordExerciseModel) -> Unit,
 ) : RecyclerView.Adapter<RecordExerciseAdapter.RecordExViewHolder>() {
 

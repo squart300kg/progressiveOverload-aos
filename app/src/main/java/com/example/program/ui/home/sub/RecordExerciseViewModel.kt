@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.model.model.RecordExerciseModel
 import com.example.program.repository.RoomRepository
 import kotlinx.coroutines.Dispatchers
@@ -19,8 +20,8 @@ class RecordExerciseViewModel(
     private val roomRepository: RoomRepository,
 ) : ViewModel() {
 
-    private val _exercises = MutableLiveData<MutableList<ExerciseTypeTable>>()
-    val exercises: LiveData<MutableList<ExerciseTypeTable>>
+    private val _exercises = MutableLiveData<MutableList<ExerciseTypeModel>>()
+    val exercises: LiveData<MutableList<ExerciseTypeModel>>
         get() = _exercises
 
     private val _records = MutableLiveData<MutableList<RecordExerciseModel>>()
@@ -30,7 +31,7 @@ class RecordExerciseViewModel(
     private val TAG = "RecordExerciseVmLog"
 
     fun initExercise(
-        exerciseTable: ExerciseTypeTable,
+        exerciseTable: ExerciseTypeModel,
         recordTable: List<RecordTable>,
     ) {
         val records = mutableListOf<RecordExerciseModel>()

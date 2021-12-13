@@ -6,6 +6,7 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordExerciseBinding
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.util.DateUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,12 +17,12 @@ class RecordExerciseActivity :
 
     private lateinit var recordExerciseAdapter: RecordExerciseAdapter
 
-    private lateinit var exerciseTable: ExerciseTypeTable
+    private lateinit var exerciseModel: ExerciseTypeModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        exerciseTable = intent.getSerializableExtra("exerciseTable") as ExerciseTypeTable
+        exerciseModel = intent.getSerializableExtra("exTypeModel") as ExerciseTypeModel
 
         binding {
             recordExVm = recordExerciseViewModel
@@ -29,19 +30,19 @@ class RecordExerciseActivity :
             rvRecordEx.apply {
                 setHasFixedSize(true)
                 recordExerciseAdapter =
-                    RecordExerciseAdapter(this@RecordExerciseActivity, exerciseTable.name
+                    RecordExerciseAdapter(this@RecordExerciseActivity, exerciseModel.name
                     ) { model ->
                         recordExerciseViewModel.record(
                             RecordTable(
-                                name = exerciseTable.name,
+                                name = exerciseModel.name,
                                 weight = model.weight,
                                 repitition = model.repitition,
                                 setNum = model.no,
                                 restTime = model.restTime,
                                 rpe = model.rpe,
                                 recordTime = DateUtil.getCurrentDateForRecord(),
-                                programNo = exerciseTable.programNo,
-                                exerciseTypeNo = exerciseTable.no
+                                programNo = exerciseModel.programNo,
+                                exerciseTypeNo = exerciseModel.no
                             )
                         ) {
                             recordExerciseAdapter.successExercise()
@@ -53,10 +54,10 @@ class RecordExerciseActivity :
         }
 
         recordExerciseViewModel.getTodayExercisePerformed(
-            exerciseTable.programNo,
-            exerciseTable.no
+            exerciseModel.programNo,
+            exerciseModel.no
         ) { recordTable ->
-            recordExerciseViewModel.initExercise(exerciseTable, recordTable)
+            recordExerciseViewModel.initExercise(exerciseModel, recordTable)
         }
     }
 

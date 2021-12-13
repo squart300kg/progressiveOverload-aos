@@ -3,6 +3,7 @@ package com.example.program.repository
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.ExerciseTypeModel
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -20,7 +21,7 @@ interface RoomRepository {
 
     fun getTargetedProgram(targetName : String) : Flow<ProgramTable>
 
-    fun getExercises(programNo: Long?, splitIndex: Int?) : Flow<List<ExerciseTypeTable>>
+    fun getExercises(programNo: Long?, splitIndex: Int?) : Flow<List<ExerciseTypeModel>>
 
     fun getExercisePerformedStatuses(programNo: Long?, exerciseNo: Long?): Flow<Int>
 
@@ -28,7 +29,7 @@ interface RoomRepository {
 
     fun deleteProgram(programNo: Long?) : Flow<Int>
 
-    fun deleteExercise(exerciseTypeTable: ExerciseTypeTable?) : Flow<Int>
+    fun deleteExercise(exerciseTypeModel: ExerciseTypeModel?) : Flow<Int>
 
     fun updateProgramName(name: String, programNo: Long?) : Flow<Int>
 

@@ -86,7 +86,7 @@ class ExerciseTypeActivity :
                             RegExerciseTypeDetailActivity::class.java).apply {
                             putExtra("isUpdate", true)
                             putExtra("selectedSplitIndex", selectedSplitIndex)
-                            putExtra("exTypeTable", it)
+                            putExtra("exTypeModel", it)
                             putExtra("programNo", programNo)
                             startActivity(this)
                         }
@@ -95,7 +95,7 @@ class ExerciseTypeActivity :
                         // 운동 기록 시작
                         Intent(this@ExerciseTypeActivity,
                             RecordExerciseActivity::class.java).apply {
-                            putExtra("exerciseTable", it)
+                            putExtra("exTypeModel", it)
                             startActivity(this)
                         }
                     }
@@ -141,18 +141,23 @@ class ExerciseTypeActivity :
                 dataBinding.tvRegSuccess.setBackgroundColor(ContextCompat.getColor(this,
                     R.color.black))
 
-            // 운동 기록을 끝마치고 돌아올 때,
+            // 운동 기록을 마치고 돌아올 때,
             if (isIntentToExercise) {
                 for (index in exercises.indices) {
-                    Log.i("statuses", "programNo : ${exercises[index].programNo}")
-                    Log.i("statuses", "exerciseNo : ${exercises[index].no}")
 
                     regExerciseTypeViewModel.getExercisePerformedStatuses(
                         programNo = exercises[index].programNo,
                         exerciseNo = exercises[index].no
                     ) { statuses ->
+                        Log.i("statuses", "programNo : ${exercises[index].programNo}")
+                        Log.i("statuses", "exerciseNo : ${exercises[index].no}")
                         Log.i("statuses", "statuses[${index}] : $statuses")
                         Log.i("statuses", "setNum[${index}] : ${exercises[index].setNum!!}")
+
+                        if (regExerciseTypeViewModel.exercises.value?.get(index)?.setNum == statuses) {
+                            exerciseTypeAdapter.successExercise(index)
+                        }
+
 
                     }
                 }

@@ -11,17 +11,18 @@ import com.example.program.R
 import com.example.program.base.BaseViewHolder
 import com.example.program.databinding.ItemExerciseTypeBinding
 import com.example.program.model.entity.ExerciseTypeTable
+import com.example.program.model.model.ExerciseTypeModel
 
 /**
  * Created by sangyoon on 2021/07/27
  */
 class ExerciseTypeAdapter(
-    val context : Context,
-    val onClickForUpdate: (item: ExerciseTypeTable) -> Unit,
-    val onClickForRecord: (item: ExerciseTypeTable) -> Unit,
+    val context: Context,
+    val onClickForUpdate: (item: ExerciseTypeModel) -> Unit,
+    val onClickForRecord: (item: ExerciseTypeModel) -> Unit,
 ) : RecyclerView.Adapter<ExerciseTypeAdapter.ExercisesViewHolder>() {
 
-    private val items: MutableList<ExerciseTypeTable> = mutableListOf()
+    private val items: MutableList<ExerciseTypeModel> = mutableListOf()
 
     private var isExerciseStarted = false
 
@@ -43,11 +44,12 @@ class ExerciseTypeAdapter(
 
         holder.initOnClick()
 
+        holder.checkIsExercisePerformed()
     }
 
     override fun getItemCount(): Int = items.size
 
-    fun loadExercises(list: List<ExerciseTypeTable>) {
+    fun loadExercises(list: List<ExerciseTypeModel>) {
         Log.i("loadExercises", list.toString())
         items.clear()
         items.addAll(list)
@@ -62,11 +64,16 @@ class ExerciseTypeAdapter(
         startExercise()
     }
 
+    fun successExercise(index: Int) {
+        items[index].isPerformed = true
+        notifyItemChanged(index)
+    }
+
     inner class ExercisesViewHolder(
         itemId: Int,
         parent: ViewGroup,
         layoutRes: Int,
-    ) : BaseViewHolder<ExerciseTypeTable, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
+    ) : BaseViewHolder<ExerciseTypeModel, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
         fun initExerciseStatedStatus() {
             itemBinding.layoutExerciseStart.isVisible = isExerciseStarted
         }
@@ -80,6 +87,12 @@ class ExerciseTypeAdapter(
 
             itemBinding.layoutExerciseStart.setOnClickListener {
                 onClickForRecord(items[absoluteAdapterPosition])
+            }
+        }
+
+        fun checkIsExercisePerformed() {
+            if (items[absoluteAdapterPosition].isPerformed) {
+                itemView.isSelected = true
             }
         }
     }

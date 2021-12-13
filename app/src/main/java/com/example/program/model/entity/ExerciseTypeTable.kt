@@ -2,6 +2,7 @@ package com.example.program.model.entity
 
 import android.os.Parcelable
 import androidx.room.*
+import com.example.program.model.model.ExerciseTypeModel
 import java.io.Serializable
 
 @Entity(

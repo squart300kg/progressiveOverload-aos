@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -13,6 +12,7 @@ import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeRegistrationDetailBinding
 import com.example.program.model.entity.ExerciseTypeTable
+import com.example.program.model.model.ExerciseTypeModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegExerciseTypeDetailActivity :
@@ -23,7 +23,7 @@ class RegExerciseTypeDetailActivity :
     private var selectedSplitIndex: Int? = null
     private var programNo: Long? = null
 
-    private lateinit var exerciseTypeTable: ExerciseTypeTable
+    private lateinit var exerciseTypeModel: ExerciseTypeModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +31,8 @@ class RegExerciseTypeDetailActivity :
         selectedSplitIndex = intent.getIntExtra("selectedSplitIndex", 0)
         programNo = intent.getLongExtra("programNo", 0L)
         if (intent.getBooleanExtra("isUpdate", false)) {
-            exerciseTypeTable = intent.getSerializableExtra("exTypeTable") as ExerciseTypeTable
-            viewModel.setExerciseInfo(exerciseTypeTable)
+            exerciseTypeModel = intent.getSerializableExtra("exTypeModel") as ExerciseTypeModel
+            viewModel.setExerciseInfo(exerciseTypeModel)
             dataBinding.tvRegister.isVisible = false
             dataBinding.layoutCancelOrUpdate.isVisible = true
         }
@@ -73,7 +73,7 @@ class RegExerciseTypeDetailActivity :
             }
 
             tvDelete.setOnClickListener {
-                viewModel.deleteExercise(exerciseTypeTable) { finish() }
+                viewModel.deleteExercise(exerciseTypeModel) { finish() }
             }
 
             tvCancel.setOnClickListener {
@@ -83,7 +83,7 @@ class RegExerciseTypeDetailActivity :
             tvUpdate.setOnClickListener {
                 viewModel.updateExercise(
                     ExerciseTypeTable(
-                        no = exerciseTypeTable.no,
+                        no = exerciseTypeModel.no,
                         name = layoutExerciseType.etExerciseType.text.toString(),
                         weight = layoutWeight.etWeight.text.toString().toInt(),
                         repitition = layoutRepitition.etRepitition.text.toString().toInt(),

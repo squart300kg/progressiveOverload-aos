@@ -5,6 +5,7 @@ import com.example.program.api.ProgramDAO
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.util.DateUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -70,19 +71,46 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun deleteExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int> {
+    override fun deleteExercise(model: ExerciseTypeModel?): Flow<Int> {
         return flow {
-            val data = programDAO.deleteExercise(exerciseTypeTable)
+            val data = programDAO.deleteExercise(
+                ExerciseTypeTable(
+                    no = model!!.no,
+                    name = model.name,
+                    weight = model.weight,
+                    repitition = model.repitition,
+                    setNum = model.setNum,
+                    restTime = model.restTime,
+                    programNo = model.programNo,
+                    splitTypeIndex = model.splitTypeIndex
+                )
+            )
             emit(data)
         }
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeTable>> {
+    override fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeModel>> {
         return flow {
             val data = programDAO.getExercises(programNo, splitIndex)
-            emit(data)
+            val exercises = mutableListOf<ExerciseTypeModel>()
+            data.forEach {
+                exercises.add(
+                    ExerciseTypeModel(
+                        no = it.no,
+                        name = it.name,
+                        weight = it.weight,
+                        repitition = it.repitition,
+                        setNum = it.setNum,
+                        restTime = it.restTime,
+                        programNo = it.programNo,
+                        splitTypeIndex = it.splitTypeIndex,
+                        isPerformed = false
+                    )
+                )
+            }
+            emit(exercises)
         }
     }
 
