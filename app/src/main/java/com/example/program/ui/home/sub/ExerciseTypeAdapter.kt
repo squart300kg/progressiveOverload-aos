@@ -14,18 +14,17 @@ import com.example.program.model.entity.ExerciseTypeTable
  * Created by sangyoon on 2021/07/27
  */
 class ExerciseTypeAdapter(
-    val onClickForUpdate : (item : ExerciseTypeTable) -> Unit,
-    val onClickForRecord : (item : ExerciseTypeTable) -> Unit
-): RecyclerView.Adapter<ExerciseTypeAdapter.ExercisesViewHolder>() {
+    val onClickForUpdate: (item: ExerciseTypeTable) -> Unit,
+    val onClickForRecord: (item: ExerciseTypeTable) -> Unit,
+) : RecyclerView.Adapter<ExerciseTypeAdapter.ExercisesViewHolder>() {
 
     private val items: MutableList<ExerciseTypeTable> = mutableListOf()
 
-    private var isExerciseSuccess = false
     private var isExerciseStarted = false
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): ExercisesViewHolder {
         return ExercisesViewHolder(
             BR.exerciseItem,
@@ -52,13 +51,8 @@ class ExerciseTypeAdapter(
         notifyDataSetChanged()
     }
 
-    fun successExercise(position: Int) {
-        isExerciseSuccess = true
-        notifyItemChanged(position)
-    }
-
     fun startExercise(
-        startExercise : () -> Unit
+        startExercise: () -> Unit,
     ) {
         isExerciseStarted = true
         notifyDataSetChanged()
@@ -68,18 +62,10 @@ class ExerciseTypeAdapter(
     inner class ExercisesViewHolder(
         itemId: Int,
         parent: ViewGroup,
-        layoutRes: Int
-    ): BaseViewHolder<ExerciseTypeTable, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
+        layoutRes: Int,
+    ) : BaseViewHolder<ExerciseTypeTable, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
         fun initExerciseStatedStatus() {
-
-            // '오늘 운동 수행' 클릭
             itemBinding.layoutExerciseStart.isVisible = isExerciseStarted
-
-            // 수행 완료했을 경우
-            if (isExerciseSuccess) {
-                itemView.isSelected = true
-                isExerciseSuccess = false
-            }
         }
 
         fun initOnClick() {

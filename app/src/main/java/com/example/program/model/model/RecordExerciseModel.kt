@@ -6,5 +6,6 @@ data class RecordExerciseModel(
     val repitition : Int?,
     val setNum : Int?,
     val rpe : Int?,
-    val restTime : Int?
+    val restTime : Int?,
+    val isPerformed : Boolean = false,
 )

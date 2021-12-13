@@ -11,7 +11,7 @@ import com.example.program.model.entity.RecordTable
 
 @Database(
     entities = [ProgramTable::class, ExerciseTypeTable::class, RecordTable::class],
-    version = 4, exportSchema = false)
+    version = 5, exportSchema = false)
 abstract class ProgramDatabase : RoomDatabase() {
 
     abstract fun programDao(): ProgramDAO

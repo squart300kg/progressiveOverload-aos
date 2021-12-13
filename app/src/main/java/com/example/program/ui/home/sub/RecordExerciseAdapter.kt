@@ -1,20 +1,16 @@
 package com.example.program.ui.home.sub
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.text.InputFilter
 import android.util.Log
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
 import com.example.program.base.BaseViewHolder
 import com.example.program.databinding.ItemRecordExerciseBinding
 import com.example.program.model.entity.ExerciseTypeTable
+import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.RecordExerciseModel
 import com.example.program.util.InputFilterMinMax
 
@@ -25,6 +21,7 @@ import com.example.program.util.InputFilterMinMax
 class RecordExerciseAdapter(
     private val context: Context,
     private val onClick: (recordItem: RecordExerciseModel) -> Unit,
+    private val onBindingSuccess: () -> Unit = { },
 ) : RecyclerView.Adapter<RecordExerciseAdapter.RecordExViewHolder>() {
 
     private val items: MutableList<RecordExerciseModel> = mutableListOf()
@@ -49,33 +46,23 @@ class RecordExerciseAdapter(
         holder.initRpeRange()
 
         holder.initOnClick()
+
+        holder.checkIsExercisePerformed()
     }
 
     override fun getItemCount(): Int = items.size
 
-    fun loadRecord(list: List<ExerciseTypeTable>) {
-        val items = mutableListOf<RecordExerciseModel>()
-        for (index in 0 until list[0].setNum!!) {
-            items.add(
-                RecordExerciseModel(
-                    index,
-                    list[0].weight,
-                    list[0].repitition,
-                    list[0].setNum,
-                    8,
-                    list[0].restTime
-                )
-            )
-        }
-
-        this.items.clear()
-        this.items.addAll(items)
+    fun loadRecord(list: List<RecordExerciseModel>) {
+        items.clear()
+        items.addAll(list)
         notifyDataSetChanged()
     }
+
 
     fun successExercise() {
         recordExViewHolder.successExercise()
     }
+
 
     inner class RecordExViewHolder(
         context: Context,
@@ -83,6 +70,8 @@ class RecordExerciseAdapter(
         parent: ViewGroup,
         layoutRes: Int,
     ) : BaseViewHolder<RecordExerciseModel, ItemRecordExerciseBinding>(itemId, parent, layoutRes) {
+
+
         fun initOnClick() {
             itemBinding.tvExerciseComplete.setOnClickListener {
 
@@ -108,6 +97,20 @@ class RecordExerciseAdapter(
         fun successExercise() {
             Log.i("regSuccess", "success")
             itemView.isSelected = true
+        }
+
+        fun checkIsAllItemBinding() {
+            if (items[absoluteAdapterPosition].no == items.size-1) {
+                Log.i("binding?", "no :  ${items[absoluteAdapterPosition].no}")
+                Log.i("binding?", "items.size-1 :  ${items.size-1}")
+                onBindingSuccess()
+            }
+        }
+
+        fun checkIsExercisePerformed() {
+            if (items[absoluteAdapterPosition].isPerformed) {
+                itemView.isSelected = true
+            }
         }
 
     }

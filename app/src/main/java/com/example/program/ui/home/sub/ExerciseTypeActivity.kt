@@ -147,13 +147,13 @@ class ExerciseTypeActivity :
                     Log.i("statuses", "programNo : ${exercises[index].programNo}")
                     Log.i("statuses", "exerciseNo : ${exercises[index].no}")
 
-                    regExerciseTypeViewModel.getExperformedStatuses(
+                    regExerciseTypeViewModel.getExercisePerformedStatuses(
                         programNo = exercises[index].programNo,
                         exerciseNo = exercises[index].no
                     ) { statuses ->
-                        if (exercises[index].setNum!! <= statuses) {
-                            exerciseTypeAdapter.successExercise(index)
-                        }
+                        Log.i("statuses", "statuses[${index}] : $statuses")
+                        Log.i("statuses", "setNum[${index}] : ${exercises[index].setNum!!}")
+
                     }
                 }
             }

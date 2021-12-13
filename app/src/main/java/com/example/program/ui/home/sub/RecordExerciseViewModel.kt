@@ -16,29 +16,78 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class RecordExerciseViewModel(
-    private val roomRepository: RoomRepository
+    private val roomRepository: RoomRepository,
 ) : ViewModel() {
 
-    private val _exercise = MutableLiveData<MutableList<ExerciseTypeTable>>()
-    val exercise : LiveData<MutableList<ExerciseTypeTable>>
-        get() = _exercise
+    private val _exercises = MutableLiveData<MutableList<ExerciseTypeTable>>()
+    val exercises: LiveData<MutableList<ExerciseTypeTable>>
+        get() = _exercises
+
+    private val _records = MutableLiveData<MutableList<RecordExerciseModel>>()
+    val records: LiveData<MutableList<RecordExerciseModel>>
+        get() = _records
 
     private val TAG = "RecordExerciseVmLog"
 
-    fun initExInfo(exerciseTable: ExerciseTypeTable) {
+    fun initExercise(
+        exerciseTable: ExerciseTypeTable,
+        recordTable: List<RecordTable>,
+    ) {
+        val records = mutableListOf<RecordExerciseModel>()
+        for (indexX in 0 until exerciseTable.setNum!!) {
 
-        _exercise.value = mutableListOf(exerciseTable)
+            // 이전 운동기록이 있으면 true, 아니면 false
+            var isPerformed = false
+            for (indexY in recordTable.indices) {
+                if (recordTable[indexY].setNum == indexX) {
+                    isPerformed = true
+                    break
+                }
+            }
+
+            records.add(
+                RecordExerciseModel(
+                    indexX,
+                    exerciseTable.weight,
+                    exerciseTable.repitition,
+                    exerciseTable.setNum,
+                    8,
+                    exerciseTable.restTime,
+                    isPerformed
+                )
+            )
+        }
+        _records.value = records
+
+        _exercises.value = mutableListOf(exerciseTable)
     }
 
     fun record(
         model: RecordTable,
-        success : () -> Unit) {
+        success: () -> Unit,
+    ) {
         viewModelScope.launch {
             roomRepository.insertRecord(model)
                 .flowOn(Dispatchers.IO)
-                .catch {  }
+                .catch { }
                 .collect {
                     success()
+                }
+        }
+    }
+
+    fun getTodayExercisePerformed(
+        programNo: Long?,
+        exerciseNo: Long?,
+        success: (list: List<RecordTable>) -> Unit,
+    ) {
+        viewModelScope.launch {
+            roomRepository.getTodayExercisePerformed(programNo, exerciseNo)
+                .flowOn(Dispatchers.IO)
+                .catch { }
+                .collect { response ->
+                    Log.i("getTodayExercisePerformed", "result : $response")
+                    success(response)
                 }
         }
     }

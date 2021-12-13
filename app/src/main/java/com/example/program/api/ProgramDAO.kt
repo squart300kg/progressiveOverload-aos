@@ -31,6 +31,9 @@ interface ProgramDAO {
     @Query("SELECT COUNT(*) FROM recordtable WHERE programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
     fun getExperformedStatuses(programNo: Long?, exerciseNo: Long?): Int
 
+    @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo AND exerciseTypeNo == :exerciseNo")
+    fun getTodayExercisePerformed(recordTime: String?, programNo: Long?, exerciseNo: Long?): List<RecordTable>
+
     @Insert
     fun insertProgram(programs: ProgramTable): Long
 

@@ -46,7 +46,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
-                        android:text="@{recordExVm.exercise.get(0).name}"
+                        android:text="@{recordExVm.exercises.get(0).name}"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
                                 android:layout_height="20dp"
                                 android:layout_weight="25"
                                 android:gravity="center"
-                                android:text="@{recordExVm.exercise.get(0).weight.toString() + `KG`}"
+                                android:text="@{recordExVm.exercises.get(0).weight.toString() + `KG`}"
                                 overload:text="80KG" />
 
                             <TextView
@@ -87,7 +87,7 @@
                                 android:layout_height="20dp"
                                 android:layout_weight="25"
                                 android:gravity="center"
-                                android:text="@{recordExVm.exercise.get(0).repitition.toString()}"
+                                android:text="@{recordExVm.exercises.get(0).repitition.toString()}"
                                 overload:text="12" />
 
                             <TextView
@@ -95,7 +95,7 @@
                                 android:layout_height="20dp"
                                 android:layout_weight="25"
                                 android:gravity="center"
-                                android:text="@{recordExVm.exercise.get(0).setNum.toString()}"
+                                android:text="@{recordExVm.exercises.get(0).setNum.toString()}"
                                 overload:text="3" />
 
                             <TextView
@@ -103,7 +103,7 @@
                                 android:layout_height="20dp"
                                 android:layout_weight="25"
                                 android:gravity="center"
-                                android:text="@{recordExVm.exercise.get(0).restTime.toString()}"
+                                android:text="@{recordExVm.exercises.get(0).restTime.toString()}"
                                 overload:text="60" />
                         </LinearLayout>
 
@@ -160,7 +160,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_exercise_type_info"
                     overload:listitem="@layout/item_record_exercise"
-                    overload:setItems="@{recordExVm.exercise}" />
+                    overload:setItems="@{recordExVm.records}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

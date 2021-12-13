@@ -31,7 +31,7 @@ data class RecordTable(
     @ColumnInfo
     val rpe: Int?,
     @ColumnInfo
-    val recordTime: Long?,
+    val recordTime: String?,
     @ColumnInfo
     val programNo: Long?,
     @ColumnInfo

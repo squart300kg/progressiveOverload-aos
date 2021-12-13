@@ -6,6 +6,7 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordExerciseBinding
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.util.DateUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecordExerciseActivity :
@@ -15,39 +16,54 @@ class RecordExerciseActivity :
 
     private lateinit var recordExerciseAdapter: RecordExerciseAdapter
 
+    private lateinit var exerciseTable: ExerciseTypeTable
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val exerciseTable = intent.getSerializableExtra("exerciseTable") as ExerciseTypeTable
+        exerciseTable = intent.getSerializableExtra("exerciseTable") as ExerciseTypeTable
 
         binding {
             recordExVm = recordExerciseViewModel
 
             rvRecordEx.apply {
                 setHasFixedSize(true)
-                recordExerciseAdapter = RecordExerciseAdapter(this@RecordExerciseActivity) { model ->
-                    recordExerciseViewModel.record(
-                        RecordTable(
-                            name = exerciseTable.name,
-                            weight = model.weight,
-                            repitition = model.repitition,
-                            setNum = model.no,
-                            restTime = model.restTime,
-                            rpe = model.rpe,
-                            recordTime = System.currentTimeMillis(),
-                            programNo = exerciseTable.programNo,
-                            exerciseTypeNo = exerciseTable.no
-                        )
-                    ){
-                        recordExerciseAdapter.successExercise()
-                    }
-                }
+                recordExerciseAdapter =
+                    RecordExerciseAdapter(this@RecordExerciseActivity,
+                        { model ->
+                            recordExerciseViewModel.record(
+                                RecordTable(
+                                    name = exerciseTable.name,
+                                    weight = model.weight,
+                                    repitition = model.repitition,
+                                    setNum = model.no,
+                                    restTime = model.restTime,
+                                    rpe = model.rpe,
+                                    recordTime = DateUtil.getCurrentDateForRecord(),
+                                    programNo = exerciseTable.programNo,
+                                    exerciseTypeNo = exerciseTable.no
+                                )
+                            ) {
+                                recordExerciseAdapter.successExercise()
+                            }
+                        }, { // 데이터 바인딩이 끝났을 때,
+
+                        })
                 adapter = recordExerciseAdapter
+
             }
         }
+    }
 
-        recordExerciseViewModel.initExInfo(exerciseTable)
+    override fun onStart() {
+        super.onStart()
 
+        recordExerciseViewModel.getTodayExercisePerformed(
+            exerciseTable.programNo,
+            exerciseTable.no
+        ) { recordTable ->
+            recordExerciseViewModel.initExercise(exerciseTable, recordTable)
+        }
     }
 
 }
