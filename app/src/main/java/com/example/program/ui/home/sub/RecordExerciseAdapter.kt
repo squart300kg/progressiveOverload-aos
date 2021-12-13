@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.InputFilter
 import android.util.Log
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
@@ -20,12 +21,15 @@ import com.example.program.util.InputFilterMinMax
  */
 class RecordExerciseAdapter(
     private val context: Context,
+    private val exerciseName : String?,
     private val onClick: (recordItem: RecordExerciseModel) -> Unit,
 ) : RecyclerView.Adapter<RecordExerciseAdapter.RecordExViewHolder>() {
 
     private val items: MutableList<RecordExerciseModel> = mutableListOf()
 
     private lateinit var recordExViewHolder: RecordExViewHolder
+
+    private var successCount = 0
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -94,16 +98,18 @@ class RecordExerciseAdapter(
         }
 
         fun successExercise() {
-            Log.i("regSuccess", "success")
             itemView.isSelected = true
+            successCount++
+            if (successCount == items.size)
+                Toast.makeText(context, "$exerciseName 완료!", Toast.LENGTH_LONG).show()
         }
 
         fun checkIsExercisePerformed() {
             if (items[absoluteAdapterPosition].isPerformed) {
                 itemView.isSelected = true
+                successCount++
             }
         }
-
     }
 
 }

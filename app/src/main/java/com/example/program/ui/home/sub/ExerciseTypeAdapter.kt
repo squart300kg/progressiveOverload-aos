@@ -1,7 +1,9 @@
 package com.example.program.ui.home.sub
 
+import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +16,7 @@ import com.example.program.model.entity.ExerciseTypeTable
  * Created by sangyoon on 2021/07/27
  */
 class ExerciseTypeAdapter(
+    val context : Context,
     val onClickForUpdate: (item: ExerciseTypeTable) -> Unit,
     val onClickForRecord: (item: ExerciseTypeTable) -> Unit,
 ) : RecyclerView.Adapter<ExerciseTypeAdapter.ExercisesViewHolder>() {

@@ -79,7 +79,7 @@ class ExerciseTypeActivity :
 
             rvExercises.apply {
                 setHasFixedSize(true)
-                exerciseTypeAdapter = ExerciseTypeAdapter(
+                exerciseTypeAdapter = ExerciseTypeAdapter(this@ExerciseTypeActivity,
                     {
                         // 운동 종목 수정
                         Intent(this@ExerciseTypeActivity,

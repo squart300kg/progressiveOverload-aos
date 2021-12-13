@@ -29,7 +29,7 @@ class RecordExerciseActivity :
             rvRecordEx.apply {
                 setHasFixedSize(true)
                 recordExerciseAdapter =
-                    RecordExerciseAdapter(this@RecordExerciseActivity
+                    RecordExerciseAdapter(this@RecordExerciseActivity, exerciseTable.name
                     ) { model ->
                         recordExerciseViewModel.record(
                             RecordTable(
