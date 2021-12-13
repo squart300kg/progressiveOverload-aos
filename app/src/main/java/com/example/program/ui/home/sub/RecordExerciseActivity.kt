@@ -29,34 +29,28 @@ class RecordExerciseActivity :
             rvRecordEx.apply {
                 setHasFixedSize(true)
                 recordExerciseAdapter =
-                    RecordExerciseAdapter(this@RecordExerciseActivity,
-                        { model ->
-                            recordExerciseViewModel.record(
-                                RecordTable(
-                                    name = exerciseTable.name,
-                                    weight = model.weight,
-                                    repitition = model.repitition,
-                                    setNum = model.no,
-                                    restTime = model.restTime,
-                                    rpe = model.rpe,
-                                    recordTime = DateUtil.getCurrentDateForRecord(),
-                                    programNo = exerciseTable.programNo,
-                                    exerciseTypeNo = exerciseTable.no
-                                )
-                            ) {
-                                recordExerciseAdapter.successExercise()
-                            }
-                        }, { // 데이터 바인딩이 끝났을 때,
-
-                        })
+                    RecordExerciseAdapter(this@RecordExerciseActivity
+                    ) { model ->
+                        recordExerciseViewModel.record(
+                            RecordTable(
+                                name = exerciseTable.name,
+                                weight = model.weight,
+                                repitition = model.repitition,
+                                setNum = model.no,
+                                restTime = model.restTime,
+                                rpe = model.rpe,
+                                recordTime = DateUtil.getCurrentDateForRecord(),
+                                programNo = exerciseTable.programNo,
+                                exerciseTypeNo = exerciseTable.no
+                            )
+                        ) {
+                            recordExerciseAdapter.successExercise()
+                        }
+                    }
                 adapter = recordExerciseAdapter
 
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
 
         recordExerciseViewModel.getTodayExercisePerformed(
             exerciseTable.programNo,
