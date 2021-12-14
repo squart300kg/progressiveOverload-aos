@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class RegExerciseTypeViewModel(
-    private val roomRepository: RoomRepository
+    private val roomRepository: RoomRepository,
 ) : ViewModel() {
 
     private val TAG = "HomeViewModelLog"
@@ -25,15 +25,16 @@ class RegExerciseTypeViewModel(
         get() = _exercises
 
     private val _exercise = MutableLiveData<ExerciseTypeModel>()
-    val exercise : LiveData<ExerciseTypeModel>
+    val exercise: LiveData<ExerciseTypeModel>
         get() = _exercise
 
     fun insertExerciseType(
-        excerciseType: ExerciseTypeTable) {
+        excerciseType: ExerciseTypeTable,
+    ) {
         viewModelScope.launch {
             roomRepository.insertExerciseType(excerciseType)
                 .flowOn(Dispatchers.IO)
-                .catch {  }
+                .catch { }
                 .collect {
                     Log.i("insertExerciseType", it.toString())
                 }
@@ -42,7 +43,7 @@ class RegExerciseTypeViewModel(
 
     fun deleteProgram(
         programNo: Long?,
-        success: () -> Unit
+        success: () -> Unit,
     ) {
         viewModelScope.launch {
             roomRepository.deleteProgram(programNo)
@@ -58,7 +59,7 @@ class RegExerciseTypeViewModel(
 
     fun deleteExercise(
         exerciseTypeModel: ExerciseTypeModel?,
-        success: () -> Unit
+        success: () -> Unit,
     ) {
         viewModelScope.launch {
             roomRepository.deleteExercise(exerciseTypeModel)
@@ -75,7 +76,8 @@ class RegExerciseTypeViewModel(
     fun getExercises(
         programNo: Long?,
         splitIndex: Int?,
-        success: (exercises : List<ExerciseTypeModel>) -> Unit = { }) {
+        success: (exercises: List<ExerciseTypeModel>) -> Unit = { },
+    ) {
         viewModelScope.launch {
             roomRepository.getExercises(programNo, splitIndex)
                 .flowOn(Dispatchers.IO)
@@ -93,8 +95,8 @@ class RegExerciseTypeViewModel(
 
     fun getExercisePerformedStatuses(
         programNo: Long?,
-        exerciseNo : Long?,
-        success: (statuses : Int) -> Unit
+        exerciseNo: Long?,
+        success: (statuses: Int) -> Unit,
     ) {
         viewModelScope.launch {
             roomRepository.getExercisePerformedStatuses(programNo, exerciseNo)
@@ -109,9 +111,10 @@ class RegExerciseTypeViewModel(
     }
 
     fun updateProgramName(
-        name : String,
+        name: String,
         programNo: Long?,
-        success: () -> Unit) {
+        success: () -> Unit,
+    ) {
         viewModelScope.launch {
             roomRepository.updateProgramName(name, programNo)
                 .flowOn(Dispatchers.IO)
@@ -127,7 +130,8 @@ class RegExerciseTypeViewModel(
 
     fun updateExercise(
         exerciseTypeTable: ExerciseTypeTable?,
-        success: () -> Unit) {
+        success: () -> Unit,
+    ) {
         viewModelScope.launch {
             roomRepository.updateExercise(exerciseTypeTable)
                 .flowOn(Dispatchers.IO)
@@ -142,5 +146,55 @@ class RegExerciseTypeViewModel(
 
     fun setExerciseInfo(exerciseTypeTable: ExerciseTypeModel) {
         _exercise.value = exerciseTypeTable
+    }
+
+    fun initExerciePerformTrue(indexX: Int) {
+        val exercises = mutableListOf<ExerciseTypeModel>()
+        _exercises.value?.forEachIndexed { indexY, it ->
+            Log.i("statuses",
+                "indexX : $indexX, indexY ; $indexY, indexX == indexY ; ${indexX == indexY}")
+            exercises.add(
+                ExerciseTypeModel(
+                    no = it.no,
+                    name = it.name,
+                    weight = it.weight,
+                    repitition = it.repitition,
+                    setNum = it.setNum,
+                    restTime = it.restTime,
+                    programNo = it.programNo,
+                    splitTypeIndex = it.splitTypeIndex,
+                    isPerformed = indexX == indexY
+                )
+            )
+        }
+        _exercises.value = exercises
+    }
+
+    fun initPerformedExerciesSetTrue(
+        indexes: List<Int>,
+        success: () -> Unit,
+    ) {
+        Log.i("statuses", "viewModel들어옴")
+
+        val exercises = mutableListOf<ExerciseTypeModel>()
+        _exercises.value?.forEachIndexed { indexX, it ->
+            exercises.add(
+                ExerciseTypeModel(
+                    no = it.no,
+                    name = it.name,
+                    weight = it.weight,
+                    repitition = it.repitition,
+                    setNum = it.setNum,
+                    restTime = it.restTime,
+                    programNo = it.programNo,
+                    splitTypeIndex = it.splitTypeIndex,
+                    isPerformed = indexes.contains(indexX)
+                )
+            )
+            Log.i("statuses", "viewModel - isPerformed[$indexX] : ${exercises[indexX].isPerformed}")
+
+        }
+        _exercises.value = exercises
+        success()
     }
 }

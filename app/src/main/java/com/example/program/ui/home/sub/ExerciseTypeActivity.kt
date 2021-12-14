@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ExerciseTypeActivity :
     BaseActivity<ActivityExcerciseTypeBinding>(R.layout.activity_excercise_type) {
 
-    private val regExerciseTypeViewModel: RegExerciseTypeViewModel by viewModel()
+    private val viewModel: RegExerciseTypeViewModel by viewModel()
 
     private var selectedSplitIndex: Int? = 0
 
@@ -33,6 +33,8 @@ class ExerciseTypeActivity :
 
     private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
+    private var performedExerciseCount = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,7 +49,7 @@ class ExerciseTypeActivity :
         }
 
         binding {
-            regVm = regExerciseTypeViewModel
+            regVm = viewModel
 
             tlSplit.apply {
                 for (i in 0 until splitCount!!) {
@@ -60,7 +62,7 @@ class ExerciseTypeActivity :
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         selectedSplitIndex = tab?.position
 
-                        regExerciseTypeViewModel.getExercises(
+                        viewModel.getExercises(
                             programNo = programNo,
                             splitIndex = selectedSplitIndex
                         )
@@ -130,10 +132,11 @@ class ExerciseTypeActivity :
     override fun onStart() {
         super.onStart()
         Log.i("onStart", "onStart")
-        regExerciseTypeViewModel.getExercises(
+        viewModel.getExercises(
             programNo = programNo,
             splitIndex = selectedSplitIndex
         ) { exercises ->
+            Log.i("statuses", "total ex : ${exercises.size}")
 
             // 운동 등록할 때,
             exercisesSize = exercises.size
@@ -143,27 +146,36 @@ class ExerciseTypeActivity :
 
             // 운동 기록을 마치고 돌아올 때,
             if (isIntentToExercise) {
-                for (index in exercises.indices) {
 
-                    regExerciseTypeViewModel.getExercisePerformedStatuses(
+                val performedExerciseIndexes = mutableListOf<Int>()
+                for (index in exercises.indices) {
+                    viewModel.getExercisePerformedStatuses(
                         programNo = exercises[index].programNo,
                         exerciseNo = exercises[index].no
                     ) { statuses ->
-                        Log.i("statuses", "programNo : ${exercises[index].programNo}")
-                        Log.i("statuses", "exerciseNo : ${exercises[index].no}")
-                        Log.i("statuses", "statuses[${index}] : $statuses")
-                        Log.i("statuses", "setNum[${index}] : ${exercises[index].setNum!!}")
+                        Log.i("statuses", "==== ${exercises[index].no}번째 ex ===")
+                        Log.i("statuses", "total set : ${exercises[index].setNum!!}")
+                        Log.i("statuses", "performed set : $statuses")
 
-                        if (regExerciseTypeViewModel.exercises.value?.get(index)?.setNum == statuses) {
-                            exerciseTypeAdapter.successExercise(index)
+                        performedExerciseCount++
+
+                        // 모든 세트를 마쳤다면?
+                        if (viewModel.exercises.value?.get(index)?.setNum!! <= statuses) {
+                            Log.i("statuses", "success Exercise!!, - $index")
+                            performedExerciseIndexes.add(index)
                         }
 
-
+                        // 마지막일 때,
+                        if (performedExerciseCount == exercises.size) {
+                            Log.i("statuses", "viewModel들어가기 직전, indexe : $index, exSize : ${exercises.size}, count ; $performedExerciseCount")
+                            Log.i("statuses", "viewModel들어가기 직전, indexes : $performedExerciseIndexes")
+                            viewModel.initPerformedExerciesSetTrue(performedExerciseIndexes) {
+                                performedExerciseCount = 0
+                            }
+                        }
                     }
                 }
             }
-
-
         }
     }
 
@@ -171,7 +183,7 @@ class ExerciseTypeActivity :
         if (!isIntentToExercise) {
             cancelDialog = CancelDialog.newInstance(
                 {
-                    regExerciseTypeViewModel.deleteProgram(
+                    viewModel.deleteProgram(
                         programNo
                     ) {
                         super.onBackPressed()

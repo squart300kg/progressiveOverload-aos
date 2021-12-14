@@ -26,6 +26,8 @@ class ExerciseTypeAdapter(
 
     private var isExerciseStarted = false
 
+    private var performedExerciseCounter = 0
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -66,6 +68,9 @@ class ExerciseTypeAdapter(
 
     fun successExercise(index: Int) {
         items[index].isPerformed = true
+//        performedExerciseCounter++
+//        Log.i("statuses", "counter : "+performedExerciseCounter.toString())
+//        Log.i("statuses", "size : "+items.size.toString())
         notifyItemChanged(index)
     }
 
@@ -91,6 +96,7 @@ class ExerciseTypeAdapter(
         }
 
         fun checkIsExercisePerformed() {
+            Log.i("statuses", "adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
             if (items[absoluteAdapterPosition].isPerformed) {
                 itemView.isSelected = true
             }
