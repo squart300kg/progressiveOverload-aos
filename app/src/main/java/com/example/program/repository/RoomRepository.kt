@@ -4,6 +4,7 @@ import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
+import com.example.program.model.model.RecordModel
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -37,7 +38,7 @@ interface RoomRepository {
 
     fun insertRecord(model: RecordTable): Flow<Long>
 
-    fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<String>>
+    fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<RecordModel>>
 
     fun getTargetDateTotalVolume(programNo: Long?, recordTime : String?) : Flow<Int>
 

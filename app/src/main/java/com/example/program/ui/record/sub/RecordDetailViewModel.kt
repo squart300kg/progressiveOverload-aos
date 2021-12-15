@@ -25,8 +25,7 @@ class RecordDetailViewModel(
     private val TAG = "RecordDetailVmLog"
 
     fun getAllRecordsDateByProgramNo(
-        programNo: Long,
-        success: (dates: List<String>) -> Unit,
+        programNo: Long
     ) {
         viewModelScope.launch {
             roomRepository.getAllRecordsDateByProgramNo(programNo)
@@ -35,39 +34,9 @@ class RecordDetailViewModel(
                     e.printStackTrace()
                 }
                 .collect { recordDates ->
-
-                    success(recordDates)
+                    Log.i("recordDates", recordDates.toString())
+                    _records.value = recordDates.toMutableList()
                 }
         }
     }
-
-    fun getTargetDateTotalVolume(
-        programNo: Long,
-        date: String,
-        success: (volume : Int) -> Unit) {
-        viewModelScope.launch {
-            roomRepository.getTargetDateTotalVolume(programNo, date)
-                .flowOn(Dispatchers.IO)
-                .catch { e ->
-                    e.printStackTrace()
-                }
-                .collect { totalVolume ->
-                    Log.i("totalVolume :", totalVolume.toString())
-                    success(totalVolume)
-                }
-        }
-    }
-
-    fun initRecord(volume: Int, date: String) {
-        val records = mutableListOf<RecordModel>()
-        records.add(
-            RecordModel(
-                volume,
-                date
-            )
-        )
-
-        _records.value = records
-    }
-
 }

@@ -15,14 +15,23 @@
         android:layout_height="match_parent"
         overload:context=".ui.record.sub.RecordDetailActivity">
 
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_record"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             overload:listitem="@layout/item_records"
-            overload:setItems="@{recordDetailVm.records}" />
+            overload:setItems="@{recordDetailVm.records}"
+            app:layout_constraintTop_toBottomOf="@+id/chart"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

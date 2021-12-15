@@ -4,6 +4,7 @@ import androidx.room.*
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.RecordModel
 
 /**
  * Created by sangyoon on 2021/07/27
@@ -58,8 +59,9 @@ interface ProgramDAO {
     @Update
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
 
-    @Query("SELECT DISTINCT(recordTime) FROM recordtable WHERE programNo == :programNo ORDER BY recordTime DESC")
-    fun getAllRecordsDateByProgramNo(programNo: Long): List<String>
+    //    @Query("SELECT DISTINCT(recordTime) FROM recordtable WHERE programNo == :programNo ORDER BY recordTime DESC")
+    @Query("SELECT recordTime, SUM(weight) AS totalVolume FROM recordtable WHERE programNo == :programNo  GROUP BY recordTime ORDER BY recordTime DESC")
+    fun getAllRecordsDateByProgramNo(programNo: Long): List<RecordModel>
 
     @Query("SELECT * FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime")
     fun getTargetDateTotalVolume(recordTime: String?, programNo: Long?): Int

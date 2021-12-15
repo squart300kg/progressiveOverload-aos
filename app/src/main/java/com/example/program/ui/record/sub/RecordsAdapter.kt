@@ -14,7 +14,8 @@ import com.example.program.model.model.RecordModel
  * Created by sangyoon on 2021/07/27
  */
 class RecordsAdapter(
-    val context: Context,
+    val context : Context,
+    val onClick : (String) -> Unit
 ) : RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
 
     private val items: MutableList<RecordModel> = mutableListOf()
@@ -33,6 +34,7 @@ class RecordsAdapter(
     override fun onBindViewHolder(holder: RecordViewHolder, position: Int) {
         holder.bindItem(items[position])
 
+        holder.initOnClick()
     }
 
     override fun getItemCount(): Int = items.size
@@ -50,6 +52,11 @@ class RecordsAdapter(
         parent: ViewGroup,
         layoutRes: Int,
     ) : BaseViewHolder<RecordModel, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
+        fun initOnClick() {
+            itemView.setOnClickListener {
+                onClick(items[absoluteAdapterPosition].recordTime)
+            }
+        }
 
 
     }
