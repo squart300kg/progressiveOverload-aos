@@ -14,5 +14,4 @@ data class ProgramTable(
     val splitText: String?,
     @ColumnInfo
     val splitCount: Int?
-
 )

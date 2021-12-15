@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:overload="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recordDetailVm"
+            type="com.example.program.ui.record.sub.RecordDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        overload:context=".ui.record.sub.RecordDetailActivity">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_record"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            overload:listitem="@layout/item_records"
+            overload:setItems="@{recordDetailVm.records}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

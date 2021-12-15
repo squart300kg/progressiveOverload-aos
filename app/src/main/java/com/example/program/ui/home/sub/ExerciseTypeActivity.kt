@@ -131,7 +131,6 @@ class ExerciseTypeActivity :
 
     override fun onStart() {
         super.onStart()
-        Log.i("onStart", "onStart")
         viewModel.getExercises(
             programNo = programNo,
             splitIndex = selectedSplitIndex

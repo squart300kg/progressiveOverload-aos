@@ -28,8 +28,8 @@ interface ProgramDAO {
     @Query("SELECT * FROM programtable WHERE name == :targetName")
     fun getTargetedProgram(targetName: String): ProgramTable
 
-    @Query("SELECT COUNT(*) FROM recordtable WHERE programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
-    fun getExperformedStatuses(programNo: Long?, exerciseNo: Long?): Int
+    @Query("SELECT COUNT(*) FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
+    fun getTodayExercisesPerformedStatuses(recordTime: String?, programNo: Long?, exerciseNo: Long?): Int
 
     @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo AND exerciseTypeNo == :exerciseNo")
     fun getTodayExercisePerformed(recordTime: String?, programNo: Long?, exerciseNo: Long?): List<RecordTable>
@@ -57,6 +57,12 @@ interface ProgramDAO {
 
     @Update
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
+
+    @Query("SELECT DISTINCT(recordTime) FROM recordtable WHERE programNo == :programNo ORDER BY recordTime DESC")
+    fun getAllRecordsDateByProgramNo(programNo: Long): List<String>
+
+    @Query("SELECT * FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime")
+    fun getTargetDateTotalVolume(recordTime: String?, programNo: Long?): Int
 
 
 }

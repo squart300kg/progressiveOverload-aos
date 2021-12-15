@@ -11,5 +11,5 @@ data class ExerciseTypeModel(
     val restTime: Int?,
     val programNo: Long?,
     val splitTypeIndex: Int?,
-    var isPerformed: Boolean = false,
+    val isPerformed: Boolean = false,
 ) : Serializable

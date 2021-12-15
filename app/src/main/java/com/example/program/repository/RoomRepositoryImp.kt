@@ -116,16 +116,26 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun getExercisePerformedStatuses(programNo: Long?, exerciseNo: Long?): Flow<Int> {
+    override fun getExercisePerformedStatuses(
+        programNo: Long?,
+        exerciseNo: Long?,
+    ): Flow<Int> {
         return flow {
-            val data = programDAO.getExperformedStatuses(programNo, exerciseNo)
+            val data = programDAO.getTodayExercisesPerformedStatuses(
+                DateUtil.getCurrentDateForRecord(),
+                programNo,
+                exerciseNo
+            )
             emit(data)
         }
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun getTodayExercisePerformed(programNo: Long?, exerciseNo: Long?): Flow<List<RecordTable>> {
+    override fun getTodayExercisePerformed(
+        programNo: Long?,
+        exerciseNo: Long?,
+    ): Flow<List<RecordTable>> {
         return flow {
             val data = programDAO.getTodayExercisePerformed(
                 DateUtil.getCurrentDateForRecord(),
@@ -158,6 +168,22 @@ class RoomRepositoryImp(
     override fun insertRecord(model: RecordTable): Flow<Long> {
         return flow {
             val data = programDAO.insertRecord(model)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<String>> {
+        return flow {
+            val data = programDAO.getAllRecordsDateByProgramNo(programNo)
+            emit(data)
+        }
+    }
+
+    override fun getTargetDateTotalVolume(programNo: Long?, RecordTime: String?): Flow<Int> {
+        return flow {
+            val data = programDAO.getTargetDateTotalVolume(RecordTime, programNo)
             emit(data)
         }
     }

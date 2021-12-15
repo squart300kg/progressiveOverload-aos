@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/log_look_up"
-        android:name="com.example.program.ui.message.MessageFragment"
+        android:name="com.example.program.ui.record.RecordFragment"
         android:label="@string/title_message"
-        tools:layout="@layout/fragment_message" />
+        tools:layout="@layout/fragment_record" />
 
 </navigation>

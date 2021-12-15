@@ -37,5 +37,9 @@ interface RoomRepository {
 
     fun insertRecord(model: RecordTable): Flow<Long>
 
+    fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<String>>
+
+    fun getTargetDateTotalVolume(programNo: Long?, recordTime : String?) : Flow<Int>
+
 
 }

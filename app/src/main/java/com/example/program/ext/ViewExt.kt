@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 /**
  * Created by sangyoon on 2021/09/02
  */
-@BindingAdapter("theWarsOfStar:setVisibility")
+@BindingAdapter("overload:setVisibility")
 fun View.setVisibility(isVisible: Boolean) {
     this.isVisible = isVisible
 }

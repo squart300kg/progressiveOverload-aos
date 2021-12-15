@@ -17,6 +17,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.record.sub.RecordDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.home.sub.RecordExerciseActivity"
             android:exported="true" />
         <activity

@@ -52,7 +52,7 @@ class ExerciseTypeAdapter(
     override fun getItemCount(): Int = items.size
 
     fun loadExercises(list: List<ExerciseTypeModel>) {
-        Log.i("loadExercises", list.toString())
+        Log.i("statuses", list.toString())
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()
@@ -64,14 +64,6 @@ class ExerciseTypeAdapter(
         isExerciseStarted = true
         notifyDataSetChanged()
         startExercise()
-    }
-
-    fun successExercise(index: Int) {
-        items[index].isPerformed = true
-//        performedExerciseCounter++
-//        Log.i("statuses", "counter : "+performedExerciseCounter.toString())
-//        Log.i("statuses", "size : "+items.size.toString())
-        notifyItemChanged(index)
     }
 
     inner class ExercisesViewHolder(
@@ -96,8 +88,10 @@ class ExerciseTypeAdapter(
         }
 
         fun checkIsExercisePerformed() {
-            Log.i("statuses", "adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
+            Log.i("statuses", "before - adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
             if (items[absoluteAdapterPosition].isPerformed) {
+                Log.i("statuses", "after - adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
+
                 itemView.isSelected = true
             }
         }
