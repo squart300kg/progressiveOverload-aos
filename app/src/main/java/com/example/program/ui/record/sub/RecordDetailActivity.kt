@@ -6,19 +6,14 @@ import android.os.Bundle
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordDetailBinding
-import com.example.program.model.model.RecordModel
-import com.example.program.util.RecordMarkerView
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.github.mikephil.charting.components.YAxis
-
-import com.github.mikephil.charting.components.XAxis
-
-
 
 
 class RecordDetailActivity :
@@ -102,7 +97,6 @@ class RecordDetailActivity :
         }
 
         recordDetailViewModel.getAllRecordsDateByProgramNo(programNo)
-
 
     }
 }

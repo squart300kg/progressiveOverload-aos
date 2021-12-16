@@ -3,11 +3,13 @@ package com.example.program.ui.record.sub
 import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
 import com.example.program.base.BaseViewHolder
 import com.example.program.databinding.ItemExerciseTypeBinding
+import com.example.program.databinding.ItemRecordsBinding
 import com.example.program.model.model.RecordModel
 
 /**
@@ -51,11 +53,24 @@ class RecordsAdapter(
         itemId: Int,
         parent: ViewGroup,
         layoutRes: Int,
-    ) : BaseViewHolder<RecordModel, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
+    ) : BaseViewHolder<RecordModel, ItemRecordsBinding>(itemId, parent, layoutRes) {
         fun initOnClick() {
-            itemView.setOnClickListener {
+            itemBinding.tvDetailSeeSecond.setOnClickListener {
                 onClick(items[absoluteAdapterPosition].recordTime)
             }
+
+            itemBinding.layoutDetailSee.setOnClickListener {
+                itemBinding.layoutDetail.isVisible = true
+                itemBinding.layoutDetailSee.isVisible = false
+            }
+
+            itemBinding.layoutFold.setOnClickListener {
+                itemBinding.layoutDetail.isVisible = false
+                itemBinding.layoutDetailSee.isVisible = true
+            }
+
+
+
         }
 
 
