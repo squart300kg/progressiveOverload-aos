@@ -14,10 +14,6 @@ import com.example.program.model.model.ExerciseVolumeModel
  */
 class ExerciseVolumeAdapter : RecyclerView.Adapter<ExerciseVolumeAdapter.VolumeViewHolder>() {
 
-    interface InitChecker {
-        fun onInitialized()
-    }
-
     private val items: MutableList<ExerciseVolumeModel> = mutableListOf()
 
     override fun onCreateViewHolder(
@@ -37,12 +33,11 @@ class ExerciseVolumeAdapter : RecyclerView.Adapter<ExerciseVolumeAdapter.VolumeV
 
     override fun getItemCount(): Int = items.size
 
-    fun loadExerciseVolumes(list: List<ExerciseVolumeModel>, onInitialized : ExerciseVolumeAdapter.InitChecker) {
+    fun loadExerciseVolumes(list: List<ExerciseVolumeModel>) {
         Log.i("loadExerciseVolumes", list.toString())
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()
-        onInitialized.onInitialized()
     }
 
     inner class VolumeViewHolder(

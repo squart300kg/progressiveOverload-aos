@@ -19,15 +19,11 @@ class RecordsAdapter(
     val context: Context,
     val onClickForDetailSee: (String) -> Unit,
     val onClickForMoreDetailSee: (String) -> Unit,
-) : RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>(), ExerciseVolumeAdapter.InitChecker {
+) : RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
 
     private val items: MutableList<RecordModel> = mutableListOf()
 
-    private lateinit var exerciseVolumeAdapter: ExerciseVolumeAdapter
-
-    override fun onInitialized() {
-        notifyDataSetChanged()
-    }
+    private lateinit var recordViewHolder: RecordViewHolder
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,8 +39,6 @@ class RecordsAdapter(
     override fun onBindViewHolder(holder: RecordViewHolder, position: Int) {
         holder.bindItem(items[position])
 
-        holder.initExerciseVolume()
-
         holder.initOnClick()
     }
 
@@ -58,7 +52,7 @@ class RecordsAdapter(
     }
 
     fun loadExerciseVolumes(list : List<ExerciseVolumeModel>) {
-        exerciseVolumeAdapter.loadExerciseVolumes(list, this)
+        recordViewHolder.initExerciseVolumes(list)
     }
 
     inner class RecordViewHolder(
@@ -66,6 +60,9 @@ class RecordsAdapter(
         parent: ViewGroup,
         layoutRes: Int,
     ) : BaseViewHolder<RecordModel, ItemRecordsBinding>(itemId, parent, layoutRes) {
+
+        private var exerciseVolumeAdapter = ExerciseVolumeAdapter()
+
         fun initOnClick() {
 
             // 자세히 보기
@@ -74,11 +71,8 @@ class RecordsAdapter(
                 itemBinding.layoutDetail.isVisible = true
                 itemBinding.layoutDetailSee.isVisible = false
 
-                // 리사이클러뷰 초기화
-                itemBinding.rvExerciseVolumes.apply {
-                    setHasFixedSize(true)
-                    exerciseVolumeAdapter = ExerciseVolumeAdapter()
-                }
+                // 뷰홀더 context저장
+                recordViewHolder = this
 
                 // 클릭 이벤트
                 onClickForDetailSee(items[absoluteAdapterPosition].recordTime)
@@ -96,7 +90,12 @@ class RecordsAdapter(
             }
         }
 
-        fun initExerciseVolume() {
+        fun initExerciseVolumes(list: List<ExerciseVolumeModel>) {
+            itemBinding.rvExerciseVolumes.apply {
+                setHasFixedSize(true)
+                adapter = exerciseVolumeAdapter
+            }
+            exerciseVolumeAdapter.loadExerciseVolumes(list)
 
 
 
