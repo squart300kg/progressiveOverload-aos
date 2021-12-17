@@ -7,6 +7,10 @@
         <variable
             name="recordItem"
             type="com.example.program.model.model.RecordModel" />
+
+        <variable
+            name="recordVm"
+            type="com.example.program.ui.record.sub.RecordDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,19 +24,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
             android:text="@{`총 볼륨 : ` + recordItem.totalVolume + `KG`}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"
             overload:text="총 볼륨 : 3500KG" />
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
             android:text="@{recordItem.recordTime}"
-            android:layout_marginTop="20dp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,8 +46,8 @@
             android:id="@+id/v_divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/grey"
             android:layout_marginTop="20dp"
+            android:background="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -52,12 +56,13 @@
             android:id="@+id/layout_detail_see"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:gravity="center"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/v_divider">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -76,95 +81,16 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/v_divider">
-            <TextView
-                android:id="@+id/tv_squart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="스쿼트 볼륨"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/tv_squart_volume"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_exercise_volumes"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="1800KG"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="20dp"
+                overload:listitem="@layout/item_exercise_volume"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_dead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="데드리프트 볼륨"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_squart" />
-
-            <TextView
-                android:id="@+id/tv_dead_volume"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="1000KG"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_squart_volume" />
-
-            <TextView
-                android:id="@+id/tv_milp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="밀리터리 프레스 볼륨"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_dead" />
-
-            <TextView
-                android:id="@+id/tv_milp_volume"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="1500KG"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_dead_volume" />
-
-            <TextView
-                android:id="@+id/tv_bench"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="벤치프레스 볼륨"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_milp" />
-
-            <TextView
-                android:id="@+id/tv_bench_volume"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="2000KG"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_milp_volume" />
-
-            <TextView
-                android:id="@+id/one_arm_row"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="원암 덤벨로우 볼륨"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_bench" />
-
-            <TextView
-                android:id="@+id/one_arm_row_volume"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="1250KG"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_bench_volume" />
 
             <TextView
                 android:id="@+id/tv_detail_see_second"
@@ -174,14 +100,14 @@
                 android:background="@drawable/border_main"
                 android:gravity="center"
                 android:text="기록 상세 보기"
-                app:layout_constraintTop_toBottomOf="@+id/one_arm_row_volume" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_exercise_volumes" />
 
             <View
                 android:id="@+id/v_divider_second"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/grey"
                 android:layout_marginTop="20dp"
+                android:background="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_see_second" />
@@ -195,6 +121,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/v_divider_second">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"

@@ -5,12 +5,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
+import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordExerciseModel
 import com.example.program.model.model.RecordModel
 import com.example.program.ui.home.MainProgramsAdapter
 import com.example.program.ui.home.sub.ExerciseTypeAdapter
 import com.example.program.ui.home.sub.RecordExerciseAdapter
 import com.example.program.ui.record.ProgramAdapter
+import com.example.program.ui.record.sub.ExerciseVolumeAdapter
 import com.example.program.ui.record.sub.RecordsAdapter
 
 @BindingAdapter("overload:setItems")

@@ -4,5 +4,5 @@ import java.io.Serializable
 
 data class RecordModel(
     val totalVolume : Int,
-    val recordTime : String
+    val recordTime : String,
 ) : Serializable

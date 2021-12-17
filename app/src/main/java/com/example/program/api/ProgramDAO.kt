@@ -4,6 +4,7 @@ import androidx.room.*
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordModel
 
 /**
@@ -35,6 +36,18 @@ interface ProgramDAO {
     @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo AND exerciseTypeNo == :exerciseNo")
     fun getTodayExercisePerformed(recordTime: String?, programNo: Long?, exerciseNo: Long?): List<RecordTable>
 
+    @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
+    fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
+
+    @Query("SELECT recordTime, SUM(weight * repitition) AS totalVolume FROM recordtable WHERE programNo == :programNo  GROUP BY recordTime ORDER BY recordTime DESC")
+    fun getAllRecordsDateByProgramNo(programNo: Long): List<RecordModel>
+
+    @Query("SELECT * FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime")
+    fun getTargetDateTotalVolume(recordTime: String?, programNo: Long?): Int
+
+    @Query("SELECT name, SUM(weight * repitition) AS totalVolume FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime GROUP BY name ORDER BY null")
+    fun getExerciseVolumes(programNo: Long, recordTime: String): List<ExerciseVolumeModel>
+
     @Insert
     fun insertProgram(programs: ProgramTable): Long
 
@@ -50,21 +63,12 @@ interface ProgramDAO {
     @Delete
     fun deleteExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
 
-    @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
-    fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
-
     @Query("UPDATE programtable SET name = :name WHERE `no` == :programNo")
     fun updateProgramName(name: String, programNo: Long?): Int
 
     @Update
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
 
-    //    @Query("SELECT DISTINCT(recordTime) FROM recordtable WHERE programNo == :programNo ORDER BY recordTime DESC")
-    @Query("SELECT recordTime, SUM(weight) AS totalVolume FROM recordtable WHERE programNo == :programNo  GROUP BY recordTime ORDER BY recordTime DESC")
-    fun getAllRecordsDateByProgramNo(programNo: Long): List<RecordModel>
-
-    @Query("SELECT * FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime")
-    fun getTargetDateTotalVolume(recordTime: String?, programNo: Long?): Int
 
 
 }

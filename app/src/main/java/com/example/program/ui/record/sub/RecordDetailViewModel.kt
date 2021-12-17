@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.program.model.entity.RecordTable
+import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordModel
 import com.example.program.repository.RoomRepository
 import kotlinx.coroutines.Dispatchers
@@ -22,10 +23,14 @@ class RecordDetailViewModel(
     val records: LiveData<MutableList<RecordModel>>
         get() = _records
 
+    private val _exerciseVolumes = MutableLiveData<MutableList<ExerciseVolumeModel>>()
+    val exerciseVolumes: LiveData<MutableList<ExerciseVolumeModel>>
+        get() = _exerciseVolumes
+
     private val TAG = "RecordDetailVmLog"
 
     fun getAllRecordsDateByProgramNo(
-        programNo: Long
+        programNo: Long,
     ) {
         viewModelScope.launch {
             roomRepository.getAllRecordsDateByProgramNo(programNo)
@@ -38,5 +43,23 @@ class RecordDetailViewModel(
                     _records.value = recordDates.toMutableList()
                 }
         }
+    }
+
+    fun getExerciseVolumes(
+        programNo: Long,
+        recordTime: String,
+        success: (List<ExerciseVolumeModel>) -> Unit,
+    ) {
+        viewModelScope.launch {
+            roomRepository.getExerciseVolumes(programNo, recordTime)
+                .flowOn(Dispatchers.IO)
+                .catch { e ->
+                    e.printStackTrace()
+                }
+                .collect { exerciseVolumes ->
+                    success(exerciseVolumes)
+                }
+        }
+
     }
 }

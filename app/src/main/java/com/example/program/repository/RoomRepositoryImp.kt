@@ -6,6 +6,7 @@ import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
+import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordModel
 import com.example.program.util.DateUtil
 import kotlinx.coroutines.flow.Flow
@@ -182,9 +183,23 @@ class RoomRepositoryImp(
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     override fun getTargetDateTotalVolume(programNo: Long?, RecordTime: String?): Flow<Int> {
         return flow {
             val data = programDAO.getTargetDateTotalVolume(RecordTime, programNo)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun getExerciseVolumes(
+        programNo: Long,
+        recordTime: String,
+    ): Flow<List<ExerciseVolumeModel>> {
+        return flow {
+            val data = programDAO.getExerciseVolumes(programNo, recordTime)
             emit(data)
         }
     }

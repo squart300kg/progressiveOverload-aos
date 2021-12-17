@@ -21,6 +21,8 @@ class RecordDetailActivity :
 
     private val recordDetailViewModel: RecordDetailViewModel by viewModel()
 
+    private lateinit var recordsAdapter: RecordsAdapter
+
     private var programNo: Long = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,14 +86,20 @@ class RecordDetailActivity :
 
             rvRecord.apply {
                 setHasFixedSize(true)
-                adapter = RecordsAdapter(this@RecordDetailActivity)
-                { recordTime ->
-                    Intent(this@RecordDetailActivity, OneDayRecordActivity::class.java).apply {
-                        putExtra("programNo", programNo)
-                        putExtra("recordTime", recordTime)
-                        startActivity(this)
-                    }
-                }
+                recordsAdapter = RecordsAdapter(this@RecordDetailActivity,
+                    { recordTime ->
+                        recordDetailViewModel.getExerciseVolumes(programNo, recordTime) { exerciseVolumes ->
+                            recordsAdapter.loadExerciseVolumes(exerciseVolumes)
+                        }
+                    },
+                    { recordTime ->
+                        Intent(this@RecordDetailActivity, OneDayRecordActivity::class.java).apply {
+                            putExtra("programNo", programNo)
+                            putExtra("recordTime", recordTime)
+                            startActivity(this)
+                        }
+                    })
+                adapter = recordsAdapter
             }
 
         }
