@@ -8,9 +8,6 @@
             name="recordItem"
             type="com.example.program.model.model.RecordModel" />
 
-        <variable
-            name="recordVm"
-            type="com.example.program.ui.record.sub.RecordDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,15 +17,24 @@
         android:background="@drawable/border_main">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_total_volume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
-            android:text="@{`총 볼륨 : ` + recordItem.totalVolume + `KG`}"
+            android:text="총 볼륨 : "
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_total_volume_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_total_volume"
             app:layout_constraintTop_toTopOf="parent"
-            overload:text="총 볼륨 : 3500KG" />
+            overload:setVolume="@{recordItem.totalVolume}"
+            overload:text="3,500KG" />
 
         <TextView
             android:id="@+id/tv_date"
@@ -37,7 +43,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
             android:text="@{recordItem.recordTime}"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             overload:text="2021년 10월 28일" />
@@ -50,7 +55,7 @@
             android:background="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_volume_count" />
 
         <LinearLayout
             android:id="@+id/layout_detail_see"
@@ -87,10 +92,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                overload:listitem="@layout/item_exercise_volume"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent"
+                overload:listitem="@layout/item_exercise_volume" />
 
             <TextView
                 android:id="@+id/tv_detail_see_second"

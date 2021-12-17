@@ -80,7 +80,8 @@ class RecordsAdapter(
 
             // 기록 상세 보기
             itemBinding.tvDetailSeeSecond.setOnClickListener {
-                onClickForMoreDetailSee(items[absoluteAdapterPosition].recordTime)
+                onClickForMoreDetailSee(
+                    items[absoluteAdapterPosition].recordTime)
             }
 
             // 접기
@@ -96,9 +97,6 @@ class RecordsAdapter(
                 adapter = exerciseVolumeAdapter
             }
             exerciseVolumeAdapter.loadExerciseVolumes(list)
-
-
-
         }
 
 

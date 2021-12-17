@@ -8,12 +8,9 @@ import com.google.firebase.Timestamp
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 
-@SuppressLint("LongLogTag")
-@BindingAdapter("theWarsOfStar:setText")
-fun TextView.setText(text: String) {
-    val TAG = "BindingAdapter_setTextLog"
-    Log.i(TAG, text)
-    this.text = text?.replace("\\n", "\n")
+@BindingAdapter("overload:setVolume")
+fun TextView.setVolume(volume: Int) {
+    this.text = DecimalFormat("###,###").format(volume)+"KG"
 }
 
 @SuppressLint("LongLogTag")
