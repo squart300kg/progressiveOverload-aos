@@ -18,24 +18,23 @@ class OneDayRecordViewModel(
     private val roomRepository: RoomRepository,
 ) : ViewModel() {
 
-    private val _records = MutableLiveData<MutableList<RecordModel>>()
-    val records: LiveData<MutableList<RecordModel>>
+    private val _records = MutableLiveData<MutableList<RecordTable>>()
+    val records: LiveData<MutableList<RecordTable>>
         get() = _records
 
-    private val TAG = "RecordDetailVmLog"
-
-    fun getAllRecordsDateByProgramNo(
-        programNo: Long
+    fun getOneDayRecord(
+        programNo: Long?,
+        recordTime: String?
     ) {
         viewModelScope.launch {
-            roomRepository.getAllRecordsDateByProgramNo(programNo)
+            roomRepository.getOneDayRecord(programNo, recordTime)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
                     e.printStackTrace()
                 }
-                .collect { recordDates ->
-                    Log.i("recordDates", recordDates.toString())
-                    _records.value = recordDates.toMutableList()
+                .collect { records ->
+                    Log.i("getOneDayRecord", records.toString())
+                    _records.value = records.toMutableList()
                 }
         }
     }

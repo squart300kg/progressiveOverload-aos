@@ -2,16 +2,13 @@ package com.example.program.ui.home.sub
 
 import android.content.Context
 import android.text.InputFilter
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
 import com.example.program.base.BaseViewHolder
-import com.example.program.databinding.ItemRecordExerciseBinding
-import com.example.program.model.entity.ExerciseTypeTable
-import com.example.program.model.entity.RecordTable
+import com.example.program.databinding.ItemWriteRecordBinding
 import com.example.program.model.model.RecordExerciseModel
 import com.example.program.util.InputFilterMinMax
 
@@ -39,7 +36,7 @@ class RecordExerciseAdapter(
             context,
             BR.recordItem,
             parent,
-            R.layout.item_record_exercise
+            R.layout.item_write_record
         )
     }
 
@@ -72,7 +69,7 @@ class RecordExerciseAdapter(
         itemId: Int,
         parent: ViewGroup,
         layoutRes: Int,
-    ) : BaseViewHolder<RecordExerciseModel, ItemRecordExerciseBinding>(itemId, parent, layoutRes) {
+    ) : BaseViewHolder<RecordExerciseModel, ItemWriteRecordBinding>(itemId, parent, layoutRes) {
 
 
         fun initOnClick() {

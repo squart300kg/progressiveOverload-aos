@@ -13,6 +13,7 @@ import com.example.program.ui.home.sub.ExerciseTypeAdapter
 import com.example.program.ui.home.sub.RecordExerciseAdapter
 import com.example.program.ui.record.ProgramAdapter
 import com.example.program.ui.record.sub.ExerciseVolumeAdapter
+import com.example.program.ui.record.sub.OneDayRecordAdapter
 import com.example.program.ui.record.sub.RecordsAdapter
 
 @BindingAdapter("overload:setItems")
@@ -33,6 +34,9 @@ fun <T> RecyclerView.setItems(items: List<T>?) {
             }
             is RecordsAdapter -> {
                 (adapter as RecordsAdapter).loadRecords(items as List<RecordModel>)
+            }
+            is OneDayRecordAdapter -> {
+                (adapter as OneDayRecordAdapter).loadOneDayRecord(items as List<RecordTable>)
             }
         }
     }

@@ -45,5 +45,7 @@ interface RoomRepository {
 
     fun getExerciseVolumes(programNo: Long, recordTime: String): Flow<List<ExerciseVolumeModel>>
 
+    fun getOneDayRecord(programNo: Long?, recordTime: String?): Flow<List<RecordTable>>
+
 
 }

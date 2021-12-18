@@ -6,6 +6,7 @@ import com.example.program.ui.home.sub.RegExerciseTypeViewModel
 import com.example.program.ui.home.sub.SplitSelectionViewModel
 import com.example.program.ui.record.RecordViewModel
 import com.example.program.ui.mypage.MyPageViewModel
+import com.example.program.ui.record.sub.OneDayRecordViewModel
 import com.example.program.ui.record.sub.RecordDetailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -18,4 +19,5 @@ val viewModelModule = module {
     viewModel { SplitSelectionViewModel(get()) }
     viewModel { RecordExerciseViewModel(get()) }
     viewModel { RecordDetailViewModel(get()) }
+    viewModel { OneDayRecordViewModel(get()) }
 }

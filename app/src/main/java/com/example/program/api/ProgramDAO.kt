@@ -36,6 +36,9 @@ interface ProgramDAO {
     @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo AND exerciseTypeNo == :exerciseNo")
     fun getTodayExercisePerformed(recordTime: String?, programNo: Long?, exerciseNo: Long?): List<RecordTable>
 
+    @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo ORDER BY name ASC, setNum ASC")
+    fun getTargetOneDayRecord(recordTime: String?, programNo: Long?): List<RecordTable>
+
     @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
     fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
 

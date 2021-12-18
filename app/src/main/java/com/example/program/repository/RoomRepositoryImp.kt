@@ -19,15 +19,6 @@ class RoomRepositoryImp(
     private val programDAO: ProgramDAO,
 ) : RoomRepository {
 
-//    override fun getFreeLectures(playListId: String, apiKey: String): Flow<YoutubeResponse> {
-//        return flow {
-//            val data = youtubeApi.getFreeLectures(
-//                playListId = playListId,
-//                key = apiKey)
-//            emit(data)
-//        }
-//    }
-
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     override fun insertProgram(program: ProgramTable): Flow<Long> {
@@ -200,6 +191,17 @@ class RoomRepositoryImp(
     ): Flow<List<ExerciseVolumeModel>> {
         return flow {
             val data = programDAO.getExerciseVolumes(programNo, recordTime)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun getOneDayRecord(programNo: Long?, recordTime: String?): Flow<List<RecordTable>> {
+        return flow {
+            val data = programDAO.getTargetOneDayRecord(
+                recordTime,
+                programNo)
             emit(data)
         }
     }
