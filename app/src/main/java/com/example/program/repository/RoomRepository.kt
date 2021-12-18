@@ -15,37 +15,41 @@ interface RoomRepository {
 
 //    fun getFreeLectures(playListId: String, apiKey: String): Flow<YoutubeResponse>
 
-    fun insertProgram(program : ProgramTable) : Flow<Long>
+    fun insertProgram(program: ProgramTable): Flow<Long>
 
-    fun insertExerciseType(exerciseTypeTable : ExerciseTypeTable) : Flow<Long>
+    fun insertExerciseType(exerciseTypeTable: ExerciseTypeTable): Flow<Long>
 
-    fun getAllProgram() : Flow<List<ProgramTable>>
+    fun insertRecord(model: RecordTable): Flow<Long>
 
-    fun getTargetedProgram(targetName : String) : Flow<ProgramTable>
+    fun getAllProgram(): Flow<List<ProgramTable>>
 
-    fun getExercises(programNo: Long?, splitIndex: Int?) : Flow<List<ExerciseTypeModel>>
+    fun getTargetedProgram(targetName: String): Flow<ProgramTable>
+
+    fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeModel>>
 
     fun getExercisePerformedStatuses(programNo: Long?, exerciseNo: Long?): Flow<Int>
 
     fun getTodayExercisePerformed(programNo: Long?, exerciseNo: Long?): Flow<List<RecordTable>>
 
-    fun deleteProgram(programNo: Long?) : Flow<Int>
-
-    fun deleteExercise(exerciseTypeModel: ExerciseTypeModel?) : Flow<Int>
-
-    fun updateProgramName(name: String, programNo: Long?) : Flow<Int>
-
-    fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int>
-
-    fun insertRecord(model: RecordTable): Flow<Long>
-
     fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<RecordModel>>
 
-    fun getTargetDateTotalVolume(programNo: Long?, recordTime : String?) : Flow<Int>
+    fun getTargetDateTotalVolume(programNo: Long?, recordTime: String?): Flow<Int>
 
     fun getExerciseVolumes(programNo: Long, recordTime: String): Flow<List<ExerciseVolumeModel>>
 
-    fun getOneDayRecord(programNo: Long?, recordTime: String?): Flow<List<RecordTable>>
+    fun getOneDayRecord(name : String?, programNo: Long?, recordTime: String?): Flow<List<RecordTable>>
+
+    fun getOneDayRecordName(programNo: Long?, recordTime: String?): Flow<List<String>>
+
+    fun deleteProgram(programNo: Long?): Flow<Int>
+
+    fun deleteExercise(exerciseTypeModel: ExerciseTypeModel?): Flow<Int>
+
+    fun updateProgramName(name: String, programNo: Long?): Flow<Int>
+
+    fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int>
+
+
 
 
 }

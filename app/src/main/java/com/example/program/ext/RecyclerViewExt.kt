@@ -3,16 +3,13 @@ package com.example.program.ext
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.model.entity.ProgramTable
-import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
-import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordExerciseModel
 import com.example.program.model.model.RecordModel
 import com.example.program.ui.home.MainProgramsAdapter
 import com.example.program.ui.home.sub.ExerciseTypeAdapter
 import com.example.program.ui.home.sub.RecordExerciseAdapter
 import com.example.program.ui.record.ProgramAdapter
-import com.example.program.ui.record.sub.ExerciseVolumeAdapter
 import com.example.program.ui.record.sub.OneDayRecordAdapter
 import com.example.program.ui.record.sub.RecordsAdapter
 
@@ -36,7 +33,7 @@ fun <T> RecyclerView.setItems(items: List<T>?) {
                 (adapter as RecordsAdapter).loadRecords(items as List<RecordModel>)
             }
             is OneDayRecordAdapter -> {
-                (adapter as OneDayRecordAdapter).loadOneDayRecord(items as List<RecordTable>)
+                (adapter as OneDayRecordAdapter).loadOneDayRecordName(items as List<String>)
             }
         }
     }

@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="recordItem"
-            type="com.example.program.model.entity.RecordTable" />
+            name="exerciseName"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,123 +27,100 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tv_set_num"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{(recordItem.setNum + 1) + `세트`}"
+                android:layout_margin="17dp"
+                android:text="@{exerciseName}"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                overload:text="1세트" />
+                overload:text="스쿼트" />
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="운동 종목"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_set_num" />
-
-            <TextView
-                android:id="@+id/tv_weight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="중량"
+            <View
+                android:id="@+id/v_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-            <TextView
-                android:id="@+id/tv_repitition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="반복수"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_weight" />
-
-            <TextView
-                android:id="@+id/tv_rpe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="RPE"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_repitition" />
-
-            <TextView
-                android:id="@+id/tv_rest_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="휴식 시간"
+            <LinearLayout
+                android:id="@+id/layout_detail_see"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_rpe" />
+                app:layout_constraintTop_toBottomOf="@id/v_divider">
 
-            <TextView
-                android:id="@+id/et_name"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{recordItem.name.toString()}"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@id/tv_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_name" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:drawableEnd="@mipmap/ic_arrow_down"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:paddingStart="90dp"
+                    android:paddingEnd="90dp"
+                    android:text="자세히 보기"
+                    android:visibility="visible" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/et_weight"
-                android:layout_width="50dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_detail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:backgroundTint="@color/black"
-                android:text="@{recordItem.weight.toString()}"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@id/tv_weight"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_weight" />
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/v_divider">
 
-            <TextView
-                android:id="@+id/et_repitition"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{recordItem.repitition.toString()}"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@id/tv_repitition"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_repitition" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_record_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toTopOf="parent"
+                    overload:listitem="@layout/item_read_detail_record" />
 
-            <TextView
-                android:id="@+id/et_rpe"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{recordItem.rpe.toString()}"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_rpe"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_rpe" />
+                <View
+                    android:id="@+id/v_divider_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_record_detail" />
 
-            <TextView
-                android:id="@+id/et_rest_time"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{recordItem.restTime.toString()}"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_rest_time"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_rest_time" />
+                <LinearLayout
+                    android:id="@+id/layout_fold"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v_divider_second">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:drawableEnd="@mipmap/ic_arrow_up"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:paddingStart="70dp"
+                        android:paddingEnd="70dp"
+                        android:text="접기" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

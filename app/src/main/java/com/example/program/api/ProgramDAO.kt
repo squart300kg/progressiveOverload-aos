@@ -31,13 +31,28 @@ interface ProgramDAO {
     fun getTargetedProgram(targetName: String): ProgramTable
 
     @Query("SELECT COUNT(*) FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
-    fun getTodayExercisesPerformedStatuses(recordTime: String?, programNo: Long?, exerciseNo: Long?): Int
+    fun getTodayExercisesPerformedStatuses(
+        recordTime: String?,
+        programNo: Long?,
+        exerciseNo: Long?,
+    ): Int
 
     @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo AND exerciseTypeNo == :exerciseNo")
-    fun getTodayExercisePerformed(recordTime: String?, programNo: Long?, exerciseNo: Long?): List<RecordTable>
+    fun getTodayExercisePerformed(
+        recordTime: String?,
+        programNo: Long?,
+        exerciseNo: Long?,
+    ): List<RecordTable>
 
-    @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo ORDER BY name ASC, setNum ASC")
-    fun getTargetOneDayRecord(recordTime: String?, programNo: Long?): List<RecordTable>
+    @Query("SELECT * FROM recordtable WHERE name == :name AND recordTime == :recordTime AND programNo == :programNo ORDER BY name ASC, setNum ASC")
+    fun getTargetOneDayRecord(
+        name: String?,
+        recordTime: String?,
+        programNo: Long?,
+    ): List<RecordTable>
+
+    @Query("SELECT name FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo GROUP BY name ORDER BY name ASC")
+    fun getOneDayRecordName(recordTime: String?, programNo: Long?): List<String>
 
     @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
     fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
@@ -50,6 +65,7 @@ interface ProgramDAO {
 
     @Query("SELECT name, SUM(weight * repitition) AS totalVolume FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime GROUP BY name ORDER BY null")
     fun getExerciseVolumes(programNo: Long, recordTime: String): List<ExerciseVolumeModel>
+
 
     @Insert
     fun insertProgram(programs: ProgramTable): Long
@@ -71,7 +87,6 @@ interface ProgramDAO {
 
     @Update
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
-
 
 
 }

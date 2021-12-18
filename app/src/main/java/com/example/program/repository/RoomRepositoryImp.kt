@@ -37,6 +37,15 @@ class RoomRepositoryImp(
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun insertRecord(model: RecordTable): Flow<Long> {
+        return flow {
+            val data = programDAO.insertRecord(model)
+            emit(data)
+        }
+    }
+
     override fun getAllProgram(): Flow<List<ProgramTable>> {
         return flow {
             val data = programDAO.getAllProgram()
@@ -158,15 +167,6 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun insertRecord(model: RecordTable): Flow<Long> {
-        return flow {
-            val data = programDAO.insertRecord(model)
-            emit(data)
-        }
-    }
-
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
     override fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<RecordModel>> {
         return flow {
             val data = programDAO.getAllRecordsDateByProgramNo(programNo)
@@ -197,9 +197,25 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun getOneDayRecord(programNo: Long?, recordTime: String?): Flow<List<RecordTable>> {
+    override fun getOneDayRecord(
+        name: String?,
+        programNo: Long?,
+        recordTime: String?,
+    ): Flow<List<RecordTable>> {
         return flow {
             val data = programDAO.getTargetOneDayRecord(
+                name,
+                recordTime,
+                programNo)
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun getOneDayRecordName(programNo: Long?, recordTime: String?): Flow<List<String>> {
+        return flow {
+            val data = programDAO.getOneDayRecordName(
                 recordTime,
                 programNo)
             emit(data)
