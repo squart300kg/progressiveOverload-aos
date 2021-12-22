@@ -41,6 +41,8 @@ class ProgramAdapter(
 
     override fun getItemCount(): Int = items.size
 
+    override fun getItemViewType(position: Int) = position
+    
     fun loadPrograms(list: List<ProgramTable>) {
         Log.i("loadPrograms", list.toString())
         items.clear()

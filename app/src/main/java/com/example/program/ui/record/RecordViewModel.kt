@@ -17,17 +17,18 @@ import org.koin.java.KoinJavaComponent
 
 class RecordViewModel : ViewModel() {
 
-    private val roomRepository : RoomRepository by KoinJavaComponent.inject(RoomRepository::class.java)
+    private val roomRepository: RoomRepository by KoinJavaComponent.inject(RoomRepository::class.java)
 
     private val _programs = MutableLiveData<MutableList<ProgramTable>>()
     val programs: LiveData<MutableList<ProgramTable>>
         get() = _programs
 
-    fun getAllProgram() {
+    fun getAllProgram(
+    ) {
         viewModelScope.launch {
             roomRepository.getAllProgram()
                 .flowOn(Dispatchers.IO)
-                .catch {  }
+                .catch { }
                 .collect {
                     _programs.value = it.toMutableList()
                     Log.i("getAllProgram", it.toString())
