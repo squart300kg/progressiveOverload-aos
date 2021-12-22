@@ -1,10 +1,10 @@
 package com.example.program.ui.home.sub
 
 import android.os.Bundle
+import android.util.Log
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordExerciseBinding
-import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.util.DateUtil
@@ -18,6 +18,8 @@ class RecordExerciseActivity :
     private lateinit var recordExerciseAdapter: RecordExerciseAdapter
 
     private lateinit var exerciseModel: ExerciseTypeModel
+
+    private var isPerformedExerciseAtLeastOneSet = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,9 @@ class RecordExerciseActivity :
                                 exerciseTypeNo = exerciseModel.no
                             )
                         ) {
+                            Log.i("record", "${exerciseModel.name} success")
                             recordExerciseAdapter.successExercise()
+                            isPerformedExerciseAtLeastOneSet = true
                         }
                     }
                 adapter = recordExerciseAdapter
@@ -58,6 +62,15 @@ class RecordExerciseActivity :
             exerciseModel.no
         ) { recordTable ->
             recordExerciseViewModel.initExercise(exerciseModel, recordTable)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (isPerformedExerciseAtLeastOneSet) {
+            setResult(RESULT_OK)
+            finish()
+        } else {
+            super.onBackPressed()
         }
     }
 

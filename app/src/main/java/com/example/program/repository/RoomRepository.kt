@@ -27,7 +27,7 @@ interface RoomRepository {
 
     fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeModel>>
 
-    fun getExercisePerformedStatuses(programNo: Long?, exerciseNo: Long?): Flow<Int>
+    fun getPerformedSets(programNo: Long?, exerciseNo: Long?): Flow<Int>
 
     fun getTodayExercisePerformed(programNo: Long?, exerciseNo: Long?): Flow<List<RecordTable>>
 

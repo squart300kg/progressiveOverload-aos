@@ -118,12 +118,12 @@ class RoomRepositoryImp(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun getExercisePerformedStatuses(
+    override fun getPerformedSets(
         programNo: Long?,
         exerciseNo: Long?,
     ): Flow<Int> {
         return flow {
-            val data = programDAO.getTodayExercisesPerformedStatuses(
+            val data = programDAO.getPerformedSets(
                 DateUtil.getCurrentDateForRecord(),
                 programNo,
                 exerciseNo

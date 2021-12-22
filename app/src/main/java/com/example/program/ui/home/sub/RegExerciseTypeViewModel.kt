@@ -93,19 +93,19 @@ class RegExerciseTypeViewModel(
         }
     }
 
-    fun getExercisePerformedStatuses(
+    fun getPerformedSets(
         programNo: Long?,
         exerciseNo: Long?,
         success: (statuses: Int) -> Unit,
     ) {
         viewModelScope.launch {
-            roomRepository.getExercisePerformedStatuses(programNo, exerciseNo)
+            roomRepository.getPerformedSets(programNo, exerciseNo)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
                     e.printStackTrace()
                 }
-                .collect { statuses ->
-                    success(statuses)
+                .collect { sets ->
+                    success(sets)
                 }
         }
     }

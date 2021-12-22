@@ -31,7 +31,7 @@ interface ProgramDAO {
     fun getTargetedProgram(targetName: String): ProgramTable
 
     @Query("SELECT COUNT(*) FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
-    fun getTodayExercisesPerformedStatuses(
+    fun getPerformedSets(
         recordTime: String?,
         programNo: Long?,
         exerciseNo: Long?,

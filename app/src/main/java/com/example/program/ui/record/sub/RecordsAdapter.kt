@@ -89,6 +89,8 @@ class RecordsAdapter(
                 itemBinding.layoutDetail.isVisible = false
                 itemBinding.layoutDetailSee.isVisible = true
             }
+
+
         }
 
         fun initExerciseVolumes(list: List<ExerciseVolumeModel>) {

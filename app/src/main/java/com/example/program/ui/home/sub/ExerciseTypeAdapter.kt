@@ -3,14 +3,12 @@ package com.example.program.ui.home.sub
 import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
 import com.example.program.base.BaseViewHolder
 import com.example.program.databinding.ItemExerciseTypeBinding
-import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.model.ExerciseTypeModel
 
 /**
@@ -51,6 +49,8 @@ class ExerciseTypeAdapter(
 
     override fun getItemCount(): Int = items.size
 
+    override fun getItemViewType(position: Int) = position
+
     fun loadExercises(list: List<ExerciseTypeModel>) {
         Log.i("statuses", list.toString())
         items.clear()
@@ -88,9 +88,8 @@ class ExerciseTypeAdapter(
         }
 
         fun checkIsExercisePerformed() {
-            Log.i("statuses", "before - adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
             if (items[absoluteAdapterPosition].isPerformed) {
-                Log.i("statuses", "after - adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
+                Log.i("statuses", "adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
 
                 itemView.isSelected = true
             }

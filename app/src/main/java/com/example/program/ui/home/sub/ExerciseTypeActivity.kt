@@ -1,9 +1,11 @@
 package com.example.program.ui.home.sub
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.program.R
@@ -34,6 +36,33 @@ class ExerciseTypeActivity :
     private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
     private var performedExerciseCount = 0
+
+    // 운동 종류 등록을 마친 후,
+    private val onResultForExerciseReg = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result ->
+        if (result?.resultCode == Activity.RESULT_OK) {
+            viewModel.getExercises(
+                programNo = programNo,
+                splitIndex = selectedSplitIndex
+            ) { exercises ->
+                exercisesSize = exercises.size
+                if (exercisesSize > 0)
+                    dataBinding.tvRegSuccess.setBackgroundColor(ContextCompat.getColor(this,
+                        R.color.black))
+            }
+
+        }
+    }
+
+    // 운동 기록을 마친 후,
+    private val onResultForExerciseRecord = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result ->
+        if (result?.resultCode == Activity.RESULT_OK) {
+            initPerformedExercises()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +104,7 @@ class ExerciseTypeActivity :
                     putExtra("selectedSplitIndex", selectedSplitIndex)
                     putExtra("splitText", splitText)
                     putExtra("programNo", programNo)
-                    startActivity(this)
+                    onResultForExerciseReg.launch(this)
                 }
             }
 
@@ -98,7 +127,7 @@ class ExerciseTypeActivity :
                         Intent(this@ExerciseTypeActivity,
                             RecordExerciseActivity::class.java).apply {
                             putExtra("exTypeModel", it)
-                            startActivity(this)
+                            onResultForExerciseRecord.launch(this)
                         }
                     }
                 )
@@ -127,45 +156,40 @@ class ExerciseTypeActivity :
                 }
             }
         }
+
+        initPerformedExercises()
+
     }
 
-    override fun onStart() {
-        super.onStart()
+    private fun initPerformedExercises() {
         viewModel.getExercises(
             programNo = programNo,
             splitIndex = selectedSplitIndex
         ) { exercises ->
-            Log.i("statuses", "total ex : ${exercises.size}")
-
-            // 운동 등록할 때,
-            exercisesSize = exercises.size
-            if (exercisesSize > 0)
-                dataBinding.tvRegSuccess.setBackgroundColor(ContextCompat.getColor(this,
-                    R.color.black))
-
             // 운동 기록을 마치고 돌아올 때,
             if (isIntentToExercise) {
 
                 val performedExerciseIndexes = mutableListOf<Int>()
                 for (index in exercises.indices) {
-                    viewModel.getExercisePerformedStatuses(
+                    viewModel.getPerformedSets(
                         programNo = exercises[index].programNo,
                         exerciseNo = exercises[index].no
-                    ) { statuses ->
+                    ) { sets ->
                         Log.i("statuses", "==== ${exercises[index].no}번째 ex ===")
                         Log.i("statuses", "total set : ${exercises[index].setNum!!}")
-                        Log.i("statuses", "performed set : $statuses")
+                        Log.i("statuses", "performed set : $sets")
 
                         performedExerciseCount++
 
                         // 모든 세트를 마쳤다면?
-                        if (viewModel.exercises.value?.get(index)?.setNum!! <= statuses) {
+                        if (viewModel.exercises.value?.get(index)?.setNum!! <= sets) {
                             Log.i("statuses", "success Exercise!!, - $index")
                             performedExerciseIndexes.add(index)
                         }
 
                         // 마지막일 때,
                         if (performedExerciseCount == exercises.size) {
+                            performedExerciseIndexes.sortBy { it }
                             Log.i("statuses", "viewModel들어가기 직전, indexe : $index, exSize : ${exercises.size}, count ; $performedExerciseCount")
                             Log.i("statuses", "viewModel들어가기 직전, indexes : $performedExerciseIndexes")
                             viewModel.initPerformedExerciesSetTrue(performedExerciseIndexes) {

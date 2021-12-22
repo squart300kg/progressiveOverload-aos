@@ -68,6 +68,7 @@ class RegExerciseTypeDetailActivity :
                         "운동 등록을 완료하였습니다!",
                         Toast.LENGTH_LONG
                     ).show()
+                    setResult(RESULT_OK)
                     finish()
                 }
             }
