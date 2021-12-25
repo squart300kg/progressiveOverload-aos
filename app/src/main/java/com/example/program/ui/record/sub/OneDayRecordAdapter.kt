@@ -9,13 +9,13 @@ import com.example.program.R
 import com.example.program.base.BaseViewHolder
 import com.example.program.databinding.ItemReadRecordBinding
 import com.example.program.model.entity.RecordTable
-import com.example.program.model.model.ExerciseVolumeModel
 
 /**
  * Created by sangyoon on 2021/07/27
  */
 class OneDayRecordAdapter(
-    val onClick: (String) -> Unit,
+    val onClickForDetailSee: (String) -> Unit,
+    val onClickForFold: (Int) -> Unit,
 ) : RecyclerView.Adapter<OneDayRecordAdapter.OneDayRecordViewHolder>() {
 
     private val items: MutableList<String> = mutableListOf()
@@ -71,12 +71,14 @@ class OneDayRecordAdapter(
                 oneDayRecordViewHolder = this
 
                 // 클릭 이벤트
-                onClick(items[absoluteAdapterPosition])
+                onClickForDetailSee(items[absoluteAdapterPosition])
             }
 
+            // 접기
             itemBinding.layoutFold.setOnClickListener {
                 itemBinding.layoutDetail.isVisible = false
                 itemBinding.layoutDetailSee.isVisible = true
+                onClickForFold(absoluteAdapterPosition)
             }
         }
 

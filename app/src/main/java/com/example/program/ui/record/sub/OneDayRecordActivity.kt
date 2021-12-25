@@ -36,27 +36,11 @@ class OneDayRecordActivity :
 
             gestureDetector = GestureDetector(this@OneDayRecordActivity,
                 object : GestureDetector.OnGestureListener {
-                    override fun onDown(p0: MotionEvent?): Boolean {
-                        return true
-                    }
-
-                    override fun onShowPress(p0: MotionEvent?) { }
-
-                    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
-                        return true
-                    }
-
-                    override fun onScroll(
-                        e1: MotionEvent?,
-                        e2: MotionEvent?,
-                        distanceX: Float,
-                        distanceY: Float,
-                    ): Boolean {
-                        return true
-                    }
-
+                    override fun onDown(p0: MotionEvent?) = true
                     override fun onLongPress(p0: MotionEvent?) { }
-
+                    override fun onShowPress(p0: MotionEvent?) { }
+                    override fun onSingleTapUp(p0: MotionEvent?) = true
+                    override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float, ) = true
                     override fun onFling(
                         e1: MotionEvent?,
                         e2: MotionEvent?,
@@ -68,31 +52,32 @@ class OneDayRecordActivity :
                         var inclincation = 0.0f
                         if (e1 != null && e2 != null) {
                             inclincation = Math.abs((e2.y - e1.y) / (e2.x - e1.x))
-                        }
 
-                        Log.i("gesture",
-                            "onFling호출\n " +
-                                    "e1(x, y) : (${e1?.x}, ${e1?.y})\n " +
-                                    "e2(x, y) : (${e2?.x}, ${e2?.y})\n " +
-                                    "inclincation : $inclincation\n " +
-                                    "distance(X, Y) : ($velocityX, $velocityY)")
+                            Log.i("gesture",
+                                "onFling호출\n " +
+                                        "e1(x, y) : (${e1.x}, ${e1.y})\n " +
+                                        "e2(x, y) : (${e2.x}, ${e2.y})\n " +
+                                        "inclincation : $inclincation\n " +
+                                        "distance(X, Y) : ($velocityX, $velocityY)")
 
-                        // 기울기가 1/2보다 작을 경우만 옆으로 스크롤
-                        if (inclincation < 0.5) {
-                            if (velocityX > 0) {
-                                goPrevious()
-                            } else {
-                                goNext()
+                            // 기울기가 1/2보다ㅁ 작을 경우만 옆으로 스크롤
+                            if (inclincation < 0.5) {
+                                if (velocityX > 0) {
+                                    goPrevious()
+                                } else {
+                                    goNext()
+                                }
                             }
                         }
+
                         return true
                     }
                 })
 
-            rvOneDayRecord.setOnTouchListener { view, event ->
-                gestureDetector.onTouchEvent(event)
-                true
-            }
+//            rvOneDayRecord.setOnTouchListener { view, event ->
+//                gestureDetector.onTouchEvent(event)
+//                true
+//            }
 
             tvGoPrevious.setOnClickListener {
                 goPrevious()
@@ -104,20 +89,20 @@ class OneDayRecordActivity :
 
             rvOneDayRecord.apply {
                 setHasFixedSize(true)
-                oneDayRecordAdapter = OneDayRecordAdapter()
-                { name ->
-                    oneDayRecordViewModel.getOneDayRecord(name, programNo, recordTime) { records ->
-                        oneDayRecordAdapter.loadOneDayRecordDetail(records)
+                oneDayRecordAdapter = OneDayRecordAdapter(
+                    { name -> // 자세히보기
+                        oneDayRecordViewModel.getOneDayRecord(name, programNo, recordTime) { records ->
+                            oneDayRecordAdapter.loadOneDayRecordDetail(records)
+                        }
+                    },
+                    { position -> // 접기
+                        scrollToPosition(position)
                     }
-                }
+                )
                 adapter = oneDayRecordAdapter
-
             }
         }
-
         oneDayRecordViewModel.getOneDayRecordName(programNo, recordTime)
-
-
     }
 
     private fun goPrevious() {

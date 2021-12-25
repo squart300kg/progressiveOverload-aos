@@ -87,17 +87,20 @@ class RecordDetailActivity :
             rvRecord.apply {
                 setHasFixedSize(true)
                 recordsAdapter = RecordsAdapter(this@RecordDetailActivity,
-                    { recordTime ->
+                    { recordTime -> // 자세히 보기
                         recordDetailViewModel.getExerciseVolumes(programNo, recordTime) { exerciseVolumes ->
                             recordsAdapter.loadExerciseVolumes(exerciseVolumes)
                         }
                     },
-                    { recordTime ->
+                    { recordTime -> // 기록 상세 보기
                         Intent(this@RecordDetailActivity, OneDayRecordActivity::class.java).apply {
                             putExtra("programNo", programNo)
                             putExtra("recordTime", recordTime)
                             startActivity(this)
                         }
+                    },
+                    { position -> // 접기
+                        scrollToPosition(position)
                     })
                 adapter = recordsAdapter
             }

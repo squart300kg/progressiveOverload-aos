@@ -19,6 +19,7 @@ class RecordsAdapter(
     val context: Context,
     val onClickForDetailSee: (String) -> Unit,
     val onClickForMoreDetailSee: (String) -> Unit,
+    val onClickForFold: (Int) -> Unit,
 ) : RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
 
     private val items: MutableList<RecordModel> = mutableListOf()
@@ -88,6 +89,7 @@ class RecordsAdapter(
             itemBinding.layoutFold.setOnClickListener {
                 itemBinding.layoutDetail.isVisible = false
                 itemBinding.layoutDetailSee.isVisible = true
+                onClickForFold(absoluteAdapterPosition)
             }
 
 
