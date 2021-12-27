@@ -1,7 +1,10 @@
 package com.example.program.ui.home.sub
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordExerciseBinding
@@ -18,6 +21,7 @@ class RecordExerciseActivity :
     private lateinit var recordExerciseAdapter: RecordExerciseAdapter
 
     private lateinit var exerciseModel: ExerciseTypeModel
+    private var targetedDate: String? = null
 
     private var isPerformedExerciseAtLeastOneSet = false
 
@@ -25,9 +29,23 @@ class RecordExerciseActivity :
         super.onCreate(savedInstanceState)
 
         exerciseModel = intent.getSerializableExtra("exTypeModel") as ExerciseTypeModel
+        targetedDate = intent.getStringExtra("targetedDate")
+
+        Log.i("getTargetDate", "onCreate : $targetedDate")
+
 
         binding {
             recordExVm = recordExerciseViewModel
+
+            tvGoPrevious.setOnClickListener {
+                goPrevious()
+            }
+
+            tvGoNext.setOnClickListener {
+                goNext()
+            }
+
+            tvDate.text = targetedDate
 
             rvRecordEx.apply {
                 setHasFixedSize(true)
@@ -57,11 +75,80 @@ class RecordExerciseActivity :
             }
         }
 
-        recordExerciseViewModel.getTodayExercisePerformed(
+        recordExerciseViewModel.getTargetedExercisePerformed(
             exerciseModel.programNo,
-            exerciseModel.no
+            exerciseModel.no,
+            targetedDate
         ) { recordTable ->
             recordExerciseViewModel.initExercise(exerciseModel, recordTable)
+        }
+
+        recordExerciseViewModel.getTargetedAllDate(exerciseModel.programNo, exerciseModel.no)
+
+        recordExerciseViewModel.getPreviousDate(
+            exerciseModel.programNo,
+            exerciseModel.no,
+            targetedDate
+        ) { previousDate ->
+            if (previousDate == null && targetedDate != DateUtil.getCurrentDateForRecord())
+                dataBinding.tvGoPrevious.isVisible = false
+        }
+
+        recordExerciseViewModel.getNextDate(
+            exerciseModel.programNo,
+            exerciseModel.no,
+            targetedDate
+        ) { nextDate ->
+            if (nextDate == null && targetedDate == DateUtil.getCurrentDateForRecord())
+                dataBinding.tvGoNext.isVisible = false
+        }
+    }
+
+    private fun goNext() {
+        recordExerciseViewModel.getNextDate(
+            exerciseModel.programNo,
+            exerciseModel.no,
+            targetedDate
+        ) { nextDate ->
+            if (nextDate == null) {
+                if (targetedDate != DateUtil.getCurrentDateForRecord()) {
+                    Intent(this, RecordExerciseActivity::class.java).apply {
+                        putExtra("exTypeModel", exerciseModel)
+                        putExtra("targetedDate", DateUtil.getCurrentDateForRecord())
+                        startActivity(this)
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                        finish()
+                    }
+                }
+            } else {
+                Intent(this, RecordExerciseActivity::class.java).apply {
+                    putExtra("exTypeModel", exerciseModel)
+                    putExtra("targetedDate", nextDate)
+                    startActivity(this)
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                }
+            }
+        }
+    }
+
+    private fun goPrevious() {
+        recordExerciseViewModel.getPreviousDate(
+            exerciseModel.programNo,
+            exerciseModel.no,
+            targetedDate
+        ) { previousDate ->
+            if (previousDate == null) {
+                Toast.makeText(this, "이전 운동 기록이 없습니다!", Toast.LENGTH_SHORT).show()
+            } else {
+                Intent(this, RecordExerciseActivity::class.java).apply {
+                    putExtra("exTypeModel", exerciseModel)
+                    putExtra("targetedDate", previousDate)
+                    startActivity(this)
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                    finish()
+                }
+            }
         }
     }
 

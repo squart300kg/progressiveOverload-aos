@@ -13,6 +13,7 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeBinding
 import com.example.program.ui.dialog.CancelDialog
 import com.example.program.ui.dialog.RegisterDialog
+import com.example.program.util.DateUtil
 import com.google.android.material.tabs.TabLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -127,6 +128,7 @@ class ExerciseTypeActivity :
                         Intent(this@ExerciseTypeActivity,
                             RecordExerciseActivity::class.java).apply {
                             putExtra("exTypeModel", it)
+                            putExtra("targetedDate", DateUtil.getCurrentDateForRecord())
                             onResultForExerciseRecord.launch(this)
                         }
                     }

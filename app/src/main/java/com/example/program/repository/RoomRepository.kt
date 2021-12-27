@@ -29,7 +29,7 @@ interface RoomRepository {
 
     fun getPerformedSets(programNo: Long?, exerciseNo: Long?): Flow<Int>
 
-    fun getTodayExercisePerformed(programNo: Long?, exerciseNo: Long?): Flow<List<RecordTable>>
+    fun getTargetedExercisePerformed(programNo: Long?, exerciseNo: Long?, targetedDate: String?): Flow<List<RecordTable>>
 
     fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<RecordModel>>
 
@@ -49,7 +49,11 @@ interface RoomRepository {
 
     fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int>
 
+    fun getTargetedAllDate(programNo: Long?, exerciseNo: Long?): Flow<List<String>>
 
+    fun getPreviousDate(programNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): Flow<String>
+
+    fun getNextDate(targetedProgramNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): Flow<String>
 
 
 }

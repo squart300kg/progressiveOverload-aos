@@ -38,11 +38,20 @@ interface ProgramDAO {
     ): Int
 
     @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo AND exerciseTypeNo == :exerciseNo")
-    fun getTodayExercisePerformed(
+    fun getTargetedExercisePerformed(
         recordTime: String?,
         programNo: Long?,
         exerciseNo: Long?,
     ): List<RecordTable>
+
+    @Query("SELECT DISTINCT(recordTime) FROM recordtable WHERE programNo == :programNo AND exerciseTypeNo == :exerciseNo ORDER BY recordTime DESC")
+    fun getTargetedAllDate(programNo: Long?, exerciseNo: Long?): List<String>
+
+    @Query("SELECT MAX(recordTime) FROM recordtable WHERE  programNo == :targetedProgramNo AND exerciseTypeNo == :targetedExerciseNo AND recordTime < :targetedDate")
+    fun getPreviousDate(targetedProgramNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): String
+
+    @Query("SELECT MIN(recordTime) FROM recordtable WHERE  programNo == :targetedProgramNo AND exerciseTypeNo == :targetedExerciseNo AND recordTime > :targetedDate")
+    fun getNextDate(targetedProgramNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): String
 
     @Query("SELECT * FROM recordtable WHERE name == :name AND recordTime == :recordTime AND programNo == :programNo ORDER BY name ASC, setNum ASC")
     fun getTargetOneDayRecord(
@@ -65,7 +74,6 @@ interface ProgramDAO {
 
     @Query("SELECT name, SUM(weight * repitition) AS totalVolume FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime GROUP BY name ORDER BY null")
     fun getExerciseVolumes(programNo: Long, recordTime: String): List<ExerciseVolumeModel>
-
 
     @Insert
     fun insertProgram(programs: ProgramTable): Long

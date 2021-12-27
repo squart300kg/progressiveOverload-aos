@@ -15,7 +15,7 @@ object DateUtil {
         return result
     }
 
-    fun getCurrentDateForRecord(): String? {
+    fun getCurrentDateForRecord(): String {
         val formmat = SimpleDateFormat(outputPatternForRecord, Locale.getDefault())
         val date = Date(System.currentTimeMillis())
         val result = formmat.format(date)

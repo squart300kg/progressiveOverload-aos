@@ -13,7 +13,8 @@ import com.example.program.model.entity.RecordTable
 /**
  * Created by sangyoon on 2021/07/27
  */
-class OneDayRecordDetailAdapter : RecyclerView.Adapter<OneDayRecordDetailAdapter.OneDayRecordViewHolder>() {
+class OneDayRecordDetailAdapter :
+    RecyclerView.Adapter<OneDayRecordDetailAdapter.OneDayRecordViewHolder>() {
 
     private val items: MutableList<RecordTable> = mutableListOf()
 
