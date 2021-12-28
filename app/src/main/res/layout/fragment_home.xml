@@ -4,6 +4,7 @@
     xmlns:overload="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="homeVm"
             type="com.example.program.ui.home.HomeViewModel" />
@@ -39,11 +40,12 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical"
-                    overload:setItems="@{homeVm.programs}"
+                    android:paddingBottom="?attr/actionBarSize"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/layout_add_program"
-                    overload:listitem="@layout/item_program" />
+                    overload:listitem="@layout/item_program"
+                    overload:setItems="@{homeVm.programs}" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

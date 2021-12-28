@@ -7,6 +7,7 @@ import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordDetailBinding
 import com.example.program.util.DateUtil
+import com.example.program.util.MyFormatter
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
@@ -35,14 +36,14 @@ class RecordDetailActivity :
             recordDetailVm = recordDetailViewModel
 
             chart.apply {
-                val entries = arrayListOf(
-                    Entry(1f, 1f),
-                    Entry(2f, 2f),
-                    Entry(3f, 0f),
-                    Entry(4f, 4f),
-                    Entry(5f, 3f),
-                )
-                val lineDateSet = LineDataSet(entries, "속성명1").apply {
+                val entries = arrayListOf<Entry>()
+                for (index in 0 until 100) {
+                    entries.add(
+                        Entry(index.toFloat(), index.toFloat())
+                    )
+                }
+
+                LineDataSet(entries, "속성명1").apply {
                     lineWidth = 2f
                     circleRadius = 6f
                     setCircleColor(Color.parseColor("#FFA1B4DC"))
@@ -53,32 +54,33 @@ class RecordDetailActivity :
                     setDrawHorizontalHighlightIndicator(false)
                     setDrawHighlightIndicators(false)
                     setDrawValues(false)
+
+                    data = LineData(this)
                 }
 
-                val lineData = LineData(lineDateSet)
-                data = lineData
+                xAxis.apply {
+                    position = XAxis.XAxisPosition.BOTTOM
+                    textColor = Color.BLACK
+                    valueFormatter = MyFormatter()
+                    enableGridDashedLine(8f, 24f, 0f)
+                }
 
-                val xAxis: XAxis = xAxis
-                xAxis.position = XAxis.XAxisPosition.BOTTOM
-                xAxis.textColor = Color.BLACK
-                xAxis.enableGridDashedLine(8f, 24f, 0f)
+                axisLeft.apply {
+                    textColor = Color.BLACK
+                }
 
-                val yLAxis: YAxis = axisLeft
-                yLAxis.textColor = Color.BLACK
+                axisRight.apply {
+                    setDrawLabels(false)
+                    setDrawAxisLine(false)
+                    setDrawGridLines(false)
+                }
 
-                val yRAxis: YAxis = axisRight
-                yRAxis.setDrawLabels(false)
-                yRAxis.setDrawAxisLine(false)
-                yRAxis.setDrawGridLines(false)
+                description.text = "hello~!!"
 
-                val description = Description()
-                description.text = ""
-
-                isDoubleTapToZoomEnabled = false;
-                setDrawGridBackground(false);
-                setDescription(description);
+                isDoubleTapToZoomEnabled = false
+                setDrawGridBackground(false)
                 animateY(2000, Easing.EasingOption.EaseInCubic);
-                invalidate();
+                invalidate()
 
 //                val marker = RecordMarkerView(this@RecordDetailActivity, R.layout.layout_graph_marker)
 //                marker.chartView = chart
