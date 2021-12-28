@@ -6,9 +6,12 @@ import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityOneDayRecordBinding
+import com.example.program.ui.home.sub.RecordExerciseActivity
+import com.example.program.util.DateUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OneDayRecordActivity :
@@ -87,6 +90,8 @@ class OneDayRecordActivity :
                 goNext()
             }
 
+            tvDate.text = recordTime
+
             rvOneDayRecord.apply {
                 setHasFixedSize(true)
                 oneDayRecordAdapter = OneDayRecordAdapter(
@@ -103,27 +108,57 @@ class OneDayRecordActivity :
             }
         }
         oneDayRecordViewModel.getOneDayRecordName(programNo, recordTime)
+
+        oneDayRecordViewModel.getPreviousDate(
+            programNo,
+            recordTime
+        ) { previousDate ->
+            if (previousDate == null)
+                dataBinding.tvGoPrevious.isVisible = false
+            else
+                dataBinding.tvGoPrevious.isVisible = true
+        }
+
+        oneDayRecordViewModel.getNextDate(
+            programNo,
+            recordTime
+        ) { nextDate ->
+            if (nextDate == null)
+                dataBinding.tvGoNext.isVisible = false
+            else
+                dataBinding.tvGoNext.isVisible = true
+        }
+
+
     }
 
     private fun goPrevious() {
-        Toast.makeText(this, "이전", Toast.LENGTH_LONG).show()
-        Intent(this@OneDayRecordActivity, OneDayRecordActivity::class.java).apply {
-            putExtra("programNo", programNo)
-            putExtra("recordTime", recordTime)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
-            finish()
+        oneDayRecordViewModel.getPreviousDate(
+            programNo,
+            recordTime
+        ) { previousDate ->
+            Intent(this, OneDayRecordActivity::class.java).apply {
+                putExtra("programNo", programNo)
+                putExtra("recordTime", previousDate)
+                startActivity(this)
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                finish()
+            }
         }
     }
 
     private fun goNext() {
-        Toast.makeText(this, "다음", Toast.LENGTH_LONG).show()
-        Intent(this@OneDayRecordActivity, OneDayRecordActivity::class.java).apply {
-            putExtra("programNo", programNo)
-            putExtra("recordTime", recordTime)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-            finish()
+        oneDayRecordViewModel.getNextDate(
+            programNo,
+            recordTime
+        ) { previousDate ->
+            Intent(this, OneDayRecordActivity::class.java).apply {
+                putExtra("programNo", programNo)
+                putExtra("recordTime", previousDate)
+                startActivity(this)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                finish()
+            }
         }
     }
 }

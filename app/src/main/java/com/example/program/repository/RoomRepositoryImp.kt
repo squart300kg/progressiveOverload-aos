@@ -170,6 +170,13 @@ class RoomRepositoryImp(
         }
     }
 
+    override fun getPreviousDate(targetedProgramNo: Long?, targetedDate: String?): Flow<String> {
+        return flow {
+            val data = programDAO.getPreviousDate(targetedProgramNo, targetedDate)
+            emit(data)
+        }
+    }
+
     override fun getNextDate(
         targetedProgramNo: Long?,
         targetedExerciseNo: Long?,
@@ -177,6 +184,13 @@ class RoomRepositoryImp(
     ): Flow<String> {
         return flow {
             val data = programDAO.getNextDate(targetedProgramNo, targetedExerciseNo, targetedDate)
+            emit(data)
+        }
+    }
+
+    override fun getNextDate(targetedProgramNo: Long?, targetedDate: String?): Flow<String> {
+        return flow {
+            val data = programDAO.getNextDate(targetedProgramNo, targetedDate)
             emit(data)
         }
     }

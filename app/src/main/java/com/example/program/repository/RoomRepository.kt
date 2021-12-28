@@ -53,7 +53,11 @@ interface RoomRepository {
 
     fun getPreviousDate(programNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): Flow<String>
 
+    fun getPreviousDate(programNo: Long?, targetedDate: String?): Flow<String>
+
     fun getNextDate(targetedProgramNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): Flow<String>
+
+    fun getNextDate(targetedProgramNo: Long?, targetedDate: String?): Flow<String>
 
 
 }

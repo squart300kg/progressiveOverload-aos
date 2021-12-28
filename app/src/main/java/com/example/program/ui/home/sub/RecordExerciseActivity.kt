@@ -90,8 +90,10 @@ class RecordExerciseActivity :
             exerciseModel.no,
             targetedDate
         ) { previousDate ->
-            if (previousDate == null && targetedDate != DateUtil.getCurrentDateForRecord())
+            if (previousDate == null)
                 dataBinding.tvGoPrevious.isVisible = false
+            else
+                dataBinding.tvGoPrevious.isVisible = true
         }
 
         recordExerciseViewModel.getNextDate(
@@ -101,6 +103,8 @@ class RecordExerciseActivity :
         ) { nextDate ->
             if (nextDate == null && targetedDate == DateUtil.getCurrentDateForRecord())
                 dataBinding.tvGoNext.isVisible = false
+            else
+                dataBinding.tvGoNext.isVisible = true
         }
     }
 

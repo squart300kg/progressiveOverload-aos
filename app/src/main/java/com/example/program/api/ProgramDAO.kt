@@ -50,8 +50,14 @@ interface ProgramDAO {
     @Query("SELECT MAX(recordTime) FROM recordtable WHERE  programNo == :targetedProgramNo AND exerciseTypeNo == :targetedExerciseNo AND recordTime < :targetedDate")
     fun getPreviousDate(targetedProgramNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): String
 
+    @Query("SELECT MAX(recordTime) FROM recordtable WHERE  programNo == :targetedProgramNo AND recordTime < :targetedDate")
+    fun getPreviousDate(targetedProgramNo: Long?, targetedDate: String?): String
+
     @Query("SELECT MIN(recordTime) FROM recordtable WHERE  programNo == :targetedProgramNo AND exerciseTypeNo == :targetedExerciseNo AND recordTime > :targetedDate")
     fun getNextDate(targetedProgramNo: Long?, targetedExerciseNo: Long?, targetedDate: String?): String
+
+    @Query("SELECT MIN(recordTime) FROM recordtable WHERE  programNo == :targetedProgramNo AND recordTime > :targetedDate")
+    fun getNextDate(targetedProgramNo: Long?, targetedDate: String?): String
 
     @Query("SELECT * FROM recordtable WHERE name == :name AND recordTime == :recordTime AND programNo == :programNo ORDER BY name ASC, setNum ASC")
     fun getTargetOneDayRecord(

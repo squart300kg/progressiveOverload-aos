@@ -25,6 +25,7 @@
             android:gravity="center"
             android:drawableTint="@color/grey"
             android:text="이전 기록"
+            android:visibility="gone"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,6 +51,7 @@
             android:drawableTint="@color/grey"
             android:drawablePadding="5dp"
             android:gravity="center"
+            android:visibility="gone"
             android:text="이후 기록"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

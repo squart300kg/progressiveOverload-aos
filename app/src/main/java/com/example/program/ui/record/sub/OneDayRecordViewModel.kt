@@ -63,4 +63,36 @@ class OneDayRecordViewModel(
                 }
         }
     }
+
+    fun getPreviousDate(
+        targetedProgramNo: Long?,
+        targetedDate: String?,
+        success: (String?) -> Unit = {}
+    ) {
+        viewModelScope.launch {
+            roomRepository.getPreviousDate(targetedProgramNo, targetedDate)
+                .flowOn(Dispatchers.IO)
+                .catch { }
+                .collect { date ->
+                    Log.i("getTargetDate", "getPrevious $date")
+                    success(date)
+                }
+        }
+    }
+
+    fun getNextDate(
+        targetedProgramNo: Long?,
+        targetedDate: String?,
+        success: (String?) -> Unit = {}
+    ) {
+        viewModelScope.launch {
+            roomRepository.getNextDate(targetedProgramNo, targetedDate)
+                .flowOn(Dispatchers.IO)
+                .catch { }
+                .collect { date ->
+                    Log.i("getTargetDate", "getNext $date")
+                    success(date)
+                }
+        }
+    }
 }
