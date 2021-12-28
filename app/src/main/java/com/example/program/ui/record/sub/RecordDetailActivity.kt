@@ -37,7 +37,7 @@ class RecordDetailActivity :
 
             chart.apply {
                 val entries = arrayListOf<Entry>()
-                for (index in 0 until 100) {
+                for (index in 0 until 10) {
                     entries.add(
                         Entry(index.toFloat(), index.toFloat())
                     )
@@ -62,6 +62,7 @@ class RecordDetailActivity :
                     position = XAxis.XAxisPosition.BOTTOM
                     textColor = Color.BLACK
                     valueFormatter = MyFormatter()
+                    granularity = 1f
                     enableGridDashedLine(8f, 24f, 0f)
                 }
 
