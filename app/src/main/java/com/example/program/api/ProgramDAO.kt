@@ -14,16 +14,6 @@ import com.example.program.model.model.RecordModel
 @Dao
 interface ProgramDAO {
 
-//    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
-//    fun loadAllByIds(userIds: IntArray): List<User>
-
-//    @Query("SELECT * FROM user WHERE first_name LIKE :first AND " +
-//            "last_name LIKE :last LIMIT 1")
-//    fun findByName(first: String, last: String): User
-
-    //    @Delete
-//    fun deleteExerciseType(exerciseTypeTable: ExerciseTypeTable)
-
     @Query("SELECT * FROM programtable ORDER BY `no` DESC")
     fun getAllProgram(): List<ProgramTable>
 

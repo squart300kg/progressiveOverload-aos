@@ -16,7 +16,8 @@ import com.example.program.model.entity.ProgramTable
  * Created by sangyoon on 2021/07/27
  */
 class MainProgramsAdapter(
-    val startRegistration : (ProgramTable) -> Unit
+    val startRegistration : (ProgramTable) -> Unit,
+    val onClickMenu : (ProgramTable) -> Unit
 ): RecyclerView.Adapter<MainProgramsAdapter.ProgramViewHolder>() {
 
     private val items: MutableList<ProgramTable> = mutableListOf()
@@ -36,9 +37,8 @@ class MainProgramsAdapter(
     override fun onBindViewHolder(holder: ProgramViewHolder, position: Int) {
         holder.bindItem(items[position])
 
-        holder.itemView.setOnClickListener {
-            startRegistration(items[position])
-        }
+        holder.initOnClick()
+
     }
 
     fun loadPrograms(list: List<ProgramTable>) {
@@ -55,6 +55,16 @@ class MainProgramsAdapter(
         parent: ViewGroup,
         layoutRes: Int
     ): BaseViewHolder<ProgramTable, ItemProgramBinding>(itemId, parent, layoutRes) {
+        fun initOnClick() {
+            itemView.setOnClickListener {
+                startRegistration(items[absoluteAdapterPosition])
+            }
+
+            itemBinding.ivMenu.setOnClickListener {
+                onClickMenu(items[absoluteAdapterPosition])
+            }
+
+        }
 
     }
 

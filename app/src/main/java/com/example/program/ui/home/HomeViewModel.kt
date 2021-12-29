@@ -11,12 +11,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
 class HomeViewModel : BaseViewModel() {
 
-    private val roomRepository : RoomRepository by inject(RoomRepository::class.java)
+    private val roomRepository: RoomRepository by inject(RoomRepository::class.java)
 
     private val _programs = MutableLiveData<MutableList<ProgramTable>>()
     val programs: LiveData<MutableList<ProgramTable>>
@@ -28,7 +29,7 @@ class HomeViewModel : BaseViewModel() {
         viewModelScope.launch {
             roomRepository.getAllProgram()
                 .flowOn(Dispatchers.IO)
-                .catch {  }
+                .catch { }
                 .collect {
                     _programs.value = it.toMutableList()
                     Log.i("getAllProgram", it.toString())
@@ -36,5 +37,21 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-
+    fun deleteProgram(
+        programNo: Long,
+        success: () -> Unit,
+    ) {
+        viewModelScope.launch {
+            roomRepository.deleteProgram(programNo)
+                .flowOn(Dispatchers.IO)
+                .catch { }
+                .onCompletion {
+                    Log.i("deleteProgram", "deleteSuccess")
+                    success()
+                }
+                .collect {
+                    Log.i("deleteProgram", it.toString())
+                }
+        }
+    }
 }
