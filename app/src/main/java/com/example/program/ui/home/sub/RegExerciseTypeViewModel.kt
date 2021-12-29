@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
 class RegExerciseTypeViewModel(
@@ -86,6 +87,7 @@ class RegExerciseTypeViewModel(
                 }
                 .collect { exercises ->
 
+                    Log.i("getExercises", "$exercises")
                     _exercises.value = exercises.toMutableList()
 
                     success(exercises)
@@ -111,8 +113,8 @@ class RegExerciseTypeViewModel(
     }
 
     fun updateProgramName(
-        name: String,
         programNo: Long?,
+        name: String,
         success: () -> Unit,
     ) {
         viewModelScope.launch {

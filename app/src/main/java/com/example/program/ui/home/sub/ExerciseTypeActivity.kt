@@ -1,18 +1,21 @@
 package com.example.program.ui.home.sub
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import android.view.ContextThemeWrapper
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeBinding
 import com.example.program.ui.dialog.CancelDialog
-import com.example.program.ui.dialog.RegisterDialog
+import com.example.program.ui.dialog.UpdateDialog
 import com.example.program.util.DateUtil
 import com.google.android.material.tabs.TabLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,11 +31,11 @@ class ExerciseTypeActivity :
 
     private var splitCount: Int? = null
     private var splitText: String? = null
-    private var programNo: Long? = null
+    private var programNo: Long = 0L
     private var isIntentToExercise = false
 
     private lateinit var cancelDialog: CancelDialog
-    private lateinit var registerDialog: RegisterDialog
+    private lateinit var registerDialog: UpdateDialog
 
     private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
@@ -52,7 +55,6 @@ class ExerciseTypeActivity :
                     dataBinding.tvRegSuccess.setBackgroundColor(ContextCompat.getColor(this,
                         R.color.black))
             }
-
         }
     }
 
@@ -73,7 +75,6 @@ class ExerciseTypeActivity :
         programNo = intent.getLongExtra("programNo", 0L)
         isIntentToExercise = intent.getBooleanExtra("isIntentToExercise", false)
         if (intent.getBooleanExtra("isIntentToExercise", false)) {
-            dataBinding.layoutAddExerciseType.isVisible = false
             dataBinding.tvRegSuccess.isVisible = false
             dataBinding.tvExerciseStart.isVisible = true
         }
@@ -113,17 +114,6 @@ class ExerciseTypeActivity :
                 setHasFixedSize(true)
                 exerciseTypeAdapter = ExerciseTypeAdapter(this@ExerciseTypeActivity,
                     {
-                        // 운동 종목 수정
-                        Intent(this@ExerciseTypeActivity,
-                            RegExerciseTypeDetailActivity::class.java).apply {
-                            putExtra("isUpdate", true)
-                            putExtra("selectedSplitIndex", selectedSplitIndex)
-                            putExtra("exTypeModel", it)
-                            putExtra("programNo", programNo)
-                            startActivity(this)
-                        }
-                    },
-                    {
                         // 운동 기록 시작
                         Intent(this@ExerciseTypeActivity,
                             RecordExerciseActivity::class.java).apply {
@@ -131,6 +121,47 @@ class ExerciseTypeActivity :
                             putExtra("targetedDate", DateUtil.getCurrentDateForRecord())
                             onResultForExerciseRecord.launch(this)
                         }
+                    },
+                    { exercise, position ->
+                        // 우측 메뉴 버튼 클릭
+                        val builder =
+                            AlertDialog.Builder(ContextThemeWrapper(this@ExerciseTypeActivity,
+                                R.style.AlertDialogCustom))
+                        builder.setItems(R.array.exercise_sort_array
+                        ) { dialog, pos ->
+                            when (pos) {
+                                0 -> { // 프로그램 수정
+                                    Intent(this@ExerciseTypeActivity,
+                                        RegExerciseTypeDetailActivity::class.java).apply {
+                                        putExtra("isUpdate", true)
+                                        putExtra("selectedSplitIndex", selectedSplitIndex)
+                                        putExtra("exTypeModel", exercise)
+                                        putExtra("programNo", programNo)
+                                        onResultForExerciseReg.launch(this)
+                                    }
+                                }
+                                1 -> { // 프로그램 삭제
+                                    val errorDialog = AlertDialog.Builder(ContextThemeWrapper(
+                                        context,
+                                        R.style.AlertDialogCustom))
+                                        .setCancelable(true)
+                                        .setMessage("정말 삭제하시겠습니까?\n\n해당 운동을 삭제하면 기록도 모두 삭제됩니다.")
+                                        .setPositiveButton("삭제") { dialog, _ ->
+                                            viewModel.deleteExercise(exercise) {
+                                                dialog?.dismiss()
+                                            }
+                                            exerciseTypeAdapter.removeTargetedItem(position)
+
+                                        }
+                                        .setNegativeButton("취소") { _, _ -> }
+                                        .create()
+                                    errorDialog.show()
+                                }
+                            }
+                            dialog?.dismiss()
+                        }
+                        val dialog = builder.create()
+                        dialog.show()
                     }
                 )
                 adapter = exerciseTypeAdapter
@@ -139,22 +170,23 @@ class ExerciseTypeActivity :
             tvRegSuccess.setOnClickListener {
                 when (exercisesSize > 0) {
                     true -> {
-                        registerDialog = RegisterDialog.newInstance(programNo)
+                        registerDialog =
+                            UpdateDialog.newInstance(programNo)
                         registerDialog.show(
                             supportFragmentManager,
                             registerDialog.tag
                         )
                     }
-                    false -> Toast.makeText(this@ExerciseTypeActivity,
-                        "운동 종류를 등록해 주세요!",
-                        Toast.LENGTH_LONG).show()
+                    false -> showToast("운동 종류를 등록해 주세요!")
                 }
             }
 
             tvExerciseStart.setOnClickListener {
-                exerciseTypeAdapter.startExercise {
+                exerciseTypeAdapter.initExerciseStatus(ExerciseTypeAdapter.START) {
+                    layoutAddExerciseType.isVisible = false
                     tvExerciseStart.isVisible = false
-                    Toast.makeText(this@ExerciseTypeActivity, "오늘 운동 시작!", Toast.LENGTH_LONG).show()
+                    tvBtn.isVisible = false
+                    showToast("오늘 운동 시작!")
                 }
             }
         }
@@ -192,8 +224,10 @@ class ExerciseTypeActivity :
                         // 마지막일 때,
                         if (performedExerciseCount == exercises.size) {
                             performedExerciseIndexes.sortBy { it }
-                            Log.i("statuses", "viewModel들어가기 직전, indexe : $index, exSize : ${exercises.size}, count ; $performedExerciseCount")
-                            Log.i("statuses", "viewModel들어가기 직전, indexes : $performedExerciseIndexes")
+                            Log.i("statuses",
+                                "viewModel들어가기 직전, indexe : $index, exSize : ${exercises.size}, count ; $performedExerciseCount")
+                            Log.i("statuses",
+                                "viewModel들어가기 직전, indexes : $performedExerciseIndexes")
                             viewModel.initPerformedExerciesSetTrue(performedExerciseIndexes) {
                                 performedExerciseCount = 0
                             }
@@ -207,14 +241,14 @@ class ExerciseTypeActivity :
     override fun onBackPressed() {
         if (!isIntentToExercise) {
             cancelDialog = CancelDialog.newInstance(
-                {
+                { // 저장 안함
                     viewModel.deleteProgram(
                         programNo
                     ) {
                         super.onBackPressed()
                     }
                 },
-                {
+                { // 저장
                     super.onBackPressed()
                 }
             )
@@ -223,7 +257,19 @@ class ExerciseTypeActivity :
                 cancelDialog.tag
             )
         } else {
-            super.onBackPressed()
+
+            // 만약, 운동을 시작한 상태라면
+            if (!dataBinding.layoutAddExerciseType.isVisible &&
+                !dataBinding.tvExerciseStart.isVisible &&
+                !dataBinding.tvBtn.isVisible) {
+                exerciseTypeAdapter.initExerciseStatus(ExerciseTypeAdapter.STOP) {
+                    dataBinding.layoutAddExerciseType.isVisible = true
+                    dataBinding.tvExerciseStart.isVisible = true
+                    dataBinding.tvBtn.isVisible = true
+                }
+            } else {
+                super.onBackPressed()
+            }
         }
     }
 

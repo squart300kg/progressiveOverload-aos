@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.ContextThemeWrapper
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.program.R
@@ -13,6 +15,7 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeRegistrationDetailBinding
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.model.ExerciseTypeModel
+import com.example.program.ui.dialog.UpdateDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegExerciseTypeDetailActivity :
@@ -74,7 +77,21 @@ class RegExerciseTypeDetailActivity :
             }
 
             tvDelete.setOnClickListener {
-                viewModel.deleteExercise(exerciseTypeModel) { finish() }
+                val errorDialog = AlertDialog.Builder(ContextThemeWrapper(
+                    this@RegExerciseTypeDetailActivity,
+                    R.style.AlertDialogCustom))
+                    .setCancelable(true)
+                    .setMessage("정말 삭제하시겠습니까?\n\n해당 운동을 삭제하면 해당 운동의 기록도 모두 삭제됩니다.")
+                    .setPositiveButton("삭제") { dialog, _ ->
+                        viewModel.deleteExercise(exerciseTypeModel) {
+                            setResult(RESULT_OK)
+                            finish()
+                        }
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("취소") { _, _ -> }
+                    .create()
+                errorDialog.show()
             }
 
             tvCancel.setOnClickListener {
@@ -93,7 +110,10 @@ class RegExerciseTypeDetailActivity :
                         programNo = programNo,
                         splitTypeIndex = selectedSplitIndex
                     )
-                ) { finish() }
+                ) {
+                    setResult(RESULT_OK)
+                    finish()
+                }
             }
 
             layoutExerciseType.etExerciseType.apply {

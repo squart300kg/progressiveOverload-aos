@@ -22,9 +22,13 @@ class SplitSelectionAdapter(
         Split.THREE_SPLIT,
         Split.FOUR_SPLIT,
         Split.FIVE_SPLIT,
+        Split.SIX_SPLIT,
+        Split.SEVEN_SPLIT,
+        Split.EIGHT_SPLIT,
+        Split.NINE_SPLIT,
+        Split.TEN_SPLIT,
     )
 
-    private val TAG = "HelpAdapterLog"
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

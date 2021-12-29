@@ -23,6 +23,6 @@ open class BaseActivity<T: ViewDataBinding>(
     }
 
     protected fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

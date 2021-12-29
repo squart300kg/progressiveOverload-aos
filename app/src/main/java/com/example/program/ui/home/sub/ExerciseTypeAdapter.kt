@@ -16,8 +16,8 @@ import com.example.program.model.model.ExerciseTypeModel
  */
 class ExerciseTypeAdapter(
     val context: Context,
-    val onClickForUpdate: (item: ExerciseTypeModel) -> Unit,
     val onClickForRecord: (item: ExerciseTypeModel) -> Unit,
+    val onClickForMenu: (item: ExerciseTypeModel, position: Int) -> Unit,
 ) : RecyclerView.Adapter<ExerciseTypeAdapter.ExercisesViewHolder>() {
 
     private val items: MutableList<ExerciseTypeModel> = mutableListOf()
@@ -58,10 +58,16 @@ class ExerciseTypeAdapter(
         notifyDataSetChanged()
     }
 
-    fun startExercise(
+    fun removeTargetedItem(position: Int) {
+        items.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    fun initExerciseStatus(
+        status: Boolean,
         startExercise: () -> Unit,
     ) {
-        isExerciseStarted = true
+        isExerciseStarted = status
         notifyDataSetChanged()
         startExercise()
     }
@@ -73,17 +79,16 @@ class ExerciseTypeAdapter(
     ) : BaseViewHolder<ExerciseTypeModel, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
         fun initExerciseStatedStatus() {
             itemBinding.layoutExerciseStart.isVisible = isExerciseStarted
+            itemBinding.ivMenu.isVisible = !isExerciseStarted
         }
 
         fun initOnClick() {
-            itemView.setOnClickListener {
-                if (!isExerciseStarted) {
-                    onClickForUpdate(items[absoluteAdapterPosition])
-                }
-            }
-
             itemBinding.layoutExerciseStart.setOnClickListener {
                 onClickForRecord(items[absoluteAdapterPosition])
+            }
+
+            itemBinding.ivMenu.setOnClickListener {
+                onClickForMenu(items[absoluteAdapterPosition], absoluteAdapterPosition)
             }
         }
 
@@ -96,6 +101,10 @@ class ExerciseTypeAdapter(
         }
     }
 
+    companion object {
+        const val START = true
+        const val STOP = false
+    }
 }
 
 

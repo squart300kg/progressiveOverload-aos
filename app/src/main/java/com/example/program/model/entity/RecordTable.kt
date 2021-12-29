@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 @Entity(
     foreignKeys = [
         ForeignKey(
-            entity = ProgramTable::class,
+            entity = ExerciseTypeTable::class,
             parentColumns = arrayOf("no"),
-            childColumns = arrayOf("programNo"),
+            childColumns = arrayOf("exerciseTypeNo"),
             onDelete = ForeignKey.CASCADE
         )
     ]

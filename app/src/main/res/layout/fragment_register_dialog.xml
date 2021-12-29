@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="프로그램 이름을 입력해 주세요"
+            android:text="이름을 입력해 주세요"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

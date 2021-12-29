@@ -43,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            overload:text="프로그램프로그램프로그램프램프로그램프램프로그램프로그램아아아아" />
+            overload:text="제목최대21글자제목최대21글자제목최대21글자제목최대21글자제목최대21글자" />
 
         <TextView
             android:id="@+id/tv_split"

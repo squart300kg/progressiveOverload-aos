@@ -1,8 +1,9 @@
 package com.example.program.model.entity
 
-import android.os.Parcelable
-import androidx.room.*
-import com.example.program.model.model.ExerciseTypeModel
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(
