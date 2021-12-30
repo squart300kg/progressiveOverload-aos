@@ -1,10 +1,12 @@
 package com.example.program.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.example.program.ui.MainActivity
 
 open class BaseActivity<T: ViewDataBinding>(
     private val layoutRes: Int
@@ -24,5 +26,14 @@ open class BaseActivity<T: ViewDataBinding>(
 
     protected fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    protected fun goMain() {
+        Intent(this,
+            MainActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(this)
+        }
     }
 }

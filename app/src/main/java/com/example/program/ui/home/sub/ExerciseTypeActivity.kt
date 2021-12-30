@@ -1,7 +1,5 @@
 package com.example.program.ui.home.sub
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -171,7 +169,9 @@ class ExerciseTypeActivity :
                 when (exercisesSize > 0) {
                     true -> {
                         registerDialog =
-                            UpdateDialog.newInstance(programNo)
+                            UpdateDialog.newInstance(programNo) {
+                                goMain()
+                            }
                         registerDialog.show(
                             supportFragmentManager,
                             registerDialog.tag

@@ -6,15 +6,11 @@ import android.os.Bundle
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordDetailBinding
-import com.example.program.util.DateUtil
-import com.example.program.util.MyFormatter
+import com.example.program.util.RecordMarkerView
+import com.example.program.util.XaxisDateFormatter
+import com.example.program.util.YaxisVolumeFormatter
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -36,38 +32,18 @@ class RecordDetailActivity :
             recordDetailVm = recordDetailViewModel
 
             chart.apply {
-                val entries = arrayListOf<Entry>()
-                for (index in 0 until 10) {
-                    entries.add(
-                        Entry(index.toFloat(), index.toFloat())
-                    )
-                }
-
-                LineDataSet(entries, "속성명1").apply {
-                    lineWidth = 2f
-                    circleRadius = 6f
-                    setCircleColor(Color.parseColor("#FFA1B4DC"))
-                    setCircleColorHole(Color.BLUE)
-                    color = Color.parseColor("#FFA1B4DC")
-                    setDrawCircleHole(true)
-                    setDrawCircles(true)
-                    setDrawHorizontalHighlightIndicator(false)
-                    setDrawHighlightIndicators(false)
-                    setDrawValues(false)
-
-                    data = LineData(this)
-                }
 
                 xAxis.apply {
                     position = XAxis.XAxisPosition.BOTTOM
                     textColor = Color.BLACK
-                    valueFormatter = MyFormatter()
-                    granularity = 1f
-                    enableGridDashedLine(8f, 24f, 0f)
+                    granularity = 1f // 1일
+                    valueFormatter = XaxisDateFormatter()
                 }
 
                 axisLeft.apply {
                     textColor = Color.BLACK
+                    granularity = 1f // 1KG
+                    valueFormatter = YaxisVolumeFormatter()
                 }
 
                 axisRight.apply {
@@ -76,16 +52,23 @@ class RecordDetailActivity :
                     setDrawGridLines(false)
                 }
 
-                description.text = "hello~!!"
+                description.text = ""
 
-                isDoubleTapToZoomEnabled = false
+                isDoubleTapToZoomEnabled = true
                 setDrawGridBackground(false)
-                animateY(2000, Easing.EasingOption.EaseInCubic);
+                setNoDataText("운동 기록이 없습니다.")
+                setNoDataTextColor(Color.BLUE)
+                animateY(2000, Easing.EasingOption.EaseInCubic)
                 invalidate()
 
 //                val marker = RecordMarkerView(this@RecordDetailActivity, R.layout.layout_graph_marker)
 //                marker.chartView = chart
 //                chart.marker = marker
+
+//                RecordMarkerView(this@RecordDetailActivity, R.layout.layout_graph_marker).apply {
+//                    chartView = chart
+//                    chart.marker = this
+//                }
             }
 
             rvRecord.apply {

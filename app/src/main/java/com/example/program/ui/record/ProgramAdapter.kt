@@ -3,11 +3,13 @@ package com.example.program.ui.record
 import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
 import com.example.program.base.BaseViewHolder
 import com.example.program.databinding.ItemExerciseTypeBinding
+import com.example.program.databinding.ItemProgramBinding
 import com.example.program.model.entity.ProgramTable
 import com.example.program.model.entity.RecordTable
 
@@ -20,7 +22,6 @@ class ProgramAdapter(
 ) : RecyclerView.Adapter<ProgramAdapter.RecordsViewHolder>() {
 
     private val items: MutableList<ProgramTable> = mutableListOf()
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,6 +36,8 @@ class ProgramAdapter(
 
     override fun onBindViewHolder(holder: RecordsViewHolder, position: Int) {
         holder.bindItem(items[position])
+
+        holder.initValues()
 
         holder.initOnClick()
     }
@@ -54,11 +57,15 @@ class ProgramAdapter(
         itemId: Int,
         parent: ViewGroup,
         layoutRes: Int,
-    ) : BaseViewHolder<ProgramTable, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
+    ) : BaseViewHolder<ProgramTable, ItemProgramBinding>(itemId, parent, layoutRes) {
         fun initOnClick() {
             itemView.setOnClickListener {
                 onClick(items[absoluteAdapterPosition].no)
             }
+        }
+
+        fun initValues() {
+            itemBinding.ivMenu.isVisible = false
         }
     }
 
