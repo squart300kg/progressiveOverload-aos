@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onEmpty
 import kotlinx.coroutines.launch
 
 class RecordDetailViewModel @ViewModelInject constructor(
@@ -39,7 +40,7 @@ class RecordDetailViewModel @ViewModelInject constructor(
                     e.printStackTrace()
                 }
                 .collect { recordDates ->
-                    Log.i("recordDates", recordDates.toString())
+                    Log.i("recordDates", "collect : "+recordDates.toString())
                     _records.value = recordDates.toMutableList()
                 }
         }

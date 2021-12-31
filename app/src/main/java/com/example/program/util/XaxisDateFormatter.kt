@@ -6,7 +6,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter
 
 class XaxisDateFormatter : IAxisValueFormatter {
     override fun getFormattedValue(value: Float, axis: AxisBase?): String {
-        Log.i("axisTest", "formatter, x축, original : $value, toInt : ${value.toInt()}")
+        Log.i("graph", "formatter, x축, original : $value, toInt : ${value.toInt()}")
         val temp = value.toInt().toString()
 
         return if (temp.length == 3) { // 앞 0이 짤렸을 경우

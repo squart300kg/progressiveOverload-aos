@@ -9,10 +9,11 @@ import androidx.room.PrimaryKey
     foreignKeys = [
         ForeignKey(
             entity = ExerciseTypeTable::class,
-            parentColumns = arrayOf("no"),
-            childColumns = arrayOf("exerciseTypeNo"),
-            onDelete = ForeignKey.CASCADE
-        )
+            parentColumns = arrayOf("no", "name"),
+            childColumns = arrayOf("exerciseTypeNo", "name"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE,
+        ),
     ]
 )
 data class RecordTable(
