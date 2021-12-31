@@ -1,16 +1,20 @@
 package com.example.program.ui.home.sub
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordExerciseBinding
 import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
+import com.example.program.model.model.RecordExerciseModel
 import com.example.program.util.DateUtil
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +30,35 @@ class RecordExerciseActivity :
     private var targetedDate: String? = null
 
     private var isPerformedExerciseAtLeastOneSet = false
+
+    // 운동 종류 등록을 마친 후,
+    private val onResultForTimer = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result ->
+        if (result?.resultCode == Activity.RESULT_OK) {
+            val model = result.data?.getSerializableExtra("recordModel") as RecordExerciseModel
+            Log.i("back", "recordModel: $model")
+
+            // 운동 기록 저장
+            recordExerciseViewModel.record(
+                RecordTable(
+                    name = exerciseModel.name,
+                    weight = model.weight,
+                    repitition = model.repitition,
+                    setNum = model.no,
+                    restTime = model.restTime,
+                    rpe = model.rpe,
+                    recordTime = DateUtil.getCurrentDateForRecord(),
+                    programNo = exerciseModel.programNo,
+                    exerciseTypeNo = exerciseModel.no
+                )
+            ) {
+                Log.i("back", "${exerciseModel.name} success")
+                recordExerciseAdapter.successExercise()
+                isPerformedExerciseAtLeastOneSet = true
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,24 +86,15 @@ class RecordExerciseActivity :
                 setHasFixedSize(true)
                 recordExerciseAdapter =
                     RecordExerciseAdapter(this@RecordExerciseActivity, exerciseModel.name
-                    ) { model ->
-                        recordExerciseViewModel.record(
-                            RecordTable(
-                                name = exerciseModel.name,
-                                weight = model.weight,
-                                repitition = model.repitition,
-                                setNum = model.no,
-                                restTime = model.restTime,
-                                rpe = model.rpe,
-                                recordTime = DateUtil.getCurrentDateForRecord(),
-                                programNo = exerciseModel.programNo,
-                                exerciseTypeNo = exerciseModel.no
-                            )
-                        ) {
-                            Log.i("record", "${exerciseModel.name} success")
-                            recordExerciseAdapter.successExercise()
-                            isPerformedExerciseAtLeastOneSet = true
+                    ) { model -> // 운동 수행 완료
+
+
+                        // 쉬는시간 타이머 시작
+                        Intent(this@RecordExerciseActivity, TimerActivity::class.java).apply {
+                            putExtra("recordModel", model)
+                            onResultForTimer.launch(this)
                         }
+
                     }
                 adapter = recordExerciseAdapter
 
@@ -92,10 +116,8 @@ class RecordExerciseActivity :
             exerciseModel.no,
             targetedDate
         ) { previousDate ->
-            if (previousDate == null)
-                dataBinding.tvGoPrevious.isVisible = false
-            else
-                dataBinding.tvGoPrevious.isVisible = true
+            // 이전 데이터가 없다면 '이전 기록' gone처리
+            dataBinding.tvGoPrevious.isVisible = previousDate != null
         }
 
         recordExerciseViewModel.getNextDate(
@@ -103,10 +125,9 @@ class RecordExerciseActivity :
             exerciseModel.no,
             targetedDate
         ) { nextDate ->
-            if (nextDate == null && targetedDate == DateUtil.getCurrentDateForRecord())
-                dataBinding.tvGoNext.isVisible = false
-            else
-                dataBinding.tvGoNext.isVisible = true
+            // 이후 기록이 없고 오늘 날짜가 맞다면 '이후 기록' gone 처리
+            dataBinding.tvGoNext.isVisible =
+                !(nextDate == null && targetedDate == DateUtil.getCurrentDateForRecord())
         }
     }
 

@@ -1,5 +1,7 @@
 package com.example.program.model.model
 
+import java.io.Serializable
+
 data class RecordExerciseModel(
     val no : Int?,
     val weight : Int?,
@@ -8,4 +10,4 @@ data class RecordExerciseModel(
     val rpe : Int?,
     val restTime : Int?,
     val isPerformed : Boolean = false,
-)
+): Serializable

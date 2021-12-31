@@ -19,7 +19,7 @@ import com.example.program.util.InputFilterMinMax
 class RecordExerciseAdapter(
     private val context: Context,
     private val exerciseName: String?,
-    private val onClick: (recordItem: RecordExerciseModel) -> Unit,
+    private val onClickForSuccess: (recordItem: RecordExerciseModel) -> Unit,
 ) : RecyclerView.Adapter<RecordExerciseAdapter.RecordExViewHolder>() {
 
     private val items: MutableList<RecordExerciseModel> = mutableListOf()
@@ -78,7 +78,7 @@ class RecordExerciseAdapter(
                 if (!itemView.isSelected) {
                     recordExViewHolder = this
 
-                    onClick(RecordExerciseModel(
+                    onClickForSuccess(RecordExerciseModel(
                         items[absoluteAdapterPosition].no,
                         itemBinding.etWeight.text.toString().toInt(),
                         itemBinding.etRepitition.text.toString().toInt(),

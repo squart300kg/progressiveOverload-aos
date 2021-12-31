@@ -11,9 +11,10 @@ import com.example.program.util.DateUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplitSelectionActivity: BaseActivity<ActivitySplitSelectionBinding>(R.layout.activity_split_selection) {
+class SplitSelectionActivity :
+    BaseActivity<ActivitySplitSelectionBinding>(R.layout.activity_split_selection) {
 
-    private val splitSelectionViewModel : SplitSelectionViewModel by viewModels()
+    private val splitSelectionViewModel: SplitSelectionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,8 @@ class SplitSelectionActivity: BaseActivity<ActivitySplitSelectionBinding>(R.layo
                             splitCount = split.count
                         )
                     ) { programNo ->
-                        Intent(this@SplitSelectionActivity, ExerciseTypeActivity::class.java).apply {
+                        Intent(this@SplitSelectionActivity,
+                            ExerciseTypeActivity::class.java).apply {
                             putExtra("splitCount", split.count)
                             putExtra("splitText", split.text)
                             putExtra("programNo", programNo)
