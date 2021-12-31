@@ -1,10 +1,9 @@
 package com.example.program.ui.home.sub
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.repository.RoomRepository
@@ -15,8 +14,9 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
-class RegExerciseTypeViewModel(
+class RegExerciseTypeViewModel @ViewModelInject constructor(
     private val roomRepository: RoomRepository,
+    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val TAG = "HomeViewModelLog"

@@ -8,19 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.program.R
 import com.example.program.base.BaseCenterDialog
 import com.example.program.databinding.FragmentRegisterDialogBinding
 import com.example.program.ui.home.sub.RegExerciseTypeViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UpdateDialog(
     private val no: Long?,
     private val name: String? = "",
     private val success: () -> Unit = {},
 ) : BaseCenterDialog<FragmentRegisterDialogBinding>(R.layout.fragment_register_dialog) {
 
-    private val viewModel: RegExerciseTypeViewModel by viewModel()
+    private val viewModel: RegExerciseTypeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

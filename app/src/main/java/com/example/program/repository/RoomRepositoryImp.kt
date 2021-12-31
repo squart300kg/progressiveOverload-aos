@@ -11,11 +11,14 @@ import com.example.program.model.model.RecordModel
 import com.example.program.util.DateUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by sangyoon on 2021/07/27
  */
-class RoomRepositoryImp(
+@Singleton
+class RoomRepositoryImp @Inject constructor(
     private val programDAO: ProgramDAO,
 ) : RoomRepository {
 

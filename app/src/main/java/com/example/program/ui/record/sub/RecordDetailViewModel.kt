@@ -1,11 +1,11 @@
 package com.example.program.ui.record.sub
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordModel
 import com.example.program.repository.RoomRepository
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class RecordDetailViewModel(
+class RecordDetailViewModel @ViewModelInject constructor(
     private val roomRepository: RoomRepository,
 ) : ViewModel() {
 

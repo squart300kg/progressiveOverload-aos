@@ -8,7 +8,9 @@ import com.example.program.R
 import com.example.program.base.BaseFragment
 import com.example.program.databinding.FragmentRecordBinding
 import com.example.program.ui.record.sub.RecordDetailActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecordFragment : BaseFragment<FragmentRecordBinding>(R.layout.fragment_record) {
 
     private val recordViewModel: RecordViewModel by viewModels()

@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.ContextThemeWrapper
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -15,13 +16,13 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeRegistrationDetailBinding
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.model.ExerciseTypeModel
-import com.example.program.ui.dialog.UpdateDialog
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegExerciseTypeDetailActivity :
     BaseActivity<ActivityExcerciseTypeRegistrationDetailBinding>(R.layout.activity_excercise_type_registration_detail) {
 
-    private val viewModel: RegExerciseTypeViewModel by viewModel()
+    private val viewModel: RegExerciseTypeViewModel by viewModels()
 
     private var selectedSplitIndex: Int? = null
     private var programNo: Long? = null

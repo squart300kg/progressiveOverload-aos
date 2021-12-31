@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
@@ -11,12 +12,13 @@ import com.example.program.databinding.ActivityRecordExerciseBinding
 import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.util.DateUtil
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecordExerciseActivity :
     BaseActivity<ActivityRecordExerciseBinding>(R.layout.activity_record_exercise) {
 
-    private val recordExerciseViewModel: RecordExerciseViewModel by viewModel()
+    private val recordExerciseViewModel: RecordExerciseViewModel by viewModels()
 
     private lateinit var recordExerciseAdapter: RecordExerciseAdapter
 

@@ -1,6 +1,7 @@
 package com.example.program.ui.home
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,11 +14,10 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
-import org.koin.java.KoinJavaComponent.inject
 
-class HomeViewModel : BaseViewModel() {
-
-    private val roomRepository: RoomRepository by inject(RoomRepository::class.java)
+class HomeViewModel @ViewModelInject constructor(
+    private val roomRepository: RoomRepository,
+)  : BaseViewModel() {
 
     private val _programs = MutableLiveData<MutableList<ProgramTable>>()
     val programs: LiveData<MutableList<ProgramTable>>

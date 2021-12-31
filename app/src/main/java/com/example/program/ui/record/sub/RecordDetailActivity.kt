@@ -3,21 +3,21 @@ package com.example.program.ui.record.sub
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordDetailBinding
-import com.example.program.util.RecordMarkerView
 import com.example.program.util.XaxisDateFormatter
 import com.example.program.util.YaxisVolumeFormatter
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RecordDetailActivity :
     BaseActivity<ActivityRecordDetailBinding>(R.layout.activity_record_detail) {
 
-    private val recordDetailViewModel: RecordDetailViewModel by viewModel()
+    private val recordDetailViewModel: RecordDetailViewModel by viewModels()
 
     private lateinit var recordsAdapter: RecordsAdapter
 

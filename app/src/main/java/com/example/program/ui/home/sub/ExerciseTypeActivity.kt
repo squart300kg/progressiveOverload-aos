@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -16,12 +17,13 @@ import com.example.program.ui.dialog.CancelDialog
 import com.example.program.ui.dialog.UpdateDialog
 import com.example.program.util.DateUtil
 import com.google.android.material.tabs.TabLayout
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExerciseTypeActivity :
     BaseActivity<ActivityExcerciseTypeBinding>(R.layout.activity_excercise_type) {
 
-    private val viewModel: RegExerciseTypeViewModel by viewModel()
+    private val viewModel: RegExerciseTypeViewModel by viewModels()
 
     private var selectedSplitIndex: Int? = 0
 

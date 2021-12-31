@@ -2,16 +2,18 @@ package com.example.program.ui.home.sub
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivitySplitSelectionBinding
 import com.example.program.model.entity.ProgramTable
 import com.example.program.util.DateUtil
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplitSelectionActivity: BaseActivity<ActivitySplitSelectionBinding>(R.layout.activity_split_selection) {
 
-    private val splitSelectionViewModel : SplitSelectionViewModel by viewModel()
+    private val splitSelectionViewModel : SplitSelectionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

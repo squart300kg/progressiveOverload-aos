@@ -1,6 +1,7 @@
 package com.example.program.ui.record.sub
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +15,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class OneDayRecordViewModel(
+class OneDayRecordViewModel @ViewModelInject constructor(
     private val roomRepository: RoomRepository,
 ) : ViewModel() {
 

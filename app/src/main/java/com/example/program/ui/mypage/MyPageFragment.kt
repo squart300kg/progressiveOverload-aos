@@ -6,7 +6,9 @@ import androidx.fragment.app.viewModels
 import com.example.program.R
 import com.example.program.base.BaseFragment
 import com.example.program.databinding.FragmentMypageBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
 
     private val myPageViewModel: MyPageViewModel by viewModels()

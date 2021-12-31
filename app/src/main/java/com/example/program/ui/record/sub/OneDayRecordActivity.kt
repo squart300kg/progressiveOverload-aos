@@ -5,19 +5,18 @@ import android.os.Bundle
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityOneDayRecordBinding
-import com.example.program.ui.home.sub.RecordExerciseActivity
-import com.example.program.util.DateUtil
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OneDayRecordActivity :
     BaseActivity<ActivityOneDayRecordBinding>(R.layout.activity_one_day_record) {
 
-    private val oneDayRecordViewModel: OneDayRecordViewModel by viewModel()
+    private val oneDayRecordViewModel: OneDayRecordViewModel by viewModels()
 
     private lateinit var oneDayRecordAdapter: OneDayRecordAdapter
 

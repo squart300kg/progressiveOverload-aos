@@ -1,18 +1,28 @@
 package com.example.program.di
 
+import android.content.Context
 import android.util.Log
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.program.api.ProgramDAO
 import com.example.program.repository.room.ProgramDatabase
-import org.koin.android.ext.koin.androidApplication
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Singleton
 
+@InstallIn(ApplicationComponent::class)
+@Module
+object RoomModule {
 
-val roomModule = module {
-    single {
-        Room.databaseBuilder(
-            androidApplication(),
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext appContext: Context): ProgramDatabase {
+        return Room.databaseBuilder(
+            appContext,
             ProgramDatabase::class.java,
             "program_database"
         )
@@ -25,8 +35,10 @@ val roomModule = module {
             })
             .build()
     }
-    single {
-        get<ProgramDatabase>().programDao()
+
+    @Provides
+    fun provideProgramDao(database: ProgramDatabase): ProgramDAO {
+        return database.programDao()
     }
 
 }

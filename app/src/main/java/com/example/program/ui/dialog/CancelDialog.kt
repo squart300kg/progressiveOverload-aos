@@ -5,7 +5,9 @@ import android.view.View
 import com.example.program.R
 import com.example.program.base.BaseBottomDialog
 import com.example.program.databinding.FragmentCancelDialogBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CancelDialog(
     private val clickForNoSave: () -> Unit,
     private val clickForSave: () -> Unit

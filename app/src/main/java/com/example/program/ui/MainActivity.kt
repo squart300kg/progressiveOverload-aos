@@ -8,8 +8,9 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityMainBinding
 import com.example.program.ui.navigation.setupWithNavController
 import com.example.program.util.BackButtonCloseHandler
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private var currentNavController: LiveData<NavController>? = null
