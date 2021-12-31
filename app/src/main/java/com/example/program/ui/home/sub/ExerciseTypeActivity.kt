@@ -101,6 +101,7 @@ class ExerciseTypeActivity :
                 })
             }
 
+            // 운동 종류 등록
             layoutAddExerciseType.setOnClickListener {
                 Intent(this@ExerciseTypeActivity, RegExerciseTypeDetailActivity::class.java).apply {
                     putExtra("selectedSplitIndex", selectedSplitIndex)

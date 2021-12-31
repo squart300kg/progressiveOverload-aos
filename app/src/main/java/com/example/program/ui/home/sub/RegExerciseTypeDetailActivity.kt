@@ -24,8 +24,8 @@ class RegExerciseTypeDetailActivity :
 
     private val viewModel: RegExerciseTypeViewModel by viewModels()
 
-    private var selectedSplitIndex: Int? = null
-    private var programNo: Long? = null
+    private var selectedSplitIndex: Int = 0
+    private var programNo: Long = 0L
 
     private lateinit var exerciseTypeModel: ExerciseTypeModel
 

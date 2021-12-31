@@ -1,13 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:overload="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
 
+    <data>
+
+        <variable
+            name="timerVm"
+            type="com.example.program.ui.home.sub.TimerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         overload:context=".ui.home.sub.TimerActivity">
 
+        <ProgressBar
+            android:id="@+id/pb_timer"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@drawable/timer_background"
+            android:indeterminateOnly="false"
+            android:max="@{timerVm.maxTime}"
+            android:progress="@{timerVm.timer}"
+            android:progressDrawable="@drawable/timer_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            overload:max="100"
+            overload:progress="80" />
+
+        <TextView
+            android:id="@+id/tv_timer"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="@{timerVm.timer / 1000 + ``}"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/pb_timer"
+            app:layout_constraintEnd_toEndOf="@+id/pb_timer"
+            app:layout_constraintStart_toStartOf="@+id/pb_timer"
+            app:layout_constraintTop_toTopOf="@+id/pb_timer"
+            overload:text="100" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="40dp"
+            android:background="@drawable/border_timer_stop"
+            android:gravity="center"
+            android:text="취소"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_skip"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="40dp"
+            android:background="@drawable/border_timer_skip"
+            android:gravity="center"
+            android:text="건너뛰기"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

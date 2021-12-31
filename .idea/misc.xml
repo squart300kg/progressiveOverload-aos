@@ -8,12 +8,16 @@
         <entry key="app/src/main/res/drawable/border_record_ex_after.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/drawable/border_record_ex_before.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/drawable/border_register.xml" value="0.39794871794871794" />
+        <entry key="app/src/main/res/drawable/border_timer_skip.xml" value="0.1984375" />
+        <entry key="app/src/main/res/drawable/border_timer_stop.xml" value="0.1984375" />
         <entry key="app/src/main/res/drawable/ic_arrow_forward.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/drawable/ic_update.xml" value="0.2677083333333333" />
         <entry key="app/src/main/res/drawable/ic_youtube.xml" value="0.34074074074074073" />
         <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.39794871794871794" />
         <entry key="app/src/main/res/drawable/menu_selector_record_ex.xml" value="0.24974358974358973" />
         <entry key="app/src/main/res/drawable/reg_selector.xml" value="0.39794871794871794" />
+        <entry key="app/src/main/res/drawable/timer_background.xml" value="0.17407407407407408" />
+        <entry key="app/src/main/res/drawable/timer_circle.xml" value="0.17407407407407408" />
         <entry key="app/src/main/res/layout/activity_excercise_type.xml" value="0.22825024437927663" />
         <entry key="app/src/main/res/layout/activity_excercise_type_registration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_excercise_type_registration_detail.xml" value="0.26042133572389065" />

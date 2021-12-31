@@ -6,16 +6,19 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="back" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="TimerActivity" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="ExerciseTypeTable, RecordTypeTable 연관 매핑(운동 이름 바뀌도록)">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_timer.xml" afterDir="false" />
+    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="스탑워치 구현중">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_timer_skip.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_timer_stop.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/timer_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/timer_circle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -29,18 +32,26 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ExerciseTypeTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ExerciseTypeTable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/RecordExerciseModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/RecordExerciseModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/SplitSelectionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/SplitSelectionActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepositoryImp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepositoryImp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/room/ProgramDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/room/ProgramDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_timer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_timer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_write_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_write_record.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_weight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_weight.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[23738228180b7ece]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R59M507KRHD]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -79,10 +90,10 @@
       <list>
         <option value="Kotlin Enum" />
         <option value="Kotlin Interface" />
-        <option value="resourceFile" />
         <option value="Kotlin Data Class" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -116,16 +127,16 @@
     <property name="android-custom-view/Users/sangyunsong/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/ac793df650995ffac19502bbc18a3501e4202f48/MPAndroidChart-v3.0.2-sources.jar!/com/github/mikephil/charting/charts/BarLineChartBase.java_SELECTED" value="BarLineChartBase" />
     <property name="android-custom-view/Users/sangyunsong/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/ac793df650995ffac19502bbc18a3501e4202f48/MPAndroidChart-v3.0.2-sources.jar!/com/github/mikephil/charting/charts/Chart.java_SELECTED" value="Chart" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/program/ext" />
       <recent name="$PROJECT_DIR$/app/src/main/res/anim" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.example.program.ui.home.sub" />
@@ -140,11 +151,11 @@
       <recent name="com.example.program.ui.home.sub" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.example.program.ui.home.sub" />
       <recent name="com.example.program.util" />
       <recent name="com.example.program.ui.record.sub" />
       <recent name="com.example.program.model.model" />
       <recent name="com.example.program.ui.log" />
-      <recent name="com.example.program.model.entity" />
     </key>
     <key name="android.template.-1706981480">
       <recent name="com.example.program.ui.record.sub" />
@@ -470,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640939582908</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="스탑워치 구현중">
+      <created>1640941057332</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1640941057333</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -486,7 +504,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="UI작업중" />
     <MESSAGE value="room작업중" />
     <MESSAGE value="'일지 기록'작업중" />
     <MESSAGE value="메인화면 운동프로그램 나오도록 작업중" />
@@ -511,6 +528,7 @@
     <MESSAGE value="여러가지 기능 구현" />
     <MESSAGE value="dagger hilt마이그레이션 완료" />
     <MESSAGE value="ExerciseTypeTable, RecordTypeTable 연관 매핑(운동 이름 바뀌도록)" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExerciseTypeTable, RecordTypeTable 연관 매핑(운동 이름 바뀌도록)" />
+    <MESSAGE value="스탑워치 구현중" />
+    <option name="LAST_COMMIT_MESSAGE" value="스탑워치 구현중" />
   </component>
 </project>

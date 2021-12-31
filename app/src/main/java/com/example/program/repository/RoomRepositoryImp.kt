@@ -81,13 +81,13 @@ class RoomRepositoryImp @Inject constructor(
             val data = programDAO.deleteExercise(
                 ExerciseTypeTable(
                     no = model!!.no,
-                    name = model.name,
-                    weight = model.weight,
-                    repitition = model.repitition,
-                    setNum = model.setNum,
-                    restTime = model.restTime,
-                    programNo = model.programNo,
-                    splitTypeIndex = model.splitTypeIndex
+                    name = model.name!!,
+                    weight = model.weight!!,
+                    repitition = model.repitition!!,
+                    setNum = model.setNum!!,
+                    restTime = model.restTime!!,
+                    programNo = model.programNo!!,
+                    splitTypeIndex = model.splitTypeIndex!!
                 )
             )
             emit(data)

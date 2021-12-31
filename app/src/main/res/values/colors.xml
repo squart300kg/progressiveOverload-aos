@@ -12,8 +12,6 @@
     <color name="main_orange_color">#dd5e17</color>
     <color name="red">#ff3434</color>
     <color name="grey">#808080</color>
-    <color name="blue">#1E90FF</color>
-
-    <color name="personal_color">#FFA1B4DC</color>
+    <color name="blue">#003399</color>
 
 </resources>

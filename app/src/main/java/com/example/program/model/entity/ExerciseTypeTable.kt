@@ -18,17 +18,17 @@ data class ExerciseTypeTable(
     @PrimaryKey(autoGenerate = true)
     val no: Long = 0,
     @ColumnInfo
-    val name: String?,
+    val name: String,
     @ColumnInfo
-    val weight: Int?,
+    val weight: Int,
     @ColumnInfo
-    val repitition: Int?,
+    val repitition: Int,
     @ColumnInfo
-    val setNum: Int?,
+    val setNum: Int,
     @ColumnInfo
-    val restTime: Int?,
+    val restTime: Int,
     @ColumnInfo
-    val programNo: Long?,
+    val programNo: Long,
     @ColumnInfo
-    val splitTypeIndex: Int?,
+    val splitTypeIndex: Int,
 ) : Serializable

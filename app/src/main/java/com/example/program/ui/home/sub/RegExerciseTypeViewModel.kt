@@ -11,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
 class RegExerciseTypeViewModel @ViewModelInject constructor(
@@ -146,8 +145,8 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
         }
     }
 
-    fun setExerciseInfo(exerciseTypeTable: ExerciseTypeModel) {
-        _exercise.value = exerciseTypeTable
+    fun setExerciseInfo(model: ExerciseTypeModel) {
+        _exercise.value = model
     }
 
     fun initExerciePerformTrue(indexX: Int) {

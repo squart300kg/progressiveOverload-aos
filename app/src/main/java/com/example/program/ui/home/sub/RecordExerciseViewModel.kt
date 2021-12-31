@@ -35,11 +35,11 @@ class RecordExerciseViewModel @ViewModelInject constructor(
     private val TAG = "RecordExerciseVmLog"
 
     fun initExercise(
-        exerciseTable: ExerciseTypeModel,
+        exerciseTypeModel: ExerciseTypeModel,
         recordTable: List<RecordTable>,
     ) {
         val records = mutableListOf<RecordExerciseModel>()
-        for (indexX in 0 until exerciseTable.setNum!!) {
+        for (indexX in 0 until exerciseTypeModel.setNum!!) {
 
             // 이전 운동기록이 있으면 true, 아니면 false
             var isPerformed = false
@@ -53,18 +53,18 @@ class RecordExerciseViewModel @ViewModelInject constructor(
             records.add(
                 RecordExerciseModel(
                     indexX,
-                    exerciseTable.weight,
-                    exerciseTable.repitition,
-                    exerciseTable.setNum,
+                    exerciseTypeModel.weight!!,
+                    exerciseTypeModel.repitition!!,
+                    exerciseTypeModel.setNum,
                     8,
-                    exerciseTable.restTime,
+                    exerciseTypeModel.restTime!!,
                     isPerformed
                 )
             )
         }
         _records.value = records
 
-        _exercises.value = mutableListOf(exerciseTable)
+        _exercises.value = mutableListOf(exerciseTypeModel)
 
     }
 
