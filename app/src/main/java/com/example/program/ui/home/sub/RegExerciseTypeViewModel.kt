@@ -30,6 +30,7 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
 
     fun insertExerciseType(
         excerciseType: ExerciseTypeTable,
+        success: () -> Unit
     ) {
         viewModelScope.launch {
             roomRepository.insertExerciseType(excerciseType)
@@ -37,6 +38,7 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
                 .catch { }
                 .collect {
                     Log.i("insertExerciseType", it.toString())
+                    success()
                 }
         }
     }
@@ -74,12 +76,13 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
     }
 
     fun getExercises(
-        programNo: Long?,
-        splitIndex: Int?,
+        programNo: Long,
+        mesoCycleSplitIndex: Int,
+        microCycleSplitIndex: Int,
         success: (exercises: List<ExerciseTypeModel>) -> Unit = { },
     ) {
         viewModelScope.launch {
-            roomRepository.getExercises(programNo, splitIndex)
+            roomRepository.getExercises(programNo, mesoCycleSplitIndex, microCycleSplitIndex)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
                     e.printStackTrace()
@@ -130,7 +133,7 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
     }
 
     fun updateExercise(
-        exerciseTypeTable: ExerciseTypeTable?,
+        exerciseTypeTable: ExerciseTypeTable,
         success: () -> Unit,
     ) {
         viewModelScope.launch {
@@ -163,7 +166,8 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
                     setNum = it.setNum,
                     restTime = it.restTime,
                     programNo = it.programNo,
-                    splitTypeIndex = it.splitTypeIndex,
+                    mesoCycleSplitIndex = it.mesoCycleSplitIndex,
+                    microCycleSplitIndex = it.microCycleSplitIndex,
                     isPerformed = indexX == indexY
                 )
             )
@@ -188,7 +192,8 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
                     setNum = it.setNum,
                     restTime = it.restTime,
                     programNo = it.programNo,
-                    splitTypeIndex = it.splitTypeIndex,
+                    mesoCycleSplitIndex = it.mesoCycleSplitIndex,
+                    microCycleSplitIndex = it.microCycleSplitIndex,
                     isPerformed = indexes.contains(indexX)
                 )
             )

@@ -59,8 +59,8 @@ interface ProgramDAO {
     @Query("SELECT name FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo GROUP BY name ORDER BY name ASC")
     fun getOneDayRecordName(recordTime: String?, programNo: Long?): List<String>
 
-    @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND splitTypeIndex == :splitIndex")
-    fun getExercises(programNo: Long?, splitIndex: Int?): List<ExerciseTypeTable>
+    @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND mesoCycleSplitIndex == :mesoCycleSplitIndex AND microCycleSplitIndex == :microCycleSplitIndex")
+    fun getExercises(programNo: Long, mesoCycleSplitIndex: Int, microCycleSplitIndex: Int): List<ExerciseTypeTable>
 
     @Query("SELECT recordTime, SUM(weight * repitition) AS totalVolume FROM recordtable WHERE programNo == :programNo  GROUP BY recordTime ORDER BY recordTime DESC")
     fun getAllRecordsDateByProgramNo(programNo: Long): List<RecordModel>
@@ -90,7 +90,7 @@ interface ProgramDAO {
     fun updateProgramName(name: String, programNo: Long?): Int
 
     @Update
-    fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable?): Int
+    fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable): Int
 
 
 }

@@ -24,16 +24,18 @@ class RegExerciseTypeDetailActivity :
 
     private val viewModel: RegExerciseTypeViewModel by viewModels()
 
-    private var selectedSplitIndex: Int = 0
     private var programNo: Long = 0L
+    private var mesoCycleSplitIndex = 0
+    private var microCycleSplitIndex = 0
 
     private lateinit var exerciseTypeModel: ExerciseTypeModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        selectedSplitIndex = intent.getIntExtra("selectedSplitIndex", 0)
         programNo = intent.getLongExtra("programNo", 0L)
+        mesoCycleSplitIndex = intent.getIntExtra("mesoCycleSplitIndex", 0)
+        microCycleSplitIndex = intent.getIntExtra("microCycleSplitIndex", 0)
         if (intent.getBooleanExtra("isUpdate", false)) {
             exerciseTypeModel = intent.getSerializableExtra("exTypeModel") as ExerciseTypeModel
             viewModel.setExerciseInfo(exerciseTypeModel)
@@ -56,6 +58,8 @@ class RegExerciseTypeDetailActivity :
                         Toast.LENGTH_LONG
                     ).show()
                 } else {
+
+                    // 운동 등록
                     viewModel.insertExerciseType(
                         ExerciseTypeTable(
                             name = layoutExerciseType.etExerciseType.text.toString(),
@@ -64,16 +68,18 @@ class RegExerciseTypeDetailActivity :
                             setNum = layoutSetNumber.etSetNumber.text.toString().toInt(),
                             restTime = layoutRestTime.etRestTime.text.toString().toInt(),
                             programNo = programNo,
-                            splitTypeIndex = selectedSplitIndex
+                            mesoCycleSplitIndex = mesoCycleSplitIndex,
+                            microCycleSplitIndex = microCycleSplitIndex
                         )
-                    )
-                    Toast.makeText(
-                        this@RegExerciseTypeDetailActivity,
-                        "운동 등록을 완료하였습니다!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    setResult(RESULT_OK)
-                    finish()
+                    ) {
+                        Toast.makeText(
+                            this@RegExerciseTypeDetailActivity,
+                            "운동 등록 완료!",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        setResult(RESULT_OK)
+                        finish()
+                    }
                 }
             }
 
@@ -109,7 +115,8 @@ class RegExerciseTypeDetailActivity :
                         setNum = layoutSetNumber.etSetNumber.text.toString().toInt(),
                         restTime = layoutRestTime.etRestTime.text.toString().toInt(),
                         programNo = programNo,
-                        splitTypeIndex = selectedSplitIndex
+                        mesoCycleSplitIndex = mesoCycleSplitIndex,
+                        microCycleSplitIndex = microCycleSplitIndex
                     )
                 ) {
                     setResult(RESULT_OK)

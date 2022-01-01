@@ -10,6 +10,7 @@ data class ExerciseTypeModel(
     val setNum: Int?,
     val restTime: Int?,
     val programNo: Long?,
-    val splitTypeIndex: Int?,
+    val mesoCycleSplitIndex: Int?,
+    val microCycleSplitIndex: Int?,
     val isPerformed: Boolean = false,
 ) : Serializable

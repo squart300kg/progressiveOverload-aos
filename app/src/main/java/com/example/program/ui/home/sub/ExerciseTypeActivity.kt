@@ -25,12 +25,16 @@ class ExerciseTypeActivity :
 
     private val viewModel: RegExerciseTypeViewModel by viewModels()
 
-    private var selectedSplitIndex: Int? = 0
+    private var mesoCycleSplitIndex = 0
+    private var microCycleSplitIndex = 0
 
     private var exercisesSize = 0
 
-    private var splitCount: Int? = null
-    private var splitText: String? = null
+    private var mesoCycleSplitCount: Int = 0
+    private var mesoCycleSplitText: String = ""
+    private var microCycleCount: Int = 0
+    private var microCycleText: String = ""
+
     private var programNo: Long = 0L
     private var isIntentToExercise = false
 
@@ -48,12 +52,12 @@ class ExerciseTypeActivity :
         if (result?.resultCode == Activity.RESULT_OK) {
             viewModel.getExercises(
                 programNo = programNo,
-                splitIndex = selectedSplitIndex
+                mesoCycleSplitIndex = mesoCycleSplitIndex,
+                microCycleSplitIndex = microCycleSplitIndex
             ) { exercises ->
                 exercisesSize = exercises.size
                 if (exercisesSize > 0)
-                    dataBinding.tvRegSuccess.setBackgroundColor(ContextCompat.getColor(this,
-                        R.color.black))
+                    dataBinding.tvRegSuccess.isSelected = true
             }
         }
     }
@@ -70,33 +74,62 @@ class ExerciseTypeActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        splitCount = intent.getIntExtra("splitCount", -1)
-        splitText = intent.getStringExtra("splitText")
+        mesoCycleSplitCount = intent.getIntExtra("mesoCycleSplitCount", 0)
+        mesoCycleSplitText = intent.getStringExtra("mesoCycleSplitText").toString()
+        microCycleCount = intent.getIntExtra("microCycleSplitCount", 0)
+        microCycleText = intent.getStringExtra("microCycleSplitText").toString()
+
         programNo = intent.getLongExtra("programNo", 0L)
         isIntentToExercise = intent.getBooleanExtra("isIntentToExercise", false)
         if (intent.getBooleanExtra("isIntentToExercise", false)) {
             dataBinding.tvRegSuccess.isVisible = false
+            dataBinding.layoutGuide.isVisible = false
             dataBinding.tvExerciseStart.isVisible = true
         }
 
         binding {
             regVm = viewModel
 
-            tlSplit.apply {
-                for (i in 0 until splitCount!!) {
-                    tlSplit.addTab(tlSplit.newTab().setText("${i + 1}" + "분할"))
+            tlMesoSplit.apply {
+                for (i in 0 until mesoCycleSplitCount) {
+                    tlMesoSplit.addTab(tlMesoSplit.newTab().setText("${i + 1}" + "주차"))
                 }
 
                 addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                     override fun onTabUnselected(tab: TabLayout.Tab?) {}
                     override fun onTabReselected(tab: TabLayout.Tab?) {}
                     override fun onTabSelected(tab: TabLayout.Tab?) {
-                        selectedSplitIndex = tab?.position
+                        tab?.position?.let {
+                            mesoCycleSplitIndex = it
+//                            viewModel.getExercises(
+//                                programNo = programNo,
+//                                mesoCycleSplitIndex = mesoCycleSplitIndex,
+//                                microCycleSplitIndex = microCycleSplitIndex
+//                            )
+                            initPerformedExercises()
+                        }
+                    }
+                })
+            }
 
-                        viewModel.getExercises(
-                            programNo = programNo,
-                            splitIndex = selectedSplitIndex
-                        )
+            tlMicroSplit.apply {
+                for (i in 0 until microCycleCount) {
+                    tlMicroSplit.addTab(tlMicroSplit.newTab().setText("${i + 1}" + "일차"))
+                }
+
+                addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                    override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                    override fun onTabReselected(tab: TabLayout.Tab?) {}
+                    override fun onTabSelected(tab: TabLayout.Tab?) {
+                        tab?.position?.let {
+                            microCycleSplitIndex = it
+//                            viewModel.getExercises(
+//                                programNo = programNo,
+//                                mesoCycleSplitIndex = mesoCycleSplitIndex,
+//                                microCycleSplitIndex = microCycleSplitIndex
+//                            )
+                            initPerformedExercises()
+                        }
                     }
                 })
             }
@@ -104,9 +137,9 @@ class ExerciseTypeActivity :
             // 운동 종류 등록
             layoutAddExerciseType.setOnClickListener {
                 Intent(this@ExerciseTypeActivity, RegExerciseTypeDetailActivity::class.java).apply {
-                    putExtra("selectedSplitIndex", selectedSplitIndex)
-                    putExtra("splitText", splitText)
                     putExtra("programNo", programNo)
+                    putExtra("mesoCycleSplitIndex", mesoCycleSplitIndex)
+                    putExtra("microCycleSplitIndex", microCycleSplitIndex)
                     onResultForExerciseReg.launch(this)
                 }
             }
@@ -124,7 +157,7 @@ class ExerciseTypeActivity :
                         }
                     },
                     { exercise, position ->
-                        // 우측 메뉴 버튼 클릭
+                        // 우측 메뉴 버튼 클릭, 다이얼로그
                         val builder =
                             AlertDialog.Builder(ContextThemeWrapper(this@ExerciseTypeActivity,
                                 R.style.AlertDialogCustom))
@@ -135,7 +168,8 @@ class ExerciseTypeActivity :
                                     Intent(this@ExerciseTypeActivity,
                                         RegExerciseTypeDetailActivity::class.java).apply {
                                         putExtra("isUpdate", true)
-                                        putExtra("selectedSplitIndex", selectedSplitIndex)
+                                        putExtra("mesoCycleSplitIndex", mesoCycleSplitIndex)
+                                        putExtra("microCycleSplitIndex", microCycleSplitIndex)
                                         putExtra("exTypeModel", exercise)
                                         putExtra("programNo", programNo)
                                         onResultForExerciseReg.launch(this)
@@ -180,7 +214,7 @@ class ExerciseTypeActivity :
                             registerDialog.tag
                         )
                     }
-                    false -> showToast("운동 종류를 등록해 주세요!")
+                    false -> showToast("운동을 등록해 주세요!")
                 }
             }
 
@@ -201,7 +235,8 @@ class ExerciseTypeActivity :
     private fun initPerformedExercises() {
         viewModel.getExercises(
             programNo = programNo,
-            splitIndex = selectedSplitIndex
+            mesoCycleSplitIndex = mesoCycleSplitIndex,
+            microCycleSplitIndex = microCycleSplitIndex,
         ) { exercises ->
             // 운동 기록을 마치고 돌아올 때,
             if (isIntentToExercise) {
@@ -249,10 +284,11 @@ class ExerciseTypeActivity :
                         programNo
                     ) {
                         super.onBackPressed()
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     }
                 },
                 { // 저장
-                    super.onBackPressed()
+                    goMain()
                 }
             )
             cancelDialog.show(

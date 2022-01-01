@@ -88,7 +88,6 @@ class RecordExerciseActivity :
                     RecordExerciseAdapter(this@RecordExerciseActivity, exerciseModel.name
                     ) { model -> // 운동 수행 완료
 
-
                         // 쉬는시간 타이머 시작
                         Intent(this@RecordExerciseActivity, TimerActivity::class.java).apply {
                             putExtra("recordModel", model)

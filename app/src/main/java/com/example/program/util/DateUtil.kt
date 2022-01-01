@@ -14,7 +14,7 @@ object DateUtil {
     private const val outputPatternForRecord = "yyyy년 MM월 dd일 HH시 mm분"
     private const val outputPatternForGraph = "HHmm"
 
-    fun getCurrentDateForProgramName(): String? {
+    fun getCurrentDateForProgramName(): String {
         val formmat = SimpleDateFormat(outputPatternForProgramName, Locale.getDefault())
         val date = Date(System.currentTimeMillis())
         val result = formmat.format(date)

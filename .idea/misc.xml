@@ -3,18 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/border_add_contents.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_cancel.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/border_exercise_cancel.xml" value="0.3055555555555556" />
+        <entry key="app/src/main/res/drawable/border_exercise_delete.xml" value="0.3055555555555556" />
+        <entry key="app/src/main/res/drawable/border_exercise_info.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_exercise_info_after.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_exercise_info_before.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_exercise_register_off.xml" value="0.3055555555555556" />
+        <entry key="app/src/main/res/drawable/border_exercise_register_on.xml" value="0.3055555555555556" />
+        <entry key="app/src/main/res/drawable/border_exercise_start.xml" value="0.22314814814814815" />
+        <entry key="app/src/main/res/drawable/border_exercise_success.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_exercise_update.xml" value="0.3055555555555556" />
         <entry key="app/src/main/res/drawable/border_main.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_program.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_program_selection.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_record_ex_after.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/drawable/border_record_ex_before.xml" value="0.25364583333333335" />
+        <entry key="app/src/main/res/drawable/border_record_success_button_after.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_record_success_button_before.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_register.xml" value="0.39794871794871794" />
+        <entry key="app/src/main/res/drawable/border_step_balloon.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_step_balloon_un_focused.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_timer_skip.xml" value="0.1984375" />
         <entry key="app/src/main/res/drawable/border_timer_stop.xml" value="0.1984375" />
         <entry key="app/src/main/res/drawable/ic_arrow_forward.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/drawable/ic_update.xml" value="0.2677083333333333" />
         <entry key="app/src/main/res/drawable/ic_youtube.xml" value="0.34074074074074073" />
         <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.39794871794871794" />
+        <entry key="app/src/main/res/drawable/menu_selector_exercise_info.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/menu_selector_exercise_register.xml" value="0.3055555555555556" />
         <entry key="app/src/main/res/drawable/menu_selector_record_ex.xml" value="0.24974358974358973" />
+        <entry key="app/src/main/res/drawable/menu_selector_record_success_button.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/reg_selector.xml" value="0.39794871794871794" />
         <entry key="app/src/main/res/drawable/timer_background.xml" value="0.17407407407407408" />
         <entry key="app/src/main/res/drawable/timer_circle.xml" value="0.17407407407407408" />
@@ -22,6 +42,8 @@
         <entry key="app/src/main/res/layout/activity_excercise_type_registration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_excercise_type_registration_detail.xml" value="0.26042133572389065" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17046605876393112" />
+        <entry key="app/src/main/res/layout/activity_meso_cycle_split_selection.xml" value="0.23143115942028986" />
+        <entry key="app/src/main/res/layout/activity_micro_cycle_split_selection.xml" value="0.3442028985507246" />
         <entry key="app/src/main/res/layout/activity_one_day_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_record_detail.xml" value="0.1887031408308004" />
         <entry key="app/src/main/res/layout/activity_record_exercise.xml" value="0.22625968992248063" />
@@ -36,6 +58,8 @@
         <entry key="app/src/main/res/layout/item_exercise_type.xml" value="0.2911694510739857" />
         <entry key="app/src/main/res/layout/item_exercise_volume.xml" value="0.22714681440443213" />
         <entry key="app/src/main/res/layout/item_logs.xml" value="0.3880208333333333" />
+        <entry key="app/src/main/res/layout/item_meso_cycle_split_selection.xml" value="0.2916666666666667" />
+        <entry key="app/src/main/res/layout/item_micro_cycle_split_selection.xml" value="0.13055555555555556" />
         <entry key="app/src/main/res/layout/item_no_noti.xml" value="0.3020833333333333" />
         <entry key="app/src/main/res/layout/item_program.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/item_read_detail_record.xml" value="0.22735507246376813" />

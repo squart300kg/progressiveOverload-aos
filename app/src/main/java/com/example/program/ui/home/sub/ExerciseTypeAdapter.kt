@@ -96,7 +96,11 @@ class ExerciseTypeAdapter(
             if (items[absoluteAdapterPosition].isPerformed) {
                 Log.i("statuses", "adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
 
-                itemView.isSelected = true
+                itemBinding.layoutAddProgram.isSelected = true
+                itemBinding.layoutExerciseInfo.isSelected = true
+            } else {
+                itemBinding.layoutAddProgram.isSelected = false
+                itemBinding.layoutExerciseInfo.isSelected = false
             }
         }
     }

@@ -25,7 +25,7 @@ interface RoomRepository {
 
     fun getTargetedProgram(targetName: String): Flow<ProgramTable>
 
-    fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeModel>>
+    fun getExercises(programNo: Long, mesoCycleSplitIndex: Int, microCycleSplitIndex: Int): Flow<List<ExerciseTypeModel>>
 
     fun getPerformedSets(programNo: Long?, exerciseNo: Long?): Flow<Int>
 
@@ -47,7 +47,7 @@ interface RoomRepository {
 
     fun updateProgramName(name: String, programNo: Long?): Flow<Int>
 
-    fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int>
+    fun updateExercise(exerciseTypeTable: ExerciseTypeTable): Flow<Int>
 
     fun getTargetedAllDate(programNo: Long?, exerciseNo: Long?): Flow<List<String>>
 

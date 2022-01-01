@@ -47,6 +47,7 @@ class TimerActivity :
 
             // 타이머 스킵
             tvSkip.setOnClickListener {
+                countDownTimer.cancel()
                 onBackPressed()
             }
 

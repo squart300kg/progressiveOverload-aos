@@ -9,9 +9,13 @@ data class ProgramTable(
     @PrimaryKey(autoGenerate = true)
     val no: Long = 0,
     @ColumnInfo
-    val name: String?,
+    val name: String,
     @ColumnInfo
-    val splitText: String?,
+    val mesoSplitText: String,
     @ColumnInfo
-    val splitCount: Int?
+    val mesoSplitCount: Int,
+    @ColumnInfo
+    val microCycleText: String,
+    @ColumnInfo
+    val microCycleCount: Int
 )

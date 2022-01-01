@@ -30,5 +30,7 @@ data class ExerciseTypeTable(
     @ColumnInfo
     val programNo: Long,
     @ColumnInfo
-    val splitTypeIndex: Int,
+    val mesoCycleSplitIndex: Int,
+    @ColumnInfo
+    val microCycleSplitIndex: Int,
 ) : Serializable

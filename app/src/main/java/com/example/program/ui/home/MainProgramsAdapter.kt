@@ -6,10 +6,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
 import com.example.program.base.BaseViewHolder
-import com.example.program.constant.Split
 import com.example.program.databinding.ItemProgramBinding
-import com.example.program.databinding.ItemSplitSelectionBinding
-import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
 
 /**

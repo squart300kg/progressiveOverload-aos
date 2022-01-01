@@ -12,7 +12,7 @@ import com.example.program.base.BaseFragment
 import com.example.program.databinding.FragmentHomeBinding
 import com.example.program.ui.dialog.UpdateDialog
 import com.example.program.ui.home.sub.ExerciseTypeActivity
-import com.example.program.ui.home.sub.SplitSelectionActivity
+import com.example.program.ui.home.sub.MesoCycleSelectionActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             homeVm = homeViewModel
 
             layoutAddProgram.layoutAddProgram.setOnClickListener {
-                Intent(requireActivity(), SplitSelectionActivity::class.java).apply {
+                Intent(requireActivity(), MesoCycleSelectionActivity::class.java).apply {
                     startActivity(this)
                 }
             }
@@ -41,7 +41,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         Log.i("mainProgramAdpater", it.toString())
                         Intent(requireActivity(), ExerciseTypeActivity::class.java).apply {
                             putExtra("isIntentToExercise", true)
-                            putExtra("splitCount", it.splitCount)
+                            putExtra("mesoCycleSplitCount", it.mesoSplitCount)
+                            putExtra("microCycleSplitCount", it.microCycleCount)
                             putExtra("programNo", it.no)
                             startActivity(this)
                         }

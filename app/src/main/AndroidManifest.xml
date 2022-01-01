@@ -29,7 +29,10 @@
             android:name=".ui.home.sub.RecordExerciseActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.SplitSelectionActivity"
+            android:name=".ui.home.sub.MesoCycleSelectionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.home.sub.MicroCycleSelectionActivity"
             android:exported="true" />
         <activity
             android:name=".ui.home.sub.ExerciseTypeActivity"

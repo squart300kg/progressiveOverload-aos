@@ -87,7 +87,8 @@ class RoomRepositoryImp @Inject constructor(
                     setNum = model.setNum!!,
                     restTime = model.restTime!!,
                     programNo = model.programNo!!,
-                    splitTypeIndex = model.splitTypeIndex!!
+                    mesoCycleSplitIndex = model.mesoCycleSplitIndex!!,
+                    microCycleSplitIndex = model.mesoCycleSplitIndex!!
                 )
             )
             emit(data)
@@ -96,9 +97,9 @@ class RoomRepositoryImp @Inject constructor(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun getExercises(programNo: Long?, splitIndex: Int?): Flow<List<ExerciseTypeModel>> {
+    override fun getExercises(programNo: Long, mesoCycleSplitIndex: Int, microCycleSplitIndex: Int): Flow<List<ExerciseTypeModel>> {
         return flow {
-            val data = programDAO.getExercises(programNo, splitIndex)
+            val data = programDAO.getExercises(programNo, mesoCycleSplitIndex, microCycleSplitIndex)
             val exercises = mutableListOf<ExerciseTypeModel>()
             data.forEach {
                 exercises.add(
@@ -110,7 +111,8 @@ class RoomRepositoryImp @Inject constructor(
                         setNum = it.setNum,
                         restTime = it.restTime,
                         programNo = it.programNo,
-                        splitTypeIndex = it.splitTypeIndex,
+                        mesoCycleSplitIndex = it.mesoCycleSplitIndex,
+                        microCycleSplitIndex = it.microCycleSplitIndex,
                         isPerformed = false
                     )
                 )
@@ -209,7 +211,7 @@ class RoomRepositoryImp @Inject constructor(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun updateExercise(exerciseTypeTable: ExerciseTypeTable?): Flow<Int> {
+    override fun updateExercise(exerciseTypeTable: ExerciseTypeTable): Flow<Int> {
         return flow {
             val data = programDAO.updateExercise(exerciseTypeTable)
             emit(data)
