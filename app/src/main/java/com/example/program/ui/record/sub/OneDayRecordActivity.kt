@@ -108,25 +108,26 @@ class OneDayRecordActivity :
         }
         oneDayRecordViewModel.getOneDayRecordName(programNo, recordTime)
 
-        oneDayRecordViewModel.getPreviousDate(
-            programNo,
-            recordTime
-        ) { previousDate ->
-            if (previousDate == null)
-                dataBinding.tvGoPrevious.isVisible = false
-            else
-                dataBinding.tvGoPrevious.isVisible = true
-        }
-
-        oneDayRecordViewModel.getNextDate(
-            programNo,
-            recordTime
-        ) { nextDate ->
-            if (nextDate == null)
-                dataBinding.tvGoNext.isVisible = false
-            else
-                dataBinding.tvGoNext.isVisible = true
-        }
+        // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
+//        oneDayRecordViewModel.getPreviousDate(
+//            programNo,
+//            recordTime
+//        ) { previousDate ->
+//            if (previousDate == null)
+//                dataBinding.tvGoPrevious.isVisible = false
+//            else
+//                dataBinding.tvGoPrevious.isVisible = true
+//        }
+//
+//        oneDayRecordViewModel.getNextDate(
+//            programNo,
+//            recordTime
+//        ) { nextDate ->
+//            if (nextDate == null)
+//                dataBinding.tvGoNext.isVisible = false
+//            else
+//                dataBinding.tvGoNext.isVisible = true
+//        }
 
 
     }

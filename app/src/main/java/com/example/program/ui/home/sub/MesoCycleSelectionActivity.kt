@@ -12,8 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MesoCycleSelectionActivity :
     BaseActivity<ActivityMesoCycleSplitSelectionBinding>(R.layout.activity_meso_cycle_split_selection) {
 
-    private val splitSelectionViewModel: SplitSelectionViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,28 +25,13 @@ class MesoCycleSelectionActivity :
                         startActivity(this)
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     }
-
-
-//                    mesoCycleSelectionViewModel.insertProgram(
-//                        ProgramTable(
-//                            name = DateUtil.getCurrentDateForProgramName(),
-//                            mesoSplitText = split.text,
-//                            mesoSplitCount = split.count
-//                        )
-//                    )
-//                    { programNo ->
-//
-//                        Intent(this@MesoCycleSelectionActivity,
-//                            ExerciseTypeActivity::class.java).apply {
-//                            putExtra("splitCount", split.count)
-//                            putExtra("splitText", split.text)
-//                            putExtra("programNo", programNo)
-//                            startActivity(this)
-//                        }
-//                    }
                 }
-
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }

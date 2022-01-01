@@ -31,6 +31,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             layoutAddProgram.layoutAddProgram.setOnClickListener {
                 Intent(requireActivity(), MesoCycleSelectionActivity::class.java).apply {
                     startActivity(this)
+                    requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 }
             }
 

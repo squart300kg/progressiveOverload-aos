@@ -50,15 +50,7 @@ class ExerciseTypeActivity :
         ActivityResultContracts.StartActivityForResult(),
     ) { result ->
         if (result?.resultCode == Activity.RESULT_OK) {
-            viewModel.getExercises(
-                programNo = programNo,
-                mesoCycleSplitIndex = mesoCycleSplitIndex,
-                microCycleSplitIndex = microCycleSplitIndex
-            ) { exercises ->
-                exercisesSize = exercises.size
-                if (exercisesSize > 0)
-                    dataBinding.tvRegSuccess.isSelected = true
-            }
+            initPerformedExercises()
         }
     }
 
@@ -228,7 +220,8 @@ class ExerciseTypeActivity :
             mesoCycleSplitIndex = mesoCycleSplitIndex,
             microCycleSplitIndex = microCycleSplitIndex,
         ) { exercises ->
-            // 운동 기록을 마치고 돌아올 때,
+
+            // 운동 기록을 마치고 돌아올 때, 수행한 운동 완료표시 해준다
             if (isIntentToExercise) {
 
                 val performedExerciseIndexes = mutableListOf<Int>()
@@ -263,6 +256,11 @@ class ExerciseTypeActivity :
                     }
                 }
             }
+
+            // '등록 완료'버튼 활성화
+            exercisesSize = exercises.size
+            if (exercisesSize > 0)
+                dataBinding.tvRegSuccess.isSelected = true
         }
     }
 

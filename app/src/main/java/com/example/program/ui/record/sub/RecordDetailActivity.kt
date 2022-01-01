@@ -91,7 +91,6 @@ class RecordDetailActivity :
                     })
                 adapter = recordsAdapter
             }
-
         }
 
         recordDetailViewModel.getAllRecordsDateByProgramNo(programNo)

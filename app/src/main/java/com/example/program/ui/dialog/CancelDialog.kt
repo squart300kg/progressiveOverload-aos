@@ -31,6 +31,10 @@ class CancelDialog(
         }
     }
 
+    override fun getTheme(): Int {
+        return R.style.FullScreenDialog
+    }
+
     companion object {
         fun newInstance(
             clickForNoSave: () -> Unit,
