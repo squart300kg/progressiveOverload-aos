@@ -100,6 +100,8 @@ class RecordExerciseActivity :
             }
         }
 
+
+        // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
         recordExerciseViewModel.getTargetedExercisePerformed(
             exerciseModel.programNo,
             exerciseModel.no,

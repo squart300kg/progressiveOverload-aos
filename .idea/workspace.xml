@@ -13,32 +13,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="스탑워치 구현 완료">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/constant/MesoCycleSplit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/constant/MicroCycleSplit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MicroCycleSelectionActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MicroCycleSelectionAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_add_contents.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_cancel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_delete.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_info_after.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_info_before.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_register_off.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_register_on.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_start.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_exercise_update.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_program.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_program_selection.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_record_success_button_after.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_record_success_button_before.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_step_balloon_focused.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_step_balloon_un_focused.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_selector_exercise_info.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_selector_exercise_register.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/menu_selector_record_success_button.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_meso_cycle_split_selection.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_micro_cycle_split_selection.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_micro_cycle_split_selection.xml" afterDir="false" />
+    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="중간저장">
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -52,42 +27,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/api/ProgramDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/api/ProgramDAO.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/constant/Split.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ExerciseTypeTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ExerciseTypeTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ProgramTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ProgramTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/ExerciseTypeModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/ExerciseTypeModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepositoryImp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepositoryImp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/room/ProgramDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/room/ProgramDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/MainProgramsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/MainProgramsAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeDetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/SplitSelectionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MesoCycleSelectionActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/SplitSelectionAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MesoCycleSelectionAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/DateUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/DateUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_left.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_left.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_left.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_left.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/border_record_ex_after.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_record_ex_after.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/border_record_ex_before.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_record_ex_before.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type_registration_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type_registration_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_split_selection.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_type.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_type.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_program.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_program.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_split_selection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_meso_cycle_split_selection.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_write_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_write_record.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_adding_program.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_adding_program.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -531,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640941057333</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="중간저장">
+      <created>1641026772487</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1641026772487</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -547,7 +497,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="room작업중" />
     <MESSAGE value="'일지 기록'작업중" />
     <MESSAGE value="메인화면 운동프로그램 나오도록 작업중" />
     <MESSAGE value="오늘 운동 시작 구현해야함" />
@@ -572,6 +521,7 @@
     <MESSAGE value="dagger hilt마이그레이션 완료" />
     <MESSAGE value="ExerciseTypeTable, RecordTypeTable 연관 매핑(운동 이름 바뀌도록)" />
     <MESSAGE value="스탑워치 구현중" />
-    <option name="LAST_COMMIT_MESSAGE" value="스탑워치 구현중" />
+    <MESSAGE value="중간저장" />
+    <option name="LAST_COMMIT_MESSAGE" value="중간저장" />
   </component>
 </project>
