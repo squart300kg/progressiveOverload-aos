@@ -96,13 +96,13 @@ class ExerciseTypeAdapter(
             if (items[absoluteAdapterPosition].isPerformed) {
                 Log.i("statuses", "adapter - isPerform[$absoluteAdapterPosition] : ${items[absoluteAdapterPosition].isPerformed}")
 
-                itemBinding.layoutAddProgram.isSelected = true
                 itemBinding.layoutExerciseInfo.isSelected = true
                 itemBinding.tvStartRecord.text = "기록 보기"
+                itemBinding.animationFloating.isVisible = true
             } else {
-                itemBinding.layoutAddProgram.isSelected = false
                 itemBinding.layoutExerciseInfo.isSelected = false
                 itemBinding.tvStartRecord.text = "기록 시작"
+                itemBinding.animationFloating.isVisible = false
             }
         }
     }

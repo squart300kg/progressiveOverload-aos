@@ -101,11 +101,6 @@ class ExerciseTypeActivity :
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         tab?.position?.let {
                             mesoCycleSplitIndex = it
-//                            viewModel.getExercises(
-//                                programNo = programNo,
-//                                mesoCycleSplitIndex = mesoCycleSplitIndex,
-//                                microCycleSplitIndex = microCycleSplitIndex
-//                            )
                             initPerformedExercises()
                         }
                     }
@@ -123,11 +118,6 @@ class ExerciseTypeActivity :
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         tab?.position?.let {
                             microCycleSplitIndex = it
-//                            viewModel.getExercises(
-//                                programNo = programNo,
-//                                mesoCycleSplitIndex = mesoCycleSplitIndex,
-//                                microCycleSplitIndex = microCycleSplitIndex
-//                            )
                             initPerformedExercises()
                         }
                     }

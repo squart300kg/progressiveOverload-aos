@@ -2,8 +2,10 @@ package com.example.program.ui.home.sub
 
 import android.content.Context
 import android.text.InputFilter
+import android.text.InputType
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.example.program.R
@@ -75,7 +77,7 @@ class RecordExerciseAdapter(
         fun initOnClick() {
             itemBinding.tvExerciseComplete.setOnClickListener {
 
-                if (!itemView.isSelected) {
+                if (!itemBinding.animationFloating.isVisible) {
                     recordExViewHolder = this
 
                     onClickForSuccess(RecordExerciseModel(
@@ -95,15 +97,24 @@ class RecordExerciseAdapter(
         }
 
         fun successExercise() {
-            itemView.isSelected = true
+            itemBinding.animationFloating.isVisible = true
+            itemBinding.etWeight.inputType = InputType.TYPE_NULL
+            itemBinding.etRepitition.inputType = InputType.TYPE_NULL
+            itemBinding.etRpe.inputType = InputType.TYPE_NULL
+            itemBinding.etRestTime.inputType = InputType.TYPE_NULL
             successCount++
+
             if (successCount == items.size)
                 Toast.makeText(context, "$exerciseName 완료!", Toast.LENGTH_LONG).show()
         }
 
         fun checkIsExercisePerformed() {
             if (items[absoluteAdapterPosition].isPerformed) {
-                itemView.isSelected = true
+                itemBinding.animationFloating.isVisible = true
+                itemBinding.etWeight.inputType = InputType.TYPE_NULL
+                itemBinding.etRepitition.inputType = InputType.TYPE_NULL
+                itemBinding.etRpe.inputType = InputType.TYPE_NULL
+                itemBinding.etRestTime.inputType = InputType.TYPE_NULL
                 successCount++
             }
         }

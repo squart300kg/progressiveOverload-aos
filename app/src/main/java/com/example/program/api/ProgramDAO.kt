@@ -20,9 +20,9 @@ interface ProgramDAO {
     @Query("SELECT * FROM programtable WHERE name == :targetName")
     fun getTargetedProgram(targetName: String): ProgramTable
 
-    @Query("SELECT COUNT(*) FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
+    @Query("SELECT COUNT(*) FROM recordtable WHERE programNo == :programNo  AND exerciseTypeNo == :exerciseNo")
     fun getPerformedSets(
-        recordTime: String?,
+//        recordTime: String?,
         programNo: Long?,
         exerciseNo: Long?,
     ): Int
@@ -30,6 +30,12 @@ interface ProgramDAO {
     @Query("SELECT * FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo AND exerciseTypeNo == :exerciseNo")
     fun getTargetedExercisePerformed(
         recordTime: String?,
+        programNo: Long?,
+        exerciseNo: Long?,
+    ): List<RecordTable>
+
+    @Query("SELECT * FROM recordtable WHERE programNo == :programNo AND exerciseTypeNo == :exerciseNo")
+    fun getTargetedExercisePerformed(
         programNo: Long?,
         exerciseNo: Long?,
     ): List<RecordTable>

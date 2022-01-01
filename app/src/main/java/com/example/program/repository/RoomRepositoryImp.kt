@@ -129,10 +129,24 @@ class RoomRepositoryImp @Inject constructor(
     ): Flow<Int> {
         return flow {
             val data = programDAO.getPerformedSets(
-                DateUtil.getCurrentDateForRecord(),
+//                DateUtil.getCurrentDateForRecord(),
                 programNo,
                 exerciseNo
             )
+            emit(data)
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun getTargetedExercisePerformed(
+        programNo: Long,
+        exerciseNo: Long,
+    ): Flow<List<RecordTable>> {
+        return flow {
+            val data = programDAO.getTargetedExercisePerformed(
+                programNo,
+                exerciseNo)
             emit(data)
         }
     }

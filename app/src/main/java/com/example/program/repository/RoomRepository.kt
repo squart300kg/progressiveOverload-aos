@@ -31,6 +31,8 @@ interface RoomRepository {
 
     fun getTargetedExercisePerformed(programNo: Long?, exerciseNo: Long?, targetedDate: String?): Flow<List<RecordTable>>
 
+    fun getTargetedExercisePerformed(programNo: Long, exerciseNo: Long): Flow<List<RecordTable>>
+
     fun getAllRecordsDateByProgramNo(programNo: Long): Flow<List<RecordModel>>
 
     fun getTargetDateTotalVolume(programNo: Long?, recordTime: String?): Flow<Int>

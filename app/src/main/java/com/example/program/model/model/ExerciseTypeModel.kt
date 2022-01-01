@@ -9,7 +9,7 @@ data class ExerciseTypeModel(
     val repitition: Int?,
     val setNum: Int?,
     val restTime: Int?,
-    val programNo: Long?,
+    val programNo: Long,
     val mesoCycleSplitIndex: Int?,
     val microCycleSplitIndex: Int?,
     val isPerformed: Boolean = false,

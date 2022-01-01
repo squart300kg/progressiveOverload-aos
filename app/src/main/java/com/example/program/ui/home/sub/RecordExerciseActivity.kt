@@ -100,36 +100,42 @@ class RecordExerciseActivity :
             }
         }
 
-
-        // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
         recordExerciseViewModel.getTargetedExercisePerformed(
             exerciseModel.programNo,
             exerciseModel.no,
-            targetedDate
         ) { recordTable ->
             recordExerciseViewModel.initExercise(exerciseModel, recordTable)
         }
 
-        recordExerciseViewModel.getTargetedAllDate(exerciseModel.programNo, exerciseModel.no)
-
-        recordExerciseViewModel.getPreviousDate(
-            exerciseModel.programNo,
-            exerciseModel.no,
-            targetedDate
-        ) { previousDate ->
-            // 이전 데이터가 없다면 '이전 기록' gone처리
-            dataBinding.tvGoPrevious.isVisible = previousDate != null
-        }
-
-        recordExerciseViewModel.getNextDate(
-            exerciseModel.programNo,
-            exerciseModel.no,
-            targetedDate
-        ) { nextDate ->
-            // 이후 기록이 없고 오늘 날짜가 맞다면 '이후 기록' gone 처리
-            dataBinding.tvGoNext.isVisible =
-                !(nextDate == null && targetedDate == DateUtil.getCurrentDateForRecord())
-        }
+        // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
+//        recordExerciseViewModel.getTargetedExercisePerformed(
+//            exerciseModel.programNo,
+//            exerciseModel.no,
+//            targetedDate
+//        ) { recordTable ->
+//            recordExerciseViewModel.initExercise(exerciseModel, recordTable)
+//        }
+//
+//        recordExerciseViewModel.getTargetedAllDate(exerciseModel.programNo, exerciseModel.no)
+//
+//        recordExerciseViewModel.getPreviousDate(
+//            exerciseModel.programNo,
+//            exerciseModel.no,
+//            targetedDate
+//        ) { previousDate ->
+//            // 이전 데이터가 없다면 '이전 기록' gone처리
+//            dataBinding.tvGoPrevious.isVisible = previousDate != null
+//        }
+//
+//        recordExerciseViewModel.getNextDate(
+//            exerciseModel.programNo,
+//            exerciseModel.no,
+//            targetedDate
+//        ) { nextDate ->
+//            // 이후 기록이 없고 오늘 날짜가 맞다면 '이후 기록' gone 처리
+//            dataBinding.tvGoNext.isVisible =
+//                !(nextDate == null && targetedDate == DateUtil.getCurrentDateForRecord())
+//        }
     }
 
     private fun goNext() {

@@ -82,6 +82,26 @@ class RecordExerciseViewModel @ViewModelInject constructor(
         }
     }
 
+
+    fun getTargetedExercisePerformed(
+        targetedProgramNo: Long,
+        targetedExerciseNo: Long,
+        success: (list: List<RecordTable>) -> Unit,
+    ) {
+        viewModelScope.launch {
+            roomRepository.getTargetedExercisePerformed(
+                targetedProgramNo,
+                targetedExerciseNo,
+            )
+                .flowOn(Dispatchers.IO)
+                .catch { }
+                .collect { response ->
+                    success(response)
+                }
+        }
+    }
+
+    // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
     fun getTargetedExercisePerformed(
         targetedProgramNo: Long?,
         targetedExerciseNo: Long?,
@@ -102,6 +122,7 @@ class RecordExerciseViewModel @ViewModelInject constructor(
         }
     }
 
+    // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
     fun getTargetedAllDate(programNo: Long?, exerciseNo: Long?) {
         viewModelScope.launch {
             roomRepository.getTargetedAllDate(programNo, exerciseNo)
@@ -131,6 +152,7 @@ class RecordExerciseViewModel @ViewModelInject constructor(
         }
     }
 
+    // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
     fun getPreviousDate(
         targetedProgramNo: Long?,
         targetedExerciseNo: Long?,
@@ -148,6 +170,7 @@ class RecordExerciseViewModel @ViewModelInject constructor(
         }
     }
 
+    // TODO 이전기록, 이후기록 불러오기 기능 추후 오픈시 주석 해제
     fun getNextDate(
         targetedProgramNo: Long?,
         targetedExerciseNo: Long?,
