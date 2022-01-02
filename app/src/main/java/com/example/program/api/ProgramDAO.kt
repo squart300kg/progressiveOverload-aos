@@ -78,6 +78,12 @@ interface ProgramDAO {
     fun getExerciseVolumes(programNo: Long, recordTime: String): List<ExerciseVolumeModel>
 
     @Insert
+    fun insertDummyPrograms(programs: ProgramTable): Long
+
+    @Insert
+    fun insertDummyExercises(exercises: ExerciseTypeTable): Long
+
+    @Insert
     fun insertProgram(programs: ProgramTable): Long
 
     @Insert

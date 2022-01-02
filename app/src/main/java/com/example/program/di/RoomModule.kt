@@ -25,11 +25,11 @@ object RoomModule {
         return Room.databaseBuilder(
             appContext,
             ProgramDatabase::class.java,
-            "program_database"
+            "program_database.db"
         )
-//            .createFromAsset("database/hoyaProgram.db")
 //            .addMigrations(MIGRATION_6_7)
-            .fallbackToDestructiveMigration()
+            .createFromAsset("database/program_database.db")
+//            .fallbackToDestructiveMigration()
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
@@ -43,7 +43,6 @@ object RoomModule {
     fun provideProgramDao(database: ProgramDatabase): ProgramDAO {
         return database.programDao()
     }
-
 
     val MIGRATION_6_7 = object : Migration(6, 7) {
         override fun migrate(database: SupportSQLiteDatabase) {
