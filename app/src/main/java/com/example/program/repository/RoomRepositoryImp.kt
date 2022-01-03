@@ -86,6 +86,7 @@ class RoomRepositoryImp @Inject constructor(
                     repitition = model.repitition!!,
                     setNum = model.setNum!!,
                     restTime = model.restTime!!,
+                    rpe = model.rpe!!,
                     programNo = model.programNo!!,
                     mesoCycleSplitIndex = model.mesoCycleSplitIndex!!,
                     microCycleSplitIndex = model.mesoCycleSplitIndex!!
@@ -110,6 +111,7 @@ class RoomRepositoryImp @Inject constructor(
                         repitition = it.repitition,
                         setNum = it.setNum,
                         restTime = it.restTime,
+                        rpe = it.rpe,
                         programNo = it.programNo,
                         mesoCycleSplitIndex = it.mesoCycleSplitIndex,
                         microCycleSplitIndex = it.microCycleSplitIndex,

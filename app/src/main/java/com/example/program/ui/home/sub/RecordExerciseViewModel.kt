@@ -56,7 +56,7 @@ class RecordExerciseViewModel @ViewModelInject constructor(
                     exerciseTypeModel.weight!!,
                     exerciseTypeModel.repitition!!,
                     exerciseTypeModel.setNum,
-                    8,
+                    exerciseTypeModel.rpe!!,
                     exerciseTypeModel.restTime!!,
                     isPerformed
                 )

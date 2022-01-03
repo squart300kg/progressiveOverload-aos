@@ -60,11 +60,8 @@ class MainProgramsAdapter(
             itemBinding.ivMenu.setOnClickListener {
                 onClickMenu(items[absoluteAdapterPosition])
             }
-
         }
-
     }
-
 }
 
 

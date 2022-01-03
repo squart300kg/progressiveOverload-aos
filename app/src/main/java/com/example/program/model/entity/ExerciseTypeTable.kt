@@ -28,6 +28,8 @@ data class ExerciseTypeTable(
     @ColumnInfo
     val restTime: Int,
     @ColumnInfo
+    val rpe: Int,
+    @ColumnInfo
     val programNo: Long,
     @ColumnInfo
     val mesoCycleSplitIndex: Int,

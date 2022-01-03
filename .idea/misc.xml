@@ -54,7 +54,7 @@
         <entry key="app/src/main/res/layout/activity_split_selection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_timer.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/layout/fragment_cancel_dialog.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.27315054319710297" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.256957928802589" />
         <entry key="app/src/main/res/layout/fragment_log.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/fragment_preview_dialog.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/fragment_record.xml" value="0.165" />
@@ -78,6 +78,7 @@
         <entry key="app/src/main/res/layout/layout_reg_excercise_type.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/layout_repitition.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/layout_rest_time.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/layout_rpe.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/layout_set_number.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/layout_weight.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3880208333333333" />

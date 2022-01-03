@@ -28,8 +28,8 @@ object RoomModule {
             "program_database.db"
         )
 //            .addMigrations(MIGRATION_6_7)
-            .createFromAsset("database/program_database.db")
-//            .fallbackToDestructiveMigration()
+            .createFromAsset("database/dummy_room_data_v_18.db")
+            .fallbackToDestructiveMigration()
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)

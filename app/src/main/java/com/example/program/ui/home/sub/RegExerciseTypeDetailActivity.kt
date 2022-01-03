@@ -49,6 +49,7 @@ class RegExerciseTypeDetailActivity :
             layoutRepitition.exerciseVm = viewModel
             layoutSetNumber.exerciseVm = viewModel
             layoutRestTime.exerciseVm = viewModel
+            layoutRpe.exerciseVm = viewModel
 
             tvRegister.setOnClickListener {
                 if (isInputNotFull()) {
@@ -67,6 +68,7 @@ class RegExerciseTypeDetailActivity :
                             repitition = layoutRepitition.etRepitition.text.toString().toInt(),
                             setNum = layoutSetNumber.etSetNumber.text.toString().toInt(),
                             restTime = layoutRestTime.etRestTime.text.toString().toInt(),
+                            rpe = layoutRpe.etRpe.text.toString().toInt(),
                             programNo = programNo,
                             mesoCycleSplitIndex = mesoCycleSplitIndex,
                             microCycleSplitIndex = microCycleSplitIndex
@@ -114,6 +116,7 @@ class RegExerciseTypeDetailActivity :
                         repitition = layoutRepitition.etRepitition.text.toString().toInt(),
                         setNum = layoutSetNumber.etSetNumber.text.toString().toInt(),
                         restTime = layoutRestTime.etRestTime.text.toString().toInt(),
+                        rpe = layoutRpe.etRpe.text.toString().toInt(),
                         programNo = programNo,
                         mesoCycleSplitIndex = mesoCycleSplitIndex,
                         microCycleSplitIndex = microCycleSplitIndex
@@ -143,6 +146,10 @@ class RegExerciseTypeDetailActivity :
             layoutWeight.etWeight.apply {
                 checkIfInputIsFull()
             }
+
+            layoutRpe.etRpe.apply {
+                checkIfInputIsFull()
+            }
         }
     }
 
@@ -151,7 +158,8 @@ class RegExerciseTypeDetailActivity :
                 dataBinding.layoutRepitition.etRepitition.text.isNullOrEmpty() ||
                 dataBinding.layoutRestTime.etRestTime.text.isNullOrEmpty() ||
                 dataBinding.layoutSetNumber.etSetNumber.text.isNullOrEmpty() ||
-                dataBinding.layoutWeight.etWeight.text.isNullOrEmpty()
+                dataBinding.layoutSetNumber.etSetNumber.text.isNullOrEmpty() ||
+                dataBinding.layoutRpe.etRpe.text.isNullOrEmpty()
     }
 
     @SuppressLint("ClickableViewAccessibility")

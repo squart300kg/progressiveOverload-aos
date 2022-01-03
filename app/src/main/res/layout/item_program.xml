@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:gravity="center"
-            android:maxLength="21"
             android:maxLines="1"
             android:text="@{programItem.name}"
             android:textAlignment="center"

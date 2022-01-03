@@ -88,12 +88,24 @@ class RecordExerciseActivity :
                     RecordExerciseAdapter(this@RecordExerciseActivity, exerciseModel.name
                     ) { model -> // 운동 수행 완료
 
-                        // 쉬는시간 타이머 시작
-                        Intent(this@RecordExerciseActivity, TimerActivity::class.java).apply {
-                            putExtra("recordModel", model)
-                            onResultForTimer.launch(this)
+                        when {
+                            model.weight == 0 -> {
+                                Toast.makeText(this@RecordExerciseActivity, "'중량' 입력란이 '0'입니다!", Toast.LENGTH_SHORT).show()
+                            }
+                            model.repitition == 0 -> {
+                                Toast.makeText(this@RecordExerciseActivity, "'반복수' 입력란이 '0'입니다!", Toast.LENGTH_SHORT).show()
+                            }
+                            model.restTime == 0 -> {
+                                Toast.makeText(this@RecordExerciseActivity, "'휴식시간' 입력란이 '0'입니다!", Toast.LENGTH_SHORT).show()
+                            }
+                            else -> {
+                                // 쉬는시간 타이머 시작
+                                Intent(this@RecordExerciseActivity, TimerActivity::class.java).apply {
+                                    putExtra("recordModel", model)
+                                    onResultForTimer.launch(this)
+                                }
+                            }
                         }
-
                     }
                 adapter = recordExerciseAdapter
 

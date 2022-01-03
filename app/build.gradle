@@ -20,6 +20,13 @@ android {
         buildConfigField("String", "naverLoginURL", '"https://openapi.naver.com/v1/nid/me"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
