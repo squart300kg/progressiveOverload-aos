@@ -57,6 +57,9 @@ class TimerActivity :
                 finish()
             }
         }
+
+        initBannerAd(dataBinding.adView)
+
     }
 
     override fun onBackPressed() {

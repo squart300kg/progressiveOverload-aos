@@ -42,7 +42,7 @@
         <entry key="app/src/main/res/drawable/reg_selector.xml" value="0.39794871794871794" />
         <entry key="app/src/main/res/drawable/timer_background.xml" value="0.17407407407407408" />
         <entry key="app/src/main/res/drawable/timer_circle.xml" value="0.17407407407407408" />
-        <entry key="app/src/main/res/layout/activity_excercise_type.xml" value="0.22825024437927663" />
+        <entry key="app/src/main/res/layout/activity_excercise_type.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_excercise_type_registration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_excercise_type_registration_detail.xml" value="0.26042133572389065" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17046605876393112" />

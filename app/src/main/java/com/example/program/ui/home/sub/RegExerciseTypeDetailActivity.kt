@@ -151,6 +151,8 @@ class RegExerciseTypeDetailActivity :
                 checkIfInputIsFull()
             }
         }
+
+        initBannerAd(dataBinding.adView)
     }
 
     private fun isInputNotFull(): Boolean {

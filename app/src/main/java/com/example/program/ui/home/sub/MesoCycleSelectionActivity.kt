@@ -28,6 +28,8 @@ class MesoCycleSelectionActivity :
                 }
             }
         }
+
+        initBannerAd(dataBinding.adView)
     }
 
     override fun onBackPressed() {

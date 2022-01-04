@@ -53,6 +53,9 @@ class MicroCycleSelectionActivity :
 
             }
         }
+
+        initBannerAd(dataBinding.adView)
+
     }
 
     override fun onBackPressed() {

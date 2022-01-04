@@ -95,5 +95,6 @@ class RecordDetailActivity :
 
         recordDetailViewModel.getAllRecordsDateByProgramNo(programNo)
 
+        initBannerAd(dataBinding.adView)
     }
 }

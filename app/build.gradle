@@ -55,6 +55,9 @@ android {
 
 dependencies {
 
+    // ad mob
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
+
     // dagger hilt JetPack
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01'
     kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'

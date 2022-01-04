@@ -8,7 +8,6 @@ import android.view.ContextThemeWrapper
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.program.R
 import com.example.program.base.BaseActivity
@@ -209,6 +208,8 @@ class ExerciseTypeActivity :
                 }
             }
         }
+
+        initBannerAd(dataBinding.adView)
 
         initPerformedExercises()
 
