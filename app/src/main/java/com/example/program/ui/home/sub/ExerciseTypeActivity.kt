@@ -14,15 +14,27 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeBinding
 import com.example.program.ui.dialog.CancelDialog
 import com.example.program.ui.dialog.UpdateDialog
+import com.example.program.util.AdUtil
 import com.example.program.util.DateUtil
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.tabs.TabLayout
+import com.securepreferences.SecurePreferences
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ExerciseTypeActivity :
     BaseActivity<ActivityExcerciseTypeBinding>(R.layout.activity_excercise_type) {
 
     private val viewModel: RegExerciseTypeViewModel by viewModels()
+
+    @Inject
+    lateinit var securePreferences: SecurePreferences
 
     private var mesoCycleSplitIndex = 0
     private var microCycleSplitIndex = 0
@@ -43,6 +55,10 @@ class ExerciseTypeActivity :
     private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
     private var performedExerciseCount = 0
+
+    private var mInterstitialAd: InterstitialAd? = null
+
+    private var intentAfterFullScreenAd = -1
 
     // 운동 종류 등록을 마친 후,
     private val onResultForExerciseReg = registerForActivityResult(
@@ -188,7 +204,11 @@ class ExerciseTypeActivity :
                     true -> {
                         registerDialog =
                             UpdateDialog.newInstance(programNo) {
-                                goMain()
+
+                                // 광고 내려간 직후, 메인화면으로 이동시킴
+                                intentAfterFullScreenAd = GO_MAIN
+                                fullScreenAdStart()
+
                             }
                         registerDialog.show(
                             supportFragmentManager,
@@ -213,6 +233,51 @@ class ExerciseTypeActivity :
 
         initPerformedExercises()
 
+        initFullScreenAd()
+    }
+
+    private fun initFullScreenAd() {
+
+        // 전면광고 초기화
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this,getString(R.string.main_full_screen_test), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                // 전면광고 콜백함수 등록
+                mInterstitialAd = interstitialAd
+                mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+                    val TAG = "fullScreenLog"
+                    override fun onAdDismissedFullScreenContent() {
+                        when (intentAfterFullScreenAd) {
+                            GO_MAIN -> goMain()
+                            GO_BACK-> finish()
+                        }
+                    }
+
+                    override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                        Log.d(TAG, "Ad failed to show.")
+                    }
+
+                    override fun onAdShowedFullScreenContent() {
+                        Log.d(TAG, "Ad showed fullscreen content.")
+                        mInterstitialAd = null
+                    }
+                }
+            }
+        })
+    }
+
+    private fun fullScreenAdStart() {
+        val TAG = "fullScreenLog"
+
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+        } else {
+            Log.d(TAG, "Ad showed fullscreen content.")
+        }
     }
 
     private fun initPerformedExercises() {
@@ -267,6 +332,8 @@ class ExerciseTypeActivity :
 
     override fun onBackPressed() {
         if (!isIntentToExercise) {
+
+            // 프로그램을 저장할 것인가?
             cancelDialog = CancelDialog.newInstance(
                 { // 저장 안함
                     viewModel.deleteProgram(
@@ -277,7 +344,16 @@ class ExerciseTypeActivity :
                     }
                 },
                 { // 저장
-                    goMain()
+
+                    if (AdUtil.isTurnToExposeAd(securePreferences)) {
+                        // 광고 내려간 직후, 메인화면으로 이동시킴
+                        intentAfterFullScreenAd = GO_MAIN
+                        fullScreenAdStart()
+                    } else {
+                        goMain()
+                    }
+
+
                 }
             )
             cancelDialog.show(
@@ -296,9 +372,22 @@ class ExerciseTypeActivity :
                     dataBinding.tvBtn.isVisible = true
                 }
             } else {
-                super.onBackPressed()
+
+                if (AdUtil.isTurnToExposeAd(securePreferences)) {
+                    // 광고 내려간 직후, 뒤로가기시킴
+                    intentAfterFullScreenAd = GO_BACK
+                    fullScreenAdStart()
+                } else {
+                    finish()
+                }
+
             }
         }
+    }
+
+    companion object {
+        const val GO_MAIN = 0
+        const val GO_BACK = 1
     }
 
 }

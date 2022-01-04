@@ -57,4 +57,7 @@
     <string name="main_banner_ad">ca-app-pub-6562154197787185/1824651788</string>
     <string name="main_banner_ad_test">ca-app-pub-3940256099942544/6300978111</string>
 
+    <string name="main_full_screen_ad">ca-app-pub-6562154197787185/8928266128</string>
+    <string name="main_full_screen_test">ca-app-pub-3940256099942544/1033173712</string>
+
 </resources>

@@ -13,6 +13,12 @@ import com.example.program.databinding.FragmentHomeBinding
 import com.example.program.ui.dialog.UpdateDialog
 import com.example.program.ui.home.sub.ExerciseTypeActivity
 import com.example.program.ui.home.sub.MesoCycleSelectionActivity
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -99,6 +105,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
         }
     }
+
 
     override fun onStart() {
         super.onStart()

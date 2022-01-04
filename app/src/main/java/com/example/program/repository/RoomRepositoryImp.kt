@@ -8,7 +8,6 @@ import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordModel
-import com.example.program.util.DateUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
