@@ -20,8 +20,8 @@ import com.example.program.util.InputFilterMinMax
  */
 class RecordExerciseAdapter(
     private val context: Context,
-    private val exerciseName: String?,
     private val onClickForSuccess: (recordItem: RecordExerciseModel) -> Unit,
+    private val onCompleteExercise: () -> Unit,
 ) : RecyclerView.Adapter<RecordExerciseAdapter.RecordExViewHolder>() {
 
     private val items: MutableList<RecordExerciseModel> = mutableListOf()
@@ -78,18 +78,40 @@ class RecordExerciseAdapter(
             itemBinding.tvExerciseComplete.setOnClickListener {
 
                 if (!itemBinding.animationFloating.isVisible) {
-                    recordExViewHolder = this
 
-                    onClickForSuccess(RecordExerciseModel(
-                        items[absoluteAdapterPosition].no,
-                        itemBinding.etWeight.text.toString().toInt(),
-                        itemBinding.etRepitition.text.toString().toInt(),
-                        items[absoluteAdapterPosition].setNum,
-                        itemBinding.etRpe.text.toString().toInt(),
-                        itemBinding.etRestTime.text.toString().toInt()
-                    ))
+                    if (!itemBinding.etWeight.text.isNullOrEmpty() &&
+                        !itemBinding.etRepitition.text.isNullOrEmpty() &&
+                        !itemBinding.etRpe.text.isNullOrEmpty() &&
+                        !itemBinding.etRestTime.text.isNullOrEmpty()) {
+                        recordExViewHolder = this
+
+                        onClickForSuccess(RecordExerciseModel(
+                            items[absoluteAdapterPosition].no,
+                            itemBinding.etWeight.text.toString().toInt(),
+                            itemBinding.etRepitition.text.toString().toInt(),
+                            items[absoluteAdapterPosition].setNum,
+                            itemBinding.etRpe.text.toString().toInt(),
+                            itemBinding.etRestTime.text.toString().toInt()
+                        ))
+                    }
                 }
             }
+
+            // 각 요소 클릭시 각 요소에 포커스 맞추기
+            itemBinding.etWeight.setOnClickListener {
+                itemBinding.etWeight.requestFocus()
+            }
+            itemBinding.etRepitition.setOnClickListener {
+                itemBinding.etRepitition.requestFocus()
+            }
+            itemBinding.etRpe.setOnClickListener {
+                itemBinding.etRpe.requestFocus()
+            }
+            itemBinding.etRestTime.setOnClickListener {
+                itemBinding.etRestTime.requestFocus()
+            }
+
+
         }
 
         fun initRpeRange() {
@@ -105,7 +127,7 @@ class RecordExerciseAdapter(
             successCount++
 
             if (successCount == items.size)
-                Toast.makeText(context, "$exerciseName 완료!", Toast.LENGTH_LONG).show()
+                onCompleteExercise()
         }
 
         fun checkIsExercisePerformed() {

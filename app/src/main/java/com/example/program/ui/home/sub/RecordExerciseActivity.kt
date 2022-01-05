@@ -15,6 +15,7 @@ import com.example.program.databinding.ActivityRecordExerciseBinding
 import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.model.model.RecordExerciseModel
+import com.example.program.ui.dialog.CompleteDialog
 import com.example.program.util.DateUtil
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -85,28 +86,44 @@ class RecordExerciseActivity :
             rvRecordEx.apply {
                 setHasFixedSize(true)
                 recordExerciseAdapter =
-                    RecordExerciseAdapter(this@RecordExerciseActivity, exerciseModel.name
-                    ) { model -> // 운동 수행 완료
+                    RecordExerciseAdapter(this@RecordExerciseActivity,
+                        { model -> // 운동 수행 완료
 
-                        when {
-                            model.weight == 0 -> {
-                                Toast.makeText(this@RecordExerciseActivity, "'중량' 입력란이 '0'입니다!", Toast.LENGTH_SHORT).show()
-                            }
-                            model.repitition == 0 -> {
-                                Toast.makeText(this@RecordExerciseActivity, "'반복수' 입력란이 '0'입니다!", Toast.LENGTH_SHORT).show()
-                            }
-                            model.restTime == 0 -> {
-                                Toast.makeText(this@RecordExerciseActivity, "'휴식시간' 입력란이 '0'입니다!", Toast.LENGTH_SHORT).show()
-                            }
-                            else -> {
-                                // 쉬는시간 타이머 시작
-                                Intent(this@RecordExerciseActivity, TimerActivity::class.java).apply {
-                                    putExtra("recordModel", model)
-                                    onResultForTimer.launch(this)
+                            when {
+                                model.weight == 0 -> {
+                                    Toast.makeText(this@RecordExerciseActivity,
+                                        "'중량' 입력란이 '0'입니다!",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                                model.repitition == 0 -> {
+                                    Toast.makeText(this@RecordExerciseActivity,
+                                        "'반복수' 입력란이 '0'입니다!",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                                model.restTime == 0 -> {
+                                    Toast.makeText(this@RecordExerciseActivity,
+                                        "'휴식시간' 입력란이 '0'입니다!",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                                else -> {
+                                    // 쉬는시간 타이머 시작
+                                    Intent(this@RecordExerciseActivity,
+                                        TimerActivity::class.java).apply {
+                                        putExtra("recordModel", model)
+                                        onResultForTimer.launch(this)
+                                    }
                                 }
                             }
-                        }
-                    }
+                        },
+                        { // 해당 운동의 모든 세트를 완료함
+                            CompleteDialog.newInstance(exerciseModel.name) {
+                                setResult(RESULT_OK)
+                                finish()
+                            }.show(
+                                supportFragmentManager,
+                                "completeDialogTag"
+                            )
+                        })
                 adapter = recordExerciseAdapter
 
             }

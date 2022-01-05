@@ -5,14 +5,11 @@ import java.util.*
 
 object DateUtil {
     private const val outputPatternForProgramName = "yyyy년 MM월 dd일 HH시 mm분 ss초"
-//    private const val outputPatternForRecord = "yyyy년 MM월 dd일"
-//    private const val outputPatternForGraph = "MMdd"
+    private const val outputPatternForRecord = "yyyy년 MM월 dd일"
+    private const val outputPatternForGraph = "MMdd"
 
-//    private const val outputPatternForRecord = "mm분 ss초"
-//    private const val outputPatternForGraph = "mmss"
-
-    private const val outputPatternForRecord = "yyyy년 MM월 dd일 HH시 mm분"
-    private const val outputPatternForGraph = "HHmm"
+//    private const val outputPatternForRecord = "yyyy년 MM월 dd일 HH시 mm분"
+//    private const val outputPatternForGraph = "HHmm"
 
     fun getCurrentDateForProgramName(): String {
         val formmat = SimpleDateFormat(outputPatternForProgramName, Locale.getDefault())

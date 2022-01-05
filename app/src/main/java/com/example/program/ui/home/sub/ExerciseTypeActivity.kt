@@ -47,7 +47,7 @@ class ExerciseTypeActivity :
     private var isIntentToExercise = false
 
     private lateinit var cancelDialog: CancelDialog
-    private lateinit var registerDialog: UpdateDialog
+    private lateinit var updateDialog: UpdateDialog
 
     private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
@@ -199,7 +199,7 @@ class ExerciseTypeActivity :
             tvRegSuccess.setOnClickListener {
                 when (exercisesSize > 0) {
                     true -> {
-                        registerDialog =
+                        updateDialog =
                             UpdateDialog.newInstance(programNo) {
 
                                 // 광고 내려간 직후, 메인화면으로 이동시킴
@@ -207,9 +207,9 @@ class ExerciseTypeActivity :
                                 startFullScreenAd()
 
                             }
-                        registerDialog.show(
+                        updateDialog.show(
                             supportFragmentManager,
-                            registerDialog.tag
+                            updateDialog.tag
                         )
                     }
                     false -> showToast("운동을 등록해 주세요!")

@@ -30,7 +30,7 @@ class UpdateDialog(
         savedInstanceState: Bundle?,
     ): View? {
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
