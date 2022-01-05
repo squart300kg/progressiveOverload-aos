@@ -27,6 +27,7 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun getAllProgram() {
         viewModelScope.launch {
+            _isLoading.value = true
             roomRepository.getAllProgram()
                 .flowOn(Dispatchers.IO)
                 .catch { }
@@ -34,6 +35,7 @@ class HomeViewModel @ViewModelInject constructor(
                     _programs.value = it.toMutableList()
                     Log.i("getAllProgram", it.toString())
                 }
+            _isLoading.value = false
         }
     }
 

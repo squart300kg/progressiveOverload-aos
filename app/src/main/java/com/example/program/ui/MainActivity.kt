@@ -19,6 +19,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     // 3. (운동기록페이지)운동 모든 세트 완료하고 'OOO운동을 완료했습니다' dialog띄워준 후, 확인 누르면 뒤로가게 하도록 하기
     // 4. (운동기록페이지)'중량'클릭시 키보드가 올라오는데, 이때 화면을 위로 밀 것
     // 5. (운동등록페이지) '프로그램 제목 입력 다이얼로그'디자인
+    // 6. DateUtil 운동 기록 단위 '일'로 바꿀것
 
     private var currentNavController: LiveData<NavController>? = null
 

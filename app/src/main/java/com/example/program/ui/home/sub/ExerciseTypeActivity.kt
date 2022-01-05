@@ -14,14 +14,10 @@ import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeBinding
 import com.example.program.ui.dialog.CancelDialog
 import com.example.program.ui.dialog.UpdateDialog
-import com.example.program.util.AdUtil
+import com.example.program.util.Ad.AdUtil
+import com.example.program.util.Ad.FullScreenAdCallback
 import com.example.program.util.DateUtil
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.tabs.TabLayout
 import com.securepreferences.SecurePreferences
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +25,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ExerciseTypeActivity :
-    BaseActivity<ActivityExcerciseTypeBinding>(R.layout.activity_excercise_type) {
+    BaseActivity<ActivityExcerciseTypeBinding>(R.layout.activity_excercise_type),
+    FullScreenAdCallback {
 
     private val viewModel: RegExerciseTypeViewModel by viewModels()
 
@@ -207,7 +204,7 @@ class ExerciseTypeActivity :
 
                                 // 광고 내려간 직후, 메인화면으로 이동시킴
                                 intentAfterFullScreenAd = GO_MAIN
-                                fullScreenAdStart()
+                                startFullScreenAd()
 
                             }
                         registerDialog.show(
@@ -229,55 +226,11 @@ class ExerciseTypeActivity :
             }
         }
 
-        initBannerAd(dataBinding.adView)
-
         initPerformedExercises()
 
-        initFullScreenAd()
-    }
+        initBannerAd(dataBinding.adView)
 
-    private fun initFullScreenAd() {
-
-        // 전면광고 초기화
-        val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,getString(R.string.main_full_screen_test), adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                // 전면광고 콜백함수 등록
-                mInterstitialAd = interstitialAd
-                mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
-                    val TAG = "fullScreenLog"
-                    override fun onAdDismissedFullScreenContent() {
-                        when (intentAfterFullScreenAd) {
-                            GO_MAIN -> goMain()
-                            GO_BACK-> finish()
-                        }
-                    }
-
-                    override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                        Log.d(TAG, "Ad failed to show.")
-                    }
-
-                    override fun onAdShowedFullScreenContent() {
-                        Log.d(TAG, "Ad showed fullscreen content.")
-                        mInterstitialAd = null
-                    }
-                }
-            }
-        })
-    }
-
-    private fun fullScreenAdStart() {
-        val TAG = "fullScreenLog"
-
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(this)
-        } else {
-            Log.d(TAG, "Ad showed fullscreen content.")
-        }
+        initFullScreenAd(this)
     }
 
     private fun initPerformedExercises() {
@@ -348,7 +301,7 @@ class ExerciseTypeActivity :
                     if (AdUtil.isTurnToExposeAd(securePreferences)) {
                         // 광고 내려간 직후, 메인화면으로 이동시킴
                         intentAfterFullScreenAd = GO_MAIN
-                        fullScreenAdStart()
+                        startFullScreenAd()
                     } else {
                         goMain()
                     }
@@ -376,11 +329,10 @@ class ExerciseTypeActivity :
                 if (AdUtil.isTurnToExposeAd(securePreferences)) {
                     // 광고 내려간 직후, 뒤로가기시킴
                     intentAfterFullScreenAd = GO_BACK
-                    fullScreenAdStart()
+                    startFullScreenAd()
                 } else {
                     finish()
                 }
-
             }
         }
     }
@@ -388,6 +340,13 @@ class ExerciseTypeActivity :
     companion object {
         const val GO_MAIN = 0
         const val GO_BACK = 1
+    }
+
+    override fun onCloseFullScreenAd() {
+        when (intentAfterFullScreenAd) {
+            GO_MAIN -> goMain()
+            GO_BACK-> finish()
+        }
     }
 
 }

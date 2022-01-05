@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.example.program.base.BaseViewModel
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.repository.RoomRepository
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 class RegExerciseTypeViewModel @ViewModelInject constructor(
     private val roomRepository: RoomRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val TAG = "HomeViewModelLog"
 
@@ -82,6 +83,7 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
         success: (exercises: List<ExerciseTypeModel>) -> Unit = { },
     ) {
         viewModelScope.launch {
+            _isLoading.value = true
             roomRepository.getExercises(programNo, mesoCycleSplitIndex, microCycleSplitIndex)
                 .flowOn(Dispatchers.IO)
                 .catch { e ->
@@ -94,6 +96,8 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
 
                     success(exercises)
                 }
+            _isLoading.value = false
+
         }
     }
 

@@ -7,16 +7,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.example.program.R
 import com.example.program.ui.MainActivity
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
+import com.example.program.util.Ad.FullScreenAdCallback
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 open class BaseActivity<T: ViewDataBinding>(
     private val layoutRes: Int
 ): AppCompatActivity() {
 
     protected lateinit var dataBinding: T
+
+    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,47 @@ open class BaseActivity<T: ViewDataBinding>(
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(this)
+        }
+    }
+
+    fun initFullScreenAd(callback: FullScreenAdCallback) {
+
+        // 전면광고 초기화
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this,getString(R.string.main_full_screen_test), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                // 전면광고 콜백함수 등록
+                mInterstitialAd = interstitialAd
+                mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+                    val TAG = "fullScreenLog"
+                    override fun onAdDismissedFullScreenContent() {
+                        callback.onCloseFullScreenAd()
+                    }
+
+                    override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                        Log.d(TAG, "Ad failed to show.")
+                    }
+
+                    override fun onAdShowedFullScreenContent() {
+                        Log.d(TAG, "Ad showed fullscreen content.")
+                        mInterstitialAd = null
+                    }
+                }
+            }
+        })
+    }
+
+    fun startFullScreenAd() {
+        val TAG = "fullScreenLog"
+
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+        } else {
+            Log.d(TAG, "Ad showed fullscreen content.")
         }
     }
 

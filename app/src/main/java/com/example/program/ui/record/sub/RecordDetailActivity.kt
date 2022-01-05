@@ -7,19 +7,23 @@ import androidx.activity.viewModels
 import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityRecordDetailBinding
+import com.example.program.util.Ad.FullScreenAdCallback
 import com.example.program.util.XaxisDateFormatter
 import com.example.program.util.YaxisVolumeFormatter
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
+import com.google.android.gms.ads.interstitial.InterstitialAd
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RecordDetailActivity :
-    BaseActivity<ActivityRecordDetailBinding>(R.layout.activity_record_detail) {
+    BaseActivity<ActivityRecordDetailBinding>(R.layout.activity_record_detail), FullScreenAdCallback {
 
     private val recordDetailViewModel: RecordDetailViewModel by viewModels()
 
     private lateinit var recordsAdapter: RecordsAdapter
+
+    private var mInterstitialAd: InterstitialAd? = null
 
     private var programNo: Long = 0L
 
@@ -96,5 +100,15 @@ class RecordDetailActivity :
         recordDetailViewModel.getAllRecordsDateByProgramNo(programNo)
 
         initBannerAd(dataBinding.adView)
+
+        initFullScreenAd(this)
+    }
+
+    override fun onBackPressed() {
+        startFullScreenAd()
+    }
+
+    override fun onCloseFullScreenAd() {
+        finish()
     }
 }
