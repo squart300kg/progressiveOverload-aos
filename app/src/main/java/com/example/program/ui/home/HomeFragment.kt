@@ -60,7 +60,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         builder.setItems(R.array.home_sort_array
                         ) { dialog, pos ->
                             when (pos) {
-                                0 -> { // 프로그램 이름 수정
+                                0 -> { // 프로그램 복사
+
+                                }
+                                1 -> { // 프로그램 이름 수정
                                     registerDialog =
                                         UpdateDialog.newInstance(
                                             programTable.no,
@@ -76,7 +79,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                                         registerDialog.tag
                                     )
                                 }
-                                1 -> { // 프로그램 삭제
+                                2 -> { // 프로그램 삭제
                                     val deleteDialog = AlertDialog.Builder(ContextThemeWrapper(
                                         context,
                                         R.style.AlertDialogCustom))

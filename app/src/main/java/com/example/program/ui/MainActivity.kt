@@ -15,6 +15,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     // TODO 배포전
     // 1. 광고 아이디 넣기
+    // 2. 프로그램 복사하기 기능 넣기
 
     private var currentNavController: LiveData<NavController>? = null
 
