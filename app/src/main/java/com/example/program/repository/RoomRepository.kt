@@ -61,5 +61,7 @@ interface RoomRepository {
 
     fun getNextDate(targetedProgramNo: Long?, targetedDate: String?): Flow<String>
 
+    fun duplicateProgram(programNo: Long, name: String): Flow<Long>
+
 
 }

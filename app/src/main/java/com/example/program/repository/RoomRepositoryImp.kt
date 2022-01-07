@@ -290,4 +290,14 @@ class RoomRepositoryImp @Inject constructor(
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun duplicateProgram(programNo: Long, name: String): Flow<Long> {
+        return flow {
+            val data = programDAO.duplicateProgram(
+                programNo,
+                name)
+            emit(data)
+        }
+    }
 }

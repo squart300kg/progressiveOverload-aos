@@ -13,7 +13,7 @@ import com.example.program.R
 import com.example.program.base.BaseActivity
 import com.example.program.databinding.ActivityExcerciseTypeBinding
 import com.example.program.ui.dialog.CancelDialog
-import com.example.program.ui.dialog.UpdateDialog
+import com.example.program.ui.dialog.TitleDialog
 import com.example.program.util.Ad.AdUtil
 import com.example.program.util.Ad.FullScreenAdCallback
 import com.example.program.util.DateUtil
@@ -47,7 +47,7 @@ class ExerciseTypeActivity :
     private var isIntentToExercise = false
 
     private lateinit var cancelDialog: CancelDialog
-    private lateinit var updateDialog: UpdateDialog
+    private lateinit var titleDialog: TitleDialog
 
     private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
@@ -199,17 +199,19 @@ class ExerciseTypeActivity :
             tvRegSuccess.setOnClickListener {
                 when (exercisesSize > 0) {
                     true -> {
-                        updateDialog =
-                            UpdateDialog.newInstance(programNo) {
+                        titleDialog =
+                            TitleDialog.newInstance(
+                                TitleDialog.INTENT_TO_UPDATE,
+                                programNo) {
 
                                 // 광고 내려간 직후, 메인화면으로 이동시킴
                                 intentAfterFullScreenAd = GO_MAIN
                                 startFullScreenAd()
 
                             }
-                        updateDialog.show(
+                        titleDialog.show(
                             supportFragmentManager,
-                            updateDialog.tag
+                            titleDialog.tag
                         )
                     }
                     false -> showToast("운동을 등록해 주세요!")

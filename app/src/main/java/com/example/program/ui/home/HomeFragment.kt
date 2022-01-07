@@ -1,5 +1,6 @@
 package com.example.program.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,15 +11,9 @@ import androidx.fragment.app.viewModels
 import com.example.program.R
 import com.example.program.base.BaseFragment
 import com.example.program.databinding.FragmentHomeBinding
-import com.example.program.ui.dialog.UpdateDialog
+import com.example.program.ui.dialog.TitleDialog
 import com.example.program.ui.home.sub.ExerciseTypeActivity
 import com.example.program.ui.home.sub.MesoCycleSelectionActivity
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,8 +21,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val homeViewModel: HomeViewModel by viewModels()
 
-    private lateinit var registerDialog: UpdateDialog
+    private lateinit var registerDialog: TitleDialog
 
+    private lateinit var mainProgramsAdapter: MainProgramsAdapter
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -43,7 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
             rvPrograms.apply {
                 setHasFixedSize(true)
-                adapter = MainProgramsAdapter(
+                mainProgramsAdapter = MainProgramsAdapter(
                     { // 운동 종류 페이지 이동
                         Log.i("mainProgramAdpater", it.toString())
                         Intent(requireActivity(), ExerciseTypeActivity::class.java).apply {
@@ -61,11 +59,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         ) { dialog, pos ->
                             when (pos) {
                                 0 -> { // 프로그램 복사
+                                    registerDialog =
+                                        TitleDialog.newInstance(
+                                            TitleDialog.INTENT_TO_DUPLICATE,
+                                            programTable.no,
+                                            programTable.name) {
 
+
+
+                                        }
+                                    registerDialog.show(
+                                        requireActivity().supportFragmentManager,
+                                        registerDialog.tag
+                                    )
                                 }
                                 1 -> { // 프로그램 이름 수정
                                     registerDialog =
-                                        UpdateDialog.newInstance(
+                                        TitleDialog.newInstance(
+                                            TitleDialog.INTENT_TO_UPDATE,
                                             programTable.no,
                                             programTable.name) {
 
@@ -104,7 +115,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         dialog.show()
                     }
                 )
-
+                adapter = mainProgramsAdapter
             }
         }
     }

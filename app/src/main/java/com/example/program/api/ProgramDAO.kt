@@ -104,5 +104,8 @@ interface ProgramDAO {
     @Update
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable): Int
 
+    @Query("INSERT INTO ProgramTable(name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText) SELECT name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText FROM ProgramTable WHERE `no` == :programNo")
+    fun duplicateProgram(programNo: Long, name: String): Long
+
 
 }

@@ -12,17 +12,20 @@ import androidx.fragment.app.viewModels
 import com.example.program.R
 import com.example.program.base.BaseCenterDialog
 import com.example.program.databinding.FragmentRegisterDialogBinding
+import com.example.program.ui.home.HomeViewModel
 import com.example.program.ui.home.sub.RegExerciseTypeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UpdateDialog(
-    private val no: Long?,
-    private val name: String? = "",
+class TitleDialog(
+    private val intent: Int,
+    private val no: Long,
+    private val name: String = "",
     private val success: () -> Unit = {},
 ) : BaseCenterDialog<FragmentRegisterDialogBinding>(R.layout.fragment_register_dialog) {
 
-    private val viewModel: RegExerciseTypeViewModel by viewModels()
+    private val regExerciseTypeViewModel: RegExerciseTypeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,17 +47,32 @@ class UpdateDialog(
             tvCancel.setOnClickListener {
                 dismiss()
             }
+
             tvOk.setOnClickListener {
                 if (etInput.text.isNullOrEmpty()) {
                     Toast.makeText(requireActivity(), "이름을 입력해 주세요!", Toast.LENGTH_LONG).show()
                 } else {
-                    viewModel.updateProgramName(
-                        no,
-                        dataBinding.etInput.text.toString()
-                    ) {
-                        dismiss()
-                        success()
+
+                    when (intent) {
+                        INTENT_TO_UPDATE -> { // 프로그램 제목 변경
+                            regExerciseTypeViewModel.updateProgramName(
+                                no,
+                                dataBinding.etInput.text.toString()
+                            ) {
+                                dismiss()
+                                success()
+                            }
+                        }
+                        INTENT_TO_DUPLICATE -> { // 프로그램 복사
+
+                            // 기존 프로그램 복사 후, 기존 프로그램 안에 있는 운동 종목 모두 복사
+                            homeViewModel.duplicateProgram(no, name) {
+//                                dismiss()
+//                                success()
+                            }
+                        }
                     }
+
                 }
             }
         }
@@ -62,8 +80,10 @@ class UpdateDialog(
 
     companion object {
         fun newInstance(
-            no: Long?, name: String? = "", success: () -> Unit = {},
-        ) =
-            UpdateDialog(no, name, success)
+            intent: Int, no: Long, name: String = "", success: () -> Unit = {},
+        ) = TitleDialog(intent, no, name, success)
+
+        const val INTENT_TO_UPDATE = 0
+        const val INTENT_TO_DUPLICATE = 0
     }
 }

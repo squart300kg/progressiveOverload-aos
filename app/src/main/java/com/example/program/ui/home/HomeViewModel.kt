@@ -56,4 +56,57 @@ class HomeViewModel @ViewModelInject constructor(
                 }
         }
     }
+
+    fun duplicateProgram(programNo: Long,
+                         name: String,
+                         success: () -> Unit) {
+        viewModelScope.launch {
+            roomRepository.duplicateProgram(programNo, name)
+                .flowOn(Dispatchers.IO)
+                .catch { }
+                .onCompletion {
+                    Log.i("duplicateProgram", "duplicateProgram")
+//                    duplicateExercises(programNo) {
+//
+//                    }
+                }
+                .collect {
+                    Log.i("duplicateProgram", it.toString())
+                }
+        }
+    }
+
+//    private fun duplicateExercises(programNo: Long,
+//                                   success: () -> Unit) {
+//        viewModelScope.launch {
+//            roomRepository.duplicateExercises(programNo)
+//                .flowOn(Dispatchers.IO)
+//                .catch { }
+//                .onCompletion {
+//                    Log.i("duplicateExercises", "duplicateExercises")
+//                    success()
+//                }
+//                .collect {
+//                    Log.i("duplicateExercises", it.toString())
+//                }
+//        }
+//    }
+
+//    private fun updateProgramName(
+//        programNo: Long?,
+//        name: String,
+//        success: () -> Unit,
+//    ) {
+//        viewModelScope.launch {
+//            roomRepository.updateProgramName(name, programNo)
+//                .flowOn(Dispatchers.IO)
+//                .catch { e ->
+//                    e.printStackTrace()
+//                }
+//                .collect {
+//                    Log.i("updateProgramName", it.toString())
+//                    success()
+//                }
+//        }
+//    }
 }
