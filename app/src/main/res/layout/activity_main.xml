@@ -31,7 +31,7 @@
             android:layout_alignParentBottom="true"
             ads:layout_constraintBottom_toTopOf="@+id/nav_view"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/main_banner_ad_test"/>
+            ads:adUnitId="@string/main_banner_ad"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"

@@ -49,7 +49,7 @@ open class BaseActivity<T: ViewDataBinding>(
 
         // 전면광고 초기화
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,getString(R.string.main_full_screen_test), adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,getString(R.string.main_full_screen_ad), adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mInterstitialAd = null
             }

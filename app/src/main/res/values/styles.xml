@@ -11,7 +11,7 @@
         <item name="android:windowBackground">@color/light_grey</item>
 
         <!--전체 글자색-->
-<!--        <item name="android:textColor">@android:color/black</item>-->
+        <!--        <item name="android:textColor">@android:color/black</item>-->
         <item name="android:textColor">@android:color/black</item>
     </style>
 
@@ -33,6 +33,15 @@
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:background">@color/white</item>
         <item name="textColorAlertDialogListItem">@color/black</item>
+    </style>
+
+    <style name="Widget.AppTheme.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.AppTheme.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
 
 </resources>

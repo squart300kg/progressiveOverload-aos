@@ -1,5 +1,6 @@
 package com.example.program.repository
 
+import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.program.api.ProgramDAO
 import com.example.program.model.entity.ExerciseTypeTable
@@ -8,6 +9,7 @@ import com.example.program.model.entity.RecordTable
 import com.example.program.model.model.ExerciseTypeModel
 import com.example.program.model.model.ExerciseVolumeModel
 import com.example.program.model.model.RecordModel
+import com.example.program.repository.room.ProgramDatabase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -18,8 +20,8 @@ import javax.inject.Singleton
  */
 @Singleton
 class RoomRepositoryImp @Inject constructor(
-    private val programDAO: ProgramDAO,
-) : RoomRepository {
+    private val programDAO: ProgramDAO
+    ) : RoomRepository {
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
@@ -292,11 +294,11 @@ class RoomRepositoryImp @Inject constructor(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override fun duplicateProgram(programNo: Long, name: String): Flow<Long> {
+    override fun duplicateProgram(programNo: Long, programName: String): Flow<String> {
         return flow {
             val data = programDAO.duplicateProgram(
                 programNo,
-                name)
+                programName)
             emit(data)
         }
     }

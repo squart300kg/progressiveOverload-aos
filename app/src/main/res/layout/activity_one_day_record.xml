@@ -82,6 +82,6 @@
             android:layout_alignParentBottom="true"
             ads:layout_constraintBottom_toBottomOf="parent"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/main_banner_ad_test"/>
+            ads:adUnitId="@string/main_banner_ad"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

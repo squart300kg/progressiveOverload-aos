@@ -61,52 +61,19 @@ class HomeViewModel @ViewModelInject constructor(
                          name: String,
                          success: () -> Unit) {
         viewModelScope.launch {
+            _isLoading.value = true
             roomRepository.duplicateProgram(programNo, name)
                 .flowOn(Dispatchers.IO)
-                .catch { }
-                .onCompletion {
+                .onCompletion { cause ->
                     Log.i("duplicateProgram", "duplicateProgram")
-//                    duplicateExercises(programNo) {
-//
-//                    }
+                    if (cause == null)
+                        success()
                 }
+                .catch { }
                 .collect {
                     Log.i("duplicateProgram", it.toString())
                 }
+            _isLoading.value = false
         }
     }
-
-//    private fun duplicateExercises(programNo: Long,
-//                                   success: () -> Unit) {
-//        viewModelScope.launch {
-//            roomRepository.duplicateExercises(programNo)
-//                .flowOn(Dispatchers.IO)
-//                .catch { }
-//                .onCompletion {
-//                    Log.i("duplicateExercises", "duplicateExercises")
-//                    success()
-//                }
-//                .collect {
-//                    Log.i("duplicateExercises", it.toString())
-//                }
-//        }
-//    }
-
-//    private fun updateProgramName(
-//        programNo: Long?,
-//        name: String,
-//        success: () -> Unit,
-//    ) {
-//        viewModelScope.launch {
-//            roomRepository.updateProgramName(name, programNo)
-//                .flowOn(Dispatchers.IO)
-//                .catch { e ->
-//                    e.printStackTrace()
-//                }
-//                .collect {
-//                    Log.i("updateProgramName", it.toString())
-//                    success()
-//                }
-//        }
-//    }
 }

@@ -3,6 +3,7 @@ package com.example.program.ui.dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,10 +66,14 @@ class TitleDialog(
                         }
                         INTENT_TO_DUPLICATE -> { // 프로그램 복사
 
+                            Log.i("duplicateProgram", "INTENT_TO_DUPLICATE")
+
                             // 기존 프로그램 복사 후, 기존 프로그램 안에 있는 운동 종목 모두 복사
-                            homeViewModel.duplicateProgram(no, name) {
-//                                dismiss()
-//                                success()
+                            homeViewModel.duplicateProgram(
+                                no,
+                                dataBinding.etInput.text.toString()) {
+                                dismiss()
+                                success()
                             }
                         }
                     }
@@ -84,6 +89,6 @@ class TitleDialog(
         ) = TitleDialog(intent, no, name, success)
 
         const val INTENT_TO_UPDATE = 0
-        const val INTENT_TO_DUPLICATE = 0
+        const val INTENT_TO_DUPLICATE = 1
     }
 }

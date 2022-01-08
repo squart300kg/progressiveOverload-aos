@@ -1,5 +1,6 @@
 package com.example.program.api
 
+import android.util.Log
 import androidx.room.*
 import com.example.program.model.entity.ExerciseTypeTable
 import com.example.program.model.entity.ProgramTable
@@ -62,19 +63,22 @@ interface ProgramDAO {
         programNo: Long?,
     ): List<RecordTable>
 
-    @Query("SELECT name FROM recordtable WHERE recordTime == :recordTime AND programNo == :programNo GROUP BY name ORDER BY name ASC")
+    @Query("SELECT name FROM RecordTable WHERE recordTime == :recordTime AND programNo == :programNo GROUP BY name ORDER BY name ASC")
     fun getOneDayRecordName(recordTime: String?, programNo: Long?): List<String>
 
-    @Query("SELECT * FROM exercisetypetable WHERE programNo == :programNo AND mesoCycleSplitIndex == :mesoCycleSplitIndex AND microCycleSplitIndex == :microCycleSplitIndex")
+    @Query("SELECT * FROM ExerciseTypeTable WHERE programNo == :programNo AND mesoCycleSplitIndex == :mesoCycleSplitIndex AND microCycleSplitIndex == :microCycleSplitIndex")
     fun getExercises(programNo: Long, mesoCycleSplitIndex: Int, microCycleSplitIndex: Int): List<ExerciseTypeTable>
+
+    @Query("SELECT * FROM ExerciseTypeTable WHERE programNo == :programNo")
+    fun getExercises(programNo: Long): List<ExerciseTypeTable>
 
     @Query("SELECT recordTime, SUM(weight * repitition) AS totalVolume FROM recordtable WHERE programNo == :programNo  GROUP BY recordTime ORDER BY recordTime DESC")
     fun getAllRecordsDateByProgramNo(programNo: Long): List<RecordModel>
 
-    @Query("SELECT * FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime")
+    @Query("SELECT * FROM RecordTable WHERE programNo == :programNo AND recordTime == :recordTime")
     fun getTargetDateTotalVolume(recordTime: String?, programNo: Long?): Int
 
-    @Query("SELECT name, SUM(weight * repitition) AS totalVolume FROM recordtable WHERE programNo == :programNo AND recordTime == :recordTime GROUP BY name ORDER BY null")
+    @Query("SELECT name, SUM(weight * repitition) AS totalVolume FROM RecordTable WHERE programNo == :programNo AND recordTime == :recordTime GROUP BY name ORDER BY null")
     fun getExerciseVolumes(programNo: Long, recordTime: String): List<ExerciseVolumeModel>
 
     @Insert
@@ -105,7 +109,36 @@ interface ProgramDAO {
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable): Int
 
     @Query("INSERT INTO ProgramTable(name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText) SELECT name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText FROM ProgramTable WHERE `no` == :programNo")
-    fun duplicateProgram(programNo: Long, name: String): Long
+    fun duplicateProgram(programNo: Long): Long
+
+    @Query("INSERT INTO ExerciseTypeTable(name, weight, repitition, setNum, restTime, rpe, programNo, mesoCycleSplitIndex, microCycleSplitIndex) SELECT name, weight, repitition, setNum, restTime, rpe, programNo, mesoCycleSplitIndex, microCycleSplitIndex FROM ExerciseTypeTable WHERE `programNo` == :originProgramNo")
+    fun duplicateExercises(originProgramNo: Long): Long
+
+    @Transaction
+    fun duplicateProgram(originProgramNo: Long, programName: String): String {
+        // 1. 프로그램 복사
+        val duplicateProgramNo = duplicateProgram(originProgramNo)
+
+        // 2. 복사된 프로그램 제목 변경
+        updateProgramName(programName, duplicateProgramNo)
+
+        // 2. 복사된 프로그램이 가지고 있는 운동 종목들 복사
+        val exercises = getExercises(originProgramNo)
+        exercises.forEach {
+            insertExerciseType(ExerciseTypeTable(
+                name = it.name,
+                weight = it.weight,
+                repitition = it.repitition,
+                setNum = it.setNum,
+                restTime = it.restTime,
+                rpe = it.rpe,
+                programNo = duplicateProgramNo,
+                mesoCycleSplitIndex = it.mesoCycleSplitIndex,
+                microCycleSplitIndex = it.microCycleSplitIndex
+            ))
+        }
+        return "duplicateSuccess"
+    }
 
 
 }
