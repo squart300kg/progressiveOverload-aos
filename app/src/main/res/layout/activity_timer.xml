@@ -7,7 +7,7 @@
 
         <variable
             name="timerVm"
-            type="com.example.program.ui.home.sub.TimerViewModel" />
+            type="com.progressive.overload.ui.home.sub.TimerViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

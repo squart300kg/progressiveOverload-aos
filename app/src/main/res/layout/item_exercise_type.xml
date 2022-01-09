@@ -7,7 +7,7 @@
 
         <variable
             name="exerciseItem"
-            type="com.example.program.model.model.ExerciseTypeModel" />
+            type="com.progressive.overload.model.model.ExerciseTypeModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

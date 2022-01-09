@@ -5,7 +5,7 @@
 
         <variable
             name="recordExVm"
-            type="com.example.program.ui.home.sub.RecordExerciseViewModel" />
+            type="com.progressive.overload.ui.home.sub.RecordExerciseViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

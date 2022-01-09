@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/log_record"
-        android:name="com.example.program.ui.home.HomeFragment"
+        android:name="com.progressive.overload.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 

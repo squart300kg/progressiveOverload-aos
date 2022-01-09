@@ -7,7 +7,7 @@
 
         <variable
             name="programItem"
-            type="com.example.program.model.entity.ProgramTable" />
+            type="com.progressive.overload.model.entity.ProgramTable" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -3,7 +3,7 @@
     <data>
         <variable
             name="splitItem"
-            type="com.example.program.constant.MesoCycleSplit" />
+            type="com.progressive.overload.constant.MesoCycleSplit" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

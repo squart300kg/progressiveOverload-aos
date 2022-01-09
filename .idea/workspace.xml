@@ -6,15 +6,20 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="duplicateProgram" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="updateTest" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="프로그램 복사 기능 완료, 앱 아이콘 정함, 스플래시화면 정함">
-      <change afterPath="$PROJECT_DIR$/ProgressiveOverload.jks" afterDir="false" />
+    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="배포 직전 준비">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/CommonModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/FirebaseModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/AppUpdateModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/SplashViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/dialog/VersionCheckDialog.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_version_check_dialog.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -26,15 +31,133 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProgressiveOverload.jks" beforeDir="false" afterPath="$PROJECT_DIR$/ProgressiveOverload.jks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/war/of/thewarofstars/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/progressive/war/of/thewarofstars/ExampleInstrumentedTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/api/CommonApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/api/CommonApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/api/ProgramDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/api/ProgramDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/api/YoutubeApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/api/YoutubeApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/base/BaseBottomDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseBottomDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/base/BaseCenterDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseCenterDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/base/BaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/base/BaseViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/base/BaseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/constant/MesoCycleSplit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/constant/MesoCycleSplit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/constant/MicroCycleSplit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/constant/MicroCycleSplit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/di/NetworkModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/NetworkModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/di/PreferencesModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/PreferencesModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/di/RepositoryModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/RepositoryModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/di/RoomModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/RoomModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ext/ChartExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ext/ChartExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ext/ImageViewExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ext/ImageViewExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ext/RecyclerViewExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ext/RecyclerViewExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ext/TextViewExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ext/TextViewExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ext/ViewExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ext/ViewExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/fcm/MyFirebaseMessagingService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/fcm/MyFirebaseMessagingService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ExerciseTypeTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/entity/ExerciseTypeTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/ProgramTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/entity/ProgramTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/entity/RecordTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/entity/RecordTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/ExerciseTypeModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/ExerciseTypeModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/ExerciseVolumeModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/ExerciseVolumeModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/RecordExerciseModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/RecordExerciseModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/model/RecordModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/RecordModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/model/response/YoutubeResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/response/YoutubeResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/repository/RoomRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/RoomRepositoryImp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/repository/RoomRepositoryImp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/YoutubeRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/repository/YoutubeRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/YoutubeRepositoryImp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/repository/YoutubeRepositoryImp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/repository/room/ProgramDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/repository/room/ProgramDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/SplashActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/dialog/CancelDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/dialog/CancelDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/dialog/CompleteDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/dialog/CompleteDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/dialog/TitleDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/dialog/TitleDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/HomeViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/MainProgramsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/MainProgramsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/ExerciseTypeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/ExerciseTypeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/ExerciseTypeAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MesoCycleSelectionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MesoCycleSelectionActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MesoCycleSelectionAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MesoCycleSelectionAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MicroCycleSelectionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MicroCycleSelectionActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/MicroCycleSelectionAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MicroCycleSelectionAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RecordExerciseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/RegExerciseTypeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/SplitSelectionViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/SplitSelectionViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/TimerActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/home/sub/TimerViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/TimerViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/mypage/MyPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/mypage/MyPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/mypage/MyPageViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/mypage/MyPageViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/navigation/NavigationExtension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/navigation/NavigationExtension.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/ProgramAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/ProgramAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/RecordFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/RecordFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/RecordViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/RecordViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/ExerciseVolumeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/ExerciseVolumeAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/OneDayRecordActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/OneDayRecordActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/OneDayRecordAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/OneDayRecordAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/OneDayRecordDetailAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/OneDayRecordDetailAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/OneDayRecordViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/OneDayRecordViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/RecordDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/RecordDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/RecordDetailViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/RecordDetailViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/ui/record/sub/RecordsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/RecordsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/Ad/AdUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/Ad/AdUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/Ad/FullScreenAdCallback.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/Ad/FullScreenAdCallback.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/BackButtonCloseHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/BackButtonCloseHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/DateUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/DateUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/GlideUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/GlideUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/InputFilterMinMax.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/InputFilterMinMax.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/ItemDecoration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/ItemDecoration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/KeyboardVisibilityUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/KeyboardVisibilityUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/RecordMarkerView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/RecordMarkerView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/XaxisDateFormatter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/XaxisDateFormatter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/program/util/YaxisVolumeFormatter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/util/YaxisVolumeFormatter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type_registration_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type_registration_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_one_day_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_one_day_record.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_record_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_record_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_record_exercise.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_record_exercise.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_timer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_timer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_record.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_type.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_type.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_volume.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_volume.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_meso_cycle_split_selection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_meso_cycle_split_selection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_micro_cycle_split_selection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_micro_cycle_split_selection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_program.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_program.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_read_detail_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_read_detail_record.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_records.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_records.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_write_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_write_record.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_excercise_type.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_excercise_type.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_repitition.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_repitition.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_rest_time.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_rest_time.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_rpe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_rpe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_set_number.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_set_number.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_weight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_weight.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/log_look_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/log_look_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/log_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/log_record.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mall.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mall.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/war/of/thewarofstars/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/progressive/war/of/thewarofstars/ExampleUnitTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[23738228180b7ece]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R59M507KRHD]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -99,7 +222,6 @@
   <component name="ProjectId" id="21jQkMD1AfU9BWP0ZebXdaPfzzl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -114,7 +236,7 @@
     <property name="android-custom-view/Users/sangyunsong/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/ac793df650995ffac19502bbc18a3501e4202f48/MPAndroidChart-v3.0.2-sources.jar!/com/github/mikephil/charting/charts/BarLineChartBase.java_SELECTED" value="BarLineChartBase" />
     <property name="android-custom-view/Users/sangyunsong/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/ac793df650995ffac19502bbc18a3501e4202f48/MPAndroidChart-v3.0.2-sources.jar!/com/github/mikephil/charting/charts/Chart.java_SELECTED" value="Chart" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -122,11 +244,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/src" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/assets/database" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/program/ext" />
-      <recent name="$PROJECT_DIR$/app" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.example.program.util.Ad" />
@@ -142,11 +264,11 @@
       <recent name="com.example.program.ui.home.sub" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.progressive.overload.model.model" />
+      <recent name="com.progressive.overload.di" />
+      <recent name="com.progressive.overload.ui" />
+      <recent name="com.progressive.overload.ui.dialog" />
       <recent name="com.example.program.ui.dialog" />
-      <recent name="com.example.program.util" />
-      <recent name="com.example.program.constant" />
-      <recent name="com.example.program.ui.home.sub" />
-      <recent name="com.example.program.ui.record.sub" />
     </key>
     <key name="android.template.-1706981480">
       <recent name="com.example.program.ui.record.sub" />
@@ -229,13 +351,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638452160516</updated>
-    </task>
-    <task id="LOCAL-00001" summary="first commit">
-      <created>1638452684706</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1638452684707</updated>
     </task>
     <task id="LOCAL-00002" summary="UI작업중">
       <created>1638600669532</created>
@@ -573,7 +688,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641659374530</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="배포 직전 준비">
+      <created>1641665079010</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1641665079011</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -589,7 +711,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="하루 일지 상세보기 구현중" />
     <MESSAGE value="하루 일지 상세보기 넘기기 구현중" />
     <MESSAGE value="메인화면 운동 종목 체크 깜빡임 버그 개선" />
     <MESSAGE value="운동 기록 페이지에서 접었을 때 해당 인덱스 보이도록 설정" />
@@ -614,6 +735,7 @@
     <MESSAGE value="프로그램 복사 기능 추가" />
     <MESSAGE value="프로그램 복사 기능 완료" />
     <MESSAGE value="프로그램 복사 기능 완료, 앱 아이콘 정함, 스플래시화면 정함" />
-    <option name="LAST_COMMIT_MESSAGE" value="프로그램 복사 기능 완료, 앱 아이콘 정함, 스플래시화면 정함" />
+    <MESSAGE value="배포 직전 준비" />
+    <option name="LAST_COMMIT_MESSAGE" value="배포 직전 준비" />
   </component>
 </project>

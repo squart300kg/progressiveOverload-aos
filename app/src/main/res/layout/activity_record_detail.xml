@@ -7,7 +7,7 @@
 
         <variable
             name="recordDetailVm"
-            type="com.example.program.ui.record.sub.RecordDetailViewModel" />
+            type="com.progressive.overload.ui.record.sub.RecordDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

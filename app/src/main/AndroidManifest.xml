@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.program">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.progressive.overload">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
-        android:name=".Application"
+        android:name="com.progressive.overload.Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_app_icon"
         android:label="@string/app_name"
@@ -17,7 +18,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.SplashActivity"
+            android:name="com.progressive.overload.ui.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="@string/app_name"
@@ -33,32 +34,32 @@
             android:value="ca-app-pub-6562154197787185~6194307481" />
 
         <activity
-            android:name=".ui.home.sub.TimerActivity"
+            android:name="com.progressive.overload.ui.home.sub.TimerActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.record.sub.OneDayRecordActivity"
+            android:name="com.progressive.overload.ui.record.sub.OneDayRecordActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.record.sub.RecordDetailActivity"
+            android:name="com.progressive.overload.ui.record.sub.RecordDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.RecordExerciseActivity"
+            android:name="com.progressive.overload.ui.home.sub.RecordExerciseActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.MesoCycleSelectionActivity"
+            android:name="com.progressive.overload.ui.home.sub.MesoCycleSelectionActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.MicroCycleSelectionActivity"
+            android:name="com.progressive.overload.ui.home.sub.MicroCycleSelectionActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.ExerciseTypeActivity"
+            android:name="com.progressive.overload.ui.home.sub.ExerciseTypeActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.home.sub.RegExerciseTypeDetailActivity"
+            android:name="com.progressive.overload.ui.home.sub.RegExerciseTypeDetailActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.progressive.overload.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
         </activity>

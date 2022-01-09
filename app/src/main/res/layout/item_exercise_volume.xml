@@ -7,7 +7,7 @@
 
         <variable
             name="volumeItem"
-            type="com.example.program.model.model.ExerciseVolumeModel" />
+            type="com.progressive.overload.model.model.ExerciseVolumeModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

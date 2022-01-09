@@ -6,7 +6,7 @@
 
         <variable
             name="recordItem"
-            type="com.example.program.model.model.RecordModel" />
+            type="com.progressive.overload.model.model.RecordModel" />
 
     </data>
 
