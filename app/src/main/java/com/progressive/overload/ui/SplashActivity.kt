@@ -42,12 +42,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
         appUpdateManager = AppUpdateManagerFactory.create(this)
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            showFinishDialog("지원하지 않는 안드로이드 버전입니다.", "종료")
-        } else {
-            splashViewModel.getSystem()
-        }
-
         observing {
             splashViewModel.appUpdateModel.observe(this@SplashActivity, {
                 if (it.maintenanceMode) {
@@ -229,6 +223,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     override fun showInternetDisconnectedView(disconnected: Boolean) {
         Log.i("splashNetwork", disconnected.toString())
         dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
+
+        if (!disconnected) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                showFinishDialog("지원하지 않는 안드로이드 버전입니다.", "종료")
+            } else {
+                splashViewModel.getSystem()
+            }
+        }
     }
 
 }
