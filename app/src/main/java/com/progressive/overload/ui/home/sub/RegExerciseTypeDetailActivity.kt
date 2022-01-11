@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.ContextThemeWrapper
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -127,27 +128,27 @@ class RegExerciseTypeDetailActivity :
             }
 
             layoutExerciseType.etExerciseType.apply {
-                checkIfInputIsFull()
+                checkIfInputIsFull(this)
             }
 
             layoutRepitition.etRepitition.apply {
-                checkIfInputIsFull()
+                checkIfInputIsFull(this)
             }
 
             layoutRestTime.etRestTime.apply {
-                checkIfInputIsFull()
+                checkIfInputIsFull(this)
             }
 
             layoutSetNumber.etSetNumber.apply {
-                checkIfInputIsFull()
+                checkIfInputIsFull(this)
             }
 
             layoutWeight.etWeight.apply {
-                checkIfInputIsFull()
+                checkIfInputIsFull(this)
             }
 
             layoutRpe.etRpe.apply {
-                checkIfInputIsFull()
+                checkIfInputIsFull(this)
             }
         }
 
@@ -164,13 +165,23 @@ class RegExerciseTypeDetailActivity :
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun EditText.checkIfInputIsFull() {
+    private fun EditText.checkIfInputIsFull(et: EditText) {
         addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 dataBinding.tvRegister.isSelected = !isInputNotFull()
+
+                if (!isInputNotFull()) {
+                    hideKeyBoard(et)
+                }
             }
         })
+    }
+
+    private fun hideKeyBoard(et: EditText) {
+        (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+            et.windowToken,
+            0);
     }
 }
