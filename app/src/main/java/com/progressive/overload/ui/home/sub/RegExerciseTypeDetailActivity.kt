@@ -172,17 +172,21 @@ class RegExerciseTypeDetailActivity :
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 dataBinding.tvRegister.isSelected = !isInputNotFull()
 
+                // 전부다 입력했고,
                 if (!isInputNotFull()) {
-                    hideKeyBoard(et)
+
+                    // 포커스가 RIR에 있을시,
+                    if (dataBinding.layoutRpe.etRpe.hasFocus()) {
+
+                            // 키보드 자동 내림
+                            (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                                dataBinding.layoutRpe.etRpe.windowToken,
+                                0);
+                        }
+
                 }
             }
         })
-    }
-
-    private fun hideKeyBoard(et: EditText) {
-        (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
-            et.windowToken,
-            0);
     }
 
     override fun showInternetDisconnectedView(disconnected: Boolean) {
