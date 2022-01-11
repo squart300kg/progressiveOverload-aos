@@ -3,6 +3,7 @@ package com.progressive.overload.ui.home.sub
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivityMicroCycleSplitSelectionBinding
@@ -61,5 +62,9 @@ class MicroCycleSelectionActivity :
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
+
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
 import com.progressive.overload.R
@@ -118,5 +119,9 @@ class RecordDetailActivity :
 
     override fun onCloseFullScreenAd() {
 //        finish()
+    }
+
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
     }
 }

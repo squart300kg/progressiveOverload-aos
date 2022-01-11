@@ -347,4 +347,8 @@ class ExerciseTypeActivity :
 //        }
     }
 
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
+    }
+
 }

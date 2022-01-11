@@ -262,5 +262,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <include
+            android:id="@+id/view_network_not_connected"
+            layout="@layout/layout_network_not_connected"
+            overload:visibility="invisible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

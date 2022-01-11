@@ -184,4 +184,8 @@ class RegExerciseTypeDetailActivity :
             et.windowToken,
             0);
     }
+
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
+    }
 }

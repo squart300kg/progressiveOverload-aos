@@ -1,6 +1,10 @@
 package com.progressive.overload.base
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -14,18 +18,25 @@ import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
-open class BaseActivity<T: ViewDataBinding>(
+abstract class BaseActivity<T: ViewDataBinding>(
     private val layoutRes: Int
 ): AppCompatActivity() {
 
     protected lateinit var dataBinding: T
 
     private var mInterstitialAd: InterstitialAd? = null
+    private var internetDisconnectReceiver = InternetDisconnectReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, layoutRes)
         dataBinding.lifecycleOwner = this
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(internetDisconnectReceiver, filter)
     }
 
     protected fun binding(action: T.() -> Unit) {
@@ -95,4 +106,19 @@ open class BaseActivity<T: ViewDataBinding>(
             adView.loadAd(this)
         }
     }
+
+    private inner class InternetDisconnectReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (ConnectivityManager.CONNECTIVITY_ACTION == intent.action) {
+                val noConnectivity = intent.getBooleanExtra(
+                    ConnectivityManager.EXTRA_NO_CONNECTIVITY, false
+                )
+                showInternetDisconnectedView(noConnectivity)
+
+            }
+        }
+    }
+
+    abstract fun showInternetDisconnectedView(disconnected: Boolean)
+
 }

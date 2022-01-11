@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.androidadvance.topsnackbar.TSnackbar
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -224,6 +225,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     companion object {
         const val REQUEST_CODE_FLEXIBLE_UPDATE = 1
         const val REQUEST_CODE_IMMEDIATE_UPDATE = 2
+    }
+
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivityTimerBinding
@@ -66,5 +67,9 @@ class TimerActivity :
             setResult(RESULT_OK, this)
         }
         super.onBackPressed()
+    }
+
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
     }
 }

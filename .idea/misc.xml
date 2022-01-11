@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/drawable/border_exercise_success.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_exercise_update.xml" value="0.3055555555555556" />
         <entry key="app/src/main/res/drawable/border_main.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_network_button.xml" value="0.4041666666666667" />
         <entry key="app/src/main/res/drawable/border_program.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_program_selection.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_record_ex_after.xml" value="0.25364583333333335" />
@@ -29,11 +30,13 @@
         <entry key="app/src/main/res/drawable/border_register.xml" value="0.39794871794871794" />
         <entry key="app/src/main/res/drawable/border_see_record_detail.xml" value="0.3287037037037037" />
         <entry key="app/src/main/res/drawable/border_step_balloon.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/border_step_balloon_focused.xml" value="0.4041666666666667" />
         <entry key="app/src/main/res/drawable/border_step_balloon_un_focused.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/border_timer_skip.xml" value="0.1984375" />
         <entry key="app/src/main/res/drawable/border_timer_stop.xml" value="0.1984375" />
         <entry key="app/src/main/res/drawable/ic_arrow_forward.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/drawable/ic_update.xml" value="0.2677083333333333" />
+        <entry key="app/src/main/res/drawable/ic_wifi.xml" value="0.4041666666666667" />
         <entry key="app/src/main/res/drawable/ic_youtube.xml" value="0.34074074074074073" />
         <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.39794871794871794" />
         <entry key="app/src/main/res/drawable/menu_selector_exercise_info.xml" value="0.3807291666666667" />
@@ -53,7 +56,7 @@
         <entry key="app/src/main/res/layout/activity_one_day_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_record_detail.xml" value="0.1887031408308004" />
         <entry key="app/src/main/res/layout/activity_record_exercise.xml" value="0.21639344262295082" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.37681159420289856" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_split_selection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_timer.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/layout/fragment_cancel_dialog.xml" value="0.335" />
@@ -80,6 +83,7 @@
         <entry key="app/src/main/res/layout/layout_adding_program.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/layout_excercise_type.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_graph_marker.xml" value="0.1887031408308004" />
+        <entry key="app/src/main/res/layout/layout_network_not_connected.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/layout_reg_excercise_type.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/layout_repitition.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/layout_rest_time.xml" value="0.3229166666666667" />

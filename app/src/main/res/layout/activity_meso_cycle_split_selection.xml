@@ -9,10 +9,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:overload="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.sub.MesoCycleSelectionActivity">
+        overload:context=".ui.home.sub.MesoCycleSelectionActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_guide"
@@ -107,7 +107,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_guide"
-            tools:listitem="@layout/item_meso_cycle_split_selection" />
+            overload:listitem="@layout/item_meso_cycle_split_selection" />
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
@@ -121,5 +121,9 @@
             ads:layout_constraintBottom_toBottomOf="parent"
             ads:adSize="BANNER"
             ads:adUnitId="@string/main_banner_ad"/>
+        <include
+            android:id="@+id/view_network_not_connected"
+            layout="@layout/layout_network_not_connected"
+            overload:visibility="invisible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

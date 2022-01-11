@@ -85,5 +85,10 @@
             ads:layout_constraintBottom_toBottomOf="parent"
             ads:adSize="BANNER"
             ads:adUnitId="@string/main_banner_ad"/>
+
+        <include
+            android:id="@+id/view_network_not_connected"
+            layout="@layout/layout_network_not_connected"
+            overload:visibility="invisible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

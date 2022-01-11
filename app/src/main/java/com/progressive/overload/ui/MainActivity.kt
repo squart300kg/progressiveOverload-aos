@@ -1,6 +1,7 @@
 package com.progressive.overload.ui
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.progressive.overload.R
@@ -51,6 +52,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         )
 
         currentNavController = controller
+    }
+
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
     }
 
 }

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivityOneDayRecordBinding
@@ -161,5 +162,9 @@ class OneDayRecordActivity :
                 finish()
             }
         }
+    }
+
+    override fun showInternetDisconnectedView(disconnected: Boolean) {
+        dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
     }
 }
