@@ -64,7 +64,7 @@ class RegExerciseTypeDetailActivity :
                     viewModel.insertExerciseType(
                         ExerciseTypeTable(
                             name = layoutExerciseType.etExerciseType.text.toString(),
-                            weight = layoutWeight.etWeight.text.toString().toInt(),
+                            weight = layoutWeight.etWeight.text.toString().toFloat(),
                             repitition = layoutRepitition.etRepitition.text.toString().toInt(),
                             setNum = layoutSetNumber.etSetNumber.text.toString().toInt(),
                             restTime = layoutRestTime.etRestTime.text.toString().toInt(),
@@ -112,7 +112,7 @@ class RegExerciseTypeDetailActivity :
                     ExerciseTypeTable(
                         no = exerciseTypeModel.no,
                         name = layoutExerciseType.etExerciseType.text.toString(),
-                        weight = layoutWeight.etWeight.text.toString().toInt(),
+                        weight = layoutWeight.etWeight.text.toString().toFloat(),
                         repitition = layoutRepitition.etRepitition.text.toString().toInt(),
                         setNum = layoutSetNumber.etSetNumber.text.toString().toInt(),
                         restTime = layoutRestTime.etRestTime.text.toString().toInt(),

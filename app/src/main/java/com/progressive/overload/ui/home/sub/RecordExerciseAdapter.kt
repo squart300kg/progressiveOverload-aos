@@ -86,7 +86,7 @@ class RecordExerciseAdapter(
 
                         onClickForSuccess(RecordExerciseModel(
                             items[absoluteAdapterPosition].no,
-                            itemBinding.etWeight.text.toString().toInt(),
+                            itemBinding.etWeight.text.toString().toFloat(),
                             itemBinding.etRepitition.text.toString().toInt(),
                             items[absoluteAdapterPosition].setNum,
                             itemBinding.etRpe.text.toString().toInt(),

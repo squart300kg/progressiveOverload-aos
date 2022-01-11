@@ -89,7 +89,7 @@ class RecordExerciseActivity :
                         { model -> // 운동 수행 완료
 
                             when {
-                                model.weight == 0 -> {
+                                model.weight == 0.0f -> {
                                     Toast.makeText(this@RecordExerciseActivity,
                                         "'중량' 입력란이 '0'입니다!",
                                         Toast.LENGTH_SHORT).show()

@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class RecordExerciseModel(
     val no : Int,
-    val weight : Int,
+    val weight : Float,
     val repitition : Int,
     val setNum : Int,
     val rpe : Int,

@@ -6,14 +6,15 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="splashNetwork" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="타이머 버그 개선">
+    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="인풋개선">
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/database/dummy_room_data_v_19.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/room_data_note/dummy_room_data_v_19.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,10 +25,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_weight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_weight.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/RoomModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/di/RoomModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/entity/ExerciseTypeTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/entity/ExerciseTypeTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/entity/RecordTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/entity/RecordTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/ExerciseTypeModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/ExerciseTypeModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/RecordExerciseModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/model/model/RecordExerciseModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/repository/room/ProgramDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/repository/room/ProgramDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_rpe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_rpe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/room_data_note/dummy_room_data_v_18.db" beforeDir="false" afterPath="$PROJECT_DIR$/room_data_note/dummy_room_data_v_18.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +123,7 @@
     <property name="android-custom-view/Users/sangyunsong/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/ac793df650995ffac19502bbc18a3501e4202f48/MPAndroidChart-v3.0.2-sources.jar!/com/github/mikephil/charting/charts/BarLineChartBase.java_SELECTED" value="BarLineChartBase" />
     <property name="android-custom-view/Users/sangyunsong/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/ac793df650995ffac19502bbc18a3501e4202f48/MPAndroidChart-v3.0.2-sources.jar!/com/github/mikephil/charting/charts/Chart.java_SELECTED" value="Chart" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/assets/database" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -122,11 +131,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/assets/database" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/src" />
-      <recent name="$PROJECT_DIR$/app/src/main/assets/database" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.example.program.util.Ad" />
@@ -229,20 +238,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638452160516</updated>
-    </task>
-    <task id="LOCAL-00012" summary="운동 세트수 저장 기능 구현">
-      <created>1639372763591</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1639372763591</updated>
-    </task>
-    <task id="LOCAL-00013" summary="운동 끝난 후, 완료 토스트메시지 띄움">
-      <created>1639379830781</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1639379830781</updated>
     </task>
     <task id="LOCAL-00014" summary="완료한 운동종목 어둡게 처리">
       <created>1639385964699</created>
@@ -573,7 +568,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641912749470</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="인풋개선">
+      <created>1641913302853</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1641913302853</updated>
+    </task>
+    <task id="LOCAL-00062" summary="인풋개선">
+      <created>1641913354601</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1641913354601</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -589,7 +598,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="중간저장" />
     <MESSAGE value="수행한 운동 로티애니메이션 적용 완료" />
     <MESSAGE value="거의다 된듯?" />
     <MESSAGE value="미리채우기 구현중" />
@@ -614,6 +622,7 @@
     <MESSAGE value="네트워크 연결에 따른 버전 체크하도록 설정" />
     <MESSAGE value="그래프 위쪽 여백 부여" />
     <MESSAGE value="타이머 버그 개선" />
-    <option name="LAST_COMMIT_MESSAGE" value="타이머 버그 개선" />
+    <MESSAGE value="인풋개선" />
+    <option name="LAST_COMMIT_MESSAGE" value="인풋개선" />
   </component>
 </project>

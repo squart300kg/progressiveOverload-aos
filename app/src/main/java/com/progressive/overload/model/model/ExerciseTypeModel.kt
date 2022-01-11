@@ -5,7 +5,7 @@ import java.io.Serializable
 data class ExerciseTypeModel(
     val no: Long = 0,
     val name: String?,
-    val weight: Int?,
+    val weight: Float?,
     val repitition: Int?,
     val setNum: Int?,
     val restTime: Int?,
