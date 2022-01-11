@@ -57,7 +57,7 @@
         <activity
             android:name="com.progressive.overload.ui.home.sub.RegExerciseTypeDetailActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.progressive.overload.ui.MainActivity"
             android:exported="true"
