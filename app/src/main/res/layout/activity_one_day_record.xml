@@ -86,6 +86,6 @@
         <include
             android:id="@+id/view_network_not_connected"
             layout="@layout/layout_network_not_connected"
-            overload:visibility="invisible" />
+            android:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

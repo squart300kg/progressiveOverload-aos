@@ -53,6 +53,8 @@ abstract class BaseActivity<T: ViewDataBinding>(
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(this)
+            finish()
+
         }
     }
 

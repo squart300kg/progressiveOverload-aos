@@ -215,7 +215,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     private fun showMainActivity() {
         Handler(Looper.getMainLooper()).postDelayed({ goMain() }, 1500)
-        finish()
     }
 
     private fun observing(action: SplashViewModel.() -> Unit) {
@@ -228,6 +227,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     override fun showInternetDisconnectedView(disconnected: Boolean) {
+        Log.i("splashNetwork", disconnected.toString())
         dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
     }
 

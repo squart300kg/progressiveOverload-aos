@@ -6,16 +6,14 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="splashNetwork" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="프로그램 등록 가능하도록 설정">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_network_button.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_wifi.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_network_not_connected.xml" afterDir="false" />
+    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="네트워크 연결 안되었을시 화면 설정">
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -26,20 +24,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/base/BaseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/SplashActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/ExerciseTypeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/ExerciseTypeActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MesoCycleSelectionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MesoCycleSelectionActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MicroCycleSelectionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/MicroCycleSelectionActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RecordExerciseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeDetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/TimerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/TimerActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/OneDayRecordActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/OneDayRecordActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/RecordDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/record/sub/RecordDetailActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type_registration_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_excercise_type_registration_detail.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
@@ -251,13 +237,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638452160516</updated>
-    </task>
-    <task id="LOCAL-00007" summary="오늘 운동 시작 구현해야함">
-      <created>1638885548175</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1638885548175</updated>
     </task>
     <task id="LOCAL-00008" summary="운동 기록 페이지 구현중">
       <created>1639059840534</created>
@@ -595,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641907716172</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="네트워크 연결 안되었을시 화면 설정">
+      <created>1641909951823</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1641909951823</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -611,7 +597,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="메인화면 '프로그램 제목 수정', '프로그램 삭제 기능 구현'" />
     <MESSAGE value="여러가지 기능 구현" />
     <MESSAGE value="dagger hilt마이그레이션 완료" />
     <MESSAGE value="ExerciseTypeTable, RecordTypeTable 연관 매핑(운동 이름 바뀌도록)" />
@@ -636,6 +621,7 @@
     <MESSAGE value="운동 종목 수정 키보드 모드 변경, 스플래시화면 finish처리" />
     <MESSAGE value="운동 종목 수정 키보드 모드 변경(다 채워지면 키보드 down)" />
     <MESSAGE value="프로그램 등록 가능하도록 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="프로그램 등록 가능하도록 설정" />
+    <MESSAGE value="네트워크 연결 안되었을시 화면 설정" />
+    <option name="LAST_COMMIT_MESSAGE" value="네트워크 연결 안되었을시 화면 설정" />
   </component>
 </project>
