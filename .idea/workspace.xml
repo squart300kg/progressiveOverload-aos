@@ -13,7 +13,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="네트워크 연결에 따른 버전 체크하도록 설정">
+    <list default="true" id="5895050b-66dd-4c45-9cba-43a737b91a4e" name="Default Changelist" comment="그래프 위쪽 여백 부여">
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,9 +24,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/RegExerciseTypeDetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_record_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_record_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/TimerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/progressive/overload/ui/home/sub/TimerActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,13 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638452160516</updated>
-    </task>
-    <task id="LOCAL-00010" summary="운동 기록 페이지 구현중">
-      <created>1639296187353</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1639296187353</updated>
     </task>
     <task id="LOCAL-00011" summary="운동 세트수 저장 기능 구현">
       <created>1639365368346</created>
@@ -572,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641910860534</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="그래프 위쪽 여백 부여">
+      <created>1641911978829</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1641911978829</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -588,7 +586,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ExerciseTypeTable, RecordTypeTable 연관 매핑(운동 이름 바뀌도록)" />
     <MESSAGE value="스탑워치 구현중" />
     <MESSAGE value="중간저장" />
     <MESSAGE value="수행한 운동 로티애니메이션 적용 완료" />
@@ -613,6 +610,7 @@
     <MESSAGE value="네트워크 연결 안되었을시 화면 설정" />
     <MESSAGE value="네트워크 연결 default gone설정" />
     <MESSAGE value="네트워크 연결에 따른 버전 체크하도록 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="네트워크 연결에 따른 버전 체크하도록 설정" />
+    <MESSAGE value="그래프 위쪽 여백 부여" />
+    <option name="LAST_COMMIT_MESSAGE" value="그래프 위쪽 여백 부여" />
   </component>
 </project>

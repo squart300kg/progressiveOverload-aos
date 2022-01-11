@@ -24,7 +24,11 @@ class TimerActivity :
     private fun countDownTimer(maxTime: Int) =
         object : CountDownTimer((maxTime).toLong(), 50) {
             override fun onFinish() {
-                onBackPressed()
+                Intent(this@TimerActivity, RecordExerciseActivity::class.java).apply {
+                    putExtra("recordModel", recordModel)
+                    setResult(RESULT_OK, this)
+                    finish()
+                }
             }
             override fun onTick(millisUntilFinished: Long) {
                 timerViewModel.initTimerNumber(millisUntilFinished.toInt())
@@ -32,6 +36,13 @@ class TimerActivity :
 
         }
 
+    /**
+     * 테스트 케이스
+     * 1. 타이머 스킵
+     * 2. 타이머 취소
+     * 3. 뒤로가기
+     * 4. 시간 만료시키기
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,8 +57,11 @@ class TimerActivity :
 
             // 타이머 스킵
             tvSkip.setOnClickListener {
-                countDownTimer.cancel()
-                onBackPressed()
+                Intent(this@TimerActivity, RecordExerciseActivity::class.java).apply {
+                    putExtra("recordModel", recordModel)
+                    setResult(RESULT_OK, this)
+                    finish()
+                }
             }
 
             // 타이머 취소
@@ -61,13 +75,7 @@ class TimerActivity :
 
     }
 
-    override fun onBackPressed() {
-        Intent(this, RecordExerciseActivity::class.java).apply {
-            putExtra("recordModel", recordModel)
-            setResult(RESULT_OK, this)
-        }
-        super.onBackPressed()
-    }
+    override fun onBackPressed() { }
 
     override fun showInternetDisconnectedView(disconnected: Boolean) {
         dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
