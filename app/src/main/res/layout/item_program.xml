@@ -20,7 +20,7 @@
             android:id="@+id/iv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:padding="20dp"
             android:src="@drawable/ic_update"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +34,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
+            android:maxEms="15"
             android:text="@{programItem.name}"
             android:textAlignment="center"
             android:textSize="19sp"
@@ -42,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            overload:text="제목최대21글자제목최대21글자제목최대21글자제목최대21글자제목최대21글자" />
+            overload:text="제목최대15글자제목최대15글자제목최대15글자제목최대15글자" />
 
         <TextView
             android:id="@+id/tv_split"

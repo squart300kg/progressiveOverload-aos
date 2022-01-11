@@ -53,10 +53,6 @@ class ExerciseTypeActivity :
 
     private var performedExerciseCount = 0
 
-    private var mInterstitialAd: InterstitialAd? = null
-
-    private var intentAfterFullScreenAd = -1
-
     // 운동 종류 등록을 마친 후,
     private val onResultForExerciseReg = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
@@ -205,7 +201,7 @@ class ExerciseTypeActivity :
                                 programNo) {
 
                                 // 광고 내려간 직후, 메인화면으로 이동시킴
-                                intentAfterFullScreenAd = GO_MAIN
+                                goMain()
                                 startFullScreenAd()
 
                             }
@@ -302,7 +298,6 @@ class ExerciseTypeActivity :
 
                     if (AdUtil.isTurnToExposeAd(securePreferences)) {
                         // 광고 내려간 직후, 메인화면으로 이동시킴
-                        intentAfterFullScreenAd = GO_MAIN
                         goMain()
                         startFullScreenAd()
                     } else {
@@ -331,7 +326,6 @@ class ExerciseTypeActivity :
 
                 if (AdUtil.isTurnToExposeAd(securePreferences)) {
                     // 광고 내려간 직후, 뒤로가기시킴
-                    intentAfterFullScreenAd = GO_BACK
                     finish()
                     startFullScreenAd()
                 } else {
