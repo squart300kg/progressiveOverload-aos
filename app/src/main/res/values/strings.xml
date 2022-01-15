@@ -53,4 +53,17 @@
     <string name="pay_ok_complete_guide">게임을 완료했으며, 경기 피드백(리플레이, 리플레이 분석 동영상)을 받았을 경우 클릭해 주세요</string>
     <string name="pay_complete_ok_please_write_review">선수님을 위해 조금이라도 리뷰를 남겨주세요. 선수님께 큰 힘이 됩니다!</string>
 
+    <!--  ad  -->
+    <string name="main_banner_ad">ca-app-pub-6562154197787185/1824651788</string>
+    <string name="main_banner_ad_test">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="main_full_screen_ad">ca-app-pub-6562154197787185/8928266128</string>
+    <string name="main_full_screen_test">ca-app-pub-3940256099942544/1033173712</string>
+
+<!--    <string name="main_banner_ad">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="main_banner_ad_test">ca-app-pub-3940256099942544/6300978111</string>-->
+
+<!--    <string name="main_full_screen_ad">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--    <string name="main_full_screen_test">ca-app-pub-3940256099942544/1033173712</string>-->
+
 </resources>

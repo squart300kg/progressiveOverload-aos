@@ -5,7 +5,7 @@
 
         <variable
             name="exerciseVm"
-            type="com.example.program.ui.home.sub.RegExerciseTypeViewModel" />
+            type="com.progressive.overload.ui.home.sub.RegExerciseTypeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,13 +13,13 @@
         xmlns:overload="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_main">
+        android:background="@drawable/border_exercise_register_filed">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="휴식시간"
+            android:text="휴식시간(초)"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

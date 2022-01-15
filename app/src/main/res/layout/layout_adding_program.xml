@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:layout_margin="20dp"
-    android:background="@drawable/border_main"
+    android:background="@drawable/border_add_contents"
     app:layout_constraintTop_toTopOf="parent">
 
     <ImageView

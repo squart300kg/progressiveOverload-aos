@@ -7,7 +7,7 @@
 
         <variable
             name="recordDetailVm"
-            type="com.example.program.ui.record.sub.RecordDetailViewModel" />
+            type="com.progressive.overload.ui.record.sub.RecordDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +17,8 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/adView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -27,7 +28,10 @@
                     android:id="@+id/chart"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     overload:setAxisData="@{recordDetailVm.records}"
                     app:layout_constraintDimensionRatio="H, 1:1"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -45,5 +49,20 @@
                     overload:setItems="@{recordDetailVm.records}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:layout_constraintBottom_toBottomOf="parent"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/main_banner_ad"/>
+        <include
+            android:id="@+id/view_network_not_connected"
+            layout="@layout/layout_network_not_connected"
+            android:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

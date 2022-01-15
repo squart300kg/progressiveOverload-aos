@@ -5,7 +5,7 @@
 
         <variable
             name="recordExVm"
-            type="com.example.program.ui.home.sub.RecordExerciseViewModel" />
+            type="com.progressive.overload.ui.home.sub.RecordExerciseViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,11 +22,11 @@
             android:layout_marginStart="20dp"
             android:drawableStart="@drawable/ic_arrow_back"
             android:drawablePadding="5dp"
-            android:gravity="center"
             android:drawableTint="@color/grey"
+            android:gravity="center"
             android:text="이전 기록"
-            android:visibility="gone"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,10 +36,10 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:textStyle="bold"
-            overload:text="2021년 12월 25일"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            overload:text="2021년 12월 25일" />
 
         <TextView
             android:id="@+id/tv_go_next"
@@ -48,19 +48,20 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:drawableEnd="@drawable/ic_arrow_forward"
-            android:drawableTint="@color/grey"
             android:drawablePadding="5dp"
+            android:drawableTint="@color/grey"
             android:gravity="center"
-            android:visibility="gone"
             android:text="이후 기록"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/sv_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/adView"
             app:layout_constraintTop_toBottomOf="@id/tv_date">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,8 +78,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
-                    android:visibility="gone"
                     android:background="@drawable/border_main"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -206,5 +207,19 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/main_banner_ad"
+            ads:layout_constraintBottom_toBottomOf="parent" />
+        <include
+            android:id="@+id/view_network_not_connected"
+            layout="@layout/layout_network_not_connected"
+            android:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

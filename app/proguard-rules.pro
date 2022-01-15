@@ -24,3 +24,13 @@
 -keep public class com.nhn.android.naverlogin.** {
        public protected *;
 }
+
+# Add this global rule
+-keepattributes Signature
+
+# This rule will properly ProGuard all the model classes in
+# the package com.yourcompany.models.
+# Modify this rule to fit the structure of your app.
+-keepclassmembers class com.progressive.overload.model.model** {
+  *;
+}

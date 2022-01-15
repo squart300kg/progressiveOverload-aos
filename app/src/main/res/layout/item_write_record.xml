@@ -5,7 +5,7 @@
 
         <variable
             name="recordItem"
-            type="com.example.program.model.model.RecordExerciseModel" />
+            type="com.progressive.overload.model.model.RecordExerciseModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/menu_selector_record_ex"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="RPE"
+                android:text="RIR"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_repitition" />
 
@@ -83,6 +83,7 @@
                 android:inputType="number"
                 android:maxLength="3"
                 android:maxLines="1"
+                android:selectAllOnFocus="true"
                 android:text="@{recordItem.weight + ``}"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -99,6 +100,7 @@
                 android:inputType="number"
                 android:maxLength="3"
                 android:maxLines="1"
+                android:selectAllOnFocus="true"
                 android:text="@{recordItem.repitition + ``}"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -115,6 +117,7 @@
                 android:inputType="number"
                 android:maxLength="2"
                 android:maxLines="1"
+                android:selectAllOnFocus="true"
                 android:text="@{recordItem.rpe + ``}"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -131,6 +134,7 @@
                 android:inputType="number"
                 android:maxLength="3"
                 android:maxLines="1"
+                android:selectAllOnFocus="true"
                 android:text="@{recordItem.restTime + ``}"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -142,14 +146,28 @@
                 android:id="@+id/tv_exercise_complete"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/menu_selector_record_ex"
-                android:gravity="center"
                 android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/light_grey"
+                android:gravity="center"
                 android:text="완료"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/tv_rest_time"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rest_time" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_floating"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/transparent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="success.json"
+            app:lottie_imageAssetsFolder="images/" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,11 +7,10 @@
 
         <variable
             name="exerciseItem"
-            type="com.example.program.model.model.ExerciseTypeModel" />
+            type="com.progressive.overload.model.model.ExerciseTypeModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +22,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/menu_selector_record_ex"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:background="@drawable/menu_selector_record_ex"
+                android:background="@color/light_grey"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/layout_exercise_start"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +75,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.weight.toString() + `KG`}"
                         tools:text="80" />
@@ -84,7 +83,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.repitition.toString()}"
                         tools:text="12" />
@@ -92,7 +91,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.setNum.toString()}"
                         tools:text="3" />
@@ -100,10 +99,18 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.restTime.toString()}"
                         tools:text="60" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="20"
+                        android:gravity="center"
+                        android:text="@{exerciseItem.rpe.toString()}"
+                        tools:text="8" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -119,30 +126,37 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="중량" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="반복수" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="세트수" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="25"
+                        android:layout_weight="20"
                         android:gravity="center"
                         android:text="휴식시간" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="20"
+                        android:gravity="center"
+                        android:text="RIR" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -153,13 +167,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/menu_selector_record_ex"
+                android:background="@color/light_grey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_exercise_info">
 
                 <TextView
+                    android:id="@+id/tv_start_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="기록 시작"
@@ -170,6 +185,19 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_floating"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/transparent"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="success.json"
+                app:lottie_imageAssetsFolder="images/" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

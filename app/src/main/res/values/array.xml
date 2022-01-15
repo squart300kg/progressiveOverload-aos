@@ -2,8 +2,9 @@
 <resources>
 
     <string-array name="home_sort_array">
-        <item>이름 변경</item>
-        <item>삭제</item>
+        <item>프로그램 복사</item>
+        <item>프로그램 이름 변경</item>
+        <item>프로그램 삭제</item>
     </string-array>
 
     <string-array name="exercise_sort_array">

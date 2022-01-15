@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -10,21 +12,33 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.program"
+        applicationId "com.progressive.overload"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
         multiDexEnabled true
 
         buildConfigField("String", "naverLoginURL", '"https://openapi.naver.com/v1/nid/me"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -48,8 +62,15 @@ android {
 
 dependencies {
 
+    // top snackBar
+    implementation 'com.androidadvance:topsnackbar:1.1.1'
+
+    // ad mob
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
+
     // dagger hilt JetPack
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01'
+    implementation 'com.google.android.play:core-ktx:1.8.1'
     kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 
     // dagger hilt
@@ -99,6 +120,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-functions-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics'
 
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

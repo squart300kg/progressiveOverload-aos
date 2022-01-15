@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <!--        <variable-->
+        <!--            name=""-->
+        <!--            type="" />-->
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:overload="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        overload:context=".ui.home.sub.MesoCycleSelectionActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_guide"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_step_one"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/border_step_balloon_un_focused"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/blue"
+                app:layout_constraintBottom_toTopOf="@id/tv_guide"
+                app:layout_constraintEnd_toStartOf="@+id/v_guide_line_one"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v_guide_line_one"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@id/tv_step_one"
+                app:layout_constraintEnd_toStartOf="@id/tv_step_two"
+                app:layout_constraintStart_toEndOf="@id/tv_step_one"
+                app:layout_constraintTop_toTopOf="@id/tv_step_one" />
+
+            <TextView
+                android:id="@+id/tv_step_two"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/border_step_balloon_focused"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tv_step_one"
+                app:layout_constraintEnd_toStartOf="@id/v_guide_line_two"
+                app:layout_constraintStart_toEndOf="@+id/v_guide_line_one"
+                app:layout_constraintTop_toTopOf="@id/tv_step_one" />
+
+
+            <View
+                android:id="@+id/v_guide_line_two"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@id/tv_step_two"
+                app:layout_constraintEnd_toStartOf="@id/tv_step_three"
+                app:layout_constraintStart_toEndOf="@id/tv_step_two"
+                app:layout_constraintTop_toTopOf="@id/tv_step_two" />
+
+            <TextView
+                android:id="@+id/tv_step_three"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/border_step_balloon_un_focused"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@id/tv_step_two"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/v_guide_line_two"
+                app:layout_constraintTop_toTopOf="@id/tv_step_two" />
+
+            <TextView
+                android:id="@+id/tv_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="운동을 일주일에 몇번 하실건가요?"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_step_one" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_split_selection"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_guide"
+            overload:listitem="@layout/item_meso_cycle_split_selection" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintBottom_toBottomOf="parent"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/main_banner_ad"/>
+        <include
+            android:id="@+id/view_network_not_connected"
+            layout="@layout/layout_network_not_connected"
+            android:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
