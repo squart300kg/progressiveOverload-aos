@@ -6,18 +6,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import com.google.android.material.tabs.TabLayout
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivityExcerciseTypeBinding
 import com.progressive.overload.ui.dialog.CancelDialog
+import com.progressive.overload.ui.dialog.Input1RMDialog
 import com.progressive.overload.ui.dialog.TitleDialog
 import com.progressive.overload.util.Ad.AdUtil
 import com.progressive.overload.util.Ad.FullScreenAdCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.material.tabs.TabLayout
 import com.progressive.overload.util.DateUtil
 import com.securepreferences.SecurePreferences
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +39,7 @@ class ExerciseTypeActivity :
 
     private var exercisesSize = 0
 
+    private var isDummy = false
     private var mesoCycleSplitCount: Int = 0
     private var mesoCycleSplitText: String = ""
     private var microCycleCount: Int = 0
@@ -48,6 +50,7 @@ class ExerciseTypeActivity :
 
     private lateinit var cancelDialog: CancelDialog
     private lateinit var titleDialog: TitleDialog
+    private lateinit var input1RMDialog: Input1RMDialog
 
     private lateinit var exerciseTypeAdapter: ExerciseTypeAdapter
 
@@ -74,6 +77,7 @@ class ExerciseTypeActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        isDummy = intent.getBooleanExtra("isDummy", false)
         mesoCycleSplitCount = intent.getIntExtra("mesoCycleSplitCount", 0)
         mesoCycleSplitText = intent.getStringExtra("mesoCycleSplitText").toString()
         microCycleCount = intent.getIntExtra("microCycleSplitCount", 0)
@@ -81,7 +85,33 @@ class ExerciseTypeActivity :
 
         programNo = intent.getLongExtra("programNo", 0L)
         isIntentToExercise = intent.getBooleanExtra("isIntentToExercise", false)
-        if (intent.getBooleanExtra("isIntentToExercise", false)) {
+
+        // 기존에 등록된 거인화 프로그램일 경우
+        if (isDummy) {
+            input1RMDialog =
+                Input1RMDialog.newInstance(
+                    { // click cancel
+                    finish()
+                    },
+                    { squart1RM, dead1RM, bench1RM, milp1RM -> // click ok
+                        if (squart1RM.isNullOrEmpty() || dead1RM.isNullOrEmpty() || bench1RM.isNullOrEmpty() || milp1RM.isNullOrEmpty()) {
+                            Toast.makeText(this, "1RM을 빠짐없이 입력해 주세요!", Toast.LENGTH_LONG).show()
+                        } else {
+                            viewModel.initHyukProgramWeight(
+                                squart1RM,
+                                dead1RM,
+                                bench1RM,
+                                milp1RM
+                            ) { // 무게 설정 완료
+
+                            }
+                        }
+                    }
+                )
+            input1RMDialog.show(supportFragmentManager, input1RMDialog.tag)
+        }
+
+        if (isIntentToExercise) {
             dataBinding.tvRegSuccess.isVisible = false
             dataBinding.layoutGuide.isVisible = false
             dataBinding.tvExerciseStart.isVisible = true
@@ -335,10 +365,10 @@ class ExerciseTypeActivity :
         }
     }
 
-    companion object {
-        const val GO_MAIN = 0
-        const val GO_BACK = 1
-    }
+//    companion object {
+//        const val GO_MAIN = 0
+//        const val GO_BACK = 1
+//    }
 
     override fun onCloseFullScreenAd() {
 //        when (intentAfterFullScreenAd) {

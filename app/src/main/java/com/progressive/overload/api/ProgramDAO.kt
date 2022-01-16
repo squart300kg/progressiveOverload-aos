@@ -6,6 +6,7 @@ import com.progressive.overload.model.entity.ProgramTable
 import com.progressive.overload.model.entity.RecordTable
 import com.progressive.overload.model.model.ExerciseVolumeModel
 import com.progressive.overload.model.model.RecordModel
+import com.progressive.overload.util.ProgramInitUtil
 
 /**
  * Created by sangyoon on 2021/07/27
@@ -137,6 +138,29 @@ interface ProgramDAO {
             ))
         }
         return "duplicateSuccess"
+    }
+
+    @Query("SELECT `no` FROM ProgramTable WHERE isDummy == 1")
+    fun getHyckProgram(): Long
+
+    @Transaction
+    fun initHyukProgramWeight(squart1RM: String, dead1RM: String, bench1RM: String, milp1RM: String): String {
+
+        // 1. 권혁 프로그램 조회
+        val programNo = getHyckProgram()
+
+        // 2. 권혁 프로그램 운동종목 얻어옴
+        var exercises = getExercises(programNo)
+
+        // 3. 각 운동종목 무게 설정
+        exercises = ProgramInitUtil.initWeight(exercises, squart1RM, dead1RM, bench1RM, milp1RM)
+
+        // 4. 무게가 세팅된 운동 프로그램으로 교체
+        exercises.forEach {
+            updateExercise(it)
+        }
+
+        return "weightInitSuccess"
     }
 
 

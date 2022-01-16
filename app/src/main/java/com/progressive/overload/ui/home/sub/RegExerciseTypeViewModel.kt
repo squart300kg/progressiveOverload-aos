@@ -209,4 +209,24 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
         _exercises.value = exercises
         success()
     }
+
+    fun initHyukProgramWeight(
+        squart1RM: String,
+        dead1RM: String,
+        bench1RM: String,
+        milp1RM: String,
+        success: () -> Unit
+    ) {
+        viewModelScope.launch {
+            roomRepository.initHyukProgramWeight(squart1RM, dead1RM, bench1RM, milp1RM)
+                .flowOn(Dispatchers.IO)
+                .catch { e ->
+                    e.printStackTrace()
+                }
+                .collect {
+                    Log.i("initHyukProgramWeight", it)
+                    success()
+                }
+        }
+    }
 }

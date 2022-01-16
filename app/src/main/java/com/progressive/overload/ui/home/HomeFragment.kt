@@ -32,6 +32,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding {
             homeVm = homeViewModel
 
+            // 운동 종류 등록
             layoutAddProgram.layoutAddProgram.setOnClickListener {
                 Intent(requireActivity(), MesoCycleSelectionActivity::class.java).apply {
                     startActivity(this)
@@ -46,6 +47,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         Log.i("mainProgramAdpater", it.toString())
                         Intent(requireActivity(), ExerciseTypeActivity::class.java).apply {
                             putExtra("isIntentToExercise", true)
+                            putExtra("isDummy", it.isDummy)
                             putExtra("mesoCycleSplitCount", it.mesoSplitCount)
                             putExtra("microCycleSplitCount", it.microCycleCount)
                             putExtra("programNo", it.no)

@@ -17,5 +17,7 @@ data class ProgramTable(
     @ColumnInfo
     val microCycleText: String,
     @ColumnInfo
-    val microCycleCount: Int
+    val microCycleCount: Int,
+    @ColumnInfo
+    val isDummy: Boolean = false
 )

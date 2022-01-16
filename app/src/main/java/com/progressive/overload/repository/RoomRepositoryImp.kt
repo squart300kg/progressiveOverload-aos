@@ -300,4 +300,20 @@ class RoomRepositoryImp @Inject constructor(
             emit(data)
         }
     }
+
+    override fun initHyukProgramWeight(
+        squart1RM: String,
+        dead1RM: String,
+        bench1RM: String,
+        milp1RM: String,
+    ): Flow<String> {
+        return flow {
+            val data = programDAO.initHyukProgramWeight(
+                squart1RM,
+                dead1RM,
+            bench1RM,
+            milp1RM)
+            emit(data)
+        }
+    }
 }

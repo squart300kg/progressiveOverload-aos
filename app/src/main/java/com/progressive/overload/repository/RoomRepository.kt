@@ -63,5 +63,6 @@ interface RoomRepository {
 
     fun duplicateProgram(programNo: Long, name: String): Flow<String>
 
+    fun initHyukProgramWeight(squart1RM: String, dead1RM: String, bench1RM: String, milp1RM: String): Flow<String>
 
 }
