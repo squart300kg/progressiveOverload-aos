@@ -153,12 +153,15 @@ interface ProgramDAO {
         var exercises = getExercises(programNo)
 
         // 3. 각 운동종목 무게 설정
-        exercises = ProgramInitUtil.initWeight(exercises, squart1RM, dead1RM, bench1RM, milp1RM)
+        exercises = ProgramInitUtil.initWeight(exercises, squart1RM.toFloat(), dead1RM.toFloat(), bench1RM.toFloat(), milp1RM.toFloat())
 
         // 4. 무게가 세팅된 운동 프로그램으로 교체
         exercises.forEach {
             updateExercise(it)
         }
+
+        // 5. 1rm다이얼로그 안뜨도록 설정
+
 
         return "weightInitSuccess"
     }

@@ -20,7 +20,7 @@ data class ExerciseTypeTable(
     @ColumnInfo
     val name: String,
     @ColumnInfo
-    val weight: Float,
+    var weight: Float,
     @ColumnInfo
     val repitition: Int,
     @ColumnInfo
