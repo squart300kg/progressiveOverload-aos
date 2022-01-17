@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_register"
+        android:background="@drawable/border_input_1rm_bg"
         android:orientation="vertical">
 
         <TextView
@@ -14,103 +14,166 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="시작 전, 1RM을 입력해야 합니다"
+            android:text="1RM 입력"
+            android:textColor="@color/blue"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tv_squart"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
-            android:text="스쿼트(KG)"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title" />
-
-        <EditText
-            android:id="@+id/et_squart"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:inputType="numberDecimal"
-            android:maxLength="6"
-            android:selectAllOnFocus="true"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_squart"
+            android:background="@drawable/border_input_1rm_element"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_squart" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="스쿼트(KG)"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_squart"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/transparent"
+                android:gravity="center"
+                android:hint="100"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_squart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_squart" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tv_dead"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="데드리프트(KG)"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_squart" />
-
-        <EditText
-            android:id="@+id/et_dead"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:inputType="numberDecimal"
-            android:maxLength="6"
-            android:selectAllOnFocus="true"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_dead"
+            android:background="@drawable/border_input_1rm_element"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_dead" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_squart">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="데드리프트(KG)"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_dead"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/transparent"
+                android:gravity="center"
+                android:hint="120"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_dead"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_dead" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tv_bench"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="벤치프레스(KG)"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_dead" />
-
-        <EditText
-            android:id="@+id/et_bench"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:inputType="numberDecimal"
-            android:maxLength="6"
-            android:selectAllOnFocus="true"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_bench"
+            android:background="@drawable/border_input_1rm_element"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_bench" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_dead">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="벤치프레스(KG)"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_bench"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/transparent"
+                android:gravity="center"
+                android:hint="80"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bench"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_bench" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tv_milp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="밀리터리프레스(KG)"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_bench" />
-
-        <EditText
-            android:id="@+id/et_milp"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:inputType="numberDecimal"
-            android:maxLength="6"
-            android:selectAllOnFocus="true"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_milp"
+            android:background="@drawable/border_input_1rm_element"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_milp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_bench">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="밀리터리프레스(KG)"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_milp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/transparent"
+                android:gravity="center"
+                android:hint="70"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_milp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_milp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <LinearLayout
