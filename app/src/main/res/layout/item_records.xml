@@ -31,6 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_total_volume"
             app:layout_constraintTop_toTopOf="parent"
             overload:setVolume="@{recordItem.totalVolume}"
@@ -105,6 +107,8 @@
                 android:background="@drawable/border_see_record_detail"
                 android:gravity="center"
                 android:text="기록 상세 보기"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/rv_exercise_volumes" />
 
             <View

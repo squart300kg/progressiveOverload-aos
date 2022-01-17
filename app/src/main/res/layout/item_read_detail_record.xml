@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="중량"
+                android:text="중량(KG)"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_set_num" />
 
@@ -70,10 +70,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="휴식 시간"
+                android:text="휴식 시간(초)"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_rpe"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_rpe" />
 
             <TextView
                 android:id="@+id/et_weight"
@@ -82,10 +82,12 @@
                 android:layout_margin="20dp"
                 android:text="@{recordItem.weight.toString()}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/tv_weight"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_weight" />
+                app:layout_constraintTop_toTopOf="@id/tv_weight"
+                overload:text="80.0" />
 
             <TextView
                 android:id="@+id/et_repitition"
@@ -94,10 +96,12 @@
                 android:layout_margin="20dp"
                 android:text="@{recordItem.repitition.toString()}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/tv_repitition"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_repitition" />
+                app:layout_constraintTop_toTopOf="@id/tv_repitition"
+                overload:text="12" />
 
             <TextView
                 android:id="@+id/et_rpe"
@@ -106,10 +110,12 @@
                 android:layout_margin="20dp"
                 android:text="@{recordItem.rpe.toString()}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_rpe"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_rpe" />
+                app:layout_constraintTop_toTopOf="@id/tv_rpe"
+                overload:text="2" />
 
             <TextView
                 android:id="@+id/et_rest_time"
@@ -118,10 +124,12 @@
                 android:layout_margin="20dp"
                 android:text="@{recordItem.restTime.toString()}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_rest_time"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_rest_time" />
+                app:layout_constraintTop_toTopOf="@id/tv_rest_time"
+                overload:text="120" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

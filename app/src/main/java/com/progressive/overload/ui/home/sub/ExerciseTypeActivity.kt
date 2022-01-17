@@ -249,7 +249,7 @@ class ExerciseTypeActivity :
                     layoutAddExerciseType.isVisible = false
                     tvExerciseStart.isVisible = false
                     tvBtn.isVisible = false
-                    showToast("오늘 운동 시작!")
+                    showToast("운동 준비!")
                 }
             }
         }

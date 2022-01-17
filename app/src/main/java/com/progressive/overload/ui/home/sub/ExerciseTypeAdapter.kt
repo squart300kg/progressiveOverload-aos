@@ -101,7 +101,7 @@ class ExerciseTypeAdapter(
                 itemBinding.animationFloating.isVisible = true
             } else {
                 itemBinding.layoutExerciseInfo.isSelected = false
-                itemBinding.tvStartRecord.text = "기록 시작"
+                itemBinding.tvStartRecord.text = "운동을 시작한다"
                 itemBinding.animationFloating.isVisible = false
             }
         }
