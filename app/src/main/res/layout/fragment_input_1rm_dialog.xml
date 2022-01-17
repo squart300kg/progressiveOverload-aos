@@ -54,6 +54,7 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6"
                 android:selectAllOnFocus="true"
+                android:textColorHint="@color/grey"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_squart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_squart" />
@@ -92,6 +93,7 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6"
                 android:selectAllOnFocus="true"
+                android:textColorHint="@color/grey"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_dead"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_dead" />
@@ -130,6 +132,7 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6"
                 android:selectAllOnFocus="true"
+                android:textColorHint="@color/grey"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_bench"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_bench" />
@@ -169,6 +172,7 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6"
                 android:selectAllOnFocus="true"
+                android:textColorHint="@color/grey"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_milp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_milp" />

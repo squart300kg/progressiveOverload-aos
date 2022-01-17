@@ -9,7 +9,7 @@ import com.progressive.overload.model.entity.RecordTable
 
 @Database(
     entities = [ProgramTable::class, ExerciseTypeTable::class, RecordTable::class],
-    version = 20, exportSchema = false)
+    version = 21, exportSchema = false)
 abstract class ProgramDatabase : RoomDatabase() {
 
     abstract fun programDao(): ProgramDAO

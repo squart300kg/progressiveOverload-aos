@@ -108,7 +108,7 @@ interface ProgramDAO {
     @Update
     fun updateExercise(vararg exerciseTypeTable: ExerciseTypeTable): Int
 
-    @Query("INSERT INTO ProgramTable(name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText) SELECT name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText FROM ProgramTable WHERE `no` == :programNo")
+    @Query("INSERT INTO ProgramTable(name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText, isDummy, isDummyDataInit) SELECT name, mesoSplitCount, mesoSplitText, microCycleCount, microCycleText, isDummy, 0 FROM ProgramTable WHERE `no` == :programNo")
     fun duplicateProgram(programNo: Long): Long
 
     @Query("INSERT INTO ExerciseTypeTable(name, weight, repitition, setNum, restTime, rpe, programNo, mesoCycleSplitIndex, microCycleSplitIndex) SELECT name, weight, repitition, setNum, restTime, rpe, programNo, mesoCycleSplitIndex, microCycleSplitIndex FROM ExerciseTypeTable WHERE `programNo` == :originProgramNo")
@@ -127,7 +127,7 @@ interface ProgramDAO {
         exercises.forEach {
             insertExerciseType(ExerciseTypeTable(
                 name = it.name,
-                weight = it.weight,
+                weight = 0f,
                 repitition = it.repitition,
                 setNum = it.setNum,
                 restTime = it.restTime,
@@ -143,11 +143,14 @@ interface ProgramDAO {
     @Query("SELECT `no` FROM ProgramTable WHERE isDummy == 1")
     fun getHyckProgram(): Long
 
+    @Query("UPDATE ProgramTable SET isDummyDataInit = 1 WHERE `no` == :programNo")
+    fun updateHyukProgramStatus(programNo: Long): Int
+
     @Transaction
-    fun initHyukProgramWeight(squart1RM: String, dead1RM: String, bench1RM: String, milp1RM: String): String {
+    fun initHyukProgramWeight(programNo: Long, squart1RM: String, dead1RM: String, bench1RM: String, milp1RM: String): Long {
 
         // 1. 권혁 프로그램 조회
-        val programNo = getHyckProgram()
+//        val programNo = getHyckProgram()
 
         // 2. 권혁 프로그램 운동종목 얻어옴
         var exercises = getExercises(programNo)
@@ -161,9 +164,9 @@ interface ProgramDAO {
         }
 
         // 5. 1rm다이얼로그 안뜨도록 설정
+        updateHyukProgramStatus(programNo)
 
-
-        return "weightInitSuccess"
+        return programNo
     }
 
 

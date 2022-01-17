@@ -16,6 +16,7 @@ import com.progressive.overload.model.model.ExerciseTypeModel
  */
 class ExerciseTypeAdapter(
     val context: Context,
+    val isDummyProgram: Boolean = false,
     val onClickForRecord: (item: ExerciseTypeModel) -> Unit,
     val onClickForMenu: (item: ExerciseTypeModel, position: Int) -> Unit,
 ) : RecyclerView.Adapter<ExerciseTypeAdapter.ExercisesViewHolder>() {
@@ -79,6 +80,7 @@ class ExerciseTypeAdapter(
     ) : BaseViewHolder<ExerciseTypeModel, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
         fun initExerciseStatedStatus() {
             itemBinding.layoutExerciseStart.isVisible = isExerciseStarted
+
             itemBinding.ivMenu.isVisible = !isExerciseStarted
         }
 

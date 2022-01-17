@@ -29,7 +29,7 @@ object RoomModule {
         )
 //            .addMigrations(MIGRATION_6_7)
 //            .createFromAsset("database/hoya_dummy_room_data_v_19.db")
-            .createFromAsset("database/hyuk_dummy_room_data_v_20.db")
+            .createFromAsset("database/hyuk_dummy_room_data_v_21.db")
             .fallbackToDestructiveMigration()
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {

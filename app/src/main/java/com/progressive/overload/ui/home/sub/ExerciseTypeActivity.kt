@@ -39,6 +39,7 @@ class ExerciseTypeActivity :
 
     private var exercisesSize = 0
 
+    private var isDummyDataInit = false
     private var isDummy = false
     private var mesoCycleSplitCount: Int = 0
     private var mesoCycleSplitText: String = ""
@@ -77,6 +78,7 @@ class ExerciseTypeActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        isDummyDataInit = intent.getBooleanExtra("isDummyDataInit", false)
         isDummy = intent.getBooleanExtra("isDummy", false)
         mesoCycleSplitCount = intent.getIntExtra("mesoCycleSplitCount", 0)
         mesoCycleSplitText = intent.getStringExtra("mesoCycleSplitText").toString()
@@ -86,24 +88,26 @@ class ExerciseTypeActivity :
         programNo = intent.getLongExtra("programNo", 0L)
         isIntentToExercise = intent.getBooleanExtra("isIntentToExercise", false)
 
-        // 기존에 등록된 거인화 프로그램일 경우
-        if (isDummy) {
+        // 기존에 등록된 거인화 프로그램일 경우 + 중량 초기화가 안된 경우
+        if (isDummy && !isDummyDataInit) {
             input1RMDialog =
                 Input1RMDialog.newInstance(
                     { // click cancel
-                    finish()
+                        finish()
                     },
                     { squart1RM, dead1RM, bench1RM, milp1RM -> // click ok
                         if (squart1RM.isNullOrEmpty() || dead1RM.isNullOrEmpty() || bench1RM.isNullOrEmpty() || milp1RM.isNullOrEmpty()) {
                             Toast.makeText(this, "1RM을 빠짐없이 입력해 주세요!", Toast.LENGTH_LONG).show()
                         } else {
                             viewModel.initHyukProgramWeight(
+                                programNo,
                                 squart1RM,
                                 dead1RM,
                                 bench1RM,
                                 milp1RM
                             ) { // 무게 설정 완료
-
+                                input1RMDialog.dismiss()
+                                viewModel.getExercises(programNo, mesoCycleSplitIndex, microCycleSplitIndex)
                             }
                         }
                     }
@@ -166,7 +170,7 @@ class ExerciseTypeActivity :
 
             rvExercises.apply {
                 setHasFixedSize(true)
-                exerciseTypeAdapter = ExerciseTypeAdapter(this@ExerciseTypeActivity,
+                exerciseTypeAdapter = ExerciseTypeAdapter(this@ExerciseTypeActivity, isDummy,
                     {
                         // 운동 기록 시작
                         Intent(this@ExerciseTypeActivity,
@@ -365,17 +369,7 @@ class ExerciseTypeActivity :
         }
     }
 
-//    companion object {
-//        const val GO_MAIN = 0
-//        const val GO_BACK = 1
-//    }
-
-    override fun onCloseFullScreenAd() {
-//        when (intentAfterFullScreenAd) {
-//            GO_MAIN -> goMain()
-//            GO_BACK-> finish()
-//        }
-    }
+    override fun onCloseFullScreenAd() { }
 
     override fun showInternetDisconnectedView(disconnected: Boolean) {
         dataBinding.viewNetworkNotConnected.root.isVisible = disconnected

@@ -22,14 +22,14 @@ class Input1RMDialog(
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
-//        dialog.setOnKeyListener { _, keyCode, keyEvent ->
-//            // getAction to make sure this doesn't double fire
-//            if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.action === KeyEvent.ACTION_UP) {
-//                onClickCancel()
-//                true // Capture onKey
-//            } else false
-//            // Don't capture
-//        }
+        dialog.setOnKeyListener { _, keyCode, keyEvent ->
+            // getAction to make sure this doesn't double fire
+            if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.action === KeyEvent.ACTION_UP) {
+                onClickCancel()
+                true // Capture onKey
+            } else false
+            // Don't capture
+        }
         return dialog
     }
 

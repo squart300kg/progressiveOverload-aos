@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
 class RegExerciseTypeViewModel @ViewModelInject constructor(
@@ -91,13 +92,11 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
                 }
                 .collect { exercises ->
 
-                    Log.i("getExercises", "$exercises")
                     _exercises.value = exercises.toMutableList()
 
                     success(exercises)
                 }
             _isLoading.value = false
-
         }
     }
 
@@ -211,6 +210,7 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
     }
 
     fun initHyukProgramWeight(
+        programNo: Long,
         squart1RM: String,
         dead1RM: String,
         bench1RM: String,
@@ -218,15 +218,16 @@ class RegExerciseTypeViewModel @ViewModelInject constructor(
         success: () -> Unit
     ) {
         viewModelScope.launch {
-            roomRepository.initHyukProgramWeight(squart1RM, dead1RM, bench1RM, milp1RM)
+            roomRepository.initHyukProgramWeight(programNo, squart1RM, dead1RM, bench1RM, milp1RM)
                 .flowOn(Dispatchers.IO)
+                .onCompletion { cause ->
+                    if (cause == null)
+                        success()
+                }
                 .catch { e ->
                     e.printStackTrace()
                 }
-                .collect {
-                    Log.i("initHyukProgramWeight", it)
-                    success()
-                }
+                .collect { }
         }
     }
 }

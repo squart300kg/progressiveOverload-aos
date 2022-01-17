@@ -301,18 +301,23 @@ class RoomRepositoryImp @Inject constructor(
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     override fun initHyukProgramWeight(
+        programNo: Long,
         squart1RM: String,
         dead1RM: String,
         bench1RM: String,
         milp1RM: String,
-    ): Flow<String> {
+    ): Flow<Long> {
         return flow {
             val data = programDAO.initHyukProgramWeight(
+                programNo,
                 squart1RM,
                 dead1RM,
-            bench1RM,
-            milp1RM)
+                bench1RM,
+                milp1RM
+            )
             emit(data)
         }
     }

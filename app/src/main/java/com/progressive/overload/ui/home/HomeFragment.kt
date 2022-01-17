@@ -47,6 +47,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                         Log.i("mainProgramAdpater", it.toString())
                         Intent(requireActivity(), ExerciseTypeActivity::class.java).apply {
                             putExtra("isIntentToExercise", true)
+                            putExtra("isDummyDataInit", it.isDummyDataInit)
                             putExtra("isDummy", it.isDummy)
                             putExtra("mesoCycleSplitCount", it.mesoSplitCount)
                             putExtra("microCycleSplitCount", it.microCycleCount)
