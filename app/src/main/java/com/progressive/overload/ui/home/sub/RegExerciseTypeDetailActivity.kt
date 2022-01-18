@@ -85,24 +85,6 @@ class RegExerciseTypeDetailActivity :
                 }
             }
 
-            tvDelete.setOnClickListener {
-                val errorDialog = AlertDialog.Builder(ContextThemeWrapper(
-                    this@RegExerciseTypeDetailActivity,
-                    R.style.AlertDialogCustom))
-                    .setCancelable(true)
-                    .setMessage("정말 삭제하시겠습니까?\n\n해당 운동을 삭제하면 해당 운동의 기록도 모두 삭제됩니다.")
-                    .setPositiveButton("삭제") { dialog, _ ->
-                        viewModel.deleteExercise(exerciseTypeModel) {
-                            setResult(RESULT_OK)
-                            finish()
-                        }
-                        dialog.dismiss()
-                    }
-                    .setNegativeButton("취소") { _, _ -> }
-                    .create()
-                errorDialog.show()
-            }
-
             tvCancel.setOnClickListener {
                 onBackPressed()
             }

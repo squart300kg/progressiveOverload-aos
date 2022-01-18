@@ -25,6 +25,7 @@ class SplashViewModel @ViewModelInject constructor(
             .getReference("versionInfo")
             .get()
             .addOnSuccessListener {
+                Log.i("versionCheck", it.toString())
                 _appUpdateModel.value = it.getValue(AppUpdateModel::class.java)
             }
     }
