@@ -22,7 +22,6 @@ import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.progressive.overload.BuildConfig
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivitySplashBinding
@@ -197,7 +196,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         }
 
         val snackbarView = snackBar.view
-        snackbarView.setBackgroundColor(ContextCompat.getColor(this, R.color.blue))
+        snackbarView.setBackgroundColor(ContextCompat.getColor(this, R.color.green_personal_color))
 
         val messageTextView =
             snackbarView.findViewById<View>(com.androidadvance.topsnackbar.R.id.snackbar_text) as TextView

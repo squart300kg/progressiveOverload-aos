@@ -12,6 +12,11 @@ import java.text.SimpleDateFormat
 fun TextView.setVolume(volume: Int) {
     this.text = DecimalFormat("###,###").format(volume)+"KG"
 }
+@BindingAdapter("overload:setSubTitleWeek", "overload:setSubTitleDay")
+fun TextView.setSubTitle(week: String, day: String) {
+    this.text = week.substring(0, 1) + "WEEK " +day.substring(0, 1) + "DAY"
+}
+
 
 @SuppressLint("LongLogTag")
 @BindingAdapter("theWarsOfStar:setReviewCount")

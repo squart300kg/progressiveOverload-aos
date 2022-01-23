@@ -1,4 +1,4 @@
-package com.progressive.overload.repository.room
+package com.progressive.overload.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

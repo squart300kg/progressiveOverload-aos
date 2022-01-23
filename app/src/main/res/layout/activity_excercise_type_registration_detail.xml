@@ -90,12 +90,23 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="33"
+                android:background="@drawable/border_exercise_delete"
+                android:gravity="center"
+                android:text="삭제하기"
+                android:textColor="@color/white" />
+
+            <TextView
                 android:id="@+id/tv_cancel"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:layout_weight="50"
+                android:layout_weight="33"
                 android:background="@drawable/border_exercise_cancel"
                 android:gravity="center"
                 android:text="취소하기"
@@ -106,7 +117,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
-                android:layout_weight="50"
+                android:layout_weight="33"
                 android:background="@drawable/border_exercise_update"
                 android:gravity="center"
                 android:text="수정하기"

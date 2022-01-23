@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.progressive.overload.api.ProgramDAO
-import com.progressive.overload.repository.room.ProgramDatabase
+import com.progressive.overload.room.ProgramDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

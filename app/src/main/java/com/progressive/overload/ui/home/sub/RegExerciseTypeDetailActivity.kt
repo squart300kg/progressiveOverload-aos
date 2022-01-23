@@ -2,6 +2,7 @@ package com.progressive.overload.ui.home.sub
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -85,6 +86,24 @@ class RegExerciseTypeDetailActivity :
                 }
             }
 
+            tvDelete.setOnClickListener {
+                val errorDialog = AlertDialog.Builder(ContextThemeWrapper(
+                    this@RegExerciseTypeDetailActivity,
+                    R.style.AlertDialogCustom))
+                    .setCancelable(true)
+                    .setMessage("정말 삭제하시겠습니까?\n\n해당 운동을 삭제하면 해당 운동의 기록도 모두 삭제됩니다.")
+                    .setPositiveButton("삭제") { dialog, _ ->
+                        viewModel.deleteExercise(exerciseTypeModel) {
+                            setResult(RESULT_OK)
+                            finish()
+                        }
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("취소") { _, _ -> }
+                    .create()
+                errorDialog.show()
+            }
+
             tvCancel.setOnClickListener {
                 onBackPressed()
             }
@@ -109,26 +128,51 @@ class RegExerciseTypeDetailActivity :
                 }
             }
 
+            layoutExerciseType.root.setOnClickListener {
+                layoutExerciseType.etExerciseType.requestFocus()
+                showKeyBoard()
+            }
             layoutExerciseType.etExerciseType.apply {
                 checkIfInputIsFull(this)
+
             }
 
+            layoutRepitition.root.setOnClickListener {
+                layoutRepitition.etRepitition.requestFocus()
+                showKeyBoard()
+            }
             layoutRepitition.etRepitition.apply {
                 checkIfInputIsFull(this)
             }
 
+            layoutRestTime.root.setOnClickListener {
+                layoutRestTime.etRestTime.requestFocus()
+                showKeyBoard()
+            }
             layoutRestTime.etRestTime.apply {
                 checkIfInputIsFull(this)
             }
 
+            layoutSetNumber.root.setOnClickListener {
+                layoutSetNumber.etSetNumber.requestFocus()
+                showKeyBoard()
+            }
             layoutSetNumber.etSetNumber.apply {
                 checkIfInputIsFull(this)
             }
 
+            layoutWeight.root.setOnClickListener {
+                layoutWeight.etWeight.requestFocus()
+                showKeyBoard()
+            }
             layoutWeight.etWeight.apply {
                 checkIfInputIsFull(this)
             }
 
+            layoutRpe.root.setOnClickListener {
+                layoutRpe.etRpe.requestFocus()
+                showKeyBoard()
+            }
             layoutRpe.etRpe.apply {
                 checkIfInputIsFull(this)
             }
@@ -173,5 +217,10 @@ class RegExerciseTypeDetailActivity :
 
     override fun showInternetDisconnectedView(disconnected: Boolean) {
         dataBinding.viewNetworkNotConnected.root.isVisible = disconnected
+    }
+
+    private fun showKeyBoard() {
+        (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
     }
 }

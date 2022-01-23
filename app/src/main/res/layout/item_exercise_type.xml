@@ -10,18 +10,24 @@
             type="com.progressive.overload.model.model.ExerciseTypeModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_add_program"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,23 +47,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="스쿼트" />
 
-            <ImageView
-                android:id="@id/iv_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_update"
-                app:layout_constraintBottom_toBottomOf="@id/tv_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_name"
-                app:tint="@color/grey" />
-
             <LinearLayout
                 android:id="@+id/layout_exercise_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:background="@color/light_grey"
+                android:background="@drawable/border_exercise_info"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/layout_exercise_start"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +73,7 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.weight.toString() + `KG`}"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/green_personal_color"
                         android:textStyle="bold"
                         tools:text="80" />
 
@@ -88,7 +83,7 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.repitition.toString()}"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/green_personal_color"
                         android:textStyle="bold"
                         tools:text="12" />
 
@@ -98,7 +93,7 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.setNum.toString()}"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/green_personal_color"
                         android:textStyle="bold"
                         tools:text="3" />
 
@@ -108,7 +103,7 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.restTime.toString()}"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/green_personal_color"
                         android:textStyle="bold"
                         tools:text="60" />
 
@@ -118,7 +113,7 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.rpe.toString()}"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/green_personal_color"
                         android:textStyle="bold"
                         tools:text="8" />
                 </LinearLayout>
@@ -177,7 +172,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:background="@color/blue"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:background="@drawable/border_common_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -211,5 +209,5 @@
                 app:lottie_imageAssetsFolder="images/" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

@@ -180,47 +180,17 @@ class ExerciseTypeActivity :
                             onResultForExerciseRecord.launch(this)
                         }
                     },
-                    { exercise, position ->
+                    { exercise ->
                         // 우측 메뉴 버튼 클릭, 다이얼로그
-                        val builder =
-                            AlertDialog.Builder(ContextThemeWrapper(this@ExerciseTypeActivity,
-                                R.style.AlertDialogCustom))
-                        builder.setItems(R.array.exercise_sort_array
-                        ) { dialog, pos ->
-                            when (pos) {
-                                0 -> { // 프로그램 수정
-                                    Intent(this@ExerciseTypeActivity,
-                                        RegExerciseTypeDetailActivity::class.java).apply {
-                                        putExtra("isUpdate", true)
-                                        putExtra("mesoCycleSplitIndex", mesoCycleSplitIndex)
-                                        putExtra("microCycleSplitIndex", microCycleSplitIndex)
-                                        putExtra("exTypeModel", exercise)
-                                        putExtra("programNo", programNo)
-                                        onResultForExerciseReg.launch(this)
-                                    }
-                                }
-                                1 -> { // 프로그램 삭제
-                                    val errorDialog = AlertDialog.Builder(ContextThemeWrapper(
-                                        context,
-                                        R.style.AlertDialogCustom))
-                                        .setCancelable(true)
-                                        .setMessage("정말 삭제하시겠습니까?\n\n해당 운동을 삭제하면 기록도 모두 삭제됩니다.")
-                                        .setPositiveButton("삭제") { dialog, _ ->
-                                            viewModel.deleteExercise(exercise) {
-                                                dialog?.dismiss()
-                                            }
-                                            exerciseTypeAdapter.removeTargetedItem(position)
-
-                                        }
-                                        .setNegativeButton("취소") { _, _ -> }
-                                        .create()
-                                    errorDialog.show()
-                                }
-                            }
-                            dialog?.dismiss()
+                        Intent(this@ExerciseTypeActivity,
+                            RegExerciseTypeDetailActivity::class.java).apply {
+                            putExtra("isUpdate", true)
+                            putExtra("mesoCycleSplitIndex", mesoCycleSplitIndex)
+                            putExtra("microCycleSplitIndex", microCycleSplitIndex)
+                            putExtra("exTypeModel", exercise)
+                            putExtra("programNo", programNo)
+                            onResultForExerciseReg.launch(this)
                         }
-                        val dialog = builder.create()
-                        dialog.show()
                     }
                 )
                 adapter = exerciseTypeAdapter

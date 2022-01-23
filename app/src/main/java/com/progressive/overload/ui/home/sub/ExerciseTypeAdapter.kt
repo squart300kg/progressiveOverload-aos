@@ -18,7 +18,7 @@ class ExerciseTypeAdapter(
     val context: Context,
     val isDummyProgram: Boolean = false,
     val onClickForRecord: (item: ExerciseTypeModel) -> Unit,
-    val onClickForMenu: (item: ExerciseTypeModel, position: Int) -> Unit,
+    val onClick: (item: ExerciseTypeModel) -> Unit,
 ) : RecyclerView.Adapter<ExerciseTypeAdapter.ExercisesViewHolder>() {
 
     private val items: MutableList<ExerciseTypeModel> = mutableListOf()
@@ -80,8 +80,6 @@ class ExerciseTypeAdapter(
     ) : BaseViewHolder<ExerciseTypeModel, ItemExerciseTypeBinding>(itemId, parent, layoutRes) {
         fun initExerciseStatedStatus() {
             itemBinding.layoutExerciseStart.isVisible = isExerciseStarted
-
-            itemBinding.ivMenu.isVisible = !isExerciseStarted
         }
 
         fun initOnClick() {
@@ -89,8 +87,8 @@ class ExerciseTypeAdapter(
                 onClickForRecord(items[absoluteAdapterPosition])
             }
 
-            itemBinding.ivMenu.setOnClickListener {
-                onClickForMenu(items[absoluteAdapterPosition], absoluteAdapterPosition)
+            itemView.setOnClickListener {
+                onClick(items[absoluteAdapterPosition])
             }
         }
 
