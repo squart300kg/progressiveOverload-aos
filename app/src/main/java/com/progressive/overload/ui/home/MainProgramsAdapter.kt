@@ -14,7 +14,9 @@ import com.progressive.overload.model.entity.ProgramTable
  */
 class MainProgramsAdapter(
     val startRegistration : (ProgramTable) -> Unit,
-    val onClickMenu : (ProgramTable) -> Unit
+    val onClickForDupl : (ProgramTable) -> Unit,
+    val onClickForChange : (ProgramTable) -> Unit,
+    val onClickForDelete : (ProgramTable) -> Unit,
 ): RecyclerView.Adapter<MainProgramsAdapter.ProgramViewHolder>() {
 
     private val items: MutableList<ProgramTable> = mutableListOf()
@@ -57,8 +59,16 @@ class MainProgramsAdapter(
                 startRegistration(items[absoluteAdapterPosition])
             }
 
-            itemBinding.ivMenu.setOnClickListener {
-                onClickMenu(items[absoluteAdapterPosition])
+            itemBinding.tvDupl.setOnClickListener {
+                onClickForDupl(items[absoluteAdapterPosition])
+            }
+
+            itemBinding.tvChange.setOnClickListener {
+                onClickForChange(items[absoluteAdapterPosition])
+            }
+
+            itemBinding.tvDelete.setOnClickListener {
+                onClickForDelete(items[absoluteAdapterPosition])
             }
         }
     }

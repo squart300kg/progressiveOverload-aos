@@ -55,70 +55,62 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                             startActivity(this)
                         }
                     },
-                    { programTable -> // 메뉴 아이콘 클릭
-                        val builder = AlertDialog.Builder(ContextThemeWrapper(context,
+                    { programTable ->
+                        // 프로그램 복사
+                        registerDialog =
+                            TitleDialog.newInstance(
+                                TitleDialog.INTENT_TO_DUPLICATE,
+                                programTable.no,
+                                programTable.name) {
+                                homeViewModel.getAllProgram()
+                            }
+                        registerDialog.show(
+                            requireActivity().supportFragmentManager,
+                            registerDialog.tag
+                        )
+                    },
+                    { programTable ->
+                        // 프로그램 이름 변경
+                        registerDialog =
+                            TitleDialog.newInstance(
+                                TitleDialog.INTENT_TO_UPDATE,
+                                programTable.no,
+                                programTable.name) {
+
+                                homeViewModel.getAllProgram()
+
+                                showToast("프로그램 등록을 완료하였습니다!")
+
+                            }
+                        registerDialog.show(
+                            requireActivity().supportFragmentManager,
+                            registerDialog.tag
+                        )
+
+                    },
+                    { programTable ->
+                        // 프로그램 삭제
+                        val deleteDialog = AlertDialog.Builder(ContextThemeWrapper(
+                            context,
                             R.style.AlertDialogCustom))
-                        builder.setItems(R.array.home_sort_array
-                        ) { dialog, pos ->
-                            when (pos) {
-                                0 -> { // 프로그램 복사
+                            .setCancelable(true)
+                            .setMessage("정말 삭제하시겠습니까?\n\n프로그램을 삭제하면 운동 기록도 모두 삭제됩니다.")
+                            .setPositiveButton("삭제") { dialog, _ ->
+                                homeViewModel.deleteProgram(programTable.no) {
+                                    dialog?.dismiss()
 
-                                    registerDialog =
-                                        TitleDialog.newInstance(
-                                            TitleDialog.INTENT_TO_DUPLICATE,
-                                            programTable.no,
-                                            programTable.name) {
-                                            homeViewModel.getAllProgram()
-                                        }
-                                    registerDialog.show(
-                                        requireActivity().supportFragmentManager,
-                                        registerDialog.tag
-                                    )
-                                }
-                                1 -> { // 프로그램 이름 수정
-                                    registerDialog =
-                                        TitleDialog.newInstance(
-                                            TitleDialog.INTENT_TO_UPDATE,
-                                            programTable.no,
-                                            programTable.name) {
-
-                                            goMain()
-
-                                            showToast("프로그램 등록을 완료하였습니다!")
-
-                                        }
-                                    registerDialog.show(
-                                        requireActivity().supportFragmentManager,
-                                        registerDialog.tag
-                                    )
-                                }
-                                2 -> { // 프로그램 삭제
-                                    val deleteDialog = AlertDialog.Builder(ContextThemeWrapper(
-                                        context,
-                                        R.style.AlertDialogCustom))
-                                        .setCancelable(true)
-                                        .setMessage("정말 삭제하시겠습니까?\n\n프로그램을 삭제하면 운동 기록도 모두 삭제됩니다.")
-                                        .setPositiveButton("삭제") { dialog, _ ->
-                                            homeViewModel.deleteProgram(programTable.no) {
-                                                dialog?.dismiss()
-
-                                                goMain()
-                                            }
-                                        }
-                                        .setNegativeButton("취소") { _, _ -> }
-                                        .create()
-                                    deleteDialog.show()
+                                    homeViewModel.getAllProgram()
                                 }
                             }
-
-                            dialog?.dismiss()
-                        }
-                        val dialog = builder.create()
-                        dialog.show()
+                            .setNegativeButton("취소") { _, _ -> }
+                            .create()
+                        deleteDialog.show()
                     }
                 )
                 adapter = mainProgramsAdapter
             }
+
+
         }
     }
 

@@ -24,15 +24,32 @@
             android:id="@+id/et_input"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:backgroundTint="@color/transparent"
+            android:background="@drawable/border_title_input"
             android:hint="OOO 근비대 프로그램"
+            android:paddingStart="10dp"
             android:selectAllOnFocus="true"
             android:inputType="text"
             android:maxLines="1"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_grey"
+            android:layout_gravity="center"
+            android:layout_marginTop="33dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_cancel"
+            app:layout_constraintStart_toEndOf="@id/tv_ok"
+            app:layout_constraintTop_toBottomOf="@id/et_input" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,17 +68,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/v_divider"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_input" />
-
-            <View
-                android:id="@+id/v_divider"
-                android:layout_width="1dp"
-                android:layout_height="30dp"
-                android:background="@color/black"
-                android:layout_gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_cancel"
-                app:layout_constraintStart_toEndOf="@id/tv_ok"
                 app:layout_constraintTop_toBottomOf="@id/et_input" />
 
             <TextView
