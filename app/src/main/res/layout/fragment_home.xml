@@ -50,6 +50,27 @@
 
         </androidx.core.widget.NestedScrollView>
 
+<!--        <include-->
+<!--            android:id="@+id/layout_main_first_guide"-->
+<!--            layout="@layout/layout_main_first_guide"-->
+<!--            android:visibility="gone"/>-->
+<!--        <include-->
+<!--            android:id="@+id/layout_main_second_guide"-->
+<!--            layout="@layout/layout_main_second_guide"-->
+<!--            android:visibility="gone"/>-->
+<!--        <include-->
+<!--            android:id="@+id/layout_main_third_guide"-->
+<!--            layout="@layout/layout_main_third_guide"-->
+<!--            android:visibility="gone"/>-->
+<!--        <include-->
+<!--            android:id="@+id/layout_main_fourth_guide"-->
+<!--            layout="@layout/layout_main_fourth_guide"-->
+<!--            android:visibility="gone"/>-->
+<!--        <include-->
+<!--            android:id="@+id/layout_main_fifth_guide"-->
+<!--            layout="@layout/layout_main_fifth_guide"-->
+<!--            android:visibility="gone"/>-->
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

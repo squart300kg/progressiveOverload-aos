@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseFragment
@@ -14,10 +15,16 @@ import com.progressive.overload.databinding.FragmentHomeBinding
 import com.progressive.overload.ui.dialog.TitleDialog
 import com.progressive.overload.ui.home.sub.ExerciseTypeActivity
 import com.progressive.overload.ui.home.sub.MesoCycleSelectionActivity
+import com.progressive.overload.util.GuideUtil
+import com.securepreferences.SecurePreferences
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+
+    @Inject
+    lateinit var securePreferences: SecurePreferences
 
     private val homeViewModel: HomeViewModel by viewModels()
 
@@ -31,6 +38,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         binding {
             homeVm = homeViewModel
+
+            GuideUtil.saveMainGuideShown(securePreferences, false)
+
+            // 처음 들어왔다면 튜토리얼 페이지 보여줌
+            if (!GuideUtil.isMainGuideShown(securePreferences)) {
+                Intent(requireActivity(), TutorialActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
 
             // 운동 종류 등록
             layoutAddProgram.layoutAddProgram.setOnClickListener {
@@ -109,11 +125,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 )
                 adapter = mainProgramsAdapter
             }
-
-
         }
     }
-
 
     override fun onStart() {
         super.onStart()

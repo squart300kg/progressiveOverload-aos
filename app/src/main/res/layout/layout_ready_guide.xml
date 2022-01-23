@@ -28,6 +28,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_fileName="start_guide.json"
+        app:lottie_fileName="start_guide_down_gesture.json"
         app:lottie_imageAssetsFolder="images/" />
 </androidx.constraintlayout.widget.ConstraintLayout>

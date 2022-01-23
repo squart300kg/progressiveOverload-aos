@@ -5,6 +5,14 @@ import javax.inject.Inject
 
 object GuideUtil {
 
+    fun saveMainGuideShown(securePreferences: SecurePreferences, status: Boolean) {
+        securePreferences.edit().putBoolean("mainGuide", status).commit()
+    }
+
+    fun isMainGuideShown(securePreferences: SecurePreferences) : Boolean {
+        return securePreferences.getBoolean("mainGuide", false)
+    }
+
     fun saveReadyGuideShown(securePreferences: SecurePreferences, status: Boolean) {
         securePreferences.edit().putBoolean("readyGuide", status).commit()
     }
