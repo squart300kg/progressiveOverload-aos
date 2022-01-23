@@ -1,11 +1,9 @@
 package com.progressive.overload.ui.home.sub
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextThemeWrapper
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -20,6 +18,7 @@ import com.progressive.overload.ui.dialog.TitleDialog
 import com.progressive.overload.util.Ad.AdUtil
 import com.progressive.overload.util.Ad.FullScreenAdCallback
 import com.progressive.overload.util.DateUtil
+import com.progressive.overload.util.GuideUtil
 import com.securepreferences.SecurePreferences
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -78,6 +77,10 @@ class ExerciseTypeActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // 가이드 테스트
+        GuideUtil.saveReadyGuideShown(securePreferences, false)
+        GuideUtil.saveStartGuideShown(securePreferences, false)
+
         isDummyDataInit = intent.getBooleanExtra("isDummyDataInit", false)
         isDummy = intent.getBooleanExtra("isDummy", false)
         mesoCycleSplitCount = intent.getIntExtra("mesoCycleSplitCount", 0)
@@ -119,10 +122,19 @@ class ExerciseTypeActivity :
             dataBinding.tvRegSuccess.isVisible = false
             dataBinding.layoutGuide.isVisible = false
             dataBinding.tvExerciseStart.isVisible = true
+
+            if (!GuideUtil.isReadyGuideShown(securePreferences)) {
+                dataBinding.layoutReadyGuide.root.isVisible = true
+            }
         }
 
         binding {
             regVm = viewModel
+
+            layoutReadyGuide.root.setOnClickListener {
+                GuideUtil.saveReadyGuideShown(securePreferences, true)
+                dataBinding.layoutReadyGuide.root.isVisible = false
+            }
 
             tlMesoSplit.apply {
                 for (i in 0 until mesoCycleSplitCount) {
@@ -218,7 +230,17 @@ class ExerciseTypeActivity :
                 }
             }
 
+            layoutStartGuide.root.setOnClickListener {
+                GuideUtil.saveStartGuideShown(securePreferences, true)
+                layoutStartGuide.root.isVisible = false
+            }
+
             tvExerciseStart.setOnClickListener {
+
+                if (!GuideUtil.isStartGuideShown(securePreferences)) {
+                    layoutStartGuide.root.isVisible = true
+                }
+
                 exerciseTypeAdapter.initExerciseStatus(ExerciseTypeAdapter.START) {
                     layoutAddExerciseType.isVisible = false
                     tvExerciseStart.isVisible = false

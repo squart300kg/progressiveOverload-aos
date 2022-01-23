@@ -16,11 +16,17 @@ import com.progressive.overload.model.model.ExerciseTypeModel
 import com.progressive.overload.model.model.RecordExerciseModel
 import com.progressive.overload.ui.dialog.CompleteDialog
 import com.progressive.overload.util.DateUtil
+import com.progressive.overload.util.GuideUtil
+import com.securepreferences.SecurePreferences
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RecordExerciseActivity :
     BaseActivity<ActivityRecordExerciseBinding>(R.layout.activity_record_exercise) {
+
+    @Inject
+    lateinit var securePreferences: SecurePreferences
 
     private val recordExerciseViewModel: RecordExerciseViewModel by viewModels()
 
@@ -68,9 +74,19 @@ class RecordExerciseActivity :
 
         Log.i("getTargetDate", "onCreate : $targetedDate")
 
+        GuideUtil.saveOneSetClearGuideShown(securePreferences, false)
+
+        if (!GuideUtil.isOneSetClearGuideShown(securePreferences)) {
+            dataBinding.layoutOneSetClearGuide.root.isVisible = true
+        }
 
         binding {
             recordExVm = recordExerciseViewModel
+
+            layoutOneSetClearGuide.root.setOnClickListener {
+                dataBinding.layoutOneSetClearGuide.root.isVisible = false
+                GuideUtil.saveOneSetClearGuideShown(securePreferences, true)
+            }
 
             tvGoPrevious.setOnClickListener {
                 goPrevious()

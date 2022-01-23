@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/layout_ready_guide"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:background="#80000000"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:textSize="19sp"
+        android:textColor="@color/white"
+        android:text="운동을 시작할 준비가 되셨나요?\n 되셨다면 아래 버튼을 눌러주세요!"
+        app:layout_constraintBottom_toTopOf="@id/animation_ready_floating"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_ready_floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_fileName="start_guide.json"
+        app:lottie_imageAssetsFolder="images/" />
+</androidx.constraintlayout.widget.ConstraintLayout>

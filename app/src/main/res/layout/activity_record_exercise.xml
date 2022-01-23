@@ -217,6 +217,12 @@
             ads:adSize="BANNER"
             ads:adUnitId="@string/main_banner_ad"
             ads:layout_constraintBottom_toBottomOf="parent" />
+
+        <include
+            android:id="@+id/layout_one_set_clear_guide"
+            layout="@layout/layout_one_set_clear_guide"
+            android:visibility="gone"/>
+
         <include
             android:id="@+id/view_network_not_connected"
             layout="@layout/layout_network_not_connected"

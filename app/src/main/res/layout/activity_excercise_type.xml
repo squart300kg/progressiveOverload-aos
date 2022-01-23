@@ -143,6 +143,7 @@
 
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv_root"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_btn"
@@ -267,6 +268,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <include
+            android:id="@+id/layout_start_guide"
+            layout="@layout/layout_start_guide"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/layout_ready_guide"
+            layout="@layout/layout_ready_guide"
+            android:visibility="gone"/>
 
         <include
             android:id="@+id/view_network_not_connected"
