@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="운동을 다 기록했다면?\n\n 운동 일지를 조회할수도 있습니다! \n\n내가 점진적 과부하를 하고 있는가...?"
+        android:text="운동을 다 기록했다면?\n 운동 일지를 조회할수도 있습니다 \n\n\n &quot;내가 점진적 과부하를 잘 하고 있는가...?&quot;\n"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"

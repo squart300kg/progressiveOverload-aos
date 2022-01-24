@@ -10,6 +10,7 @@ import com.progressive.overload.R
 import com.progressive.overload.base.BaseViewHolder
 import com.progressive.overload.databinding.ItemProgramBinding
 import com.progressive.overload.model.entity.ProgramTable
+import com.progressive.overload.model.model.HomeProgramModel
 
 /**
  * Created by sangyoon on 2021/07/27
@@ -19,7 +20,7 @@ class ProgramAdapter(
     val onClick: (Long) -> Unit,
 ) : RecyclerView.Adapter<ProgramAdapter.RecordsViewHolder>() {
 
-    private val items: MutableList<ProgramTable> = mutableListOf()
+    private val items: MutableList<HomeProgramModel> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -44,7 +45,7 @@ class ProgramAdapter(
 
     override fun getItemViewType(position: Int) = position
     
-    fun loadPrograms(list: List<ProgramTable>) {
+    fun loadPrograms(list: List<HomeProgramModel>) {
         Log.i("loadPrograms", list.toString())
         items.clear()
         items.addAll(list)
@@ -55,7 +56,7 @@ class ProgramAdapter(
         itemId: Int,
         parent: ViewGroup,
         layoutRes: Int,
-    ) : BaseViewHolder<ProgramTable, ItemProgramBinding>(itemId, parent, layoutRes) {
+    ) : BaseViewHolder<HomeProgramModel, ItemProgramBinding>(itemId, parent, layoutRes) {
         fun initOnClick() {
             itemView.setOnClickListener {
                 onClick(items[absoluteAdapterPosition].no)

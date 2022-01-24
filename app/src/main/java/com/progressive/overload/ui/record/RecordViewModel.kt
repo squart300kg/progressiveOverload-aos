@@ -5,6 +5,7 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.progressive.overload.model.entity.ProgramTable
+import com.progressive.overload.model.model.HomeProgramModel
 import com.progressive.overload.repository.RoomRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -17,14 +18,14 @@ class RecordViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 )  : ViewModel() {
 
-    private val _programs = MutableLiveData<MutableList<ProgramTable>>()
-    val programs: LiveData<MutableList<ProgramTable>>
+    private val _programs = MutableLiveData<MutableList<HomeProgramModel>>()
+    val programs: LiveData<MutableList<HomeProgramModel>>
         get() = _programs
 
     fun getAllProgram(
     ) {
         viewModelScope.launch {
-            roomRepository.getAllProgram()
+            roomRepository.getAllProgram2()
                 .flowOn(Dispatchers.IO)
                 .catch { }
                 .collect {

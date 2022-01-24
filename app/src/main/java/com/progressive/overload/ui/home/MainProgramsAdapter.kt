@@ -8,18 +8,19 @@ import com.progressive.overload.R
 import com.progressive.overload.base.BaseViewHolder
 import com.progressive.overload.databinding.ItemProgramBinding
 import com.progressive.overload.model.entity.ProgramTable
+import com.progressive.overload.model.model.HomeProgramModel
 
 /**
  * Created by sangyoon on 2021/07/27
  */
 class MainProgramsAdapter(
-    val startRegistration : (ProgramTable) -> Unit,
-    val onClickForDupl : (ProgramTable) -> Unit,
-    val onClickForChange : (ProgramTable) -> Unit,
-    val onClickForDelete : (ProgramTable) -> Unit,
+    val startRegistration : (HomeProgramModel) -> Unit,
+    val onClickForDupl : (HomeProgramModel) -> Unit,
+    val onClickForChange : (HomeProgramModel) -> Unit,
+    val onClickForDelete : (HomeProgramModel) -> Unit,
 ): RecyclerView.Adapter<MainProgramsAdapter.ProgramViewHolder>() {
 
-    private val items: MutableList<ProgramTable> = mutableListOf()
+    private val items: MutableList<HomeProgramModel> = mutableListOf()
 
     private val TAG = "MainProgramsAdapter"
     override fun onCreateViewHolder(
@@ -40,7 +41,7 @@ class MainProgramsAdapter(
 
     }
 
-    fun loadPrograms(list: List<ProgramTable>) {
+    fun loadPrograms(list: List<HomeProgramModel>) {
         Log.i("loadPrograms", list.toString())
         items.clear()
         items.addAll(list)
@@ -53,7 +54,7 @@ class MainProgramsAdapter(
         itemId: Int,
         parent: ViewGroup,
         layoutRes: Int
-    ): BaseViewHolder<ProgramTable, ItemProgramBinding>(itemId, parent, layoutRes) {
+    ): BaseViewHolder<HomeProgramModel, ItemProgramBinding>(itemId, parent, layoutRes) {
         fun initOnClick() {
             itemView.setOnClickListener {
                 startRegistration(items[absoluteAdapterPosition])

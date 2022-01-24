@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.progressive.overload.base.BaseViewModel
 import com.progressive.overload.model.entity.ProgramTable
+import com.progressive.overload.model.model.HomeProgramModel
 import com.progressive.overload.repository.RoomRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -19,8 +20,8 @@ class HomeViewModel @ViewModelInject constructor(
     private val roomRepository: RoomRepository,
 )  : BaseViewModel() {
 
-    private val _programs = MutableLiveData<MutableList<ProgramTable>>()
-    val programs: LiveData<MutableList<ProgramTable>>
+    private val _programs = MutableLiveData<MutableList<HomeProgramModel>>()
+    val programs: LiveData<MutableList<HomeProgramModel>>
         get() = _programs
 
     private val TAG = "HomeViewModelLog"
@@ -28,7 +29,7 @@ class HomeViewModel @ViewModelInject constructor(
     fun getAllProgram() {
         viewModelScope.launch {
             _isLoading.value = true
-            roomRepository.getAllProgram()
+            roomRepository.getAllProgram2()
                 .flowOn(Dispatchers.IO)
                 .catch { }
                 .collect {

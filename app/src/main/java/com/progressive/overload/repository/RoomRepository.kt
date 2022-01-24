@@ -5,6 +5,7 @@ import com.progressive.overload.model.entity.ProgramTable
 import com.progressive.overload.model.entity.RecordTable
 import com.progressive.overload.model.model.ExerciseTypeModel
 import com.progressive.overload.model.model.ExerciseVolumeModel
+import com.progressive.overload.model.model.HomeProgramModel
 import com.progressive.overload.model.model.RecordModel
 import kotlinx.coroutines.flow.Flow
 
@@ -21,7 +22,7 @@ interface RoomRepository {
 
     fun insertRecord(model: RecordTable): Flow<Long>
 
-    fun getAllProgram(): Flow<List<ProgramTable>>
+    fun getAllProgram2(): Flow<List<HomeProgramModel>>
 
     fun getTargetedProgram(targetName: String): Flow<ProgramTable>
 

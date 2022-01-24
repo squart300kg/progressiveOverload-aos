@@ -7,6 +7,7 @@ import com.progressive.overload.model.entity.ProgramTable
 import com.progressive.overload.model.entity.RecordTable
 import com.progressive.overload.model.model.ExerciseTypeModel
 import com.progressive.overload.model.model.ExerciseVolumeModel
+import com.progressive.overload.model.model.HomeProgramModel
 import com.progressive.overload.model.model.RecordModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -48,9 +49,11 @@ class RoomRepositoryImp @Inject constructor(
         }
     }
 
-    override fun getAllProgram(): Flow<List<ProgramTable>> {
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override fun getAllProgram2(): Flow<List<HomeProgramModel>> {
         return flow {
-            val data = programDAO.getAllProgram()
+            val data = programDAO.getAllProgram2()
             emit(data)
         }
     }

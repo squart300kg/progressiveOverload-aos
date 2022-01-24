@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="안녕하세요! 3대600 개발자입니다 \n만나서 반갑습니다! ^_^\n\n\n 여러분들의 3대 600을 위해 이 앱을 만들었습니다\n\n\n10초 튜토리얼을 시작합니다!"
+        android:text="안녕하세요! 3대600 개발자입니다 \n만나서 반갑습니다\n\n\n 여러분들의 3대 600을 위해 이 앱을 만들었습니다\n\n\n10초 튜토리얼을 시작합니다!"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"

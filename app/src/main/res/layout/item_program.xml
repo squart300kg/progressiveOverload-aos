@@ -7,7 +7,7 @@
 
         <variable
             name="programItem"
-            type="com.progressive.overload.model.entity.ProgramTable" />
+            type="com.progressive.overload.model.model.HomeProgramModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -97,7 +97,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="8%"
+                overload:text="8%"
+                android:text="@{programItem.performedPercentage + `%`}"
                 android:textColor="@color/green_third"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -114,9 +115,10 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:max="100"
-                android:progress="50"
+                android:progress="@{programItem.performedPercentage}"
                 android:progressDrawable="@drawable/progress_main"
-                app:layout_constraintBottom_toTopOf="@id/tv_dupl" />
+                app:layout_constraintBottom_toTopOf="@id/tv_dupl"
+                overload:progress="8" />
 
             <TextView
                 android:id="@+id/tv_dupl"

@@ -1,10 +1,12 @@
 package com.progressive.overload.api
 
+import android.util.Log
 import androidx.room.*
 import com.progressive.overload.model.entity.ExerciseTypeTable
 import com.progressive.overload.model.entity.ProgramTable
 import com.progressive.overload.model.entity.RecordTable
 import com.progressive.overload.model.model.ExerciseVolumeModel
+import com.progressive.overload.model.model.HomeProgramModel
 import com.progressive.overload.model.model.RecordModel
 import com.progressive.overload.util.ProgramInitUtil
 
@@ -15,8 +17,50 @@ import com.progressive.overload.util.ProgramInitUtil
 @Dao
 interface ProgramDAO {
 
+    @Transaction
+    fun getAllProgram2(): List<HomeProgramModel> {
+
+        val allProgram = getAllProgram()
+
+        val programModel = mutableListOf<HomeProgramModel>()
+
+        allProgram.forEachIndexed { index, program ->
+
+            val mustPerformSet = getMustPerformSet(program.no)
+            Log.i("percentTest", "mustPerformSet: $mustPerformSet")
+
+            val completeSet = getCompleteSet(program.no)
+            Log.i("percentTest", "completeSet: $completeSet")
+
+            val performedPercentage = (completeSet.toFloat() / mustPerformSet.toFloat() * 100).toInt()
+            Log.i("percentTest", "performedPercentage: $performedPercentage")
+
+            programModel.add(
+                HomeProgramModel(
+                    program.no,
+                    program.name,
+                    program.mesoSplitText,
+                    program.mesoSplitCount,
+                    program.microCycleText,
+                    program.microCycleCount,
+                    program.isDummy,
+                    program.isDummyDataInit,
+                    performedPercentage
+                )
+            )
+        }
+
+        return programModel
+    }
+
     @Query("SELECT * FROM programtable ORDER BY `no` DESC")
     fun getAllProgram(): List<ProgramTable>
+
+    @Query("SELECT SUM(setNum) FROM ExerciseTypeTable WHERE programNo == :programNo ")
+    fun getMustPerformSet(programNo: Long): Int
+
+    @Query("SELECT COUNT(*) FROM RecordTable WHERE programNo == :programNo ")
+    fun getCompleteSet(programNo: Long): Int
 
     @Query("SELECT * FROM programtable WHERE name == :targetName")
     fun getTargetedProgram(targetName: String): ProgramTable
