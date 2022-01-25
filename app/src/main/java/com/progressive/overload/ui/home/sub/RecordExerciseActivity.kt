@@ -74,7 +74,8 @@ class RecordExerciseActivity :
 
         Log.i("getTargetDate", "onCreate : $targetedDate")
 
-        GuideUtil.saveOneSetClearGuideShown(securePreferences, false)
+        // 튜토리얼테스트
+//        GuideUtil.saveOneSetClearGuideShown(securePreferences, false)
 
         if (!GuideUtil.isOneSetClearGuideShown(securePreferences)) {
             dataBinding.layoutOneSetClearGuide.root.isVisible = true

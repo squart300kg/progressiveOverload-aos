@@ -7,33 +7,56 @@
     android:layout_height="match_parent"
     android:background="#BF000000">
 
-    <TextView
-        android:id="@+id/tv_start_guide_first"
-        android:layout_width="match_parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_record_second_floating"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="&quot;내가 점진적 과부하를 잘 하고 있는가...?&quot;\n\n\n\n\n를 확인하러 오셨군요.\n\n어떤 프로그램의 일지를 조회하고 싶으신가요?\n선택해 주세요!"
-        android:textColor="@color/white"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="graph_guide_circle.json"
+        app:lottie_imageAssetsFolder="images/"
+        app:lottie_loop="true" />
 
     <TextView
-        android:id="@+id/ok"
+        android:id="@+id/tv_record_second_guide"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="10dp"
+        android:gravity="center"
+        android:text="총 볼륨을 그래프로 한눈에 확인할 수도 있습니다!\n\n\n그래프의 동그란 부분을 클릭해 보세요\n볼륨을 바로 확인할 수 있을겁니다 ^ ^"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        app:layout_constraintTop_toBottomOf="@+id/animation_record_second_floating"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_margin="20dp"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="19sp"
-        android:text="OK"
-        android:background="@drawable/border_common_button"
+        android:text="1 / 2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_first" />
+        app:layout_constraintTop_toBottomOf="@id/tv_record_second_guide" />
+
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        android:text="다음"
+        android:drawableEnd="@drawable/ic_arrow_forward_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_record_second_guide" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

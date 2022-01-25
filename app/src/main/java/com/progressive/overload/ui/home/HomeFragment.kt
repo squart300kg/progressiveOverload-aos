@@ -39,7 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             homeVm = homeViewModel
 
             // 튜토리얼 테스트
-            GuideUtil.saveMainGuideShown(securePreferences, false)
+//            GuideUtil.saveMainGuideShown(securePreferences, false)
 
             // 처음 들어왔다면 튜토리얼 페이지 보여줌
             if (!GuideUtil.isMainGuideShown(securePreferences)) {

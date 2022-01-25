@@ -27,7 +27,7 @@ class TutorialExerciseTypeActivity :
         binding {
 
             // 튜토리얼 테스트
-            GuideUtil.saveExerciseTypeGuideShown(securePreferences, false)
+//            GuideUtil.saveExerciseTypeGuideShown(securePreferences, false)
 
             if (!GuideUtil.isExerciseTypeGuideShown(securePreferences)) {
                 layoutTopMenuGuide.root.isVisible = true

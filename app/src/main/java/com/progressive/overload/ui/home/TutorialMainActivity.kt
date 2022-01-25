@@ -38,10 +38,9 @@ class TutorialMainActivity :
     }
 
     private fun initTutorial() {
-        GuideUtil.saveMainGuideShown(securePreferences, false)
-
         binding {
-            GuideUtil.saveMainGuideShown(securePreferences, false)
+            // 튜토리얼 테스트
+//            GuideUtil.saveMainGuideShown(securePreferences, false)
 
             if (!GuideUtil.isMainGuideShown(securePreferences)) {
                 layoutMainFirstGuide.root.isVisible = true

@@ -13,6 +13,7 @@ import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivityRecordDetailBinding
 import com.progressive.overload.util.Ad.FullScreenAdCallback
 import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.progressive.overload.ui.record.TutorialRecordActivity
 import com.progressive.overload.util.Ad.AdUtil
 import com.progressive.overload.util.GuideUtil
 import com.progressive.overload.util.RecordMarkerView
@@ -105,14 +106,17 @@ class RecordDetailActivity :
         }
 
         recordDetailViewModel.getAllRecordsDateByProgramNo(programNo) {
-            // 가이드 테스트
-            GuideUtil.saveRecordDetailGuideShown(securePreferences, false)
+            // 튜토리얼 테스트
+//            GuideUtil.saveRecordDetailGuideShown(securePreferences, false)
 
             if (!GuideUtil.isRecordDetailGuideShown(securePreferences)) {
-
-
-                GuideUtil.saveRecordDetailGuideShown(securePreferences, false)
+                Intent(this, TutorialRecordActivity::class.java).apply {
+                    startActivity(this)
+                }
+                GuideUtil.saveRecordDetailGuideShown(securePreferences, true)
             }
+
+
         }
 
         initBannerAd(dataBinding.adView)

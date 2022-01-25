@@ -30,7 +30,7 @@ class RecordFragment : BaseFragment<FragmentRecordBinding>(R.layout.fragment_rec
             recordVm = recordViewModel
 
             // 튜토리얼 테스트
-            GuideUtil.saveRecordMainGuideShown(securePreferences, false)
+//            GuideUtil.saveRecordMainGuideShown(securePreferences, false)
 
             if (!GuideUtil.isRecordMainGuideShown(securePreferences)) {
                 layoutRecordGuide.root.isVisible = true

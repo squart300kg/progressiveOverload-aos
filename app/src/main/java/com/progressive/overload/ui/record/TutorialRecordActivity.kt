@@ -40,46 +40,23 @@ class TutorialRecordActivity :
 
     private fun initTutorial() {
         binding {
-            GuideUtil.saveMainGuideShown(securePreferences, false)
+            // 튜토리얼테스트
+//            GuideUtil.saveRecordDetailGuideShown(securePreferences, false)
 
-            if (!GuideUtil.isMainGuideShown(securePreferences)) {
-                layoutMainFirstGuide.root.isVisible = true
+            if (!GuideUtil.isRecordDetailGuideShown(securePreferences)) {
+                layoutRecordSecondGuide.root.isVisible = true
             }
-            layoutMainFirstGuide.tvNext.setOnClickListener {
-                layoutMainFirstGuide.root.isVisible = false
-                layoutMainSecondGuide.root.isVisible = true
+            layoutRecordSecondGuide.tvNext.setOnClickListener {
+                layoutRecordThirdGuide.root.isVisible = true
+                layoutRecordSecondGuide.root.isVisible = false
             }
-            layoutMainSecondGuide.tvNext.setOnClickListener {
-                layoutMainSecondGuide.root.isVisible = false
-                layoutMainThirdGuide.root.isVisible = true
+            layoutRecordThirdGuide.tvPrev.setOnClickListener {
+                layoutRecordThirdGuide.root.isVisible = false
+                layoutRecordSecondGuide.root.isVisible = true
             }
-            layoutMainSecondGuide.tvPrev.setOnClickListener {
-                layoutMainSecondGuide.root.isVisible = false
-                layoutMainFirstGuide.root.isVisible = true
-            }
-            layoutMainThirdGuide.tvNext.setOnClickListener {
-                layoutMainFourthGuide.root.isVisible = true
-                layoutMainThirdGuide.root.isVisible = false
-            }
-            layoutMainThirdGuide.tvPrev.setOnClickListener {
-                layoutMainThirdGuide.root.isVisible = false
-                layoutMainSecondGuide.root.isVisible = true
-            }
-            layoutMainFourthGuide.tvNext.setOnClickListener {
-                layoutMainFifthGuide.root.isVisible = true
-                layoutMainFourthGuide.root.isVisible = false
-            }
-            layoutMainFourthGuide.tvPrev.setOnClickListener {
-                layoutMainFourthGuide.root.isVisible = false
-                layoutMainThirdGuide.root.isVisible = true
-            }
-            layoutMainFifthGuide.tvPrev.setOnClickListener {
-                layoutMainFourthGuide.root.isVisible = true
-                layoutMainFifthGuide.root.isVisible = false
-            }
-            layoutMainFifthGuide.tvLetsStart.setOnClickListener {
-                GuideUtil.saveMainGuideShown(securePreferences, true)
-                layoutMainFifthGuide.root.isVisible = false
+            layoutRecordThirdGuide.ok.setOnClickListener {
+                GuideUtil.saveRecordDetailGuideShown(securePreferences, true)
+                layoutRecordThirdGuide.root.isVisible = false
                 finish()
             }
         }

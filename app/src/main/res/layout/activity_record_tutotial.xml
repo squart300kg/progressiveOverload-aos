@@ -9,25 +9,15 @@
         android:layout_height="match_parent"
         android:background="@color/transparent"
         overload:context=".ui.home.sub.RegExerciseTypeDetailActivity">
+
         <include
-            android:id="@+id/layout_main_first_guide"
-            layout="@layout/layout_main_first_guide"
+            android:id="@+id/layout_record_second_guide"
+            layout="@layout/layout_record_second_guide"
             android:visibility="gone"/>
+
         <include
-            android:id="@+id/layout_main_second_guide"
-            layout="@layout/layout_main_second_guide"
-            android:visibility="gone"/>
-        <include
-            android:id="@+id/layout_main_third_guide"
-            layout="@layout/layout_main_third_guide"
-            android:visibility="gone"/>
-        <include
-            android:id="@+id/layout_main_fourth_guide"
-            layout="@layout/layout_main_fourth_guide"
-            android:visibility="gone"/>
-        <include
-            android:id="@+id/layout_main_fifth_guide"
-            layout="@layout/layout_main_fifth_guide"
+            android:id="@+id/layout_record_third_guide"
+            layout="@layout/layout_record_third_guide"
             android:visibility="gone"/>
 
         <include

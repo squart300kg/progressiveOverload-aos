@@ -41,6 +41,10 @@
             android:theme="@style/Theme.AppCompat.Translucent"
             android:exported="true" />
         <activity
+            android:name="com.progressive.overload.ui.record.TutorialRecordActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"
+            android:exported="true" />
+        <activity
             android:name="com.progressive.overload.ui.home.TutorialMainActivity"
             android:theme="@style/Theme.AppCompat.Translucent"
             android:exported="true" />

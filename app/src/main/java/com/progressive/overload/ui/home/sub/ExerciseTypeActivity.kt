@@ -78,9 +78,9 @@ class ExerciseTypeActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 가이드 테스트
-        GuideUtil.saveReadyGuideShown(securePreferences, false)
-        GuideUtil.saveStartGuideShown(securePreferences, false)
+        // 튜토리얼 테스트
+//        GuideUtil.saveReadyGuideShown(securePreferences, false)
+//        GuideUtil.saveStartGuideShown(securePreferences, false)
 
         isDummyDataInit = intent.getBooleanExtra("isDummyDataInit", false)
         isDummy = intent.getBooleanExtra("isDummy", false)
