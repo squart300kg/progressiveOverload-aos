@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:overload="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        overload:context=".ui.home.sub.RegExerciseTypeDetailActivity">
+        <include
+            android:id="@+id/layout_main_first_guide"
+            layout="@layout/layout_main_first_guide"
+            android:visibility="gone"/>
+        <include
+            android:id="@+id/layout_main_second_guide"
+            layout="@layout/layout_main_second_guide"
+            android:visibility="gone"/>
+        <include
+            android:id="@+id/layout_main_third_guide"
+            layout="@layout/layout_main_third_guide"
+            android:visibility="gone"/>
+        <include
+            android:id="@+id/layout_main_fourth_guide"
+            layout="@layout/layout_main_fourth_guide"
+            android:visibility="gone"/>
+        <include
+            android:id="@+id/layout_main_fifth_guide"
+            layout="@layout/layout_main_fifth_guide"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/view_network_not_connected"
+            layout="@layout/layout_network_not_connected"
+            android:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

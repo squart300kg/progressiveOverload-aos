@@ -37,7 +37,11 @@
             android:name="com.progressive.overload.ui.home.sub.TimerActivity"
             android:exported="true" />
         <activity
-            android:name="com.progressive.overload.ui.home.TutorialActivity"
+            android:name="com.progressive.overload.ui.home.TutorialExerciseTypeActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"
+            android:exported="true" />
+        <activity
+            android:name="com.progressive.overload.ui.home.TutorialMainActivity"
             android:theme="@style/Theme.AppCompat.Translucent"
             android:exported="true" />
         <activity

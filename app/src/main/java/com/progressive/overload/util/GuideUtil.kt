@@ -5,12 +5,36 @@ import javax.inject.Inject
 
 object GuideUtil {
 
+    fun saveRecordDetailGuideShown(securePreferences: SecurePreferences, status: Boolean) {
+        securePreferences.edit().putBoolean("recordDetailGuide", status).commit()
+    }
+
+    fun isRecordDetailGuideShown(securePreferences: SecurePreferences) : Boolean {
+        return securePreferences.getBoolean("recordDetailGuide", false)
+    }
+
+    fun saveRecordMainGuideShown(securePreferences: SecurePreferences, status: Boolean) {
+        securePreferences.edit().putBoolean("recordMainGuide", status).commit()
+    }
+
+    fun isRecordMainGuideShown(securePreferences: SecurePreferences) : Boolean {
+        return securePreferences.getBoolean("recordMainGuide", false)
+    }
+
     fun saveMainGuideShown(securePreferences: SecurePreferences, status: Boolean) {
         securePreferences.edit().putBoolean("mainGuide", status).commit()
     }
 
     fun isMainGuideShown(securePreferences: SecurePreferences) : Boolean {
         return securePreferences.getBoolean("mainGuide", false)
+    }
+
+    fun saveExerciseTypeGuideShown(securePreferences: SecurePreferences, status: Boolean) {
+        securePreferences.edit().putBoolean("exerciseTypeGuide", status).commit()
+    }
+
+    fun isExerciseTypeGuideShown(securePreferences: SecurePreferences) : Boolean {
+        return securePreferences.getBoolean("exerciseTypeGuide", false)
     }
 
     fun saveReadyGuideShown(securePreferences: SecurePreferences, status: Boolean) {

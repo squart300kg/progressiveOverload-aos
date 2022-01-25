@@ -1,12 +1,14 @@
 package com.progressive.overload.ext
 
 import android.graphics.Color
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.progressive.overload.model.model.RecordModel
 import com.progressive.overload.util.DateUtil
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.progressive.overload.R
 
 @BindingAdapter("overload:setAxisData")
 fun com.github.mikephil.charting.charts.LineChart.setAxisData(datas: List<RecordModel>?) {
@@ -35,9 +37,12 @@ fun com.github.mikephil.charting.charts.LineChart.setAxisData(datas: List<Record
             LineDataSet(entries, "총 볼륨").apply {
                 lineWidth = 2f
                 circleRadius = 6f
-                setCircleColor(Color.parseColor("#FFA1B4DC"))
-                setCircleColorHole(Color.BLUE)
-                color = Color.parseColor("#FFA1B4DC")
+                setCircleColor(ContextCompat.getColor(this@setAxisData.context,
+                    R.color.grey_fifth))
+                setCircleColorHole(ContextCompat.getColor(this@setAxisData.context,
+                    R.color.black))
+                color = ContextCompat.getColor(this@setAxisData.context,
+                    R.color.grey_fifth)
                 setDrawCircleHole(true)
                 setDrawCircles(true)
                 setDrawHorizontalHighlightIndicator(false)

@@ -13,7 +13,13 @@
     <color name="red">#a93f3b</color>
     <color name="grey">#808080</color>
     <color name="light_grey">#EEEEEE</color>
-    <color name="green_personal_color">#10561F</color>
+
+    <color name="grey_first">#a7a7a7</color>
+    <color name="grey_second">#b4b4b4</color>
+    <color name="grey_third">#c0c0c0</color>
+    <color name="grey_fourth">#cdcdcd</color>
+    <color name="grey_fifth">#dadada</color>
+
     <!--    <color name="blue">#003399</color>-->
 <!--    <color name="blue_second">#6799FF</color>-->
 

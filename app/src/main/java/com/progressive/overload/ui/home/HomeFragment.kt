@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseFragment
@@ -39,11 +38,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding {
             homeVm = homeViewModel
 
+            // 튜토리얼 테스트
             GuideUtil.saveMainGuideShown(securePreferences, false)
 
             // 처음 들어왔다면 튜토리얼 페이지 보여줌
             if (!GuideUtil.isMainGuideShown(securePreferences)) {
-                Intent(requireActivity(), TutorialActivity::class.java).apply {
+                Intent(requireActivity(), TutorialMainActivity::class.java).apply {
                     startActivity(this)
                 }
             }

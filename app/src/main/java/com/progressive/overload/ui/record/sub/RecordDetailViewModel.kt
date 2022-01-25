@@ -31,6 +31,7 @@ class RecordDetailViewModel @ViewModelInject constructor(
 
     fun getAllRecordsDateByProgramNo(
         programNo: Long,
+        notNullAndEmpty: () -> Unit
     ) {
         viewModelScope.launch {
             roomRepository.getAllRecordsDateByProgramNo(programNo)
@@ -41,6 +42,9 @@ class RecordDetailViewModel @ViewModelInject constructor(
                 .collect { recordDates ->
                     Log.i("recordDates", "collect : "+recordDates.toString())
                     _records.value = recordDates.toMutableList()
+                    if (!_records.value.isNullOrEmpty()) {
+                        notNullAndEmpty()
+                    }
                 }
         }
     }

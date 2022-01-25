@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
@@ -13,6 +14,8 @@ import com.progressive.overload.databinding.ActivityRecordDetailBinding
 import com.progressive.overload.util.Ad.FullScreenAdCallback
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.progressive.overload.util.Ad.AdUtil
+import com.progressive.overload.util.GuideUtil
+import com.progressive.overload.util.RecordMarkerView
 import com.progressive.overload.util.XaxisDateFormatter
 import com.progressive.overload.util.YaxisVolumeFormatter
 import com.securepreferences.SecurePreferences
@@ -68,18 +71,15 @@ class RecordDetailActivity :
                 isDoubleTapToZoomEnabled = true
                 setDrawGridBackground(false)
                 setNoDataText("운동 기록이 없습니다.")
-                setNoDataTextColor(Color.BLUE)
+                setNoDataTextColor(ContextCompat.getColor(this@RecordDetailActivity, R.color.green_first))
+
                 animateY(2000, Easing.EasingOption.EaseInCubic)
                 invalidate()
 
-//                val marker = RecordMarkerView(this@RecordDetailActivity, R.layout.layout_graph_marker)
-//                marker.chartView = chart
-//                chart.marker = marker
-
-//                RecordMarkerView(this@RecordDetailActivity, R.layout.layout_graph_marker).apply {
-//                    chartView = chart
-//                    chart.marker = this
-//                }
+                // 마커 생성
+                val marker = RecordMarkerView(this@RecordDetailActivity, R.layout.layout_graph_marker)
+                marker.chartView = chart
+                chart.marker = marker
             }
 
             rvRecord.apply {
@@ -104,7 +104,16 @@ class RecordDetailActivity :
             }
         }
 
-        recordDetailViewModel.getAllRecordsDateByProgramNo(programNo)
+        recordDetailViewModel.getAllRecordsDateByProgramNo(programNo) {
+            // 가이드 테스트
+            GuideUtil.saveRecordDetailGuideShown(securePreferences, false)
+
+            if (!GuideUtil.isRecordDetailGuideShown(securePreferences)) {
+
+
+                GuideUtil.saveRecordDetailGuideShown(securePreferences, false)
+            }
+        }
 
         initBannerAd(dataBinding.adView)
 

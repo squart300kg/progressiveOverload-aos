@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         overload:context=".ui.record.RecordFragment">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_programs"
             android:layout_width="match_parent"
@@ -41,6 +40,11 @@
             android:textStyle="bold"
             android:visibility="gone"
             overload:setVisibility="@{recordVm.programs.size() == 0}" />
+
+        <include
+            android:id="@+id/layout_record_guide"
+            layout="@layout/layout_record_first_guide"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

@@ -15,6 +15,7 @@ import com.progressive.overload.databinding.ActivityExcerciseTypeBinding
 import com.progressive.overload.ui.dialog.CancelDialog
 import com.progressive.overload.ui.dialog.Input1RMDialog
 import com.progressive.overload.ui.dialog.TitleDialog
+import com.progressive.overload.ui.home.TutorialExerciseTypeActivity
 import com.progressive.overload.util.Ad.AdUtil
 import com.progressive.overload.util.Ad.FullScreenAdCallback
 import com.progressive.overload.util.DateUtil
@@ -111,6 +112,8 @@ class ExerciseTypeActivity :
                             ) { // 무게 설정 완료
                                 input1RMDialog.dismiss()
                                 viewModel.getExercises(programNo, mesoCycleSplitIndex, microCycleSplitIndex)
+
+                                showReadyTutorialAtFirst()
                             }
                         }
                     }
@@ -123,18 +126,11 @@ class ExerciseTypeActivity :
             dataBinding.layoutGuide.isVisible = false
             dataBinding.tvExerciseStart.isVisible = true
 
-            if (!GuideUtil.isReadyGuideShown(securePreferences)) {
-                dataBinding.layoutReadyGuide.root.isVisible = true
-            }
+            showReadyTutorialAtFirst()
         }
 
         binding {
             regVm = viewModel
-
-            layoutReadyGuide.root.setOnClickListener {
-                GuideUtil.saveReadyGuideShown(securePreferences, true)
-                dataBinding.layoutReadyGuide.root.isVisible = false
-            }
 
             tlMesoSplit.apply {
                 for (i in 0 until mesoCycleSplitCount) {
@@ -255,6 +251,15 @@ class ExerciseTypeActivity :
         initBannerAd(dataBinding.adView)
 
         initFullScreenAd(this)
+    }
+
+    private fun showReadyTutorialAtFirst() {
+        if (!GuideUtil.isReadyGuideShown(securePreferences)) {
+            Intent(this, TutorialExerciseTypeActivity::class.java).apply {
+                startActivity(this)
+                GuideUtil.saveReadyGuideShown(securePreferences, true)
+            }
+        }
     }
 
     private fun initPerformedExercises() {

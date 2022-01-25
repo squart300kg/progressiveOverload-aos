@@ -1,4 +1,4 @@
-package com.progressive.overload.ui.home
+package com.progressive.overload.ui.record
 
 import android.app.Activity
 import android.content.Intent
@@ -12,6 +12,7 @@ import com.google.android.material.tabs.TabLayout
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivityExcerciseTypeBinding
+import com.progressive.overload.databinding.ActivityRecordTutotialBinding
 import com.progressive.overload.databinding.ActivityTutotialBinding
 import com.progressive.overload.ui.dialog.CancelDialog
 import com.progressive.overload.ui.dialog.Input1RMDialog
@@ -25,8 +26,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TutorialActivity :
-    BaseActivity<ActivityTutotialBinding>(R.layout.activity_tutotial){
+class TutorialRecordActivity :
+    BaseActivity<ActivityRecordTutotialBinding>(R.layout.activity_record_tutotial){
 
     @Inject
     lateinit var securePreferences: SecurePreferences
@@ -38,8 +39,6 @@ class TutorialActivity :
     }
 
     private fun initTutorial() {
-        GuideUtil.saveMainGuideShown(securePreferences, false)
-
         binding {
             GuideUtil.saveMainGuideShown(securePreferences, false)
 

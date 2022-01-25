@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/layout_start_guide"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_top_menu_floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_fileName="start_guide_up_gesture.json"
+        app:lottie_imageAssetsFolder="images/" />
+
+    <TextView
+        android:id="@+id/tv_start_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/animation_top_menu_floating"
+        android:textSize="19sp"
+        android:textColor="@color/white"
+        android:text="주차별, 일자별로 운동을 선택하고 싶나요?\n위 탭을 활용하세요~!" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

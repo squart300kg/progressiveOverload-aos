@@ -62,6 +62,7 @@ class OneDayRecordAdapter(
 
         fun initOnClick() {
             itemBinding.layoutDetailSee.setOnClickListener {
+                Log.i("layoutDetailSee", "click")
 
                 // 버튼 view변경
                 itemBinding.layoutDetail.isVisible = true

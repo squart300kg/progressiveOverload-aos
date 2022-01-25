@@ -60,6 +60,12 @@
             ads:layout_constraintBottom_toBottomOf="parent"
             ads:adSize="BANNER"
             ads:adUnitId="@string/main_banner_ad"/>
+
+        <include
+            android:id="@+id/layout_record_guide"
+            layout="@layout/layout_record_first_guide"
+            android:visibility="gone"/>
+
         <include
             android:id="@+id/view_network_not_connected"
             layout="@layout/layout_network_not_connected"

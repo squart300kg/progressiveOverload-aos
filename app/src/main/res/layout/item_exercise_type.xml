@@ -38,7 +38,7 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="19dp"
                 android:text="@{exerciseItem.name}"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -70,30 +70,33 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="20"
+                        android:layout_weight="33"
                         android:gravity="center"
+                        android:textSize="16sp"
                         android:text="@{exerciseItem.weight.toString() + `KG`}"
-                        android:textColor="@color/green_personal_color"
+                        android:textColor="@color/green_first"
                         android:textStyle="bold"
                         tools:text="80" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="20"
+                        android:layout_weight="33"
                         android:gravity="center"
+                        android:textSize="16sp"
                         android:text="@{exerciseItem.repitition.toString()}"
-                        android:textColor="@color/green_personal_color"
+                        android:textColor="@color/green_first"
                         android:textStyle="bold"
                         tools:text="12" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="20"
+                        android:layout_weight="33"
                         android:gravity="center"
+                        android:textSize="16sp"
                         android:text="@{exerciseItem.setNum.toString()}"
-                        android:textColor="@color/green_personal_color"
+                        android:textColor="@color/green_first"
                         android:textStyle="bold"
                         tools:text="3" />
 
@@ -103,8 +106,9 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.restTime.toString()}"
-                        android:textColor="@color/green_personal_color"
+                        android:textColor="@color/green_first"
                         android:textStyle="bold"
+                        android:visibility="gone"
                         tools:text="60" />
 
                     <TextView
@@ -113,8 +117,9 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.rpe.toString()}"
-                        android:textColor="@color/green_personal_color"
+                        android:textColor="@color/green_first"
                         android:textStyle="bold"
+                        android:visibility="gone"
                         tools:text="8" />
                 </LinearLayout>
 
@@ -131,22 +136,25 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="20"
+                        android:layout_weight="33"
                         android:gravity="center"
+                        android:textSize="13sp"
                         android:text="중량" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="20"
+                        android:layout_weight="33"
                         android:gravity="center"
+                        android:textSize="13sp"
                         android:text="반복수" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="20dp"
-                        android:layout_weight="20"
+                        android:layout_weight="33"
                         android:gravity="center"
+                        android:textSize="13sp"
                         android:text="세트수" />
 
                     <TextView
@@ -154,6 +162,7 @@
                         android:layout_height="20dp"
                         android:layout_weight="20"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:text="휴식시간" />
 
                     <TextView
@@ -161,6 +170,7 @@
                         android:layout_height="20dp"
                         android:layout_weight="20"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:text="RIR" />
                 </LinearLayout>
             </LinearLayout>
