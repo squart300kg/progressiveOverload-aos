@@ -85,7 +85,7 @@
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/black"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="5"
                 android:maxLines="1"
                 android:selectAllOnFocus="true"
                 android:text="@{recordItem.weight + ``}"
