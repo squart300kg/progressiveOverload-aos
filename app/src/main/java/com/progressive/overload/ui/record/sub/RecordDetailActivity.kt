@@ -113,7 +113,6 @@ class RecordDetailActivity :
                 Intent(this, TutorialRecordActivity::class.java).apply {
                     startActivity(this)
                 }
-                GuideUtil.saveRecordDetailGuideShown(securePreferences, true)
             }
 
 

@@ -7,52 +7,67 @@
     android:background="#BF000000">
 
     <TextView
-        android:id="@+id/tv_start_guide_second"
+        android:id="@+id/tv_start_guide_second_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="운동을 다 기록했다면?\n 운동 일지를 조회할수도 있습니다 \n\n\n &quot;내가 점진적 과부하를 잘 하고 있는가...?&quot;\n"
-        android:textColor="@color/white"
-        android:textSize="19sp"
+        android:gravity="center|start"
+        android:text="Q. 운동을 다 기록한 다음엔 무얼 하냐구?"
+        android:textColor="@color/main_orange_color"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
+        android:id="@+id/tv_start_guide_second_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center|start"
+        android:text="A. 운동 기록을 볼 수 있어야겠죠? 하단 &apos;일지조회&apos; 클릭!"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_start_guide_second_head" />
+
+    <TextView
         android:id="@+id/tv_prev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
         android:drawableStart="@drawable/ic_arrow_back_white"
         android:text="이전"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_second" />
+        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_second_body" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="40dp"
         android:text="4 / 5"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_second" />
+        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_second_body" />
 
     <TextView
         android:id="@+id/tv_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
         android:drawableEnd="@drawable/ic_arrow_forward_white"
         android:text="다음"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_second" />
+        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_second_body" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_start_floating"

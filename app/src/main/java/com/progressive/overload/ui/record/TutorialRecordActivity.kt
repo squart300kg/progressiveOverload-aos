@@ -43,6 +43,7 @@ class TutorialRecordActivity :
             // 튜토리얼테스트
 //            GuideUtil.saveRecordDetailGuideShown(securePreferences, false)
 
+            Log.i("tuto", "recordDetail: ${!GuideUtil.isRecordDetailGuideShown(securePreferences)}")
             if (!GuideUtil.isRecordDetailGuideShown(securePreferences)) {
                 layoutRecordSecondGuide.root.isVisible = true
             }

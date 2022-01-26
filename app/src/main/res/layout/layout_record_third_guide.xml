@@ -8,19 +8,32 @@
     android:background="#BF000000">
 
     <TextView
-        android:id="@+id/tv_record_second_guide"
+        android:id="@+id/tv_record_second_third_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:lineSpacingExtra="10dp"
-        android:text="헌데, 여러분들이 OO월 OO일에 수행한 운동을 좀 더 자세히 알고 싶다면?\n\n하단, &apos;자세히 보기&apos;버튼을 클릭!"
-        android:textColor="@color/white"
-        android:textSize="19sp"
+        android:lineSpacingExtra="20dp"
+        android:text="운동 상세 기록을 보고싶다구?"
+        android:textStyle="bold"
+        android:textColor="@color/main_orange_color"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166"
+        app:layout_constraintVertical_bias="0.25"
         tools:layout_editor_absoluteX="20dp" />
+
+    <TextView
+        android:id="@+id/tv_record_second_third_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:gravity="center"
+        android:lineSpacingExtra="20dp"
+        android:text="&apos;자세히 보기&apos;버튼을 클릭!"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_record_second_third_head" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_record_third_floating"
@@ -30,7 +43,7 @@
         android:background="@color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_record_second_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tv_record_second_third_body"
         app:lottie_autoPlay="true"
         app:lottie_fileName="graph_guide_circle.json"
         app:lottie_imageAssetsFolder="images/"

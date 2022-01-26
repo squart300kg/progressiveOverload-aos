@@ -22,52 +22,67 @@
         app:lottie_imageAssetsFolder="images/" />
 
     <TextView
-        android:id="@+id/tv_start_guide_first"
+        android:id="@+id/tv_start_guide_third_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="아니면 여러분만의 프로그램을 만드실 수도 있습니다!"
-        android:textColor="@color/white"
-        android:textSize="19sp"
+        android:gravity="center|start"
+        android:text="Q. 아니면, 나만의 프로그램을 만들고 싶다구?"
+        android:textColor="@color/main_orange_color"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        tools:layout_editor_absoluteX="6dp" />
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/tv_start_guide_third_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center|start"
+        android:text="A. &apos;프로그램 등록&apos; 클릭!"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_start_guide_third_head"
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/tv_prev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
         android:drawableStart="@drawable/ic_arrow_back_white"
         android:text="이전"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_first" />
+        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_third_body" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="40dp"
         android:textColor="@color/white"
         android:textSize="19sp"
         android:text="3 / 5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_first" />
+        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_third_body" />
 
     <TextView
         android:id="@+id/tv_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
         android:drawableEnd="@drawable/ic_arrow_forward_white"
         android:text="다음"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_first" />
+        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_third_body" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
