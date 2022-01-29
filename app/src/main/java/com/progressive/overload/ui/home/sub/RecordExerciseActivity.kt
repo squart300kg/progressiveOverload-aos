@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
 import com.progressive.overload.R
 import com.progressive.overload.base.BaseActivity
 import com.progressive.overload.databinding.ActivityRecordExerciseBinding
@@ -103,7 +105,7 @@ class RecordExerciseActivity :
                 setHasFixedSize(true)
                 recordExerciseAdapter =
                     RecordExerciseAdapter(this@RecordExerciseActivity,
-                        { model -> // 운동 수행 완료
+                        { model -> // 1세트 수행 완료
 
                             when {
                                 model.weight == 0.0f -> {
@@ -139,7 +141,11 @@ class RecordExerciseActivity :
                                 supportFragmentManager,
                                 "completeDialogTag"
                             )
-                        })
+                        },
+                        { position -> // 한 세트 끝, 다음 세트로 포커스 이동
+                            smoothScrollToPosition(position)
+                        }
+                    )
                 adapter = recordExerciseAdapter
 
             }

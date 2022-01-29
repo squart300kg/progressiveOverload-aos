@@ -3,6 +3,7 @@ package com.progressive.overload.ui.home.sub
 import android.content.Context
 import android.text.InputFilter
 import android.text.InputType
+import android.util.Log
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
@@ -21,6 +22,7 @@ class RecordExerciseAdapter(
     private val context: Context,
     private val onClickForSuccess: (recordItem: RecordExerciseModel) -> Unit,
     private val onCompleteExercise: () -> Unit,
+    private val goToPosition: (Int) -> Unit,
 ) : RecyclerView.Adapter<RecordExerciseAdapter.RecordExViewHolder>() {
 
     private val items: MutableList<RecordExerciseModel> = mutableListOf()
@@ -52,6 +54,8 @@ class RecordExerciseAdapter(
     }
 
     override fun getItemCount(): Int = items.size
+
+    override fun getItemViewType(position: Int) = position
 
     fun loadRecord(list: List<RecordExerciseModel>) {
         items.clear()
@@ -118,6 +122,8 @@ class RecordExerciseAdapter(
         }
 
         fun successExercise() {
+            Log.i("checkTest", "successExercise: [$absoluteAdapterPosition]performed")
+
             itemBinding.animationFloating.isVisible = true
             itemBinding.etWeight.inputType = InputType.TYPE_NULL
             itemBinding.etRepitition.inputType = InputType.TYPE_NULL
@@ -125,12 +131,17 @@ class RecordExerciseAdapter(
             itemBinding.etRestTime.inputType = InputType.TYPE_NULL
             successCount++
 
-            if (successCount == items.size)
+            if (successCount == items.size) { // 모든 세트가 끝나면 종료 다이얼로그 띄움
                 onCompleteExercise()
+            } else { // 한 세트 끝, 다음 세트가 있다면 다음 세트로 스크롤 포커스 이동
+                goToPosition(successCount)
+            }
         }
 
         fun checkIsExercisePerformed() {
             if (items[absoluteAdapterPosition].isPerformed) {
+                // 이미 수행한 운동이라면 성공 애니메이션 표시 & input입력 막기
+
                 itemBinding.animationFloating.isVisible = true
                 itemBinding.etWeight.inputType = InputType.TYPE_NULL
                 itemBinding.etRepitition.inputType = InputType.TYPE_NULL

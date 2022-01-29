@@ -57,156 +57,148 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/sv_main"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/adView"
             app:layout_constraintTop_toBottomOf="@id/tv_date">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_exercise_type_info"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/border_main"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_exercise_type_info"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/border_main"
-                    android:visibility="gone"
+                    android:layout_margin="20dp"
+                    android:text="@{recordExVm.exercises.get(0).name}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    overload:text="스쿼트" />
 
-                    <TextView
-                        android:id="@+id/tv_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="@{recordExVm.exercises.get(0).name}"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        overload:text="스쿼트" />
-
-                    <LinearLayout
-                        android:id="@+id/layout_exercise_info"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:background="@drawable/border_main"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_name">
-
-                        <LinearLayout
-                            android:id="@+id/layout_record"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:weightSum="100">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="@{recordExVm.exercises.get(0).weight.toString() + `KG`}"
-                                overload:text="80KG" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="@{recordExVm.exercises.get(0).repitition.toString()}"
-                                overload:text="12" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="@{recordExVm.exercises.get(0).setNum.toString()}"
-                                overload:text="3" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="@{recordExVm.exercises.get(0).restTime.toString()}"
-                                overload:text="60" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:weightSum="100"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/layout_record">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="중량" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="반복수" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="세트수" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="20dp"
-                                android:layout_weight="25"
-                                android:gravity="center"
-                                android:text="휴식시간" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_record_ex"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <LinearLayout
+                    android:id="@+id/layout_exercise_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="20dp"
+                    android:background="@drawable/border_main"
                     android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_exercise_type_info"
-                    overload:listitem="@layout/item_write_record"
-                    overload:setItems="@{recordExVm.records}" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_name">
 
+                    <LinearLayout
+                        android:id="@+id/layout_record"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="@{recordExVm.exercises.get(0).weight.toString() + `KG`}"
+                            overload:text="80KG" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="@{recordExVm.exercises.get(0).repitition.toString()}"
+                            overload:text="12" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="@{recordExVm.exercises.get(0).setNum.toString()}"
+                            overload:text="3" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="@{recordExVm.exercises.get(0).restTime.toString()}"
+                            overload:text="60" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_record">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="중량" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="반복수" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="세트수" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="25"
+                            android:gravity="center"
+                            android:text="휴식시간" />
+                    </LinearLayout>
+                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_record_ex"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_exercise_type_info"
+                overload:listitem="@layout/item_write_record"
+                overload:setItems="@{recordExVm.records}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
