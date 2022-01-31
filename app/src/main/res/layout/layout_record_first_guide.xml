@@ -12,29 +12,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="3대600을 위해선\n\n\n&quot;내가 점진적 과부하를 잘 하고 있는가...?&quot;\n\n\n를 항상 고민하고 피드백 해야합니다\n조회하고싶은 프로그램을 선택해 주세요!\n"
-        android:textColor="@color/white"
-        android:textSize="19sp"
+        android:gravity="center|start"
+        android:text="Q. 여러분들의 3대600을 위해선?"
+        android:textColor="@color/main_orange_color"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
-        android:id="@+id/ok"
+        android:id="@+id/tv_start_guide_first_body"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center|start"
+        android:text="A. &quot;내가 점진적 과부하를 잘 하고 있는가...?&quot;"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_start_guide_first_head"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/tv_start_guide_first_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center|start"
+        android:text="를 숫자로 객관화할 수 있어야 합니다!\n&apos;조회하고 싶은 프로그램&apos;을 선택해 주세요!\n"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_start_guide_first_body"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/border_common_button"
+        android:drawableEnd="@drawable/ic_arrow_forward_white"
         android:gravity="center"
         android:text="OK"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_first_head" />
+        app:layout_constraintTop_toBottomOf="@id/tv_start_guide_first_footer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

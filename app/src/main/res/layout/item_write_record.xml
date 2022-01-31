@@ -191,7 +191,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
-                app:lottie_fileName="success.json"
+                app:lottie_fileName="success_green.json"
                 app:lottie_imageAssetsFolder="images/" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

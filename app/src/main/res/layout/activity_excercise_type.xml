@@ -19,6 +19,7 @@
             android:id="@+id/layout_guide"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            overload:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -160,6 +161,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_margin="20dp"
+                    overload:visibility="gone"
                     android:background="@drawable/border_add_contents"
                     app:layout_constraintTop_toTopOf="parent">
 

@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center|start"
         android:layout_margin="20dp"
-        android:text="A. 권혁의 거인화 프로그램을 돌리면 됨"
+        android:text="A. 결과로 증명하신 권혁님의 거인화 프로그램을 돌리는건 어떨까요?"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="19sp"
