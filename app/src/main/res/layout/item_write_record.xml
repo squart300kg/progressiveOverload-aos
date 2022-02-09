@@ -55,8 +55,8 @@
                 android:id="@+id/tv_repitition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
                 android:text="반복수"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_weight" />
@@ -65,8 +65,8 @@
                 android:id="@+id/tv_rpe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
                 android:text="RIR"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_repitition" />
@@ -75,8 +75,8 @@
                 android:id="@+id/tv_rest_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
                 android:text="휴식 시간"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_rpe" />
@@ -85,16 +85,17 @@
                 android:id="@+id/et_weight"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/border_record_element"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:maxLength="6"
                 android:maxLines="1"
+                android:padding="10dp"
                 android:selectAllOnFocus="true"
                 android:text="@{recordItem.weight + ``}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/main_orange_color"
+                android:textStyle="bold"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_weight"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -109,17 +110,18 @@
                 android:background="@drawable/border_record_element"
                 android:inputType="number"
                 android:maxLength="3"
-                overload:text="12"
-                android:padding="10dp"
                 android:maxLines="1"
+                android:padding="10dp"
                 android:selectAllOnFocus="true"
                 android:text="@{recordItem.repitition + ``}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/main_orange_color"
+                android:textStyle="bold"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/tv_repitition"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_repitition" />
+                app:layout_constraintTop_toTopOf="@id/tv_repitition"
+                overload:text="12" />
 
             <EditText
                 android:id="@+id/et_rpe"
@@ -130,16 +132,17 @@
                 android:inputType="number"
                 android:maxLength="2"
                 android:maxLines="1"
-                overload:text="1"
                 android:padding="10dp"
                 android:selectAllOnFocus="true"
                 android:text="@{recordItem.rpe + ``}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/main_orange_color"
+                android:textStyle="bold"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_rpe"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_rpe" />
+                app:layout_constraintTop_toTopOf="@id/tv_rpe"
+                overload:text="1" />
 
             <EditText
                 android:id="@+id/et_rest_time"
@@ -150,23 +153,24 @@
                 android:inputType="number"
                 android:maxLength="3"
                 android:maxLines="1"
-                overload:text="120"
                 android:padding="10dp"
                 android:selectAllOnFocus="true"
                 android:text="@{recordItem.restTime + ``}"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/main_orange_color"
+                android:textStyle="bold"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_rest_time"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_rest_time" />
+                app:layout_constraintTop_toTopOf="@id/tv_rest_time"
+                overload:text="120" />
 
             <TextView
                 android:id="@+id/tv_exercise_complete"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="75dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border_common_button"
@@ -191,7 +195,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
-                app:lottie_fileName="success_green.json"
+                app:lottie_fileName="success_muscle.json"
                 app:lottie_imageAssetsFolder="images/" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

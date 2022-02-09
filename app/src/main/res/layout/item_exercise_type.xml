@@ -74,7 +74,7 @@
                         android:gravity="center"
                         android:textSize="16sp"
                         android:text="@{exerciseItem.weight.toString() + `KG`}"
-                        android:textColor="@color/green_first"
+                        android:textColor="@color/main_orange_color"
                         android:textStyle="bold"
                         tools:text="80" />
 
@@ -85,7 +85,7 @@
                         android:gravity="center"
                         android:textSize="16sp"
                         android:text="@{exerciseItem.repitition.toString()}"
-                        android:textColor="@color/green_first"
+                        android:textColor="@color/main_orange_color"
                         android:textStyle="bold"
                         tools:text="12" />
 
@@ -96,7 +96,7 @@
                         android:gravity="center"
                         android:textSize="16sp"
                         android:text="@{exerciseItem.setNum.toString()}"
-                        android:textColor="@color/green_first"
+                        android:textColor="@color/main_orange_color"
                         android:textStyle="bold"
                         tools:text="3" />
 
@@ -178,7 +178,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_exercise_start"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="75dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
@@ -215,7 +215,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
-                app:lottie_fileName="success_green.json"
+                app:lottie_fileName="success_muscle.json"
                 app:lottie_imageAssetsFolder="images/" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
