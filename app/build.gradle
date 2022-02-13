@@ -15,8 +15,8 @@ android {
         applicationId "com.progressive.overload"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 9
-        versionName "1.0.7"
+        versionCode 10
+        versionName "1.0.8"
         multiDexEnabled true
 
         buildConfigField("String", "naverLoginURL", '"https://openapi.naver.com/v1/nid/me"')
