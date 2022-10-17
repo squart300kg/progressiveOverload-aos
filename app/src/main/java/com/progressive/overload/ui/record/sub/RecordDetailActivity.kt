@@ -50,13 +50,13 @@ class RecordDetailActivity :
 
                 xAxis.apply {
                     position = XAxis.XAxisPosition.BOTTOM
-                    textColor = Color.BLACK
+                    textColor = Color.WHITE
                     granularity = 1f // 1일
                     valueFormatter = XaxisDateFormatter()
                 }
 
                 axisLeft.apply {
-                    textColor = Color.BLACK
+                    textColor = Color.WHITE
                     granularity = 1f // 1KG
                     valueFormatter = YaxisVolumeFormatter()
                 }
@@ -72,7 +72,7 @@ class RecordDetailActivity :
                 isDoubleTapToZoomEnabled = true
                 setDrawGridBackground(false)
                 setNoDataText("운동 기록이 없습니다.")
-                setNoDataTextColor(ContextCompat.getColor(this@RecordDetailActivity, R.color.green_first))
+                setNoDataTextColor(ContextCompat.getColor(this@RecordDetailActivity, R.color.main_orange_color))
 
                 animateY(2000, Easing.EasingOption.EaseInCubic)
                 invalidate()

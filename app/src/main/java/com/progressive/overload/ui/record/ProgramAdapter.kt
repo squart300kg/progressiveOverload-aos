@@ -36,8 +36,6 @@ class ProgramAdapter(
     override fun onBindViewHolder(holder: RecordsViewHolder, position: Int) {
         holder.bindItem(items[position])
 
-        holder.initValues()
-
         holder.initOnClick()
     }
 
@@ -46,7 +44,6 @@ class ProgramAdapter(
     override fun getItemViewType(position: Int) = position
     
     fun loadPrograms(list: List<HomeProgramModel>) {
-        Log.i("loadPrograms", list.toString())
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()
@@ -62,12 +59,7 @@ class ProgramAdapter(
                 onClick(items[absoluteAdapterPosition].no)
             }
         }
-
-        fun initValues() {
-            itemBinding.ivMenu.isVisible = false
-        }
     }
-
 }
 
 

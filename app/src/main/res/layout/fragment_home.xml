@@ -4,7 +4,6 @@
     xmlns:overload="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="homeVm"
             type="com.progressive.overload.ui.home.HomeViewModel" />
@@ -53,7 +52,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/green_first"
+            android:indeterminateTint="@color/main_orange_color"
             app:layout_constraintTop_toTopOf="parent"
             overload:setVisibility="@{homeVm.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"

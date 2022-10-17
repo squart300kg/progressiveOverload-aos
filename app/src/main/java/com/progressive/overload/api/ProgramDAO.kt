@@ -171,7 +171,7 @@ interface ProgramDAO {
         exercises.forEach {
             insertExerciseType(ExerciseTypeTable(
                 name = it.name,
-                weight = 0f,
+                weight = it.weight,
                 repitition = it.repitition,
                 setNum = it.setNum,
                 restTime = it.restTime,

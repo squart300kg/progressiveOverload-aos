@@ -10,7 +10,8 @@
 
     </data>
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -38,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/green_first"
+                android:textColor="@color/main_orange_color"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/tv_total_volume"
                 app:layout_constraintTop_toTopOf="parent"
