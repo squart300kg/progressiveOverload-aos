@@ -6,4 +6,11 @@
         <item>프로그램 삭제</item>
     </string-array>
 
+    <string-array name="overload_type_array">
+        <item>없음</item>
+        <item>갯수의 과부하</item>
+        <item>중량의 과부하</item>
+        <item>쉬는시간의 과부하</item>
+    </string-array>
+
 </resources>

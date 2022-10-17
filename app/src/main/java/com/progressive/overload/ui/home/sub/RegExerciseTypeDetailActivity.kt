@@ -6,8 +6,12 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.ContextThemeWrapper
+import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -51,6 +55,7 @@ class RegExerciseTypeDetailActivity :
             layoutSetNumber.exerciseVm = viewModel
             layoutRestTime.exerciseVm = viewModel
             layoutRpe.exerciseVm = viewModel
+            layoutOverload.exerciseVm = viewModel
 
             tvRegister.setOnClickListener {
                 if (isInputNotFull()) {
@@ -176,6 +181,37 @@ class RegExerciseTypeDetailActivity :
             layoutRpe.etRpe.apply {
                 checkIfInputIsFull(this)
             }
+            layoutOverload.spinnerOverload.apply {
+                val myAdapter = ArrayAdapter(this@RegExerciseTypeDetailActivity, android.R.layout.simple_spinner_dropdown_item, resources.getStringArray(R.array.overload_type_array))
+                adapter = myAdapter
+                onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        when (position) {
+                            0 -> {
+                                Log.i("spinnerTest", "없음")
+                            }
+                            1 -> {
+                                Log.i("spinnerTest", "ㄳ")
+                            }
+                            2 -> {
+                                Log.i("spinnerTest", "ㅈㄹ")
+                            }
+                            3 -> {
+                                Log.i("spinnerTest", "ㅅㄴ")
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+                        TODO("Not yet implemented")
+                    }
+                }
+                }
         }
 
         initBannerAd(dataBinding.adView)
