@@ -196,7 +196,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         }
 
         val snackbarView = snackBar.view
-        snackbarView.setBackgroundColor(ContextCompat.getColor(this, R.color.green_first))
+        snackbarView.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
 
         val messageTextView =
             snackbarView.findViewById<View>(com.androidadvance.topsnackbar.R.id.snackbar_text) as TextView

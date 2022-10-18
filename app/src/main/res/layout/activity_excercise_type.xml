@@ -32,7 +32,7 @@
                 android:background="@drawable/border_step_balloon_un_focused"
                 android:gravity="center"
                 android:text="1"
-                android:textColor="@color/main_orange_color"
+                android:textColor="@color/orange"
                 app:layout_constraintBottom_toTopOf="@id/tv_guide"
                 app:layout_constraintEnd_toStartOf="@+id/v_guide_line_one"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
                 android:id="@+id/v_guide_line_one"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:background="@color/main_orange_color"
+                android:background="@color/orange"
                 app:layout_constraintBottom_toBottomOf="@id/tv_step_one"
                 app:layout_constraintEnd_toStartOf="@id/tv_step_two"
                 app:layout_constraintStart_toEndOf="@id/tv_step_one"
@@ -55,7 +55,7 @@
                 android:background="@drawable/border_step_balloon_un_focused"
                 android:gravity="center"
                 android:text="2"
-                android:textColor="@color/main_orange_color"
+                android:textColor="@color/orange"
                 app:layout_constraintBottom_toBottomOf="@id/tv_step_one"
                 app:layout_constraintEnd_toStartOf="@id/v_guide_line_two"
                 app:layout_constraintStart_toEndOf="@+id/v_guide_line_one"
@@ -66,7 +66,7 @@
                 android:id="@+id/v_guide_line_two"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:background="@color/main_orange_color"
+                android:background="@color/orange"
                 app:layout_constraintBottom_toBottomOf="@id/tv_step_two"
                 app:layout_constraintEnd_toStartOf="@id/tv_step_three"
                 app:layout_constraintStart_toEndOf="@id/tv_step_two"
@@ -119,10 +119,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_divider"
-            app:tabIndicatorColor="@color/main_orange_color"
+            app:tabIndicatorColor="@color/orange"
             app:tabIndicatorHeight="0dp"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/main_orange_color"
+            app:tabSelectedTextColor="@color/orange"
             app:tabTextAppearance="@style/TabLayoutTextStyle" />
 
         <com.google.android.material.tabs.TabLayout
@@ -134,10 +134,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tl_meso_split"
-            app:tabIndicatorColor="@color/main_orange_color"
+            app:tabIndicatorColor="@color/orange"
             app:tabIndicatorHeight="0dp"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/main_orange_color"
+            app:tabSelectedTextColor="@color/orange"
             app:tabTextAppearance="@style/TabLayoutTextStyle" />
 
 
@@ -262,7 +262,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/main_orange_color"
+            android:indeterminateTint="@color/orange"
             app:layout_constraintTop_toTopOf="parent"
             overload:setVisibility="@{regVm.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -13,7 +13,7 @@
         android:gravity="start"
         android:layout_margin="20dp"
         android:text="Q. 3대 600을 찍기 위해선 어떻게 해야할까요~?"
-        android:textColor="@color/main_orange_color"
+        android:textColor="@color/orange"
         android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent" />

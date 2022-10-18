@@ -37,7 +37,7 @@
             android:selectAllOnFocus="true"
             overload:text="@{exerciseVm.exercise.rpe.toString()}"
             android:textAlignment="textEnd"
-            android:textColor="@color/main_orange_color"
+            android:textColor="@color/orange"
             android:textStyle="bold"
             android:textColorHint="@color/grey"
             android:textSize="16dp"

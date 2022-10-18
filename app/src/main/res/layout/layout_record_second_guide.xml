@@ -29,7 +29,7 @@
         android:gravity="center|start"
         android:lineSpacingExtra="20dp"
         android:text="Q. 총 볼륨을 한 눈에 보는 방법?"
-        android:textColor="@color/main_orange_color"
+        android:textColor="@color/orange"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/animation_record_second_floating"

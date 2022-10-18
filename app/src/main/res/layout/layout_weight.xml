@@ -36,7 +36,7 @@
             android:maxLength="6"
             android:selectAllOnFocus="true"
             android:textAlignment="textEnd"
-            android:textColor="@color/main_orange_color"
+            android:textColor="@color/orange"
             android:textStyle="bold"
             android:textColorHint="@color/grey"
             android:textSize="16sp"

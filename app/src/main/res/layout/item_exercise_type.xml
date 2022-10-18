@@ -74,7 +74,7 @@
                         android:gravity="center"
                         android:textSize="16sp"
                         android:text="@{exerciseItem.weight.toString() + `KG`}"
-                        android:textColor="@color/main_orange_color"
+                        android:textColor="@color/orange"
                         android:textStyle="bold"
                         tools:text="80" />
 
@@ -85,7 +85,7 @@
                         android:gravity="center"
                         android:textSize="16sp"
                         android:text="@{exerciseItem.repitition.toString()}"
-                        android:textColor="@color/main_orange_color"
+                        android:textColor="@color/orange"
                         android:textStyle="bold"
                         tools:text="12" />
 
@@ -96,7 +96,7 @@
                         android:gravity="center"
                         android:textSize="16sp"
                         android:text="@{exerciseItem.setNum.toString()}"
-                        android:textColor="@color/main_orange_color"
+                        android:textColor="@color/orange"
                         android:textStyle="bold"
                         tools:text="3" />
 
@@ -106,7 +106,7 @@
                         android:layout_weight="25"
                         android:gravity="center"
                         android:text="@{exerciseItem.restTime.toString()}"
-                        android:textColor="@color/main_orange_color"
+                        android:textColor="@color/orange"
                         android:textStyle="bold"
                         tools:text="60" />
 
@@ -116,7 +116,7 @@
                         android:layout_weight="20"
                         android:gravity="center"
                         android:text="@{exerciseItem.rpe.toString()}"
-                        android:textColor="@color/green_first"
+                        android:textColor="@color/green"
                         android:textStyle="bold"
                         android:visibility="gone"
                         tools:text="8" />

@@ -13,7 +13,7 @@
         android:layout_margin="20dp"
         android:gravity="center|start"
         android:text="Q. 운동을 다 기록한 다음엔 무얼 하냐구?"
-        android:textColor="@color/main_orange_color"
+        android:textColor="@color/orange"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

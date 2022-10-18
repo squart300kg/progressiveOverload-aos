@@ -12,7 +12,7 @@
         android:singleLine="true"
         android:text="WOW"
         android:textStyle="bold"
-        android:textColor="@color/main_orange_color"
+        android:textColor="@color/orange"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="kakao_yellow">#fee500</color>
 
-    <color name="main_orange_color">#dd5e17</color>
+    <color name="orange">#dd5e17</color>
     <color name="red">#a93f3b</color>
     <color name="grey">#808080</color>
     <color name="light_grey">#EEEEEE</color>
 
-    <color name="grey_first">#a7a7a7</color>
-    <color name="grey_second">#b4b4b4</color>
-    <color name="grey_third">#c0c0c0</color>
-    <color name="grey_fourth">#cdcdcd</color>
     <color name="grey_fifth">#dadada</color>
 
-    <!--    <color name="blue">#003399</color>-->
-<!--    <color name="blue_second">#6799FF</color>-->
-
-    <color name="blue_first">#00308F</color>
-    <color name="blue_second">#1974D2</color>
-    <color name="blue_third">#82DFFF</color>
-    <color name="blue_fourth">#B2FFFF</color>
-
-    <color name="green_first">#10561F</color>
-    <color name="green_second">#256F15</color>
-    <color name="green_third">#48A70B</color>
-    <color name="green_fourth">#7FE706</color>
+    <color name="green">#10561F</color>
 
     <color name="transparent">#00000000</color>
     <color name="light_blue_600">#FF039BE5</color>

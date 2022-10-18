@@ -24,7 +24,7 @@
             android:gravity="center|start"
             android:lineSpacingExtra="20dp"
             android:text="Q. 운동 상세 기록을 보고싶다구?"
-            android:textColor="@color/main_orange_color"
+            android:textColor="@color/orange"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_record_second_third_body"

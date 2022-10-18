@@ -52,7 +52,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/main_orange_color"
+            android:indeterminateTint="@color/orange"
             app:layout_constraintTop_toTopOf="parent"
             overload:setVisibility="@{homeVm.isLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -80,7 +80,7 @@
                 android:gravity="center"
                 android:text="확인"
                 android:textStyle="bold"
-                android:textColor="@color/main_orange_color"
+                android:textColor="@color/orange"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/v_divider"

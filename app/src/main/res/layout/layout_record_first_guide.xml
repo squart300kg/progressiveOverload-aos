@@ -14,7 +14,7 @@
         android:layout_margin="20dp"
         android:gravity="center|start"
         android:text="Q. 여러분들의 3대600을 위해선?"
-        android:textColor="@color/main_orange_color"
+        android:textColor="@color/orange"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

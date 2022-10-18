@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/main_orange_color"
+                android:textColor="@color/orange"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/tv_total_volume"
                 app:layout_constraintTop_toTopOf="parent"

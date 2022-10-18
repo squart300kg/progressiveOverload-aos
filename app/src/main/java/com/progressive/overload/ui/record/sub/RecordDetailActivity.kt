@@ -72,7 +72,7 @@ class RecordDetailActivity :
                 isDoubleTapToZoomEnabled = true
                 setDrawGridBackground(false)
                 setNoDataText("운동 기록이 없습니다.")
-                setNoDataTextColor(ContextCompat.getColor(this@RecordDetailActivity, R.color.main_orange_color))
+                setNoDataTextColor(ContextCompat.getColor(this@RecordDetailActivity, R.color.orange))
 
                 animateY(2000, Easing.EasingOption.EaseInCubic)
                 invalidate()
